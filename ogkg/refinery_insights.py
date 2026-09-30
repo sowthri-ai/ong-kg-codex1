@@ -315,5 +315,20 @@ REFINERY = [hydrogen_headroom, sulfur_ceiling, conversion_loss_chains, octane_gi
 ALL = REFINERY + cdu_insights.ALL
 
 
+def run_one(f, kg):
+    """Run an insight; if the data it needs is missing or malformed, say so instead of failing (graceful degradation)."""
+    try:
+        r = f(kg)
+        r.setdefault("status", "ok")
+        return r
+    except (KeyError, StopIteration, TypeError, ZeroDivisionError, ValueError, IndexError) as e:
+        iid = f.__name__.replace("_", "-")
+        return dict(id=iid, title=iid.replace("-", " ").capitalize(), question="", status="insufficient-data",
+                    headline=f"Not enough trustworthy data to run this insight: {type(e).__name__} {e}".strip(),
+                    **_vc(None, None, confidence="low"), domains=[], rows=[], path=[], evidence=[],
+                    recommendation="Fix the missing or failed inputs listed in the headline, then re-run.",
+                    decision_owner="Data Steward", caveat="No numbers are reported when inputs are missing.")
+
+
 def run_all(kg):
-    return [f(kg) for f in ALL]
+    return [run_one(f, kg) for f in ALL]
