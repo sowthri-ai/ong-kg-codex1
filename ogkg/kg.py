@@ -30,13 +30,20 @@ class KG:
     def facts(self, subject, predicate=None):
         return [f for f in self.facts_by_subject.get(subject, []) if predicate in (None, f["predicate"])]
 
-    def value(self, subject, predicate, default=None):
-        fs = self.facts(subject, predicate)
-        return fs[0]["value"] if fs else default
+    def fact(self, subject, predicate, as_of=None):
+        """Current fact: status 'current', valid at `as_of` (default: latest valid_from). Data contract v0.5 time semantics."""
+        fs = [f for f in self.facts(subject, predicate) if f.get("status", "current") == "current"]
+        if as_of:
+            fs = [f for f in fs if f.get("valid_from", f["as_of"]) <= as_of and (not f.get("valid_to") or f["valid_to"] > as_of)]
+        return max(fs, key=lambda f: f.get("valid_from", f["as_of"])) if fs else None
 
-    def fact(self, subject, predicate):
-        fs = self.facts(subject, predicate)
-        return fs[0] if fs else None
+    def value(self, subject, predicate, default=None, as_of=None):
+        f = self.fact(subject, predicate, as_of)
+        return f["value"] if f else default
+
+    def history(self, subject, predicate):
+        """All facts for (subject, predicate), oldest first, including superseded ones."""
+        return sorted(self.facts(subject, predicate), key=lambda f: (f.get("valid_from", f["as_of"]), f.get("recorded_at", "")))
 
     def explain_fact(self, fid, _depth=0):
         f = self.facts_by_id[fid]

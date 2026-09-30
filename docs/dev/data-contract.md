@@ -30,12 +30,14 @@ Node-class-specific props that the RDF exporter maps:
 
 | `cls` | props → RDF |
 |---|---|
-| `KPI` | `formula` → `ogkg:formula`; `aggregation` → `ogkg:aggregationRule vocab:<X>`; `level` (int) → `ogkg:applicableLevel ogkg:L<n>`; `tier` (`Strategic`, `Tactical` or `Operational`) → `ogkg:kpiTier vocab:<tier>`. `ownedBy` comes from an `OWNED_BY` edge |
+| `KPI` | `formula` → `ogkg:formula`; `aggregation` → `ogkg:aggregationRule vocab:<X>`; `applicable_level` (int) → `ogkg:applicableLevel ogkg:L<n>`; `tier` (`Strategic`, `Tactical` or `Operational`) → `ogkg:kpiTier vocab:<tier>`. `ownedBy` comes from an `OWNED_BY` edge |
 | `KPF` | `DRIVES` and `CONTROLLED_BY` edges |
 | `HypothesisAssertion` | `hyp_subject`, `hyp_predicate` (LPG relation name), `hyp_object`, `status` (`Proposed`, `Validated` or `Rejected`), `confidence_score`, `inferred_by`, `run_id`, `reviewed_by` (role id), `reviewed_on` (date), `evidence` (list of node ids) |
-| `FacetBinding` | `binds_entity`, `binds_to`, `facet` (vocab concept local name, e.g. `EconomicsFacet`), `binding_level` (int), `valid_from` (date), `inheritance_rule` (optional concept) |
-| `CorrectionRequest` | `corrects_fact` (fact id), `proposed_value`, `reason`, `status` (`Proposed`, `Validated` or `Rejected`), `requested_by` (role), `reviewed_by`, `reviewed_on` |
-| `IOWLimit` | `level` (`critical`, `standard` or `informational`), `direction` (`high` or `low`); the value, response time and action are facts |
+| `FacetBinding` | `binds_entity`, `binds_to`, `facet` (vocab concept local name, e.g. `EconomicsFacet`), `binding_level` (int), `valid_from` (date), `inheritance_rule` (concept local name, e.g. `InheritDown`) |
+| `CorrectionRequest` | Everything a `HypothesisAssertion` has, plus `corrects_fact` (fact id), `proposed_value`, `reason` and `requested_by` (role) |
+| `InsightResult` | `insight_id`, `run_id`; facts `headline` and `value_usd` (with `basis`, `value_low`, `value_high`); `DESCRIBES` edges to the entities on the insight path |
+| `SerialItem` | spine `serial`; `INSTALLED_AT` edge props `valid_from` / `valid_to` |
+| `IOWLimit` | `iow_level` (`critical`, `standard` or `informational`), `direction` (`high` or `low`); the value, response time and action are facts |
 
 ## 3. Edges
 
@@ -60,6 +62,7 @@ Node-class-specific props that the RDF exporter maps:
 | `SUBMODEL_OF` | LPSubmodel → LPModel | |
 | `REPRESENTS` | LPSubmodel → PlantUnit | |
 | `CONSTRAINS` | LPConstraint → Entity | Unit, product or network constrained |
+| `OCCURRED_ON_SERIAL` | Failure → SerialItem | Physical unit installed when the failure happened |
 
 Existing relations used more widely in v0.5 include `INSTALLED_AT` (SerialItem → EquipmentUnit, with `valid_from` and `valid_to`), `HAS_FAILURE_MODE`, `CAUSED_BY`, `IN_SCOPE_OF`, `TARGETS`, `AT_SITE`, `PRICE_OF`, `COMPONENT_OF`, `BLENDED_AT`, `SOLD_TO`, `MEASURES`, `MEASURED_BY`, `DRIVES` (KPF → KPI) and `CONTROLLED_BY` (KPF → DecisionPoint).
 
@@ -70,7 +73,7 @@ Existing relations used more widely in v0.5 include `INSTALLED_AT` (SerialItem �
 - **Integrity:** `IOWLimit` ⊑ InformationObject; `FailureMechanism` and `DetectionMethod` ⊑ ProblemElement (FailureMode and RootCause already exist).
 - **Economics and planning:** `PriceSet` ⊑ EconomicElement; `LPModel` and `LPSubmodel` ⊑ InformationObject; `LPConstraint` ⊑ EconomicElement.
 - **Governance:** `CorrectionRequest` ⊑ HypothesisAssertion (a proposed change to a fact).
-- **Sections:** `SaturatedGasPlant` and similar are just new `onto_class` values for sections and units, and must be declared in `ontology/ext/`.
+- **Other v0.5 `onto_class` values to declare in `ontology/ext/`:** `SaturatedGasPlant` (⊑ PlantUnit), `ElectricalSection` (⊑ SectionSystem), `ThicknessMonitoringLocation` (a Part class), `InsightResult` (⊑ InformationObject).
 
 ## 4. Facts
 
@@ -95,7 +98,7 @@ Existing fields: `{id, subject, predicate, value, unit, as_of, source_system, so
 
 **Fact IDs** come from `ogkg.identity.fact_id`. Consumers must treat them as opaque strings.
 
-**Units.** Every numeric fact has a unit label from the set mapped in `ontology/mappings/units.ttl`. Labels in use: `%`, `% of rating`, `A`, `L/h`, `MMBtu/kbbl`, `MMSCFD`, `MW`, `MWh`, `Nm3/h`, `PTB`, `USD`, `USD/MMBtu`, `USD/bbl`, `USD/t`, `USD/tCO2`, `USD/MWh`, `USD/d`, `USD/yr`, `USD/m3`, `bar`, `barg`, `berths`, `count`, `days`, `degAPI`, `degC`, `degC/month`, `fraction`, `h`, `kNm3/h`, `kV`, `kVA`, `kW`, `kbbl`, `kbd`, `kg/m3`, `kgCO2/bbl`, `kgCO2/GJ`, `kt/yr`, `ktCO2/yr`, `m`, `m2`, `m2K/kW`, `m3`, `m3/h`, `mg/Nm3`, `mgKOH/g`, `mm`, `mm/s`, `mm/y`, `mmH2O`, `months`, `pH`, `ppm`, `ppmv`, `ppmw`, `rpm`, `scf/bbl`, `state`, `t`, `t/d`, `t/h`, `t/m3`, `um`, `vol%`, `wt%`, `wt/wt`, `yr`, `MPa`, `bara`, `RON`, `cetane`, `GJ/t`. The label is `""` for non-numeric facts.
+**Units.** Every numeric fact has a unit label that `ontology/mappings/units.ttl` maps to a QUDT unit or an `ogkg-unit:` unit. Labels in use at v0.5: `%`, `% of normal`, `% of rating`, `A`, `GJ/t`, `L/h`, `MMBtu/Mscf`, `MMBtu/d`, `MMBtu/kbbl`, `MMSCFD`, `MVA`, `MW`, `Nm3/h`, `PTB`, `RON`, `USD`, `USD/MMBtu`, `USD/MWh`, `USD/RON-bbl`, `USD/bbl`, `USD/d`, `USD/kscf`, `USD/ppm-bbl`, `USD/t`, `USD/tCO2`, `USD/yr`, `bar`, `bara`, `barg`, `berths`, `cetane`, `count`, `days`, `degAPI`, `degC`, `degC/month`, `fraction`, `h`, `kJ/kgK`, `kNm3/h`, `kPa`, `kV`, `kVA`, `kW`, `kbbl`, `kbd`, `kg/h`, `kgCO2/GJ`, `kgCO2/MMBtu`, `kgCO2/bbl`, `ktCO2/yr`, `m`, `m/s`, `m2`, `m2K/kW`, `m3`, `m3/h`, `mg/Nm3`, `mgKOH/g`, `mm`, `mm/s`, `mm/y`, `mmH2O`, `mol%`, `mol/mol`, `months`, `pH`, `ppm`, `ppmv`, `ppmw`, `rpm`, `s`, `scf/bbl`, `state`, `t`, `t/MWh`, `t/d`, `t/h`, `t/m3`, `t/t`, `um`, `vol%`, `wt%`, `wt/wt`, `yr`. The label is `""` for non-numeric facts.
 
 ## 5. Sources and freshness
 

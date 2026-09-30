@@ -23,6 +23,10 @@ def _amps(c):
     return round(kw * 1000 * 0.85 / (math.sqrt(3) * volts * 0.9), 0) if running else 0.0
 
 
+def _on(c):
+    return c.get("running", True)
+
+
 def _pump_dp(c):
     return round(c["head"] * 850 * 9.81 / 1e5 + c.get("suction_barg", 2.0), 1)
 
@@ -31,8 +35,6 @@ def _pump_dp(c):
 PUMP = dict(
     onto="CentrifugalPump", eq_class="Pump",
     subunits=[
-        ("DRV", "Driver (electric motor)", [("STATOR", "Stator windings", []), ("ROTOR", "Rotor", []),
-                                            ("MBRG", "Motor bearings", [])]),
         ("PMP", "Pump unit", [("IMP", "Impeller", [("WR", "Wear rings")]), ("SHF", "Shaft", []),
                               ("SEAL", "Mechanical seal", [("SF", "Seal faces"), ("OR", "O-rings / secondary seals"),
                                                            ("SPR", "Springs")]),
@@ -43,12 +45,12 @@ PUMP = dict(
         ("CM", "Control & monitoring", [("VPROBE", "Vibration probes", []), ("TSEN", "Bearing temperature sensors", [])]),
     ],
     tags=[
-        ("FI", "Discharge flow", "m3/h", "PMP", "sensor", lambda c: float(c["flow"]) if c.get("running", True) else 0.0, None),
-        ("PI", "Discharge pressure", "barg", "PMP", "sensor", _pump_dp, None),
-        ("VI", "Radial bearing vibration", "mm/s", "RBRG", "sensor", lambda c: c.get("vib", 2.4), None),
-        ("VI", "Thrust bearing vibration", "mm/s", "TBRG", "sensor", lambda c: round(c.get("vib", 2.4) * 0.8, 1), None),
-        ("TI", "Thrust bearing temperature", "degC", "TBRG", "sensor", lambda c: 62.0 + min(c["T"], 350) * 0.06, None),
-        ("II", "Motor current", "A", "DRV", "sensor", _amps, None),
+        ("FI", "Discharge flow", "m3/h", "PMP", "sensor", lambda c: float(c["flow"]) if _on(c) else 0.0, None),
+        ("PI", "Discharge pressure", "barg", "PMP", "sensor", lambda c: _pump_dp(c) if _on(c) else c.get("suction_barg", 2.0), None),
+        ("VI", "Radial bearing vibration", "mm/s", "RBRG", "sensor", lambda c: c.get("vib", 2.4) if _on(c) else 0.0, None),
+        ("VI", "Thrust bearing vibration", "mm/s", "TBRG", "sensor", lambda c: round(c.get("vib", 2.4) * 0.8, 1) if _on(c) else 0.0, None),
+        ("TI", "Thrust bearing temperature", "degC", "TBRG", "sensor",
+         lambda c: round(62.0 + min(c["T"], 350) * 0.06, 1) if _on(c) else 35.0, None),
         ("PI", "Seal pot / barrier pressure", "barg", "SEAL", "sensor",
          lambda c: 14.0 if c["seal_plan"] == "Plan53B" else 0.6, lambda c: c["seal_plan"] != "Plan11"),
     ],
@@ -101,7 +103,7 @@ FIRED_HEATER = dict(
         ("FUEL", "Fuel gas system", [("FGV", "Fuel gas control valve", [])]),
     ],
     tags=[
-        *[("FI", f"Pass {p} flow", "m3/h", f"PASS{p}", "sensor", (lambda p: lambda c: round(c["flow"] / 4, 0))(p), None) for p in range(1, 5)],
+        *[("FIC", f"Pass {p} flow", "m3/h", f"PASS{p}", "sensor", (lambda p: lambda c: round(c["flow"] / 4, 0))(p), None) for p in range(1, 5)],
         *[("TI", f"Pass {p} outlet temperature (COT)", "degC", f"PASS{p}", "sensor", (lambda p: lambda c: c["cot"])(p), None) for p in range(1, 5)],
         *[("TI", f"Pass {p} tube-metal temperature (TMT)", "degC", f"PASS{p}", "sensor", (lambda p: lambda c: c["tmt"][p - 1])(p), None) for p in range(1, 5)],
         ("TI", "Heater inlet temperature (CIT)", "degC", "RAD", "sensor", lambda c: c["cit"], None),
@@ -150,14 +152,14 @@ ATM_COLUMN = dict(
     ],
     tags=[
         ("TI", "Column top temperature", "degC", "TR_TOP", "sensor", lambda c: c["top_t"], None),
-        ("PI", "Column top pressure", "barg", "SHL", "sensor", lambda c: 1.0, None),
+        ("PIC", "Column top pressure", "barg", "SHL", "sensor", lambda c: 1.0, None),
         ("TI", "Kerosene draw temperature", "degC", "TR_KERO", "sensor", lambda c: 190.0, None),
         ("TI", "Diesel draw temperature", "degC", "TR_DSL", "sensor", lambda c: 255.0, None),
         ("TI", "AGO draw temperature", "degC", "TR_AGO", "sensor", lambda c: 330.0, None),
         ("TI", "Flash-zone temperature", "degC", "TR_FZ", "sensor", lambda c: c["fz_t"], None),
         ("PI", "Flash-zone pressure", "barg", "TR_FZ", "sensor", lambda c: 1.6, None),
         ("PDI", "Column pressure drop", "bar", "INT", "sensor", lambda c: 0.35, None),
-        ("LI", "Bottoms level", "%", "SHL", "sensor", lambda c: 50.0, None),
+        ("LIC", "Bottoms level", "%", "SHL", "sensor", lambda c: 50.0, None),
         ("FI", "Bottom stripping steam", "t/h", "TR_STR", "sensor", lambda c: 9.0, None),
     ],
 )
@@ -187,13 +189,13 @@ STABILISER = dict(
 def _drum(boot=False, analysers=False):
     subs = [("SHL", "Shell", [("SHELL", "Shell", [])]), ("INT", "Internals", [("DEMIST", "Mist eliminator", [])])]
     tags = [
-        ("LI", "Hydrocarbon level", "%", "SHL", "sensor", lambda c: 50.0, None),
+        ("LIC", "Hydrocarbon level", "%", "SHL", "sensor", lambda c: 50.0, None),
         ("PI", "Pressure", "barg", "SHL", "sensor", lambda c: c["P"], None),
         ("TI", "Temperature", "degC", "SHL", "sensor", lambda c: c["T"], None),
     ]
     if boot:
         subs.append(("BOOT", "Water boot", [("BOOTV", "Boot", [])]))
-        tags.append(("LI", "Boot interface level", "%", "BOOTV", "sensor", lambda c: 40.0, None))
+        tags.append(("LIC", "Boot interface level", "%", "BOOTV", "sensor", lambda c: 40.0, None))
     if analysers:
         tags += [
             ("AL", "Boot water chloride (lab)", "ppm", "BOOTV", "lab", lambda c: c["chloride"], None),
@@ -265,11 +267,11 @@ COLUMN = dict(
                                     ("TR_MID", "Trays: middle section", []), ("TR_BOT", "Trays: bottom section", [])])],
     tags=[
         ("TI", "Column top temperature", "degC", "TR_TOP", "sensor", lambda c: c["top_t"], None),
-        ("PI", "Column top pressure", "barg", "SHL", "sensor", lambda c: c["P"], None),
+        ("PIC", "Column top pressure", "barg", "SHL", "sensor", lambda c: c["P"], None),
         ("TI", "Bottom temperature", "degC", "TR_BOT", "sensor", lambda c: c["T"], None),
         ("PDI", "Column pressure drop", "bar", "INT", "sensor", lambda c: 0.3, None),
-        ("LI", "Bottoms level", "%", "SHL", "sensor", lambda c: 50.0, None),
-        ("FI", "Reflux flow", "m3/h", "TR_TOP", "sensor", lambda c: c.get("reflux", 150.0), None),
+        ("LIC", "Bottoms level", "%", "SHL", "sensor", lambda c: 50.0, None),
+        ("FIC", "Reflux flow", "m3/h", "TR_TOP", "sensor", lambda c: c.get("reflux", 150.0), None),
     ],
 )
 
@@ -290,7 +292,10 @@ def _reactor(beds):
         ("PI", "Reactor inlet pressure", "barg", "SHL", "sensor", lambda c: c["P"], None),
         ("PDI", "Reactor pressure drop", "bar", "INT", "sensor", lambda c: c.get("dp", 2.1), None),
         ("TI", "Shell skin temperature (max)", "degC", "SHL", "sensor", lambda c: c.get("skin", 380.0), None),
+        ("AI", "Recycle gas hydrogen purity", "mol%", "SHL", "analyser", lambda c: c.get("purity", 88.0), None),
         ("UY", "Weighted average bed temperature (calculated)", "degC", "INT", "calculated", lambda c: c["wabt"], None),
+        ("UY", "Reactor inlet hydrogen partial pressure (calculated)", "bara", "SHL", "calculated",
+         lambda c: round((c["P"] + 1.0) * c.get("purity", 88.0) / 100 * 0.92, 1), None),
     ]
     return dict(onto="FixedBedReactor", eq_class="Reactor",
                 subunits=[("SHL", "Shell (2.25Cr-1Mo, 347SS overlay)", [("SHELL", "Shell & heads", []), ("NOZ", "Nozzles & flanges", [])]),
@@ -320,7 +325,7 @@ FCC_REACTOR = dict(
 FCC_REGEN = dict(
     onto="FCCRegenerator", eq_class="FCC regenerator",
     subunits=[("RGV", "Regenerator vessel", [("SHELL", "Shell & refractory", []), ("AIRGRID", "Air grid", []),
-                                             ("CYC1", "Primary cyclones", [("DIPLEG", "Cyclone diplegs")]), ("CYC2", "Secondary cyclones", [])]),
+                                             ("CYC1", "Primary cyclones", [("DIPLEG", "Cyclone diplegs")]), ("CYC2", "Secondary cyclones", [("DIPLEG2", "Secondary cyclone diplegs")])]),
               ("SP", "Standpipes", [("RCSP", "Regenerated catalyst standpipe", []), ("SCSP", "Spent catalyst standpipe", [])])],
     tags=[
         ("TI", "Dense-bed temperature", "degC", "RGV", "sensor", lambda c: c["bed_t"], None),
@@ -345,8 +350,7 @@ SLIDE_VALVE = dict(
 
 COMPRESSOR = dict(
     onto="CentrifugalCompressor", eq_class="Compressor",
-    subunits=[("DRV", "Driver", [("DRVBRG", "Driver bearings", []), ("GOV", "Speed governor", [])]),
-              ("CMP", "Compressor unit", [("IMPS", "Impellers", []), ("SEALS_C", "Dry gas seals", [("DGS", "Seal rings")]),
+    subunits=[("CMP", "Compressor unit", [("IMPS", "Impellers", []), ("SEALS_C", "Dry gas seals", [("DGS", "Seal rings")]),
                                           ("JBRG", "Journal bearings", []), ("TBRG_C", "Thrust bearing", []), ("CASE", "Casing", [])]),
               ("LUBO", "Lube & seal oil system", [("LOP", "Lube oil pumps", []), ("LOC", "Lube oil coolers", [])]),
               ("ASC", "Anti-surge control", [("ASV", "Anti-surge valve", [])])],
@@ -355,7 +359,7 @@ COMPRESSOR = dict(
         ("PI", "Discharge pressure", "barg", "CMP", "sensor", lambda c: c["pd"], None),
         ("TI", "Discharge temperature", "degC", "CMP", "sensor", lambda c: c.get("td", 120.0), None),
         ("FI", "Suction flow", "kNm3/h", "CMP", "sensor", lambda c: c["flow"], None),
-        ("SI", "Shaft speed", "rpm", "DRV", "sensor", lambda c: c.get("rpm", 9800.0), None),
+        ("SI", "Shaft speed", "rpm", "CMP", "sensor", lambda c: c.get("rpm", 9800.0), None),
         ("VI", "Journal bearing vibration", "um", "JBRG", "sensor", lambda c: c.get("vib_um", 28.0), None),
         ("ZI", "Axial displacement", "mm", "TBRG_C", "sensor", lambda c: 0.18, None),
         ("UY", "Surge margin (calculated)", "%", "ASC", "calculated", lambda c: c.get("surge", 14.0), None),
@@ -364,8 +368,7 @@ COMPRESSOR = dict(
 
 RECIP = dict(
     onto="ReciprocatingCompressor", eq_class="Compressor",
-    subunits=[("DRV", "Motor", [("MBRG", "Motor bearings", [])]),
-              ("FRAME", "Frame & running gear", [("CRANK", "Crankshaft", []), ("XHEAD", "Crossheads", []), ("MAINB", "Main bearings", [])]),
+    subunits=[("FRAME", "Frame & running gear", [("CRANK", "Crankshaft", []), ("XHEAD", "Crossheads", []), ("MAINB", "Main bearings", [])]),
               ("CYL", "Cylinders (3 stages)", [("VALVES_C", "Suction & discharge valves", [("PLATES", "Valve plates")]),
                                                ("PACK", "Rod packing", []), ("RINGS", "Piston rings", [])]),
               ("CAP", "Capacity control", [("UNL", "Unloaders", [])])],
@@ -438,3 +441,74 @@ TEMPLATES.update({
     "slidevalve": SLIDE_VALVE, "compressor": COMPRESSOR, "recip": RECIP, "expander": EXPANDER, "whb": WHB,
     "cokedrum": COKE_DRUM, "decoking": DECOKING, "crusher": CRUSHER,
 })
+
+
+# =============================================================================
+#  v0.5: drivers, valves, instruments and electrical equipment as their own equipment units
+#  (ISO 14224 boundaries: the driver of a pump or compressor is a separate equipment unit)
+# =============================================================================
+ITEM_ONTO.update({"MBRG_M": "Bearing", "TBRG_T": "Bearing"})
+
+MOTOR = dict(
+    onto="ElectricMotor", eq_class="Electric motor",
+    subunits=[("STAT", "Stator", [("WIND", "Stator windings", [])]), ("ROT", "Rotor", [("SHAFT_M", "Rotor shaft", [])]),
+              ("MBRG_M", "Motor bearings", [("BRG_DE", "Drive-end bearing", []), ("BRG_NDE", "Non-drive-end bearing", [])]),
+              ("TBOX", "Terminal box & cabling", [("CABLE", "Power cable & glands", [])])],
+    tags=[
+        ("II", "Motor current", "A", "STAT", "sensor", _amps, None),
+        ("TI", "Winding temperature", "degC", "WIND", "sensor", lambda c: 78.0 if _on(c) else 30.0, None),
+        ("VI", "Motor bearing vibration", "mm/s", "MBRG_M", "sensor", lambda c: 1.8 if _on(c) else 0.0, None),
+    ],
+)
+
+STEAM_TURBINE = dict(
+    onto="SteamTurbine", eq_class="Steam turbine",
+    subunits=[("TRB", "Turbine", [("BLADES_T", "Rotor blades", []), ("TBRG_T", "Bearings", []), ("GLAND", "Gland seals", [])]),
+              ("CTRL", "Control & protection", [("GOV", "Speed governor", []), ("TTV", "Trip & throttle valve", [])])],
+    tags=[
+        ("PI", "Steam inlet pressure", "barg", "TRB", "sensor", lambda c: c.get("steam_p", 40.0), None),
+        ("TI", "Steam inlet temperature", "degC", "TRB", "sensor", lambda c: c.get("steam_t", 400.0), None),
+        ("PI", "Exhaust pressure", "barg", "TRB", "sensor", lambda c: c.get("exhaust_p", 3.5), None),
+        ("VI", "Turbine bearing vibration", "um", "TBRG_T", "sensor", lambda c: c.get("vib_um", 22.0), None),
+        ("FI", "Steam consumption", "t/h", "TRB", "sensor", lambda c: c.get("steam_th", 40.0), None),
+    ],
+)
+
+RELIEF_VALVE = dict(
+    onto="ReliefDevice", eq_class="Pressure relief valve", passive=True,
+    subunits=[("BODY_R", "Valve body", [("NOZZLE", "Nozzle", []), ("DISC_R", "Disc & seat", [])]),
+              ("BONNET", "Bonnet & spring", [("SPRING", "Spring", [])])],
+    tags=[],
+)
+
+CONTROL_VALVE = dict(
+    onto="ControlValve", eq_class="Control valve",
+    subunits=[("BODY_C", "Valve body & trim", [("TRIM", "Plug & seat", [])]),
+              ("ACT_C", "Actuator & positioner", [("POS", "Positioner", [])])],
+    tags=[("ZI", "Valve position (positioner feedback)", "%", "POS", "sensor", lambda c: c.get("pos", 55.0), None)],
+)
+
+SHUTDOWN_VALVE = dict(
+    onto="ShutdownValve", eq_class="Shutdown valve",
+    subunits=[("BODY_S", "Valve body", [("SEAT", "Seat & ball", [])]),
+              ("ACT_S", "Actuator & solenoid", [("SOL", "Solenoid valve", [])])],
+    tags=[("ZSC", "Closed limit switch", "state", "ACT_S", "sensor", lambda c: 0.0, None)],
+)
+
+TRANSMITTER = dict(
+    onto="InputDevice", eq_class="Transmitter", passive=True,
+    subunits=[("SENS", "Sensing element", [("ELEM", "Element / diaphragm", [])]),
+              ("ELEC", "Transmitter electronics", [("BOARD", "Electronics module", [])])],
+    tags=[],
+)
+
+SUBSTATION = dict(
+    onto="ElectricalDistribution", eq_class="Electrical distribution",
+    subunits=[("TX", "Transformers", [("TXW", "Transformer windings", [])]), ("SWG", "Switchgear", [("BRK", "Circuit breakers", [])]),
+              ("MCC", "Motor control centres", [("STARTERS", "Motor starters", [])])],
+    tags=[("EI", "Bus voltage", "kV", "SWG", "sensor", lambda c: c.get("kv", 6.6), None),
+          ("JI", "Substation load", "MW", "SWG", "sensor", lambda c: c.get("mw", 8.0), None)],
+)
+
+TEMPLATES.update({"motor": MOTOR, "turbine": STEAM_TURBINE, "psv": RELIEF_VALVE, "cv": CONTROL_VALVE, "xv": SHUTDOWN_VALVE,
+                  "tx": TRANSMITTER, "substation": SUBSTATION})

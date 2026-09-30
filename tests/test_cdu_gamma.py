@@ -13,6 +13,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from ogkg import cdu_gamma, cdu_insights, shacl_lite, ttl_v02  # noqa: E402
+from ogkg.insight_snapshot import snapshot                    # noqa: E402
 from ogkg.kg import KG                                         # noqa: E402
 from ogkg.ontology import RELATIONS                            # noqa: E402
 
@@ -26,7 +27,9 @@ class Reproducible(unittest.TestCase):
     def test_committed_model_matches_builder(self):
         cdu_gamma._tag.counter.clear()
         b, reg, tags = cdu_gamma.build()
+        snapshot(b, cdu_gamma.to_json)
         self.assertEqual((len(b.nodes), len(b.edges), len(b.facts)), (len(kg.nodes), len(kg.edges), len(kg.fact_list)))
+        self.assertEqual({f["id"] for f in b.facts}, set(kg.facts_by_id), "fact IDs must be stable across rebuilds")
 
 
 class Hierarchy(unittest.TestCase):
@@ -61,11 +64,13 @@ class Completeness(unittest.TestCase):
                     self.assertTrue(any(kg.nodes[i]["cls"] == "MaintainableItem" for i in kg.children(s)), s)
 
     def test_every_equipment_has_design_data_and_tags(self):
+        passive = ("Pressure relief valve", "Transmitter")      # no instrument tags of their own
         for e in EQ:
             with self.subTest(e=e["id"]):
                 declared = [f for f in kg.facts(e["id"]) if f["method"] == "declared"]
                 self.assertGreaterEqual(len(declared), 3)
-                self.assertTrue(any(kg.nodes[d]["cls"] == "DataPoint" for d in kg.descendants(e["id"])))
+                if e["props"]["eq_class"] not in passive:
+                    self.assertTrue(any(kg.nodes[d]["cls"] == "DataPoint" for d in kg.descendants(e["id"])))
 
     def test_every_tag_has_unit_value_and_source(self):
         for t in TAGS:
@@ -114,8 +119,7 @@ class HandbookF6(unittest.TestCase):
 class Sectors(unittest.TestCase):
     def test_sector_labels(self):
         for n in kg.nodes.values():
-            expected = "2" if n["cls"] in ("CrudeCampaign", "Failure", "WorkOrder", "IOWExceedance") else \
-                ("1a" if n["spine"] == "reference" else "1b")
+            expected = "2" if n["cls"] in cdu_gamma.GBuilder.SECTOR2 else ("1a" if n["spine"] == "reference" else "1b")
             self.assertEqual(n["props"]["sector"], expected, n["id"])
 
     def test_every_fact_hangs_off_the_structure(self):
@@ -156,10 +160,11 @@ class Insights(unittest.TestCase):
     def setUpClass(cls):
         cls.r = {x["id"]: x for x in cdu_insights.run_all(kg)}
 
-    def test_energy_penalty_recalculates(self):
-        ei = kg.value("CDU-B", "energy_intensity") - kg.value("CDU-A", "energy_intensity")
-        expected = ei * kg.value("CDU-B", "throughput_fy2026") * 365 * kg.value("SITE-GAMMA", "fuel_price")
-        self.assertAlmostEqual(self.r["preheat-energy-penalty"]["value_usd"], expected, delta=1)
+    def test_energy_penalty_recalculates_from_physics(self):
+        # independent hand calculation: 238 kbd x 0.158987 m3/bbl x 870 kg/m3 = 381.0 kg/s; x 2.3 kJ/kgK x 14 K = 12.27 MW absorbed;
+        # / 0.879 = 13.96 MW fired; x 3.412 MMBtu/MWh x 8760 h = 417,300 MMBtu/yr; x $6 = $2.50M/yr
+        self.assertAlmostEqual(self.r["preheat-energy-penalty"]["value_usd"], 2_503_000, delta=5_000)
+        self.assertEqual(self.r["preheat-energy-penalty"]["value_basis"], "recurring-annual")
         self.assertIn("E-209, E-210, E-211, E-212", self.r["preheat-energy-penalty"]["headline"])
 
     def test_overhead_exposure_counts(self):
@@ -177,7 +182,7 @@ class MCP(unittest.TestCase):
                 "print(len(m.list_insights()))")
         out = subprocess.run([sys.executable, "-c", code], capture_output=True, text=True, cwd=ROOT, timeout=60,
                              env={**os.environ, "OGKG_DATASET": "gamma"})
-        self.assertEqual(out.stdout.split(), ["H-201", "Crude", "heater", "8"], out.stderr[-500:])
+        self.assertEqual(out.stdout.split(), ["H-201", "Crude", "heater", "11"], out.stderr[-500:])
 
 
 if __name__ == "__main__":

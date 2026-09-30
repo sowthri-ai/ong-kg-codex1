@@ -12,23 +12,30 @@ def _usd(x):
 
 
 def preheat_energy_penalty(kg):
+    """Physics-based attribution: the fouling penalty is the extra heater duty needed to make up Train B's lower
+    heater inlet temperature (m * cp * dCIT / efficiency), not the whole energy-intensity gap between trains."""
     A, B = "CDU-A", "CDU-B"
     f = lambda u, k: kg.fact(u, k)
-    ev = []
-    rows = []
+    ev, rows = [], []
     for u in (A, B):
         facts = [f(u, k) for k in ("throughput_fy2026", "cit_fy2026", "heater_fired_duty", "energy_intensity")]
         ev += [x["id"] for x in facts]
         rows.append(dict(train=u[-1], throughput_kbd=facts[0]["value"], cit_degC=facts[1]["value"],
                          fired_duty_MW=facts[2]["value"], energy_intensity_MMBtu_per_kbbl=facts[3]["value"]))
-    price = kg.fact("SITE-GAMMA", "fuel_price")
-    ev.append(price["id"])
-    ei_gap = rows[1]["energy_intensity_MMBtu_per_kbbl"] - rows[0]["energy_intensity_MMBtu_per_kbbl"]
-    mmbtu_yr = ei_gap * rows[1]["throughput_kbd"] * 365
-    usd_yr = mmbtu_yr * price["value"]
-    co2 = mmbtu_yr * CO2_KG_PER_MMBTU / 1000
+    price, cp, rho = kg.fact("SITE-GAMMA", "fuel_price"), kg.fact("SITE-GAMMA", "crude_heat_capacity"), kg.fact("SITE-GAMMA", "crude_density")
+    ef = kg.fact("SITE-GAMMA", "emission_factor_fuel")
+    co2p = kg.fact("PR-ACT26-CO2", "price")
+    eff_b = next(kg.fact(d, "latest_value") for d in kg.descendants("H-201") if "Thermal efficiency" in kg.nodes[d]["name"])
+    ev += [x["id"] for x in (price, cp, rho, ef, eff_b) + ((co2p,) if co2p else ())]
     cit_gap = rows[0]["cit_degC"] - rows[1]["cit_degC"]
-    # fouled exchangers on Train B's hot preheat vs Train A
+    m_kg_s = rows[1]["throughput_kbd"] * 1000 * 0.158987 * rho["value"] * 1000 / 86400
+    absorbed_mw = m_kg_s * cp["value"] * cit_gap / 1000
+    fired_mw = absorbed_mw / (eff_b["value"] / 100)
+    mmbtu_yr = fired_mw * 3.412 * 8760
+    usd_yr = mmbtu_yr * price["value"]
+    co2_kt = mmbtu_yr * ef["value"] / 1e6
+    carbon = co2_kt * 1000 * (co2p["value"] if co2p else 0)
+    total_gap_mw = rows[1]["fired_duty_MW"] - rows[0]["fired_duty_MW"]
     ex_rows, path = [], {A, B, "H-101", "H-201"}
     for nA in ("07", "08", "09", "10", "11", "12"):
         ea, eb = f"E-1{nA}", f"E-2{nA}"
@@ -46,16 +53,20 @@ def preheat_energy_penalty(kg):
         id="preheat-energy-penalty",
         title="Train B preheat fouling energy penalty",
         question="What is Train B's hot-preheat fouling costing us, and which exchangers should be cleaned?",
-        headline=(f"Train B runs {cit_gap:.0f} °C colder into the heater (CIT {rows[1]['cit_degC']:.0f} vs {rows[0]['cit_degC']:.0f} °C) and burns "
-                  f"{ei_gap:.1f} MMBtu more per kbbl: ≈{_usd(usd_yr)}/yr fuel and ≈{co2/1000:,.0f} kt CO2/yr. "
-                  f"Fouled exchangers: {', '.join(worst)}."),
-        value_usd=round(usd_yr),
-        domains=["Historian", "Heater performance", "Exchanger monitoring", "Maintenance (CMMS)", "Planning economics"],
+        headline=(f"Train B runs {cit_gap:.0f} °C colder into the heater (CIT {rows[1]['cit_degC']:.0f} vs {rows[0]['cit_degC']:.0f} °C). "
+                  f"Making that up takes {fired_mw:.1f} MW of extra firing: ≈{_usd(usd_yr)}/yr fuel and ≈{co2_kt:,.0f} kt CO2/yr"
+                  + (f" (≈{_usd(carbon)}/yr more if CO2 is priced)" if carbon else "") +
+                  f". Fouled exchangers: {', '.join(worst)}."),
+        value_usd=round(usd_yr), value_label="fuel per year", value_basis="recurring-annual",
+        value_low=round(usd_yr * 0.7), value_high=round(usd_yr * 1.3 + carbon), capex_required=None, confidence="low",
+        domains=["Historian", "Heater performance", "Exchanger monitoring", "Maintenance (CMMS)", "Planning economics", "Emissions"],
         rows=rows + ex_rows, path=sorted(path), evidence=sorted(set(ev)),
         recommendation=(f"Schedule hydro-jet cleaning of {', '.join(worst)} at the next window; E-207/E-208 were cleaned in March and "
-                        "are recovering. Re-check heater pass-3 TMT margin after cleaning."),
+                        f"are recovering. Of the {total_gap_mw:.1f} MW fired-duty gap between trains, fouling explains {fired_mw:.1f} MW; "
+                        "check Train B heater efficiency and O2 for the rest."),
         decision_owner="Energy Engineer (DEC-CLEAN) with Operations Superintendent",
-        caveat="Fuel price is a planning assumption (low confidence); CO2 uses a natural-gas factor as an indicative proxy for refinery fuel gas.",
+        caveat=("Fuel price is a planning assumption (low confidence). Crude heat capacity and density are typical assay values. "
+                "CO2 uses a natural-gas emission factor as a proxy for refinery fuel gas."),
     )
 
 
@@ -96,7 +107,7 @@ def overhead_corrosion_exposure(kg):
         headline=(f"Train A's overhead loop had {summary['A'][0]} IOW exceedances and {summary['A'][1]} corrosion failure (E-120A tubes) "
                   f"against {summary['B'][0]} and {summary['B'][1]} on Train B; corrosion rate {cr['A']} vs {cr['B']} mm/y. "
                   "E-120B shares E-120A's carbon-steel tubes and service."),
-        value_usd=None,
+        value_usd=None, value_basis=None, value_low=None, value_high=None, capex_required=None, confidence="medium",
         domains=["LIMS", "Historian / IOW monitor", "Corrosion monitoring", "RBI / inspection", "CMMS", "Asset hierarchy"],
         rows=rows, path=sorted(path), evidence=sorted(set(ev)),
         recommendation=("Inspect E-120B tubes and the PC-102 overhead line at the next opportunity; restore dew-point margin above 14 °C "
@@ -134,10 +145,11 @@ def model_completeness(kg):
         title="Model completeness scorecard",
         question="Is every full-depth equipment item modelled from L6 down to L10, and are the CDU trains symmetric?",
         headline=(f"{len(eq)} equipment items with {total_tags} equipment tags (+{other_tags} unit-level and lab tags) across the two CDU "
-                  f"trains, CDU common facilities, crude tank farm and the three full-depth conversion units (FCC-1, HCU-1, DCU-1). "
+                  f"trains, CDU common facilities, crude tank farm and the three full-depth conversion units (FCC-1, HCU-1, DCU-1), "
+                  f"including drivers, relief valves, SIF devices, control valves and substations. "
                   f"{'All' if not gaps else 'Not all'} classes are fully decomposed with design data and tag values; "
                   f"the two trains are {'symmetric' if sym else 'NOT symmetric'}."),
-        value_usd=None,
+        value_usd=None, value_basis=None, value_low=None, value_high=None, capex_required=None, confidence="high",
         domains=["Asset hierarchy (L0–L10)", "Equipment datasheets", "Tag configuration", "Historian / LIMS"],
         rows=rows, path=["SITE-GAMMA", "CDU-A", "CDU-B", "CDU-COM", "TF-1", "FCC-1", "HCU-1", "DCU-1"], evidence=[],
         recommendation="Use this scorecard as the acceptance gate when a real site's data replaces the synthetic model.",

@@ -1,5 +1,8 @@
 """
-Refinery Gamma — complete CDU reference model (500 kbpd, two 250 kbpd trains).
+Refinery Gamma — reference model builder (500 kbpd refinery, Nelson complexity ≈ 15).
+
+This module builds the two-train CDU and orchestrates the rest of the refinery
+(refinery_gamma, integrity, refinery_economics, refinery_history, governance).
 
 Fictional site, synthetic data. Builds both sectors:
   Sector 1 (structure): L0-L10 asset hierarchy for both trains and common facilities,
@@ -15,8 +18,11 @@ import csv
 import json
 from pathlib import Path
 
+import hashlib
+
 from .build_dataset import Builder
 from .cdu_templates import ITEM_ONTO, TEMPLATES
+from .identity import fact_id, iri, lims_point, pi_tag, rbi_id, sap_eq, sap_fl
 from .refinery_units import CDU_DEST
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -24,25 +30,101 @@ OUT = ROOT / "data" / "cdu-gamma"
 AS_OF = "2026-09-28"
 DESIGN_DATE = "2024-06-30"
 SITE = "SITE-GAMMA"
+SITE_KEY = "gamma"
+VERSION = "0.5.0"
+BUILD_TS = "2026-09-30T06:00:00Z"
 TRAINS = {"A": 1, "B": 2}
 CRUDE_KG_H = 1.42e6          # per train at 250 kbpd, ~860 kg/m3
 CRUDE_M3_H = 1656            # per train
 
 
+RANK = {"high": 3, "medium": 2, "low": 1}
+ECONOMIC_KEYS = ("price", "cost", "margin", "grm", "value_usd", "spread", "budget", "shadow_price", "marginal_value", "revenue",
+                 "worth", "giveaway_value", "lost_", "fuel_price", "carbon")
+
+
+def default_sensitivity(predicate, src):
+    if any(k in predicate for k in ECONOMIC_KEYS):
+        return "confidential"
+    if predicate in ("trip_setpoint", "sil", "pfd_avg_target", "voting"):
+        return "restricted"
+    if src.startswith(("Nelson", "Public")):
+        return "public"
+    return "internal"
+
+
 class GBuilder(Builder):
-    SECTOR2 = {"CrudeCampaign", "Failure", "WorkOrder", "IOWExceedance"}
+    """Builder with site-scoped identity, stable fact IDs, the time model and the confidence rule (data contract v0.5)."""
+    SECTOR2 = {"CrudeCampaign", "Failure", "WorkOrder", "IOWExceedance", "IOWLimit", "CorrectionRequest", "HypothesisAssertion",
+               "PriceSeries", "PriceSet", "LPConstraint", "InsightResult", "Turnaround", "ScopeItem"}
+
+    def __init__(self):
+        super().__init__()
+        self._by_id, self._sp = {}, {}
 
     def node(self, id, cls, name, spine, level=None, parent=None, desc="", **props):
         props.setdefault("sector", "2" if cls in self.SECTOR2 else ("1a" if spine == "reference" else "1b"))
+        props.setdefault("site", SITE_KEY)
+        props.setdefault("iri", iri(id, SITE_KEY))
         return super().node(id, cls, name, spine, level, parent, desc, **props)
+
+    def fact(self, subject, predicate, value, unit="", as_of=AS_OF, src="", ref="", owner="", conf="high", method="recorded",
+             lineage=None, valid_from=None, valid_to=None, status="current", supersedes=None, sensitivity=None, basis=None,
+             value_low=None, value_high=None):
+        lineage = list(lineage or [])
+        if lineage:                                   # a derived value is never more certain than its weakest input
+            worst = min((self._by_id[x]["confidence"] for x in lineage), key=RANK.get)
+            if RANK[worst] < RANK[conf]:
+                conf = worst
+        vf = valid_from or as_of
+        salt, fid = 0, fact_id(SITE_KEY, subject, predicate, vf, src)
+        while fid in self._by_id:
+            salt += 1
+            fid = fact_id(SITE_KEY, subject, predicate, vf, src, salt)
+        f = dict(id=fid, subject=subject, predicate=predicate, value=value, unit=unit, as_of=as_of, source_system=src,
+                 source_ref=ref, owner=owner, confidence=conf, method=method, lineage=lineage, valid_from=vf, valid_to=valid_to,
+                 recorded_at=BUILD_TS, status=status, supersedes=supersedes,
+                 sensitivity=sensitivity or default_sensitivity(predicate, src))
+        if basis:
+            f["basis"] = basis
+        if value_low is not None:
+            f["value_low"], f["value_high"] = value_low, value_high
+        self.facts.append(f)
+        self._by_id[fid] = f
+        if status == "current":
+            prev = self._sp.get((subject, predicate))
+            if prev is None or prev["valid_from"] <= vf:
+                self._sp[(subject, predicate)] = f
+        return fid
+
+
+def jitter(key, span):
+    """Deterministic pseudo-random offset in [-span, +span] for synthetic measurement noise."""
+    h = int(hashlib.sha1(key.encode()).hexdigest()[:8], 16) / 0xFFFFFFFF
+    return (2 * h - 1) * span
 
 
 # ----------------------------------------------------------------------------- equipment catalogue
+AIT = {"kerosene": 210, "jet": 210, "diesel": 230, "gas oil": 230, "ago": 230, "lco": 230, "lcgo": 230, "hcgo": 240,
+       "pumparound": 230, "residue": 240, "vgo": 250, "slurry": 240, "unconverted": 240, "crude": 250}
+
+
+def autoignition(fluid):
+    f = fluid.lower()
+    return min((v for k, v in AIT.items() if k in f), default=None)
+
+
 def seal_plan(T, fluid):
-    if T >= 260:
+    """API 682 selection used by the model: hot (>= 260 C) or at/above autoignition -> dual pressurised (53B);
+    flashing light hydrocarbons -> dual unpressurised (52); toxic (H2S) service -> dual pressurised (53A); else single (11)."""
+    f = fluid.lower()
+    ait = autoignition(fluid)
+    if T >= 260 or (ait is not None and T >= ait):
         return "Plan53B"
-    if any(k in fluid.lower() for k in ("naphtha", "lpg")):
+    if any(k in f for k in ("naphtha", "lpg", "c3", "c4", "propane", "butane")):
         return "Plan52"
+    if any(k in f for k in ("sour", "h2s", "amine")):
+        return "Plan53A"
     return "Plan11"
 
 
@@ -77,7 +159,7 @@ def train_catalogue(tr):
 
     # pumps: nn, letters, name, section, fluid, T, flow each (m3/h), head (m), API type, running letters, extra ctx
     pumps = [
-        ("01", "ABC", "Crude charge pump", "CHG", "Crude", 40, 830, 260, "BB2", "AB"),
+        ("01", "ABC", "Crude charge pump", "CHG", "Crude", 40, 830, 260, "BB2", "AC"),
         ("02", "AB", "Desalter wash-water pump", "DES", "Wash water", 95, 110, 120, "OH2", "A"),
         ("03", "AB", "Desalted crude booster pump", "HPH", "Desalted crude", 135, 1660, 180, "BB2", "A"),
         ("04", "AB", "Preflash bottoms pump", "PFL", "Topped crude", 272, 1550, 220, "BB2", "A"),
@@ -229,13 +311,31 @@ def train_catalogue(tr):
     return sections, eq
 
 
+FOULING = ("crude", "residue", "slurry", "hcgo", "vgo", "pumparound", "vacuum")
+
+
+def tema_type(name, hot, cold_fluid, design_pressure):
+    """TEMA type by service: breech-lock for high pressure, kettle for reboilers / steam generators,
+    removable floating head (AES) for fouling services, fixed tubesheet (BEM) for clean services."""
+    text = f"{name} {hot} {cold_fluid}".lower()
+    if design_pressure >= 100:
+        return "DEU"
+    if "reboiler" in text or "steam generator" in text or cold_fluid in ("BFW",):
+        return "AKT"
+    if any(k in text for k in FOULING):
+        return "AES"
+    return "BEM"
+
+
 def _hx(t, nn, name, section, hot, tin, tout, thin, thout, met, rf=0.2, duty=None, cold_fluid="Crude"):
     if duty is None:
         duty = round(CRUDE_KG_H * 2.3 * (tout - tin) / 3.6e6, 1)
+    dp = 25.0 if cold_fluid == "Crude" else 10.0
     return dict(id=f"E-{t}{nn}", name=f"E-{t}{nn} {name}", section=section, tpl="shelltube", fluid=f"{cold_fluid} / {hot}",
                 ctx=dict(Tin=tin, Tout=tout, Thin=thin, Thout=thout, duty=duty, rf=rf),
-                design=dict(tema_type="AES" if cold_fluid == "Crude" else "BEM", duty=duty, tube_metallurgy=met,
-                            design_temperature=max(thin, tout) + 30, design_pressure=25.0 if cold_fluid == "Crude" else 10.0,
+                design=dict(tema_type=tema_type(name, hot, cold_fluid, dp), duty=duty, tube_metallurgy=met,
+                            shell_material=met if met in ("Cr5", "Cr9", "SS347", "Cr225Mo") else "CarbonSteel",
+                            design_temperature=max(thin, tout) + 30, design_pressure=dp,
                             service_temperature=thin, area=round(duty * 55, 0)))
 
 
@@ -281,7 +381,8 @@ def build():
              "ROLE-CORR": "Corrosion / Integrity Engineer", "ROLE-INSP": "Inspection Lead",
              "ROLE-LAB": "Laboratory Manager", "ROLE-PLAN": "Planning & Economics Lead",
              "ROLE-ENERGY": "Energy Engineer", "ROLE-MAINT": "Maintenance Manager",
-             "ROLE-INST": "Instrument & Control Engineer"}
+             "ROLE-INST": "Instrument & Control Engineer", "ROLE-ELEC": "Electrical Engineer",
+             "ROLE-STEWARD": "Data Steward (Refinery Gamma)"}
     for rid, rn in roles.items():
         N(rid, "Role", rn, "org")
 
@@ -297,7 +398,8 @@ def build():
         E(lid, "WITHIN", "LOC-REGION" if lid == "LOC-SITE" else "LOC-SITE")
 
     # --- reference (Sector 1a): models, equations, damage mechanisms, application products
-    for model, oem in [("OEM-A BB2-300", "OEM-A"), ("OEM-C BB2-250H", "OEM-C"), ("OEM-B OH2-150", "OEM-B"), ("OEM-B OH2-150H", "OEM-B")]:
+    for model, oem in [("OEM-A BB2-300", "OEM-A"), ("OEM-C BB2-250H", "OEM-C"), ("OEM-B OH2-150", "OEM-B"), ("OEM-B OH2-150H", "OEM-B"),
+                       ("OEM-C BB5-200H", "OEM-C")]:
         mid = "MOD-" + model.replace(" ", "-")
         N(mid, "EquipmentModel", model, "reference")
         E(mid, "MANUFACTURED_BY", f"ENT-{oem}")
@@ -326,7 +428,7 @@ def build():
     F(SITE, "crude_capacity", 500, "kbd", as_of=DESIGN_DATE, src="Asset register (CMMS)", ref=SITE, owner="ROLE-PLAN", method="declared")
     F(SITE, "cdu_trains", 2, "count", as_of=DESIGN_DATE, src="Asset register (CMMS)", owner="ROLE-PLAN", method="declared")
     F(SITE, "grm_fy2026", 7.40, "USD/bbl", src="Site economics (monthly close)", ref="GRM-GAMMA-FY26", owner="ROLE-PLAN",
-      method="calculated", conf="medium")
+      method="recorded", conf="medium")
     F(SITE, "fuel_price", 6.0, "USD/MMBtu", src="Planning assumption", owner="ROLE-PLAN", method="assumption", conf="low")
 
     # --- units (L4)
@@ -385,35 +487,81 @@ def build():
     _process_spine(b)
     _applications(b)
     _information(b)
-    from . import refinery_gamma          # whole refinery (v0.4.0): appended so CDU fact IDs stay stable
-    refinery_gamma.extend(b, reg_rows, tag_rows)
+    from . import governance, integrity, refinery_economics, refinery_gamma, refinery_history
+    refinery_gamma.extend(b, reg_rows, tag_rows)          # all other units, streams, balances, conversion units
+    integrity.apply(b, reg_rows, tag_rows)                # mechanisms, RBI, PSVs, SIFs, valves, instruments, turnaround
+    refinery_economics.apply(b, tag_rows)                 # products, specs, prices, assays, LP, carbon, costs, lost margin
+    refinery_history.apply(b)                             # time series, serial items / MOC, failure history, corrections
+    governance.apply(b)                                   # KPIs / KPFs, facet bindings, hypotheses, correction requests
     return b, reg_rows, tag_rows
+
+
+DESIGN_UNITS = dict(rated_flow="m3/h", rated_head="m", service_temperature="degC", motor_power="kW", duty="MW",
+                    design_temperature="degC", design_pressure="barg", diameter="m", length="m", height="m",
+                    transformer_kva="kVA", absorbed_duty="MW", design_tmt="degC", design_efficiency="%", area="m2",
+                    corrosion_allowance="mm", nominal_wall="mm", design_rate="L/h", rated_power="kW", rated_capacity="kNm3/h",
+                    catalyst_volume="m3", catalyst_inventory="t", design_wabt="degC", power_rating="MW", steam_rating="t/h",
+                    drum_cycle_design="h", throughput_rating="t/h", voltage="kV", speed="rpm", set_pressure="barg",
+                    relief_capacity="kg/h", process_design_temperature="degC", transformer_mva="MVA", tmin="mm")
+ROTATING = ("Pump", "Compressor", "Expander", "Crusher", "Electric motor", "Steam turbine")
+INSTRUMENT = ("Control valve", "Shutdown valve", "Transmitter", "Pressure relief valve", "Electrical distribution")
+
+
+def _driver_for(e):
+    """ISO 14224: the driver of a pump or compressor is its own equipment unit, linked by DRIVER_OF."""
+    d = e["design"]
+    if e["tpl"] == "pump":
+        kw = d["motor_power"]
+        return dict(id="PM-" + e["id"][2:], name=f"PM-{e['id'][2:]} Motor for {e['id']}", section=e["section"], tpl="motor",
+                    fluid="Electric power", train=e.get("train"), tagbase=e.get("tagbase"),
+                    ctx=dict(motor_kw=kw, running=e["ctx"].get("running", True)),
+                    design=dict(rated_power=kw, voltage=6.6 if kw > 300 else 0.415, speed=2975 if kw < 1500 else 1490,
+                                enclosure="Ex d" if "naphtha" in e["fluid"].lower() or "lpg" in e["fluid"].lower() else "Ex e",
+                                service_temperature=40))
+    if e["tpl"] in ("compressor", "recip") and d.get("driver") in ("Steam turbine", "Electric motor"):
+        kw = d.get("rated_power", 5000)
+        if d["driver"] == "Steam turbine":
+            return dict(id="KT-" + e["id"][2:], name=f"KT-{e['id'][2:]} Steam turbine for {e['id']}", section=e["section"],
+                        tpl="turbine", fluid="HP steam", train=e.get("train"), tagbase=e.get("tagbase"),
+                        ctx=dict(steam_th=round(kw / 1000 * 3.6, 1), vib_um=22.0),
+                        design=dict(rated_power=kw, speed=e["ctx"].get("rpm", 9000), design_pressure=45.0, design_temperature=420,
+                                    service_temperature=400))
+        return dict(id="KM-" + e["id"][2:], name=f"KM-{e['id'][2:]} Motor for {e['id']}", section=e["section"], tpl="motor",
+                    fluid="Electric power", train=e.get("train"), tagbase=e.get("tagbase"),
+                    ctx=dict(motor_kw=kw, running=True),
+                    design=dict(rated_power=kw, voltage=6.6, speed=990, enclosure="Ex d", service_temperature=40))
+    return None
 
 
 def _build_equipment(b, e, reg_rows, tag_rows):
     N, E, F = b.node, b.edge, b.fact
     tpl = TEMPLATES[e["tpl"]]
     eid = e["id"]
-    plant_unit = e["section"].rsplit("-", 1)[0]
-    N(eid, "EquipmentUnit", e["name"], "asset", 6, e["section"], eq_class=tpl["eq_class"], onto_class=tpl["onto"],
-      train=e["train"], service_fluid=e["fluid"], plant_unit=plant_unit)
+    section = e["section"]
+    plant_unit = section.rsplit("-", 1)[0]
+    sec_code = section.rsplit("-", 1)[1]
+    ext = dict(SAP_FL=sap_fl(SITE_KEY, plant_unit, sec_code, eid), SAP_EQ=sap_eq(SITE_KEY, eid))
+    if tpl["eq_class"] not in ROTATING + ("Control valve", "Shutdown valve", "Transmitter", "Electrical distribution"):
+        ext["RBI"] = rbi_id(SITE_KEY, eid)
+    props = dict(eq_class=tpl["eq_class"], onto_class=tpl["onto"], train=e.get("train"), service_fluid=e["fluid"],
+                 plant_unit=plant_unit, external_ids=ext, aliases=[eid.replace("-", ""), e["name"].split(" ", 1)[1]])
+    if tpl["eq_class"] in ROTATING:
+        props["running"] = bool(e["ctx"].get("running", True))
+    N(eid, "EquipmentUnit", e["name"], "asset", 6, section, **props)
     # design data (Sector 2 facts, declared)
     d = e["design"]
-    rotating = tpl["eq_class"] in ("Pump", "Compressor", "Expander", "Crusher")
-    src_ds, owner = "Equipment datasheet (EDMS)", ("ROLE-ROT" if rotating else "ROLE-MECH")
-    units = dict(rated_flow="m3/h", rated_head="m", service_temperature="degC", motor_power="kW", duty="MW",
-                 design_temperature="degC", design_pressure="barg", diameter="m", length="m", height="m",
-                 transformer_kva="kVA", absorbed_duty="MW", design_tmt="degC", design_efficiency="%", area="m2",
-                 corrosion_allowance="mm", nominal_wall="mm", design_rate="L/h", capacity=d.get("capacity_unit", ""),
-                 rated_power="kW", rated_capacity="kNm3/h", catalyst_volume="m3", catalyst_inventory="t", design_wabt="degC",
-                 power_rating="MW", steam_rating="t/h", drum_cycle_design="h", throughput_rating="t/h")
+    owner = "ROLE-ROT" if tpl["eq_class"] in ROTATING else ("ROLE-INST" if tpl["eq_class"] in INSTRUMENT else "ROLE-MECH")
+    units = dict(DESIGN_UNITS, capacity=d.get("capacity_unit", ""))
     for k, v in d.items():
         if k in ("oem", "capacity_unit"):
             continue
-        src = "Asset register (CMMS)" if k in ("model", "api_610_type") else src_ds
+        src = "Asset register (CMMS)" if k in ("model", "api_610_type") else "Equipment datasheet (EDMS)"
         F(eid, k, v, units.get(k, ""), as_of=DESIGN_DATE, src=src, ref=f"DS-{eid}", owner=owner, method="declared")
     if "model" in d:
         E(eid, "OF_MODEL", "MOD-" + d["model"].replace(" ", "-"))
+    if tpl["eq_class"] in ROTATING:
+        F(eid, "running_state", "running" if props["running"] else "standby", "", as_of=AS_OF, src="DCS (motor status)",
+          ref=eid, owner="ROLE-OPS", method="measured")
     # decomposition L7-L9
     codes = {}
     for scode, sname, items in tpl["subunits"]:
@@ -430,9 +578,11 @@ def _build_equipment(b, e, reg_rows, tag_rows):
                 codes[pcode] = pid
     # tags L10
     ctx = e["ctx"]
-    t = e.get("tagbase") or TRAINS.get(e["train"], 0)
+    t = e.get("tagbase") or TRAINS.get(e.get("train"), 0)
     measured = []          # latest-value facts of this equipment's measured tags (inputs to its calculations)
-    for ttype, desc, unit, attach, kind, fn, cond in tpl["tags"]:
+    tag_specs = list(tpl["tags"]) + [(tt, ds, un, at, kd, (lambda v: lambda c: v)(val), None)
+                                     for tt, ds, un, at, kd, val in e.get("extra_tags", [])]
+    for ttype, desc, unit, attach, kind, fn, cond in tag_specs:
         if cond and not cond(ctx):
             continue
         value = fn(ctx)
@@ -447,18 +597,40 @@ def _build_equipment(b, e, reg_rows, tag_rows):
                            if n["cls"] == "DataPoint" and n["props"].get("equipment") == col and "Column top" in n["name"]]
             else:
                 lineage = list(measured)
-        fid = _tag(b, tag_rows, codes.get(attach, eid), tag_id, ttype, f"{desc}", unit, kind, value, e["train"], eid, lineage)
+        fid = _tag(b, tag_rows, codes.get(attach, eid), tag_id, ttype, f"{desc}", unit, kind, value, e.get("train"), eid, lineage,
+                   plant_unit=plant_unit)
         if kind not in ("calculated", "inspection", "corrosion probe"):
             measured.append(fid)
     reg_rows.append(dict(tag=eid, description=e["name"].split(" ", 1)[1], unit=plant_unit,
-                         train=e["train"] or ("Common" if plant_unit in ("CDU-COM", "TF-1") else "-"),
-                         section=b.nodes[e["section"]]["name"], equipment_class=tpl["eq_class"], ontology_class=tpl["onto"],
-                         service=e["fluid"], **{k: v for k, v in d.items() if k not in ("oem", "capacity_unit")}))
+                         train=e.get("train") or ("Common" if plant_unit in ("CDU-COM", "TF-1") else "-"),
+                         section=b.nodes[section]["name"], equipment_class=tpl["eq_class"], ontology_class=tpl["onto"],
+                         service=e["fluid"], sap_fl=ext["SAP_FL"], sap_eq=ext["SAP_EQ"],
+                         **{k: v for k, v in d.items() if k not in ("oem", "capacity_unit")}))
+    drv = _driver_for(e)
+    if drv:
+        _build_equipment(b, drv, reg_rows, tag_rows)
+        E(drv["id"], "DRIVER_OF", eid)
 
 
-def _tag(b, tag_rows, parent, tag_id, ttype, desc, unit, kind, value, train, eq, lineage=None):
+def _tag(b, tag_rows, parent, tag_id, ttype, desc, unit, kind, value, train, eq, lineage=None, plant_unit=None):
+    unit_id = plant_unit or (b.nodes[eq]["props"].get("plant_unit") if eq in b.nodes else None) or eq
+    letters, number = tag_id.split("-", 1)
+    ext = {}
+    if kind in ("sensor", "analyser", "calculated"):
+        pl = ttype if kind != "calculated" else "UY"
+        ext["PI"] = f"{pi_tag(unit_id, pl + '-' + number)}"
+        if ttype.endswith("C") and len(ttype) == 3:
+            ext["PI_SP"] = pi_tag(unit_id, pl + "-" + number, "SP")
+            ext["PI_OP"] = pi_tag(unit_id, pl + "-" + number, "OP")
+    elif kind == "lab":
+        ext["LIMS"] = lims_point(SITE_KEY, eq, tag_id)
+    elif kind == "inspection":
+        ext["RBI"] = f"{rbi_id(SITE_KEY, eq)}-{tag_id}"
+    elif kind == "corrosion probe":
+        ext["CMS"] = f"CMS-{unit_id}-{tag_id}"
     b.node(tag_id, "DataPoint", f"{tag_id} {desc}" + (f" ({eq})" if eq and eq != parent else ""),
-           "asset", 10, parent, kind=kind, tag_type=ttype, unit=unit, train=train, equipment=eq)
+           "asset", 10, parent, kind=kind, tag_type=ttype, unit=unit, train=train, equipment=eq, external_ids=ext,
+           aliases=[x for x in ext.values()] + [tag_id.replace("-", "")])
     src = {"lab": "LIMS", "calculated": "KG derived (calculated)", "inspection": "Inspection DB (RBI)",
            "corrosion probe": "Corrosion monitoring system"}.get(kind, "PI historian")
     method = {"lab": "measured", "calculated": "calculated", "inspection": "measured"}.get(kind, "measured")
@@ -470,8 +642,14 @@ def _tag(b, tag_rows, parent, tag_id, ttype, desc, unit, kind, value, train, eq,
     if kind == "lab":
         b.fact(tag_id, "sampling_interval", 24 if "chloride" in desc.lower() or "iron" in desc.lower() else 8, "h",
                as_of=DESIGN_DATE, src="LIMS sampling schedule", owner="ROLE-LAB", method="declared")
+    if ttype.endswith("C") and len(ttype) == 3:           # controller: setpoint and output from the DCS
+        b.fact(tag_id, "setpoint", round(float(value) * (1 + jitter(tag_id, 0.01)), 2), unit, as_of=AS_OF, src="DCS",
+               ref=ext.get("PI_SP", tag_id), owner="ROLE-OPS", method="recorded")
+        b.fact(tag_id, "controller_output", round(50 + jitter(tag_id + "op", 18), 1), "%", as_of=AS_OF, src="DCS",
+               ref=ext.get("PI_OP", tag_id), owner="ROLE-OPS", method="recorded")
     tag_rows.append(dict(tag=tag_id, description=desc, type=ttype, kind=kind, unit=unit, attached_to=parent,
-                         equipment=eq, train=train or "Common", latest_value=round(float(value), 2), source=src))
+                         equipment=eq, train=train or "Common", latest_value=round(float(value), 2), source=src,
+                         external_id=next(iter(ext.values()), "")))
     return fid
 
 
@@ -526,39 +704,11 @@ def _groupings(b):
                             and n["props"].get("equipment") == f"H-{t}01" and "Pass" in n["name"] and "flow" in n["name"]])
         grp(f"CC-{tr}", "CostCentre", f"Cost centre: CDU Train {tr}", "ROLE-MAINT", [f"CDU-{tr}"])
     grp("CC-COM", "CostCentre", "Cost centre: CDU common & tank farm", "ROLE-MAINT", ["CDU-COM", "TF-1"])
-    pumps = [n for n in b.nodes.values() if n["cls"] == "EquipmentUnit" and n["props"].get("eq_class") == "Pump"]
-    grp("FLT-CHARGE", "Fleet", "Fleet: crude charge & transfer pumps", "ROLE-ROT",
-        [p["id"] for p in pumps if "charge pump" in p["name"] or "transfer pump" in p["name"]])
-    hot = [p["id"] for p in pumps if b.fact_value(p["id"], "service_temperature") >= 260]
-    grp("FLT-HOT", "Fleet", "Fleet: hot-service pumps (≥ 260 °C, Plan 53B)", "ROLE-ROT", hot)
     grp("UT-STEAM", "Utility", "Utility: MP stripping steam", "ROLE-ENERGY",
         [f"C-{t}0{n}" for t in (1, 2) for n in (1, 2, 3, 4)] + ["E-140", "E-240"])
-    grp("UT-FUELGAS", "Utility", "Utility: refinery fuel gas", "ROLE-ENERGY", ["H-101", "H-201"])
     grp("UT-CW", "Utility", "Utility: cooling water", "ROLE-ENERGY",
         [f"E-{t}{n}" for t in (1, 2) for n in ("21", "30", "31", "32", "33", "41")])
 
-    # physics links (Sector 1b structure links to Sector 1a reference)
-    for n in list(b.nodes.values()):
-        if n["cls"] != "EquipmentUnit":
-            continue
-        eid, onto = n["id"], n["props"].get("onto_class")
-        if onto in ("ShellAndTubeHX", "AirCooledHX"):
-            E(eid, "GOVERNED_BY", "EQ-DUTY"); E(eid, "GOVERNED_BY", "EQ-FOUL")
-        if onto == "FiredHeater":
-            E(eid, "GOVERNED_BY", "EQ-HTREFF"); E(eid, "SUSCEPTIBLE_TO", "DM-CREEP", source="RBI study 2024")
-        if onto == "CentrifugalPump":
-            E(eid, "GOVERNED_BY", "EQ-AFFINITY")
-        T = b.fact_value(eid, "service_temperature") or 0
-        if any(m in (f"CL-A-OVH", f"CL-B-OVH") for m in b.targets(eid, "MEMBER_OF")):
-            E(eid, "SUSCEPTIBLE_TO", "DM-HCL", source="RBI study 2024"); E(eid, "SUSCEPTIBLE_TO", "DM-NH4CL", source="RBI study 2024")
-        if T >= 230 and any(k in n["props"].get("service_fluid", "") for k in ("crude", "Crude", "residue", "AGO", "gas oil", "pumparound", "Diesel")):
-            E(eid, "SUSCEPTIBLE_TO", "DM-SULF", source="RBI study 2024")
-        if eid.startswith(("PC-101", "PC-201", "PC-103", "PC-203", "H-")):
-            E(eid, "SUSCEPTIBLE_TO", "DM-NAC", source="RBI study 2024")
-        if eid[3:5] in ("09", "10", "11", "12") and onto == "ShellAndTubeHX":
-            E(eid, "SUSCEPTIBLE_TO", "PH-FOUL", source="Energy review 2025")
-    for t in (1, 2):
-        E(f"PC-{t}02", "GOVERNED_BY", "EQ-DEWPT")
 
 
 def _process_spine(b):
@@ -689,27 +839,25 @@ def _information(b):
     N, E, F = b.node, b.edge, b.fact
     tagid = lambda eq, text: next(n["id"] for n in b.nodes.values() if n["cls"] == "DataPoint"
                                   and n["props"].get("equipment") == eq and text in n["name"])
-    # IOW limits
+    from .gamma_events import iow_limit
     for t in (1, 2):
-        for text, key, v, u in [("chloride", "iow_limit_standard", 20, "ppm"), ("chloride", "iow_limit_critical", 50, "ppm")]:
-            F(tagid(f"V-{t}02", text), key, v, u, as_of=DESIGN_DATE, src="IOW register (API 584)", owner="ROLE-CORR", method="declared")
-        F(tagid(f"V-{t}02", "Boot water pH"), "iow_limit_low", 5.5, "pH", as_of=DESIGN_DATE, src="IOW register (API 584)", owner="ROLE-CORR", method="declared")
-        F(tagid(f"V-{t}02", "Boot water pH"), "iow_limit_high", 7.0, "pH", as_of=DESIGN_DATE, src="IOW register (API 584)", owner="ROLE-CORR", method="declared")
-        F(tagid(f"V-{t}02", "iron"), "iow_limit_standard", 1.0, "ppm", as_of=DESIGN_DATE, src="IOW register (API 584)", owner="ROLE-CORR", method="declared")
-        F(tagid(f"PC-{t}02", "dew-point margin"), "iow_limit_low", 14, "degC", as_of=DESIGN_DATE, src="IOW register (API 584)", owner="ROLE-CORR", method="declared")
-        F(tagid(f"D-{t}02", "Desalted crude salt"), "iow_limit_standard", 1.0, "PTB", as_of=DESIGN_DATE, src="IOW register (API 584)", owner="ROLE-CORR", method="declared")
-        F(tagid(f"D-{t}01", "Desalter temperature"), "iow_limit_low", 120, "degC", as_of=DESIGN_DATE, src="IOW register (API 584)", owner="ROLE-PROC", method="declared")
-        F(tagid(f"D-{t}01", "Desalter temperature"), "iow_limit_high", 150, "degC", as_of=DESIGN_DATE, src="IOW register (API 584)", owner="ROLE-PROC", method="declared")
+        v2 = f"V-{t}02"
+        iow_limit(b, tagid(v2, "chloride"), "standard", "high", 20, "ppm")
+        iow_limit(b, tagid(v2, "chloride"), "critical", "high", 50, "ppm")
+        iow_limit(b, tagid(v2, "Boot water pH"), "standard", "low", 5.5, "pH")
+        iow_limit(b, tagid(v2, "Boot water pH"), "standard", "high", 7.0, "pH")
+        iow_limit(b, tagid(v2, "iron"), "standard", "high", 1.0, "ppm")
+        iow_limit(b, tagid(f"PC-{t}02", "dew-point margin"), "critical", "low", 14, "degC")
+        iow_limit(b, tagid(f"D-{t}02", "Desalted crude salt"), "standard", "high", 1.0, "PTB")
+        iow_limit(b, tagid(f"D-{t}01", "Desalter temperature"), "informational", "low", 120, "degC", "ROLE-PROC")
+        iow_limit(b, tagid(f"D-{t}01", "Desalter temperature"), "informational", "high", 150, "degC", "ROLE-PROC")
         for pz in range(1, 5):
-            F(tagid(f"H-{t}01", f"Pass {pz} tube-metal"), "iow_limit_standard", 620, "degC", as_of=DESIGN_DATE, src="IOW register (API 584)", owner="ROLE-CORR", method="declared")
-            F(tagid(f"H-{t}01", f"Pass {pz} tube-metal"), "iow_limit_critical", 650, "degC", as_of=DESIGN_DATE, src="IOW register (API 584)", owner="ROLE-CORR", method="declared")
-            F(tagid(f"H-{t}01", f"Pass {pz} outlet"), "iow_limit_high", 370, "degC", as_of=DESIGN_DATE, src="IOW register (API 584)", owner="ROLE-PROC", method="declared")
-        F(tagid(f"H-{t}01", "Flue-gas oxygen"), "iow_limit_low", 1.5, "vol%", as_of=DESIGN_DATE, src="IOW register (API 584)", owner="ROLE-PROC", method="declared")
+            iow_limit(b, tagid(f"H-{t}01", f"Pass {pz} tube-metal"), "standard", "high", 620, "degC")
+            iow_limit(b, tagid(f"H-{t}01", f"Pass {pz} tube-metal"), "critical", "high", 650, "degC")
+            iow_limit(b, tagid(f"H-{t}01", f"Pass {pz} outlet"), "standard", "high", 370, "degC", "ROLE-PROC")
+        iow_limit(b, tagid(f"H-{t}01", "Flue-gas oxygen"), "standard", "low", 1.5, "vol%", "ROLE-PROC")
         for pc in ("01", "02", "03"):
-            F(tagid(f"PC-{t}{pc}", "Corrosion probe"), "iow_limit_standard", 0.25, "mm/y", as_of=DESIGN_DATE, src="IOW register (API 584)", owner="ROLE-CORR", method="declared")
-    # pump vibration alert limits (condition monitoring, not IOW)
-    for n in [n for n in b.nodes.values() if n["cls"] == "DataPoint" and "bearing vibration" in n["name"]]:
-        F(n["id"], "alert_limit", 4.5, "mm/s", as_of=DESIGN_DATE, src="Condition monitoring standard", owner="ROLE-ROT", method="declared")
+            iow_limit(b, tagid(f"PC-{t}{pc}", "Corrosion probe"), "standard", "high", 0.25, "mm/y")
 
     # crude slate (campaigns) per train
     shares = {"CR-AL": 0.45, "CR-BM": 0.35, "CR-MUR": 0.20}
@@ -723,6 +871,8 @@ def _information(b):
               owner="ROLE-PLAN")
             F(cid, "slate_share", sh, "fraction", as_of=AS_OF, src="Crude schedule", owner="ROLE-PLAN")
 
+    F(SITE, "crude_heat_capacity", 2.3, "kJ/kgK", as_of=DESIGN_DATE, src="Crude assay (liquid heat capacity, 150-270 C, typical)",
+      owner="ROLE-PROC", method="indicative", conf="medium")
     # KPIs per train (derived from tag facts, with lineage)
     fid = lambda tag, pred="latest_value": b.fact_obj(tag, pred)["id"]
     for tr, t in TRAINS.items():
@@ -740,49 +890,42 @@ def _information(b):
         F(u, "heater_fired_duty", fired, "MW", as_of=AS_OF, src="KG derived", owner="ROLE-ENERGY", method="calculated", lineage=[fid(abs_tag), fid(eff_tag)])
         F(u, "energy_intensity", ei, "MMBtu/kbbl", as_of=AS_OF, src="KG derived", owner="ROLE-ENERGY", method="calculated",
           lineage=[fid(abs_tag), fid(eff_tag), fid(charge_tag)])
-        F(u, "desalter_salt_removal", 96.5 if tr == "A" else 97.2, "%", as_of=AS_OF, src="LIMS monthly report", owner="ROLE-LAB", method="calculated")
-        F(u, "overhead_chloride_avg_12m", 18.0 if tr == "A" else 9.0, "ppm", as_of=AS_OF, src="LIMS", owner="ROLE-CORR", method="calculated")
-        F(u, "availability_fy2026", 98.9 if tr == "A" else 99.3, "%", as_of=AS_OF, src="Operations logbook", owner="ROLE-OPS", method="calculated")
+        F(u, "desalter_salt_removal", 96.5 if tr == "A" else 97.2, "%", as_of=AS_OF, src="LIMS monthly report", owner="ROLE-LAB", method="recorded")
+        F(u, "overhead_chloride_avg_12m", 18.0 if tr == "A" else 9.0, "ppm", as_of=AS_OF, src="LIMS monthly report", owner="ROLE-CORR", method="recorded")
+        F(u, "availability_fy2026", 98.9 if tr == "A" else 99.3, "%", as_of=AS_OF, src="Operations logbook", owner="ROLE-OPS", method="recorded")
         for code in ("LPG", "NAP", "KERO", "DSL", "AGO", "AR"):
             tg = next(n["id"] for n in b.nodes.values() if n["cls"] == "DataPoint" and n["name"].startswith(f"FI-{t}9") and f" {code} product rate" in n["name"])
             F(u, f"yield_{code.lower()}", round(b.fact_value(tg, "latest_value") / kbd * 100, 1), "vol%", as_of=AS_OF, src="KG derived",
               owner="ROLE-PROC", method="calculated", lineage=[fid(tg), fid(charge_tag)])
 
     # event history (Oct 2025 - Sep 2026)
-    def iow(iid, tag, d, peak, dur, u):
-        N(iid, "IOWExceedance", f"{iid} on {b.nodes[tag]['name']}", "event", date=d)
-        E(iid, "ON_DATAPOINT", tag)
-        F(iid, "peak_value", peak, u, as_of=d, src="PI historian / IOW monitor", ref=iid, owner="ROLE-CORR", method="measured")
-        F(iid, "duration", dur, "days", as_of=d, src="PI historian / IOW monitor", ref=iid, owner="ROLE-CORR", method="measured")
-    iow("IOW-A01", tagid("V-102", "chloride"), "2026-01-12", 42, 5, "ppm")
-    iow("IOW-A02", tagid("V-102", "chloride"), "2026-04-03", 55, 8, "ppm")
-    iow("IOW-A03", tagid("V-102", "chloride"), "2026-07-21", 38, 3, "ppm")
-    iow("IOW-A04", tagid("PC-102", "dew-point margin"), "2026-04-05", 8, 6, "degC")
-    iow("IOW-B01", tagid("H-201", "Pass 3 tube-metal"), "2026-06-02", 635, 4, "degC")
-    iow("IOW-B02", tagid("H-201", "Pass 3 tube-metal"), "2026-08-15", 628, 2, "degC")
+    from .gamma_events import exceedance, failure
+    exceedance(b, "IOW-A01", tagid("V-102", "chloride"), "2026-01-12", 42, 5, "ppm")
+    exceedance(b, "IOW-A02", tagid("V-102", "chloride"), "2026-04-03", 55, 8, "ppm")
+    exceedance(b, "IOW-A03", tagid("V-102", "chloride"), "2026-07-21", 38, 3, "ppm")
+    exceedance(b, "IOW-A04", tagid("PC-102", "dew-point margin"), "2026-04-05", 8, 6, "degC")
+    exceedance(b, "IOW-B01", tagid("H-201", "Pass 3 tube-metal"), "2026-06-02", 635, 4, "degC")
+    exceedance(b, "IOW-B02", tagid("H-201", "Pass 3 tube-metal"), "2026-08-15", 628, 2, "degC")
+    # response to the critical chloride exceedance
+    N("WO-A05", "WorkOrder", "WO-A05 IOW response: neutraliser and wash-water increase, UT scan of PC-102", "event", date="2026-04-04")
+    E("WO-A05", "RESPONDS_TO", "IOW-A02"); E("WO-A05", "RESPONDS_TO", "IOW-A04"); E("WO-A05", "PERFORMED_ON", "PC-102")
+    E("IOW-A02", "DECIDED_BY", "DEC-NEUT")
+    F("WO-A05", "actual_cost", 38000, "USD", as_of="2026-04-04", src="CMMS", ref="WO-A05", owner="ROLE-MAINT")
+    F("WO-A05", "work_type", "IOW response — operating adjustment and inspection", "", as_of="2026-04-04", src="CMMS", ref="WO-A05",
+      owner="ROLE-MAINT")
 
-    grm = b.fact_obj(SITE, "grm_fy2026")
-    def failure(fid_, target, d, mode, mech, cost, wo, rate_cut=0, days=0, desc=""):
-        N(fid_, "Failure", f"{fid_} {b.nodes[target]['name']}", "event", date=d, desc=desc)
-        E(fid_, "FAILURE_OF", target)
-        F(fid_, "failure_mode", mode, "", as_of=d, src="CMMS (ISO 14224 coding)", ref=wo, owner="ROLE-MAINT")
-        F(fid_, "failure_mechanism", mech, "", as_of=d, src="CMMS (ISO 14224 coding)", ref=wo, owner="ROLE-MAINT")
-        N(wo, "WorkOrder", f"{wo} repair", "event", date=d)
-        E(wo, "REMEDIATES", fid_)
-        F(wo, "actual_cost", cost, "USD", as_of=d, src="CMMS", ref=wo, owner="ROLE-MAINT")
-        if rate_cut:
-            fr = F(fid_, "rate_reduction", rate_cut, "kbd", as_of=d, src="Operations logbook", owner="ROLE-OPS")
-            fd = F(fid_, "rate_reduction_days", days, "days", as_of=d, src="Operations logbook", owner="ROLE-OPS")
-            F(fid_, "lost_margin", round(rate_cut * 1000 * days * grm["value"]), "USD", as_of=d, src="KG derived", owner="ROLE-PLAN",
-              method="calculated", conf="medium", lineage=[fr, fd, grm["id"]])
-    failure("FL-A01", "E-120A-TUBES", "2026-05-02", "External leakage – process medium (ELP)",
-            "Corrosion (ISO 14224 2.2) — ammonium chloride under-deposit", 240000, "WO-A01", 30, 3, "Air-cooler tube leak")
-    failure("FL-A02", "P-101C-SEAL", "2025-12-10", "External leakage – process medium (ELP)", "Wear (ISO 14224 1.x)", 45000, "WO-A02")
-    failure("FL-A03", "P-101C-SEAL", "2026-06-18", "External leakage – process medium (ELP)", "Wear (ISO 14224 1.x)", 45000, "WO-A03")
-    failure("FL-A04", "D-102-TRAFO", "2026-02-14", "Loss of function (electrical field)",
-            "Electrical — emulsion carry-over short", 30000, "WO-A04", desc="Grid trip; salt carry-over for 2 days")
-    failure("FL-B01", "P-208A-SEAL", "2026-01-25", "External leakage – process medium (ELP)", "Wear / thermal distortion (ISO 14224 1.x)",
-            60000, "WO-B01", 20, 1, "Hot residue seal leak; switched to standby")
+    failure(b, "FL-A01", "E-120A-TUBES", "2026-05-02", "ELP", "2.2", "3.1", "7",
+            "ammonium chloride under-deposit corrosion", 240000, "WO-A01", severity="Critical", downtime_h=72, ttr_h=60,
+            man_hours=420, rate_cut=30, days=3, desc="Air-cooler tube leak")
+    failure(b, "FL-A02", "P-101C-SEAL", "2025-12-10", "ELP", "2.4", "3.4", "5", "seal face wear", 45000, "WO-A02",
+            severity="Degraded", ttr_h=14, man_hours=40)
+    failure(b, "FL-A03", "P-101C-SEAL", "2026-06-18", "ELP", "2.4", "3.1", "5", "seal face wear (repeat; off-BEP operation)",
+            45000, "WO-A03", severity="Degraded", ttr_h=16, man_hours=44)
+    failure(b, "FL-A04", "D-102-TRAFO", "2026-02-14", "BRD", "4.1", "3.1", "6", "emulsion carry-over short circuit", 30000,
+            "WO-A04", severity="Critical", downtime_h=48, ttr_h=20, man_hours=60, desc="Grid trip; salt carry-over for 2 days")
+    failure(b, "FL-B01", "P-208A-SEAL", "2026-01-25", "ELP", "2.7", "3.1", "5", "thermal distortion of seal faces", 60000,
+            "WO-B01", severity="Critical", downtime_h=24, ttr_h=30, man_hours=90, rate_cut=20, days=1,
+            desc="Hot residue seal leak; switched to standby")
     for wo, eqs, d, cost in [("WO-B02", ["E-207", "E-208"], "2026-03-10", 380000)]:
         N(wo, "WorkOrder", f"{wo} exchanger cleaning (E-207, E-208)", "event", date=d)
         for e_ in eqs:
@@ -793,6 +936,9 @@ def _information(b):
 
 # ----------------------------------------------------------------------------- helpers on Builder
 def _fact_obj(self, subject, predicate):
+    sp = getattr(self, "_sp", None)
+    if sp is not None:
+        return sp.get((subject, predicate))
     for f in reversed(self.facts):
         if f["subject"] == subject and f["predicate"] == predicate:
             return f
@@ -813,23 +959,44 @@ Builder.fact_value = _fact_value
 Builder.targets = _targets
 
 
+def to_json(b):
+    return dict(meta=dict(name="Refinery Gamma — reference model (500 kbpd, Nelson complexity ≈ 15)", as_of=AS_OF, site=SITE_KEY,
+                          version=VERSION, build_id=f"gamma-{VERSION}-{BUILD_TS[:10]}",
+                          disclaimer="Fictional refinery and synthetic engineering, price and event data for demonstration. Crude "
+                                     "assays and prices are illustrative. Event patterns are seeded to demonstrate detection. "
+                                     "Not for design, operating or commercial decisions."),
+                nodes=list(b.nodes.values()), edges=b.edges, facts=b.facts)
+
+
 def main():
     _tag.counter.clear()
     b, reg, tags = build()
     OUT.mkdir(parents=True, exist_ok=True)
-    data = dict(meta=dict(name="Refinery Gamma — reference model (500 kbpd, Nelson complexity ≈ 15)", as_of=AS_OF,
-                          disclaimer="Fictional refinery and synthetic engineering data for demonstration. Crude assays are "
-                                     "indicative typical values. Not for design or operating decisions."),
-                nodes=list(b.nodes.values()), edges=b.edges, facts=b.facts)
-    (OUT / "kg.json").write_text(json.dumps(data, indent=1, default=str))
-    keys = sorted({k for r in reg for k in r}, key=lambda k: (k not in ("tag", "description", "train", "section", "equipment_class",
-                                                                       "ontology_class", "service"), k))
+    try:
+        from .insight_snapshot import snapshot
+        snapshot(b, to_json)
+    except ImportError:
+        pass
+    (OUT / "kg.json").write_text(json.dumps(to_json(b), indent=1, default=str))
+    keys = sorted({k for r in reg for k in r}, key=lambda k: (k not in ("tag", "description", "unit", "train", "section",
+                                                                       "equipment_class", "ontology_class", "service"), k))
     with open(OUT / "equipment_register.csv", "w", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=keys); w.writeheader(); w.writerows(reg)
     with open(OUT / "tag_register.csv", "w", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=list(tags[0].keys())); w.writeheader(); w.writerows(tags)
+    from .refinery_history import timeseries
+    hist = OUT / "historian"
+    hist.mkdir(exist_ok=True)
+    for old in hist.glob("*.csv"):
+        old.unlink()
+    for pi, series in timeseries(b).items():
+        with open(hist / f"{pi}.csv", "w", newline="") as fh:
+            w = csv.writer(fh); w.writerow(["timestamp", "value", "quality", "tag"])
+            w.writerows([(ts, v, q, series["tag"]) for ts, v, q in series["rows"]])
     print(f"nodes={len(b.nodes)} edges={len(b.edges)} facts={len(b.facts)} equipment={len(reg)} tags={len(tags)} -> {OUT}")
 
 
 if __name__ == "__main__":
-    main()
+    # run through the package module so that every stage shares one builder state (tag counters, classes)
+    from ogkg import cdu_gamma as _pkg
+    _pkg.main()
