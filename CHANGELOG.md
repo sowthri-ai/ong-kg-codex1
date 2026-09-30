@@ -1,5 +1,8 @@
 # Changelog
 
+## Unreleased
+- Council review of v0.4.0 (`docs/reviews/2026-10-01-council-review.md`): 69 findings from six reviewer seats, re-verified, with a prioritised Now / Next / Then backlog.
+
 ## 0.4.0 — 2026-10-01 (whole refinery)
 - Refinery Gamma extended from the CDU to the whole refinery (Nelson complexity 15.0, 1998 factors): 36 real units replace the out-of-scope placeholders, each with sections, capacity, feed rate, utilisation, Nelson factor and NCI contribution.
 - Full L0–L10 depth for FCC-1, HCU-1 and DCU-1: 104 more equipment items, 13 new equipment templates (reactors, FCC reactor/regenerator, slide valves, compressors, expander, waste-heat boiler, coke drums, decoking, crusher).

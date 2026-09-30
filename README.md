@@ -85,6 +85,7 @@ Detailed plan, team, risks and acceptance criteria: [Part E of the handbook](doc
 |---|---|
 | `docs/handbook/` | MECE handbook (Parts A–F): why, model, architecture, governance, delivery, reference |
 | `docs/adr/` | Architecture decision log |
+| `docs/reviews/` | Independent reviews, e.g. the [v0.4.0 council review](docs/reviews/2026-10-01-council-review.md) and its prioritised backlog |
 | `ontology/` | `ogkg-core.ttl` (OWL), `ogkg-shapes.ttl` (SHACL), `ogkg-vocab.ttl` (SKOS), `mappings/` (OWL→LPG) |
 | `examples/` | SPARQL and Cypher queries used in the handbook |
 | `ogkg/` | Prototype engine: dataset builder, KG engine, insights, MCP server, exports |
