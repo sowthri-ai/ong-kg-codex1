@@ -14,6 +14,9 @@ The prototype (v0.1) proves the design on synthetic data without any database. P
 | `ogkg/exports.py` | Turtle, Neo4j CSV + Cypher, explorer HTML |
 | `ogkg/turtle_lite.py` | Dependency-free Turtle syntax checker for CI |
 | `ogkg/catalogue.py` | Generates [F3](F3-class-and-relation-catalogue.md) from the ontology |
+| `ogkg/cdu_gamma.py`, `ogkg/cdu_templates.py` | Builds the Refinery Gamma CDU reference model ([F6](F6-reference-model-gamma-cdu.md)) |
+| `ogkg/ttl_v02.py`, `ogkg/shacl_lite.py` | Sector-split Turtle export in the v0.2 vocabulary, and SHACL-equivalent checks |
+| `ogkg/cdu_insights.py`, `ogkg/cdu_explorer.py` | CDU insights and explorer page |
 | `explorer/` | Interactive explorer (insights, L0–L10 trees, ask-the-graph) and storage blueprint |
 | `tests/` | Integrity, provenance, insight recalculation, handbook claims, Turtle syntax, MCP end-to-end |
 

@@ -33,15 +33,15 @@ _TOKEN = re.compile(r'''
 
 
 def tokenize(text):
-    pos, out = 0, []
+    pos, out, line = 0, [], 1
     while pos < len(text):
         m = _TOKEN.match(text, pos)
         if not m:
-            line = text.count("\n", 0, pos) + 1
             raise TurtleError(f"line {line}: cannot tokenise near {text[pos:pos+40]!r}")
-        kind = m.lastgroup
+        kind, val = m.lastgroup, m.group()
         if kind != "ws":
-            out.append((kind, m.group(), text.count("\n", 0, pos) + 1))
+            out.append((kind, val, line))
+        line += val.count("\n")
         pos = m.end()
     return out
 

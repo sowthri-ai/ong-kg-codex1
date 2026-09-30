@@ -1,0 +1,52 @@
+@prefix ogkg:  <https://example.org/ogkg/core#> .
+@prefix vocab: <https://example.org/ogkg/vocab#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+
+# =============================================================================
+#  OGKG extension: crude distillation unit (CDU) — Sector 1a additions
+#  Used by the Refinery Gamma reference model (data/cdu-gamma/).
+# =============================================================================
+
+<https://example.org/ogkg/ext/cdu> a owl:Ontology ;
+    rdfs:label "OGKG CDU extension" ; owl:versionInfo "0.2.1" ;
+    owl:imports <https://example.org/ogkg/core> , <https://example.org/ogkg/vocab> .
+
+# --- Units (L4)
+ogkg:TankFarm          a owl:Class ; rdfs:subClassOf ogkg:PlantUnit ; rdfs:label "Tank farm" .
+ogkg:CommonFacilities  a owl:Class ; rdfs:subClassOf ogkg:PlantUnit ; rdfs:label "Common facilities shared by several trains" .
+ogkg:OutOfScopeUnit    a owl:Class ; rdfs:subClassOf ogkg:PlantUnit ; rdfs:label "Downstream unit placeholder (not modelled)" .
+
+# --- Sections (L5) of a CDU train
+ogkg:CrudeChargeSystem       a owl:Class ; rdfs:subClassOf ogkg:SectionSystem .
+ogkg:ColdPreheatTrain        a owl:Class ; rdfs:subClassOf ogkg:PreheatTrain .
+ogkg:HotPreheatTrain         a owl:Class ; rdfs:subClassOf ogkg:PreheatTrain .
+ogkg:PreflashSystem          a owl:Class ; rdfs:subClassOf ogkg:SectionSystem .
+ogkg:HeaterSystem            a owl:Class ; rdfs:subClassOf ogkg:SectionSystem .
+ogkg:AtmosphericFractionation a owl:Class ; rdfs:subClassOf ogkg:SectionSystem .
+ogkg:PumparoundSystem        a owl:Class ; rdfs:subClassOf ogkg:SectionSystem .
+ogkg:ProductRundownSystem    a owl:Class ; rdfs:subClassOf ogkg:SectionSystem .
+ogkg:ChemicalInjectionSystem a owl:Class ; rdfs:subClassOf ogkg:SectionSystem .
+ogkg:NaphthaStabiliserSystem a owl:Class ; rdfs:subClassOf ogkg:SectionSystem .
+ogkg:ReliefSystem            a owl:Class ; rdfs:subClassOf ogkg:SectionSystem .
+ogkg:CrudeStorageSystem      a owl:Class ; rdfs:subClassOf ogkg:SectionSystem .
+ogkg:ChemicalStorageSystem   a owl:Class ; rdfs:subClassOf ogkg:SectionSystem .
+ogkg:CrudeFeedSystem         a owl:Class ; rdfs:subClassOf ogkg:SectionSystem .
+
+# --- Equipment (L6)
+ogkg:Desalter      a owl:Class ; rdfs:subClassOf ogkg:Vessel ; rdfs:label "Electrostatic desalter" .
+ogkg:Drum          a owl:Class ; rdfs:subClassOf ogkg:Vessel ; rdfs:label "Drum / receiver" .
+ogkg:SideStripper  a owl:Class ; rdfs:subClassOf ogkg:Column .
+ogkg:ChemicalInjectionPackage a owl:Class ; rdfs:subClassOf ogkg:StaticEquipment ; rdfs:label "Chemical injection package" .
+
+# --- Data-point attributes (L10)
+ogkg:tagType          a owl:DatatypeProperty ; rdfs:domain ogkg:DataPoint ; rdfs:range xsd:string ; rdfs:comment "ISA-5.1 function letters, e.g. TI, FI, AI." ; ogkg:facet vocab:IdentityFacet .
+ogkg:measuredQuantity a owl:DatatypeProperty ; rdfs:domain ogkg:DataPoint ; rdfs:range xsd:string .
+ogkg:unitLabel        a owl:DatatypeProperty ; rdfs:range xsd:string ; rdfs:comment "Engineering unit as text until mapped to QUDT." .
+ogkg:dataPointKind    a owl:DatatypeProperty ; rdfs:domain ogkg:DataPoint ; rdfs:range xsd:string ; rdfs:comment "sensor, analyser, lab, calculated, inspection." .
+ogkg:trainId          a owl:DatatypeProperty ; rdfs:range xsd:string ; rdfs:comment "Train identifier (A / B) for multi-train units." .
+
+# --- Work performed on an asset (maintenance that is not a failure repair)
+ogkg:performedOn a owl:ObjectProperty ; rdfs:domain ogkg:WorkOrder ; rdfs:range ogkg:AssetSpineNode ; ogkg:lpgType "PERFORMED_ON" .

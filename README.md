@@ -1,6 +1,6 @@
 # OGKG — Oil & Gas Value Chain Knowledge Graph
 
-> **Status:** prototype v0.1 working · ontology v0.2 specified · private repository · synthetic data only
+> **Status:** prototype v0.1 working · ontology v0.2 specified · Refinery Gamma CDU reference model complete (L0–L10, both sectors) · private repository · synthetic data only
 > **Owner:** Sowthri (Principal Data & Industrial AI Architect) · **Licence:** proprietary, all rights reserved (see [LICENSE](LICENSE))
 
 OGKG is a governed knowledge layer for the oil and gas value chain. Every AI solution (copilot, agent, optimiser, analytics app) queries it for facts and figures instead of recalling them, and uses it to find cross-domain insights that siloed systems cannot produce.
@@ -75,6 +75,8 @@ Git: OWL + SHACL + SKOS ──load──► TRIPLESTORE ◄──RDF sync── 
 | **3. Scale** (≈ 3–6 months) | More units and sites, physics and economics facets, graph ML link prediction, second AI use case on the same layer | Second use case reuses ≥ 70% of the layer; adoption KPIs tracked |
 | **4. Productise** | Packaged accelerator: ontology, connectors, insight library, delivery playbook | Approved as a reusable EY asset; reference client secured |
 
+**Reference model:** a complete 500 kbpd, two-train CDU (157 equipment items, 950 tags, 3,293 cited facts) shows every design rule applied end to end. See [handbook F6](docs/handbook/F6-reference-model-gamma-cdu.md).
+
 Detailed plan, team, risks and acceptance criteria: [Part E of the handbook](docs/handbook/README.md#part-e--how-it-is-delivered).
 
 ## 6. Repository map
@@ -86,9 +88,9 @@ Detailed plan, team, risks and acceptance criteria: [Part E of the handbook](doc
 | `ontology/` | `ogkg-core.ttl` (OWL), `ogkg-shapes.ttl` (SHACL), `ogkg-vocab.ttl` (SKOS), `mappings/` (OWL→LPG) |
 | `examples/` | SPARQL and Cypher queries used in the handbook |
 | `ogkg/` | Prototype engine: dataset builder, KG engine, insights, MCP server, exports |
-| `data/` | Synthetic demo graph (`kg.json`) |
+| `data/` | Synthetic demo graph (`kg.json`) and the Refinery Gamma CDU reference model (`cdu-gamma/`: Turtle by sector, registers, JSON) |
 | `exports/` | Generated Turtle and Neo4j CSV / Cypher |
-| `explorer/` | Interactive explorer and storage blueprint (self-contained HTML) |
+| `explorer/` | Interactive explorers (demo and Gamma CDU) and storage blueprint (self-contained HTML) |
 | `tests/` | Integrity, provenance, insight recalculation, ontology syntax, handbook claims, links and MCP end-to-end tests |
 | `CLAUDE.md` | Working rules for coding agents implementing the backlog |
 
@@ -99,7 +101,8 @@ python -m pip install -r requirements.txt   # Python 3.10+
 python -m ogkg.build_dataset                # rebuild data/kg.json
 python -m ogkg.exports                      # Turtle, Neo4j CSV, explorer HTML
 python -m ogkg.catalogue                    # regenerate handbook F3 from the ontology
-python -m unittest discover -s tests -v     # 31 tests
+python -m ogkg.cdu_gamma && python -m ogkg.ttl_v02 && python -m ogkg.cdu_explorer   # Gamma CDU model
+python -m unittest discover -s tests -v     # 52 tests
 python -m ogkg.mcp_server                   # MCP server on stdio
 ```
 

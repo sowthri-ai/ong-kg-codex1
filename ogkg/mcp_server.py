@@ -26,7 +26,15 @@ and process spine (L2 value stream … L8 decision point, L9 data object, L10 da
 ACTS_ON, GOVERNS, CONSUMES and INSTANTIATED_BY; materials and events link into both."""
 
 mcp = FastMCP("og-value-chain-kg", instructions=ANSWER_CONTRACT)
-kg = KG()
+
+# OGKG_DATASET=gamma serves the Refinery Gamma CDU reference model instead of the two-refinery demo
+import os
+from pathlib import Path
+if os.environ.get("OGKG_DATASET") == "gamma":
+    from . import cdu_insights as ins
+    kg = KG(Path(__file__).resolve().parent.parent / "data" / "cdu-gamma" / "kg.json")
+else:
+    kg = KG()
 
 
 @mcp.tool()
@@ -109,7 +117,9 @@ def list_insights() -> list:
 @mcp.tool()
 def run_insight(insight_id: str) -> dict:
     """Run a discovery insight. Returns headline, rows, graph path, evidence fact ids, recommendation, owner and caveat."""
-    r = ins.run(kg, insight_id)
+    r = next((x for x in ins.run_all(kg) if x["id"] == insight_id), None)
+    if r is None:
+        return dict(error=f"Unknown insight '{insight_id}'. Use list_insights.")
     r["evidence_citations"] = [kg.cite(kg.facts_by_id[f]) for f in r["evidence"]]
     return r
 

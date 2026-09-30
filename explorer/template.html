@@ -269,6 +269,9 @@ const sources_ = new Set(D.facts.map(f=>f.source_system));
 $("#stats").innerHTML = [["Entities",D.nodes.length],["Facts",D.facts.length],["Links",D.edges.length],["Source systems",sources_.size]]
   .map(([k,v])=>`<div class="tb-cell"><span class="eyebrow">${k}</span><b>${v}</b></div>`).join("");
 $("#disc").textContent = D.meta.disclaimer;
+if(D.meta.title){ document.querySelector(".titleblock h1").textContent = D.meta.title; }
+if(D.meta.subtitle){ document.querySelector(".titleblock p").textContent = D.meta.subtitle; }
+if(D.meta.eyebrow){ document.querySelector(".titleblock .eyebrow").textContent = D.meta.eyebrow; }
 $("#legend").innerHTML = ["asset","process","material","event"].map(s=>`<span><i style="background:var(${SPINE_VAR[s]})"></i>${SPINE_LABEL[s]}</span>`).join("");
 
 // ---------- tabs
@@ -288,7 +291,7 @@ let curIns = D.insights[0].id;
 function valueChip(ins){
   if(ins.value_usd==null) return `<span class="pill val-neu">risk / governance</span>`;
   const cls = ins.id==="true-crude-value" ? (ins.value_usd<0?"val-neg":"val-pos") : "val-neg";
-  const lab = ins.id==="true-crude-value" ? "net " : ins.id==="giveaway-root-cause" ? "per year " : "repairs ";
+  const lab = ins.value_label ? ins.value_label+" " : ins.id==="true-crude-value" ? "net " : ins.id==="giveaway-root-cause" ? "per year " : "repairs ";
   return `<span class="pill ${cls}">${lab}${usd(ins.value_usd)}</span>`;
 }
 function renderInsList(){
@@ -312,7 +315,12 @@ function rowsTable(ins){
     r.map(x=>[ent(x.id),esc(x.section),esc(x.evidence.join("; ")),num(x.risk_score),x.in_scope?`<span class="pill" style="color:var(--ok)">in scope</span>`:`<span class="pill" style="color:var(--crit)">missing</span>`]));
   if(ins.id==="decision-blind-spots") return table(["Decision point (L8)","Process (L4)","Consumes","Finding"],
     r.map(x=>[ent(x.id),esc(x.owner_process),esc(x.consumes_domains.join(", ")),x.healthy?`<span class="pill" style="color:var(--ok)">no gap found</span>`:`<span style="color:var(--crit)">${esc(x.issues.join("; "))}</span>`]));
-  return "";
+  // generic: one table per row shape, columns from keys; values that are entity ids become links
+  const groups = [];
+  r.forEach(x => { const k = Object.keys(x).join("|"); let g = groups.find(g=>g.k===k); if(!g){ g={k, rows:[]}; groups.push(g);} g.rows.push(x); });
+  const cell = v => v==null ? "—" : (typeof v==="number" ? num(v.toLocaleString(undefined,{maximumFractionDigits:2})) :
+      (typeof v==="string" && N[v] ? ent(v) : esc(Array.isArray(v)? v.join(", ") : v)));
+  return groups.map(g => table(Object.keys(g.rows[0]).map(h=>esc(h.replace(/_/g," "))), g.rows.map(x=>Object.values(x).map(cell)))).join('<div style="height:10px"></div>');
 }
 const num = v => ({__num:true, v});
 function table(h, rows){
@@ -385,7 +393,7 @@ function openEntity(id, hlFact){
   $("#drawer").innerHTML = `
     <div class="drawer-top">
       <div style="min-width:0">
-        <div class="ins-meta"><span class="pill" style="color:${color(n)}">${SPINE_LABEL[n.spine]} · ${esc(n.cls)}</span>${n.level!=null?`<span class="pill" style="color:var(--ink-2)">L${n.level}</span>`:""}<span class="mono muted">${esc(n.id)}</span></div>
+        <div class="ins-meta"><span class="pill" style="color:${color(n)}">${SPINE_LABEL[n.spine]} · ${esc(n.cls)}</span>${n.level!=null?`<span class="pill" style="color:var(--ink-2)">L${n.level}</span>`:""}${n.props&&n.props.sector?`<span class="pill" style="color:var(--ink-3)">Sector ${esc(n.props.sector)}</span>`:""}<span class="mono muted">${esc(n.id)}</span></div>
         <h2 style="font-size:22px;margin-top:6px">${esc(dname(id))}</h2>
         ${n.desc?`<p class="muted" style="margin:4px 0 0">${esc(n.desc)}</p>`:""}
       </div>
@@ -428,7 +436,7 @@ function renderLadder(){
   }
   $("#ladder").innerHTML = h;
 }
-const open = new Set(["OG","SEG-DOWNSTREAM","BC-REF","SITE-ALPHA","VS-C2P","VS-P2M"]);
+const open = new Set(D.meta.open || ["OG","SEG-DOWNSTREAM","BC-REF","SITE-ALPHA","VS-C2P","VS-P2M"]);
 function treeNode(id, spine){
   const n=N[id]; const kids = children(id).filter(k => N[k].spine===spine || N[k].spine==="trunk");
   const isOpen = open.has(id);
@@ -498,7 +506,7 @@ function renderModel(){
 }
 
 // ---------- ask (Claude, grounded through page tools)
-const SUGG = [
+const SUGG = D.meta.suggestions || [
   "Did the opportunity crudes at Refinery Alpha make money after their asset consequences?",
   "Which pumps are bad actors across both sites, and what standard should we set?",
   "Why does Alpha give away more octane than Beta, and what's it worth per year?",
@@ -536,7 +544,7 @@ const TOOLS = [
   {name:"find_path", description:"Shortest explainable path between two entity ids across spines, materials and events. Returns a list of 'A -REL-> B' steps.",
    inputSchema:{type:"object",properties:{from:{type:"string"},to:{type:"string"}},required:["from","to"]},
    execute(i){ log("path "+i.from+" → "+i.to); const p=bfs(String(i.from),String(i.to)); if(!p) throw new Error("No path found"); return p; }},
-  {name:"run_insight", description:"Run a pre-built cross-domain insight by id: true-crude-value, fleet-bad-actors, giveaway-root-cause, ta-scope-gaps, decision-blind-spots. Returns headline, result rows, recommendation, owner, caveat and cited fact ids.",
+  {name:"run_insight", description:"Run a pre-built cross-domain insight by id: "+D.insights.map(i=>i.id).join(", ")+". Returns headline, result rows, recommendation, owner, caveat and cited fact ids.",
    inputSchema:{type:"object",properties:{id:{type:"string"}},required:["id"]},
    execute(i){ log("insight "+i.id); const r=D.insights.find(x=>x.id===String(i.id)); if(!r) throw new Error("Unknown insight id");
      return {headline:r.headline, rows:r.rows, recommendation:r.recommendation, decision_owner:r.decision_owner, caveat:r.caveat,
@@ -544,7 +552,7 @@ const TOOLS = [
 ];
 const RULES = `You are the answer layer of the O&G Value Chain Knowledge Graph, a governed source of facts for oil & gas AI.
 Model: L0 Oil & Gas > L1 segment, then two spines. Asset spine (ISO 14224): L2 business category, L3 installation (site), L4 plant unit, L5 section/system, L6 equipment, L7 subunit, L8 maintainable item, L9 part, L10 data point (tag/LIMS/KPI). Process spine: L2 value stream, L3 process group, L4 process, L5 sub-process, L6 activity, L7 task, L8 decision point, L9 data object, L10 data element. Cross-spine links: ACTS_ON, GOVERNS, CONSUMES, INSTANTIATED_BY. Materials (crude grades, campaigns, streams, products) and events (IOW exceedances, failures, work orders, turnaround scope) link into both.
-Dataset is a SYNTHETIC demo (Refinery Alpha and Beta are fictional); named crude assay values are indicative only.
+Dataset: ${D.meta.name}. ${D.meta.disclaimer}
 Answer contract:
 1. Use the tools. State a number, date or attribute only if a tool returned it. Never estimate.
 2. Cite each figure inline with its fact id in square brackets, e.g. [F-00012].

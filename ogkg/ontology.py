@@ -78,6 +78,20 @@ RELATIONS = {
     "AT_SITE": "turnaround -> installation",
     "IN_SCOPE_OF": "scope item -> turnaround",
     "TARGETS": "scope item -> equipment",
+    "PERFORMED_ON": "work order (non-failure maintenance) -> asset",
+    # facet bindings and reference links (v0.2)
+    "MEMBER_OF": "dotted branch: entity -> grouping (corrosion loop, fleet, utility, SIF, cost centre)",
+    "OF_MODEL": "equipment -> maker's model",
+    "MANUFACTURED_BY": "model -> manufacturer",
+    "OPERATED_BY": "installation -> operating enterprise",
+    "LOCATED_AT": "entity -> location (area / plot)",
+    "WITHIN": "location -> parent location",
+    "GOVERNED_BY": "equipment -> governing equation (physics)",
+    "SUSCEPTIBLE_TO": "equipment -> damage mechanism or phenomenon (RBI assessment)",
+    "INSTANCE_OF": "application instance -> application category",
+    "SCOPED_TO": "application instance -> site / unit it covers",
+    "SUPPORTS": "application instance -> process it supports",
+    "SYSTEM_OF_RECORD_FOR": "application instance -> data object it masters",
 }
 
 # Fact contract — every value an AI may quote

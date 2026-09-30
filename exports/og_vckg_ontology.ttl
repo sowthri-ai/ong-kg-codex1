@@ -69,6 +69,19 @@ ogkg:REMEDIATES a owl:ObjectProperty ; rdfs:comment "work order -> failure" .
 ogkg:AT_SITE a owl:ObjectProperty ; rdfs:comment "turnaround -> installation" .
 ogkg:IN_SCOPE_OF a owl:ObjectProperty ; rdfs:comment "scope item -> turnaround" .
 ogkg:TARGETS a owl:ObjectProperty ; rdfs:comment "scope item -> equipment" .
+ogkg:PERFORMED_ON a owl:ObjectProperty ; rdfs:comment "work order (non-failure maintenance) -> asset" .
+ogkg:MEMBER_OF a owl:ObjectProperty ; rdfs:comment "dotted branch: entity -> grouping (corrosion loop, fleet, utility, SIF, cost centre)" .
+ogkg:OF_MODEL a owl:ObjectProperty ; rdfs:comment "equipment -> maker's model" .
+ogkg:MANUFACTURED_BY a owl:ObjectProperty ; rdfs:comment "model -> manufacturer" .
+ogkg:OPERATED_BY a owl:ObjectProperty ; rdfs:comment "installation -> operating enterprise" .
+ogkg:LOCATED_AT a owl:ObjectProperty ; rdfs:comment "entity -> location (area / plot)" .
+ogkg:WITHIN a owl:ObjectProperty ; rdfs:comment "location -> parent location" .
+ogkg:GOVERNED_BY a owl:ObjectProperty ; rdfs:comment "equipment -> governing equation (physics)" .
+ogkg:SUSCEPTIBLE_TO a owl:ObjectProperty ; rdfs:comment "equipment -> damage mechanism or phenomenon (RBI assessment)" .
+ogkg:INSTANCE_OF a owl:ObjectProperty ; rdfs:comment "application instance -> application category" .
+ogkg:SCOPED_TO a owl:ObjectProperty ; rdfs:comment "application instance -> site / unit it covers" .
+ogkg:SUPPORTS a owl:ObjectProperty ; rdfs:comment "application instance -> process it supports" .
+ogkg:SYSTEM_OF_RECORD_FOR a owl:ObjectProperty ; rdfs:comment "application instance -> data object it masters" .
 ogkg:PART_OF a owl:TransitiveProperty .
 ogkg:subject a owl:DatatypeProperty ; rdfs:domain ogkg:Fact .
 ogkg:predicate a owl:DatatypeProperty ; rdfs:domain ogkg:Fact .

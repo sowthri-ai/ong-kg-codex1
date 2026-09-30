@@ -73,10 +73,16 @@ vocab:CarbonSteel a skos:Concept ; skos:inScheme vocab:MetallurgyScheme ; skos:p
 vocab:Cr5         a skos:Concept ; skos:inScheme vocab:MetallurgyScheme ; skos:prefLabel "5Cr-0.5Mo"@en .
 vocab:SS316       a skos:Concept ; skos:inScheme vocab:MetallurgyScheme ; skos:prefLabel "316 stainless steel"@en .
 vocab:Titanium    a skos:Concept ; skos:inScheme vocab:MetallurgyScheme ; skos:prefLabel "titanium"@en .
+vocab:Cr9         a skos:Concept ; skos:inScheme vocab:MetallurgyScheme ; skos:prefLabel "9Cr-1Mo"@en .
+vocab:SS410       a skos:Concept ; skos:inScheme vocab:MetallurgyScheme ; skos:prefLabel "410 stainless steel (clad)"@en .
+vocab:Alloy400    a skos:Concept ; skos:inScheme vocab:MetallurgyScheme ; skos:prefLabel "Alloy 400 (Monel) clad"@en .
+vocab:Duplex2205  a skos:Concept ; skos:inScheme vocab:MetallurgyScheme ; skos:prefLabel "duplex 2205"@en .
 
 vocab:SealPlanScheme a skos:ConceptScheme ; skos:prefLabel "API 682 seal plans"@en .
 vocab:Plan32  a skos:Concept ; skos:inScheme vocab:SealPlanScheme ; skos:prefLabel "Plan 32 (single seal, external flush)"@en .
 vocab:Plan53B a skos:Concept ; skos:inScheme vocab:SealPlanScheme ; skos:prefLabel "Plan 53B (dual pressurised, bladder accumulator)"@en .
+vocab:Plan11  a skos:Concept ; skos:inScheme vocab:SealPlanScheme ; skos:prefLabel "Plan 11 (single seal, discharge recirculation)"@en .
+vocab:Plan52  a skos:Concept ; skos:inScheme vocab:SealPlanScheme ; skos:prefLabel "Plan 52 (dual unpressurised, buffer fluid)"@en .
 
 # --- KPI tier and aggregation (B2.4)
 vocab:KpiTierScheme a skos:ConceptScheme ; skos:prefLabel "KPI tier"@en .
