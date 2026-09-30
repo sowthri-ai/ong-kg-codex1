@@ -1,4 +1,4 @@
-"""Completeness, symmetry and validity tests for the Refinery Gamma CDU reference model."""
+"""Completeness, symmetry and validity tests for the Refinery Gamma reference model (CDU and full-depth units)."""
 import json
 import os
 import re
@@ -104,11 +104,11 @@ class Symmetry(unittest.TestCase):
 class HandbookF6(unittest.TestCase):
     def test_numbers_quoted_in_f6(self):
         s = kg.level_summary()
-        self.assertEqual([r["count"] for r in s["asset"]][4:], [11, 28, 157, 605, 1337, 376, 950])
-        self.assertEqual([r["count"] for r in s["process"]][2:], [2, 5, 7, 7, 7, 7, 7, 7, 25])
-        self.assertEqual(len(kg.fact_list), 3293)
-        self.assertEqual(sum(1 for f in kg.fact_list if f["predicate"].startswith("iow_limit")), 50)
-        self.assertEqual(sum(1 for n in kg.nodes.values() if n["spine"] == "grouping"), 25)
+        self.assertEqual([r["count"] for r in s["asset"]][4:], [36, 131, 261, 976, 2158, 584, 1624])
+        self.assertEqual([r["count"] for r in s["process"]][2:], [2, 8, 14, 14, 14, 14, 14, 14, 48])
+        self.assertEqual(len(kg.fact_list), 5656)
+        self.assertEqual(sum(1 for f in kg.fact_list if f["predicate"].startswith("iow_limit")), 101)
+        self.assertEqual(sum(1 for n in kg.nodes.values() if n["spine"] == "grouping"), 40)
 
 
 class Sectors(unittest.TestCase):
@@ -128,7 +128,7 @@ class Sectors(unittest.TestCase):
 class RDF(unittest.TestCase):
     def test_turtle_exports_pass_shape_checks(self):
         v, n = shacl_lite.validate([DATA / "structure.ttl", DATA / "information.ttl"])
-        self.assertGreater(n, 40000)
+        self.assertGreater(n, 90000)
         self.assertEqual(v, [])
 
     def test_shape_checks_catch_a_missing_seal_plan(self):
@@ -177,7 +177,7 @@ class MCP(unittest.TestCase):
                 "print(len(m.list_insights()))")
         out = subprocess.run([sys.executable, "-c", code], capture_output=True, text=True, cwd=ROOT, timeout=60,
                              env={**os.environ, "OGKG_DATASET": "gamma"})
-        self.assertEqual(out.stdout.split(), ["H-201", "Crude", "heater", "3"], out.stderr[-500:])
+        self.assertEqual(out.stdout.split(), ["H-201", "Crude", "heater", "8"], out.stderr[-500:])
 
 
 if __name__ == "__main__":

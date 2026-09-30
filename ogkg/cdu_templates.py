@@ -251,3 +251,190 @@ TEMPLATES = {
     "drum": DRUM, "drumboot": DRUM_BOOT, "receiver": RECEIVER, "piping": PIPING, "ovhline": OVH_LINE,
     "chem": CHEM_PACKAGE, "tank": TANK,
 }
+
+
+# =============================================================================
+#  Conversion-unit templates (FCC, hydrocracker, delayed coker) — v0.4.0
+# =============================================================================
+ITEM_ONTO.update({"SEALS_C": "MechanicalSeal", "JBRG": "Bearing", "TBRG_C": "Bearing", "BED1": "MaintainableItem"})
+
+COLUMN = dict(
+    onto="Column", eq_class="Column",
+    subunits=[("SHL", "Shell", [("SHELL", "Shell", [])]),
+              ("INT", "Internals", [("TR_TOP", "Trays: top section", [("VALVES", "Tray valves")]),
+                                    ("TR_MID", "Trays: middle section", []), ("TR_BOT", "Trays: bottom section", [])])],
+    tags=[
+        ("TI", "Column top temperature", "degC", "TR_TOP", "sensor", lambda c: c["top_t"], None),
+        ("PI", "Column top pressure", "barg", "SHL", "sensor", lambda c: c["P"], None),
+        ("TI", "Bottom temperature", "degC", "TR_BOT", "sensor", lambda c: c["T"], None),
+        ("PDI", "Column pressure drop", "bar", "INT", "sensor", lambda c: 0.3, None),
+        ("LI", "Bottoms level", "%", "SHL", "sensor", lambda c: 50.0, None),
+        ("FI", "Reflux flow", "m3/h", "TR_TOP", "sensor", lambda c: c.get("reflux", 150.0), None),
+    ],
+)
+
+
+def _reactor(beds):
+    items = [("DIST", "Inlet distributor tray", [])] + \
+            [(f"BED{i}", f"Catalyst bed {i}", [("SUPP" + str(i), f"Bed {i} support grid")]) for i in range(1, beds + 1)] + \
+            [(f"QD{i}", f"Quench deck {i}", []) for i in range(1, beds)] + [("OUTC", "Outlet collector", [])]
+    tags = []
+    for i in range(1, beds + 1):
+        tags.append(("TI", f"Bed {i} inlet temperature", "degC", f"BED{i}", "sensor",
+                     (lambda i: lambda c: c["t_in"] + (i - 1) * c.get("step", 6))(i), None))
+        tags.append(("TI", f"Bed {i} outlet temperature", "degC", f"BED{i}", "sensor",
+                     (lambda i: lambda c: c["t_in"] + (i - 1) * c.get("step", 6) + c.get("dt", 18))(i), None))
+    for i in range(1, beds):
+        tags.append(("FI", f"Quench {i} hydrogen flow", "kNm3/h", f"QD{i}", "sensor", lambda c: c.get("quench", 25.0), None))
+    tags += [
+        ("PI", "Reactor inlet pressure", "barg", "SHL", "sensor", lambda c: c["P"], None),
+        ("PDI", "Reactor pressure drop", "bar", "INT", "sensor", lambda c: c.get("dp", 2.1), None),
+        ("TI", "Shell skin temperature (max)", "degC", "SHL", "sensor", lambda c: c.get("skin", 380.0), None),
+        ("UY", "Weighted average bed temperature (calculated)", "degC", "INT", "calculated", lambda c: c["wabt"], None),
+    ]
+    return dict(onto="FixedBedReactor", eq_class="Reactor",
+                subunits=[("SHL", "Shell (2.25Cr-1Mo, 347SS overlay)", [("SHELL", "Shell & heads", []), ("NOZ", "Nozzles & flanges", [])]),
+                          ("INT", "Internals", items)],
+                tags=tags)
+
+
+REACTOR_3BED = _reactor(3)
+REACTOR_4BED = _reactor(4)
+
+FCC_REACTOR = dict(
+    onto="FCCReactor", eq_class="FCC reactor",
+    subunits=[("RISER", "Riser", [("FEEDNOZ", "Feed injection nozzles", [("TIPS", "Nozzle tips")]), ("RTD", "Riser termination device", [])]),
+              ("RXV", "Reactor vessel", [("SHELL", "Shell & refractory", []), ("CYC1", "Primary cyclones", []), ("CYC2", "Secondary cyclones", [])]),
+              ("STR", "Stripper", [("BAFF", "Stripper baffles / packing", []), ("STRSTM", "Stripping steam distributor", [])])],
+    tags=[
+        ("TI", "Riser outlet temperature (ROT)", "degC", "RTD", "sensor", lambda c: c["rot"], None),
+        ("PI", "Reactor pressure", "barg", "RXV", "sensor", lambda c: 1.6, None),
+        ("FI", "Fresh feed flow", "m3/h", "FEEDNOZ", "sensor", lambda c: c["feed_m3h"], None),
+        ("FI", "Feed dispersion steam", "t/h", "FEEDNOZ", "sensor", lambda c: 9.0, None),
+        ("LI", "Stripper catalyst level", "%", "STR", "sensor", lambda c: 55.0, None),
+        ("FI", "Stripping steam", "t/h", "STRSTM", "sensor", lambda c: 7.5, None),
+        ("UY", "Catalyst-to-oil ratio (calculated)", "wt/wt", "RISER", "calculated", lambda c: c["cat_oil"], None),
+    ],
+)
+
+FCC_REGEN = dict(
+    onto="FCCRegenerator", eq_class="FCC regenerator",
+    subunits=[("RGV", "Regenerator vessel", [("SHELL", "Shell & refractory", []), ("AIRGRID", "Air grid", []),
+                                             ("CYC1", "Primary cyclones", [("DIPLEG", "Cyclone diplegs")]), ("CYC2", "Secondary cyclones", [])]),
+              ("SP", "Standpipes", [("RCSP", "Regenerated catalyst standpipe", []), ("SCSP", "Spent catalyst standpipe", [])])],
+    tags=[
+        ("TI", "Dense-bed temperature", "degC", "RGV", "sensor", lambda c: c["bed_t"], None),
+        ("TI", "Dilute-phase temperature", "degC", "RGV", "sensor", lambda c: c["bed_t"] + c.get("afterburn", 12), None),
+        ("AI", "Flue-gas oxygen", "vol%", "RGV", "analyser", lambda c: 2.0, None),
+        ("AI", "Flue-gas CO", "ppmv", "RGV", "analyser", lambda c: 150.0, None),
+        ("PI", "Regenerator pressure", "barg", "RGV", "sensor", lambda c: 1.9, None),
+        ("UY", "Afterburn (calculated)", "degC", "RGV", "calculated", lambda c: c.get("afterburn", 12), None),
+        ("UY", "Catalyst losses (calculated)", "t/d", "CYC2", "calculated", lambda c: c.get("cat_loss", 2.5), None),
+    ],
+)
+
+SLIDE_VALVE = dict(
+    onto="SlideValve", eq_class="Slide valve",
+    subunits=[("BODY", "Valve body", [("DISC", "Disc & guides", []), ("ORIF", "Orifice plate", [])]),
+              ("ACT", "Actuator", [("HYD", "Hydraulic power unit", [])])],
+    tags=[
+        ("ZI", "Valve position", "%", "DISC", "sensor", lambda c: c.get("pos", 45.0), None),
+        ("PDI", "Valve pressure drop", "bar", "BODY", "sensor", lambda c: c.get("dp", 0.35), None),
+    ],
+)
+
+COMPRESSOR = dict(
+    onto="CentrifugalCompressor", eq_class="Compressor",
+    subunits=[("DRV", "Driver", [("DRVBRG", "Driver bearings", []), ("GOV", "Speed governor", [])]),
+              ("CMP", "Compressor unit", [("IMPS", "Impellers", []), ("SEALS_C", "Dry gas seals", [("DGS", "Seal rings")]),
+                                          ("JBRG", "Journal bearings", []), ("TBRG_C", "Thrust bearing", []), ("CASE", "Casing", [])]),
+              ("LUBO", "Lube & seal oil system", [("LOP", "Lube oil pumps", []), ("LOC", "Lube oil coolers", [])]),
+              ("ASC", "Anti-surge control", [("ASV", "Anti-surge valve", [])])],
+    tags=[
+        ("PI", "Suction pressure", "barg", "CMP", "sensor", lambda c: c["ps"], None),
+        ("PI", "Discharge pressure", "barg", "CMP", "sensor", lambda c: c["pd"], None),
+        ("TI", "Discharge temperature", "degC", "CMP", "sensor", lambda c: c.get("td", 120.0), None),
+        ("FI", "Suction flow", "kNm3/h", "CMP", "sensor", lambda c: c["flow"], None),
+        ("SI", "Shaft speed", "rpm", "DRV", "sensor", lambda c: c.get("rpm", 9800.0), None),
+        ("VI", "Journal bearing vibration", "um", "JBRG", "sensor", lambda c: c.get("vib_um", 28.0), None),
+        ("ZI", "Axial displacement", "mm", "TBRG_C", "sensor", lambda c: 0.18, None),
+        ("UY", "Surge margin (calculated)", "%", "ASC", "calculated", lambda c: c.get("surge", 14.0), None),
+    ],
+)
+
+RECIP = dict(
+    onto="ReciprocatingCompressor", eq_class="Compressor",
+    subunits=[("DRV", "Motor", [("MBRG", "Motor bearings", [])]),
+              ("FRAME", "Frame & running gear", [("CRANK", "Crankshaft", []), ("XHEAD", "Crossheads", []), ("MAINB", "Main bearings", [])]),
+              ("CYL", "Cylinders (3 stages)", [("VALVES_C", "Suction & discharge valves", [("PLATES", "Valve plates")]),
+                                               ("PACK", "Rod packing", []), ("RINGS", "Piston rings", [])]),
+              ("CAP", "Capacity control", [("UNL", "Unloaders", [])])],
+    tags=[
+        *[("PI", f"Stage {s} discharge pressure", "barg", "CYL", "sensor", (lambda s: lambda c: c["pd"] * s / 3)(s), None) for s in (1, 2, 3)],
+        *[("TI", f"Stage {s} discharge temperature", "degC", "CYL", "sensor", (lambda s: lambda c: 128.0 + s * 3)(s), None) for s in (1, 2, 3)],
+        ("TI", "Valve cover temperature (max)", "degC", "VALVES_C", "sensor", lambda c: c.get("valve_t", 142.0), None),
+        ("VI", "Frame vibration", "mm/s", "FRAME", "sensor", lambda c: 3.0, None),
+        ("UY", "Rod load (calculated)", "% of rating", "FRAME", "calculated", lambda c: 78.0, None),
+    ],
+)
+
+EXPANDER = dict(
+    onto="PowerRecoveryExpander", eq_class="Expander",
+    subunits=[("EXP", "Expander", [("BLADES_E", "Rotor blades", []), ("EBRG", "Bearings", []), ("ECASE", "Casing", [])]),
+              ("GEN", "Motor-generator", [("GENW", "Windings", [])])],
+    tags=[
+        ("TI", "Inlet temperature", "degC", "EXP", "sensor", lambda c: 705.0, None),
+        ("VI", "Bearing vibration", "um", "EBRG", "sensor", lambda c: 32.0, None),
+        ("JI", "Power output", "MW", "GEN", "sensor", lambda c: c.get("mw", 22.0), None),
+    ],
+)
+
+WHB = dict(
+    onto="WasteHeatBoiler", eq_class="Boiler",
+    subunits=[("DRUM", "Steam drum", [("DSHELL", "Drum shell", [])]), ("ECO", "Economiser", [("ECOT", "Economiser tubes", [])]),
+              ("SH", "Superheater", [("SHT", "Superheater tubes", [])]), ("EVAP", "Evaporator", [("EVT", "Evaporator tubes", [])])],
+    tags=[
+        ("FI", "Steam production", "t/h", "DRUM", "sensor", lambda c: c.get("steam", 180.0), None),
+        ("LI", "Drum level", "%", "DRUM", "sensor", lambda c: 50.0, None),
+        ("TI", "Flue-gas outlet temperature", "degC", "ECO", "sensor", lambda c: 230.0, None),
+        ("AI", "Stack SO2", "mg/Nm3", "EVAP", "analyser", lambda c: c.get("so2", 180.0), None),
+    ],
+)
+
+COKE_DRUM = dict(
+    onto="CokeDrum", eq_class="Coke drum",
+    subunits=[("SHL", "Shell (1.25Cr-0.5Mo, 410SS clad)", [("SHELL", "Shell courses", []), ("SKIRT", "Skirt & skirt weld", [])]),
+              ("HEAD", "Unheading devices", [("TOPU", "Top unheading device", []), ("BOTU", "Bottom unheading device", [("GASK_U", "Seals")])]),
+              ("VLV", "Switch & isolation valves", [("SWV", "Switch valve", []), ("OVHV", "Overhead isolation valve", [])])],
+    tags=[
+        ("TI", "Drum overhead temperature", "degC", "SHL", "sensor", lambda c: 440.0, None),
+        ("PI", "Drum pressure", "barg", "SHL", "sensor", lambda c: 1.0, None),
+        *[("TI", f"Shell skin temperature {z}", "degC", "SHELL", "sensor", (lambda z: lambda c: 430.0 - z * 5)(z), None) for z in (1, 2, 3)],
+        ("LI", "Drum level (nuclear)", "%", "SHL", "sensor", lambda c: c.get("level", 70.0), None),
+        ("UY", "Cycle time (calculated)", "h", "SHL", "calculated", lambda c: c.get("cycle_h", 18.0), None),
+        ("UY", "Cumulative cycles (calculated)", "count", "SKIRT", "calculated", lambda c: c.get("cycles", 5200.0), None),
+    ],
+)
+
+DECOKING = dict(
+    onto="DecokingSystem", eq_class="Decoking system",
+    subunits=[("DER", "Derrick & drill stem", [("STEM", "Drill stem", []), ("RJ", "Rotary joint", [])]),
+              ("TOOL", "Cutting tool", [("NOZZ", "Cutting nozzles", [])])],
+    tags=[
+        ("PI", "Jet water pressure", "barg", "TOOL", "sensor", lambda c: 280.0, None),
+        ("ZI", "Cutting-mode indicator", "state", "TOOL", "sensor", lambda c: 0.0, None),
+    ],
+)
+
+CRUSHER = dict(
+    onto="Crusher", eq_class="Crusher",
+    subunits=[("ROLL", "Crushing rolls", [("TEETH", "Roll teeth", [])]), ("DRV", "Drive", [("GEARBOX", "Gearbox", [])])],
+    tags=[("II", "Motor current", "A", "DRV", "sensor", lambda c: 180.0, None),
+          ("VI", "Gearbox vibration", "mm/s", "GEARBOX", "sensor", lambda c: 3.2, None)],
+)
+
+TEMPLATES.update({
+    "column": COLUMN, "reactor3": REACTOR_3BED, "reactor4": REACTOR_4BED, "fccreactor": FCC_REACTOR, "regen": FCC_REGEN,
+    "slidevalve": SLIDE_VALVE, "compressor": COMPRESSOR, "recip": RECIP, "expander": EXPANDER, "whb": WHB,
+    "cokedrum": COKE_DRUM, "decoking": DECOKING, "crusher": CRUSHER,
+})

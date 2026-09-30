@@ -949,3 +949,677 @@ FI-2960,AR product rate,FI,sensor,kbd,CDU-B,CDU-B,B,95.2,PI historian
 LAB-2901,Kerosene flash point (lab),AL,lab,degC,CDU-B-FRC,CDU-B-FRC,B,43.0,LIMS
 LAB-2902,Diesel D86 T95 (lab),AL,lab,degC,CDU-B-FRC,CDU-B-FRC,B,352.0,LIMS
 LAB-2903,Naphtha final boiling point (lab),AL,lab,degC,CDU-B-FRC,CDU-B-FRC,B,178.0,LIMS
+FI-3001,Pass 1 flow,FI,sensor,m3/h,H-301-PASS1,H-301,Common,122.0,PI historian
+FI-3002,Pass 2 flow,FI,sensor,m3/h,H-301-PASS2,H-301,Common,122.0,PI historian
+FI-3003,Pass 3 flow,FI,sensor,m3/h,H-301-PASS3,H-301,Common,122.0,PI historian
+FI-3004,Pass 4 flow,FI,sensor,m3/h,H-301-PASS4,H-301,Common,122.0,PI historian
+TI-3005,Pass 1 outlet temperature (COT),TI,sensor,degC,H-301-PASS1,H-301,Common,290.0,PI historian
+TI-3006,Pass 2 outlet temperature (COT),TI,sensor,degC,H-301-PASS2,H-301,Common,290.0,PI historian
+TI-3007,Pass 3 outlet temperature (COT),TI,sensor,degC,H-301-PASS3,H-301,Common,290.0,PI historian
+TI-3008,Pass 4 outlet temperature (COT),TI,sensor,degC,H-301-PASS4,H-301,Common,290.0,PI historian
+TI-3009,Pass 1 tube-metal temperature (TMT),TI,sensor,degC,H-301-PASS1,H-301,Common,455.0,PI historian
+TI-3010,Pass 2 tube-metal temperature (TMT),TI,sensor,degC,H-301-PASS2,H-301,Common,461.0,PI historian
+TI-3011,Pass 3 tube-metal temperature (TMT),TI,sensor,degC,H-301-PASS3,H-301,Common,458.0,PI historian
+TI-3012,Pass 4 tube-metal temperature (TMT),TI,sensor,degC,H-301-PASS4,H-301,Common,452.0,PI historian
+TI-3013,Heater inlet temperature (CIT),TI,sensor,degC,H-301-RAD,H-301,Common,225.0,PI historian
+AI-3014,Flue-gas oxygen,AI,analyser,vol%,H-301-STK,H-301,Common,3.0,PI historian
+PI-3015,Arch draft,PI,sensor,mmH2O,H-301-STK,H-301,Common,-2.5,PI historian
+TI-3016,Stack temperature,TI,sensor,degC,H-301-STK,H-301,Common,185.0,PI historian
+FI-3017,Fuel gas flow,FI,sensor,Nm3/h,H-301-FUEL,H-301,Common,2624.0,PI historian
+PI-3018,Fuel gas pressure,PI,sensor,barg,H-301-FUEL,H-301,Common,2.4,PI historian
+CALC-3019,Absorbed duty (calculated),UY,calculated,MW,H-301-RAD,H-301,Common,24.0,KG derived (calculated)
+CALC-3020,Thermal efficiency (calculated),UY,calculated,%,H-301-STK,H-301,Common,86.5,KG derived (calculated)
+TI-3021,Riser outlet temperature (ROT),TI,sensor,degC,R-301-RTD,R-301,Common,532.0,PI historian
+PI-3022,Reactor pressure,PI,sensor,barg,R-301-RXV,R-301,Common,1.6,PI historian
+FI-3023,Fresh feed flow,FI,sensor,m3/h,R-301-FEEDNOZ,R-301,Common,490.0,PI historian
+FI-3024,Feed dispersion steam,FI,sensor,t/h,R-301-FEEDNOZ,R-301,Common,9.0,PI historian
+LI-3025,Stripper catalyst level,LI,sensor,%,R-301-STR,R-301,Common,55.0,PI historian
+FI-3026,Stripping steam,FI,sensor,t/h,R-301-STRSTM,R-301,Common,7.5,PI historian
+CALC-3027,Catalyst-to-oil ratio (calculated),UY,calculated,wt/wt,R-301-RISER,R-301,Common,7.1,KG derived (calculated)
+TI-3028,Dense-bed temperature,TI,sensor,degC,R-302-RGV,R-302,Common,712.0,PI historian
+TI-3029,Dilute-phase temperature,TI,sensor,degC,R-302-RGV,R-302,Common,731.0,PI historian
+AI-3030,Flue-gas oxygen,AI,analyser,vol%,R-302-RGV,R-302,Common,2.0,PI historian
+AI-3031,Flue-gas CO,AI,analyser,ppmv,R-302-RGV,R-302,Common,150.0,PI historian
+PI-3032,Regenerator pressure,PI,sensor,barg,R-302-RGV,R-302,Common,1.9,PI historian
+CALC-3033,Afterburn (calculated),UY,calculated,degC,R-302-RGV,R-302,Common,19.0,KG derived (calculated)
+CALC-3034,Catalyst losses (calculated),UY,calculated,t/d,R-302-CYC2,R-302,Common,3.6,KG derived (calculated)
+ZI-3035,Valve position,ZI,sensor,%,SV-301-DISC,SV-301,Common,46.0,PI historian
+PDI-3036,Valve pressure drop,PDI,sensor,bar,SV-301-BODY,SV-301,Common,0.42,PI historian
+ZI-3037,Valve position,ZI,sensor,%,SV-302-DISC,SV-302,Common,41.0,PI historian
+PDI-3038,Valve pressure drop,PDI,sensor,bar,SV-302-BODY,SV-302,Common,0.38,PI historian
+PI-3039,Suction pressure,PI,sensor,barg,K-302-CMP,K-302,Common,0.0,PI historian
+PI-3040,Discharge pressure,PI,sensor,barg,K-302-CMP,K-302,Common,2.6,PI historian
+TI-3041,Discharge temperature,TI,sensor,degC,K-302-CMP,K-302,Common,215.0,PI historian
+FI-3042,Suction flow,FI,sensor,kNm3/h,K-302-CMP,K-302,Common,290.0,PI historian
+SI-3043,Shaft speed,SI,sensor,rpm,K-302-DRV,K-302,Common,4800.0,PI historian
+VI-3044,Journal bearing vibration,VI,sensor,um,K-302-JBRG,K-302,Common,24.0,PI historian
+ZI-3045,Axial displacement,ZI,sensor,mm,K-302-TBRG_C,K-302,Common,0.18,PI historian
+CALC-3046,Surge margin (calculated),UY,calculated,%,K-302-ASC,K-302,Common,21.0,KG derived (calculated)
+TI-3047,Inlet temperature,TI,sensor,degC,EX-301-EXP,EX-301,Common,705.0,PI historian
+VI-3048,Bearing vibration,VI,sensor,um,EX-301-EBRG,EX-301,Common,32.0,PI historian
+JI-3049,Power output,JI,sensor,MW,EX-301-GEN,EX-301,Common,21.5,PI historian
+FI-3050,Steam production,FI,sensor,t/h,B-301-DRUM,B-301,Common,175.0,PI historian
+LI-3051,Drum level,LI,sensor,%,B-301-DRUM,B-301,Common,50.0,PI historian
+TI-3052,Flue-gas outlet temperature,TI,sensor,degC,B-301-ECO,B-301,Common,230.0,PI historian
+AI-3053,Stack SO2,AI,analyser,mg/Nm3,B-301-EVAP,B-301,Common,220.0,PI historian
+TI-3054,Column top temperature,TI,sensor,degC,C-301-TR_TOP,C-301,Common,125.0,PI historian
+PI-3055,Column top pressure,PI,sensor,barg,C-301-SHL,C-301,Common,1.1,PI historian
+TI-3056,Bottom temperature,TI,sensor,degC,C-301-TR_BOT,C-301,Common,350.0,PI historian
+PDI-3057,Column pressure drop,PDI,sensor,bar,C-301-INT,C-301,Common,0.3,PI historian
+LI-3058,Bottoms level,LI,sensor,%,C-301-SHL,C-301,Common,50.0,PI historian
+FI-3059,Reflux flow,FI,sensor,m3/h,C-301-TR_TOP,C-301,Common,380.0,PI historian
+TI-3060,Column top temperature,TI,sensor,degC,C-302-TR_TOP,C-302,Common,40.0,PI historian
+PI-3061,Column top pressure,PI,sensor,barg,C-302-SHL,C-302,Common,14.0,PI historian
+TI-3062,Bottom temperature,TI,sensor,degC,C-302-TR_BOT,C-302,Common,50.0,PI historian
+PDI-3063,Column pressure drop,PDI,sensor,bar,C-302-INT,C-302,Common,0.3,PI historian
+LI-3064,Bottoms level,LI,sensor,%,C-302-SHL,C-302,Common,50.0,PI historian
+FI-3065,Reflux flow,FI,sensor,m3/h,C-302-TR_TOP,C-302,Common,60.0,PI historian
+TI-3066,Column top temperature,TI,sensor,degC,C-303-TR_TOP,C-303,Common,60.0,PI historian
+PI-3067,Column top pressure,PI,sensor,barg,C-303-SHL,C-303,Common,10.0,PI historian
+TI-3068,Bottom temperature,TI,sensor,degC,C-303-TR_BOT,C-303,Common,180.0,PI historian
+PDI-3069,Column pressure drop,PDI,sensor,bar,C-303-INT,C-303,Common,0.3,PI historian
+LI-3070,Bottoms level,LI,sensor,%,C-303-SHL,C-303,Common,50.0,PI historian
+FI-3071,Reflux flow,FI,sensor,m3/h,C-303-TR_TOP,C-303,Common,140.0,PI historian
+TI-3072,Column top temperature,TI,sensor,degC,C-304-TR_TOP,C-304,Common,50.0,PI historian
+PI-3073,Column top pressure,PI,sensor,barg,C-304-SHL,C-304,Common,18.0,PI historian
+TI-3074,Bottom temperature,TI,sensor,degC,C-304-TR_BOT,C-304,Common,100.0,PI historian
+PDI-3075,Column pressure drop,PDI,sensor,bar,C-304-INT,C-304,Common,0.3,PI historian
+LI-3076,Bottoms level,LI,sensor,%,C-304-SHL,C-304,Common,50.0,PI historian
+FI-3077,Reflux flow,FI,sensor,m3/h,C-304-TR_TOP,C-304,Common,120.0,PI historian
+LI-3078,Hydrocarbon level,LI,sensor,%,V-301-SHL,V-301,Common,50.0,PI historian
+PI-3079,Pressure,PI,sensor,barg,V-301-SHL,V-301,Common,0.8,PI historian
+TI-3080,Temperature,TI,sensor,degC,V-301-SHL,V-301,Common,40.0,PI historian
+LI-3081,Boot interface level,LI,sensor,%,V-301-BOOTV,V-301,Common,40.0,PI historian
+LAB-3082,Boot water chloride (lab),AL,lab,ppm,V-301-BOOTV,V-301,Common,6.0,LIMS
+AI-3083,Boot water pH,AI,analyser,pH,V-301-BOOTV,V-301,Common,8.2,PI historian
+LAB-3084,Boot water iron (lab),AL,lab,ppm,V-301-BOOTV,V-301,Common,0.3,LIMS
+LI-3085,Hydrocarbon level,LI,sensor,%,V-302-SHL,V-302,Common,50.0,PI historian
+PI-3086,Pressure,PI,sensor,barg,V-302-SHL,V-302,Common,5.0,PI historian
+TI-3087,Temperature,TI,sensor,degC,V-302-SHL,V-302,Common,40.0,PI historian
+LI-3088,Boot interface level,LI,sensor,%,V-302-BOOTV,V-302,Common,40.0,PI historian
+LI-3089,Hydrocarbon level,LI,sensor,%,V-303-SHL,V-303,Common,50.0,PI historian
+PI-3090,Pressure,PI,sensor,barg,V-303-SHL,V-303,Common,14.0,PI historian
+TI-3091,Temperature,TI,sensor,degC,V-303-SHL,V-303,Common,40.0,PI historian
+LI-3092,Boot interface level,LI,sensor,%,V-303-BOOTV,V-303,Common,40.0,PI historian
+PI-3093,Suction pressure,PI,sensor,barg,K-301-CMP,K-301,Common,0.6,PI historian
+PI-3094,Discharge pressure,PI,sensor,barg,K-301-CMP,K-301,Common,16.0,PI historian
+TI-3095,Discharge temperature,TI,sensor,degC,K-301-CMP,K-301,Common,118.0,PI historian
+FI-3096,Suction flow,FI,sensor,kNm3/h,K-301-CMP,K-301,Common,95.0,PI historian
+SI-3097,Shaft speed,SI,sensor,rpm,K-301-DRV,K-301,Common,7200.0,PI historian
+VI-3098,Journal bearing vibration,VI,sensor,um,K-301-JBRG,K-301,Common,31.0,PI historian
+ZI-3099,Axial displacement,ZI,sensor,mm,K-301-TBRG_C,K-301,Common,0.18,PI historian
+CALC-3100,Surge margin (calculated),UY,calculated,%,K-301-ASC,K-301,Common,13.0,KG derived (calculated)
+TI-3101,Cold-side inlet temperature,TI,sensor,degC,E-301-TB,E-301,Common,150.0,PI historian
+TI-3102,Cold-side outlet temperature,TI,sensor,degC,E-301-TB,E-301,Common,225.0,PI historian
+TI-3103,Hot-side inlet temperature,TI,sensor,degC,E-301-SHL,E-301,Common,350.0,PI historian
+TI-3104,Hot-side outlet temperature,TI,sensor,degC,E-301-SHL,E-301,Common,280.0,PI historian
+PDI-3105,Cold-side pressure drop,PDI,sensor,bar,E-301-TB,E-301,Common,0.7,PI historian
+CALC-3106,Duty (calculated),UY,calculated,MW,E-301-TB,E-301,Common,20.0,KG derived (calculated)
+CALC-3107,Fouling resistance (calculated),UY,calculated,m2K/kW,E-301-TUBES,E-301,Common,0.2,KG derived (calculated)
+TI-3108,Cold-side inlet temperature,TI,sensor,degC,E-302-TB,E-302,Common,150.0,PI historian
+TI-3109,Cold-side outlet temperature,TI,sensor,degC,E-302-TB,E-302,Common,155.0,PI historian
+TI-3110,Hot-side inlet temperature,TI,sensor,degC,E-302-SHL,E-302,Common,350.0,PI historian
+TI-3111,Hot-side outlet temperature,TI,sensor,degC,E-302-SHL,E-302,Common,270.0,PI historian
+PDI-3112,Cold-side pressure drop,PDI,sensor,bar,E-302-TB,E-302,Common,0.7,PI historian
+CALC-3113,Duty (calculated),UY,calculated,MW,E-302-TB,E-302,Common,25.0,KG derived (calculated)
+CALC-3114,Fouling resistance (calculated),UY,calculated,m2K/kW,E-302-TUBES,E-302,Common,0.2,KG derived (calculated)
+TI-3115,Cold-side inlet temperature,TI,sensor,degC,E-303-TB,E-303,Common,90.0,PI historian
+TI-3116,Cold-side outlet temperature,TI,sensor,degC,E-303-TB,E-303,Common,150.0,PI historian
+TI-3117,Hot-side inlet temperature,TI,sensor,degC,E-303-SHL,E-303,Common,230.0,PI historian
+TI-3118,Hot-side outlet temperature,TI,sensor,degC,E-303-SHL,E-303,Common,160.0,PI historian
+PDI-3119,Cold-side pressure drop,PDI,sensor,bar,E-303-TB,E-303,Common,0.7,PI historian
+CALC-3120,Duty (calculated),UY,calculated,MW,E-303-TB,E-303,Common,9.0,KG derived (calculated)
+CALC-3121,Fouling resistance (calculated),UY,calculated,m2K/kW,E-303-TUBES,E-303,Common,0.2,KG derived (calculated)
+TI-3122,Process inlet temperature,TI,sensor,degC,E-310A-HDR,E-310A,Common,125.0,PI historian
+TI-3123,Process outlet temperature,TI,sensor,degC,E-310A-HDR,E-310A,Common,55.0,PI historian
+II-3124,Fan motor current,II,sensor,A,E-310A-FMOTOR,E-310A,Common,48.0,PI historian
+VI-3125,Fan vibration,VI,sensor,mm/s,E-310A-FAN,E-310A,Common,2.8,PI historian
+TI-3126,Process inlet temperature,TI,sensor,degC,E-310B-HDR,E-310B,Common,125.0,PI historian
+TI-3127,Process outlet temperature,TI,sensor,degC,E-310B-HDR,E-310B,Common,55.0,PI historian
+II-3128,Fan motor current,II,sensor,A,E-310B-FMOTOR,E-310B,Common,48.0,PI historian
+VI-3129,Fan vibration,VI,sensor,mm/s,E-310B-FAN,E-310B,Common,2.8,PI historian
+TI-3130,Cold-side inlet temperature,TI,sensor,degC,E-311-TB,E-311,Common,30.0,PI historian
+TI-3131,Cold-side outlet temperature,TI,sensor,degC,E-311-TB,E-311,Common,38.0,PI historian
+TI-3132,Hot-side inlet temperature,TI,sensor,degC,E-311-SHL,E-311,Common,55.0,PI historian
+TI-3133,Hot-side outlet temperature,TI,sensor,degC,E-311-SHL,E-311,Common,40.0,PI historian
+PDI-3134,Cold-side pressure drop,PDI,sensor,bar,E-311-TB,E-311,Common,0.7,PI historian
+CALC-3135,Duty (calculated),UY,calculated,MW,E-311-TB,E-311,Common,8.0,KG derived (calculated)
+CALC-3136,Fouling resistance (calculated),UY,calculated,m2K/kW,E-311-TUBES,E-311,Common,0.2,KG derived (calculated)
+TI-3137,Cold-side inlet temperature,TI,sensor,degC,E-312-TB,E-312,Common,30.0,PI historian
+TI-3138,Cold-side outlet temperature,TI,sensor,degC,E-312-TB,E-312,Common,38.0,PI historian
+TI-3139,Hot-side inlet temperature,TI,sensor,degC,E-312-SHL,E-312,Common,110.0,PI historian
+TI-3140,Hot-side outlet temperature,TI,sensor,degC,E-312-SHL,E-312,Common,40.0,PI historian
+PDI-3141,Cold-side pressure drop,PDI,sensor,bar,E-312-TB,E-312,Common,0.7,PI historian
+CALC-3142,Duty (calculated),UY,calculated,MW,E-312-TB,E-312,Common,7.0,KG derived (calculated)
+CALC-3143,Fouling resistance (calculated),UY,calculated,m2K/kW,E-312-TUBES,E-312,Common,0.2,KG derived (calculated)
+TI-3144,Cold-side inlet temperature,TI,sensor,degC,E-313-TB,E-313,Common,170.0,PI historian
+TI-3145,Cold-side outlet temperature,TI,sensor,degC,E-313-TB,E-313,Common,180.0,PI historian
+TI-3146,Hot-side inlet temperature,TI,sensor,degC,E-313-SHL,E-313,Common,230.0,PI historian
+TI-3147,Hot-side outlet temperature,TI,sensor,degC,E-313-SHL,E-313,Common,190.0,PI historian
+PDI-3148,Cold-side pressure drop,PDI,sensor,bar,E-313-TB,E-313,Common,0.7,PI historian
+CALC-3149,Duty (calculated),UY,calculated,MW,E-313-TB,E-313,Common,12.0,KG derived (calculated)
+CALC-3150,Fouling resistance (calculated),UY,calculated,m2K/kW,E-313-TUBES,E-313,Common,0.2,KG derived (calculated)
+CR-3151,Corrosion probe,CR,corrosion probe,mm/y,PC-301-PIPE,PC-301,Common,0.06,Corrosion monitoring system
+TML-3152,Minimum wall thickness (TML survey),UT,inspection,mm,PC-301-FITTINGS,PC-301,Common,13.9,Inspection DB (RBI)
+CR-3153,Corrosion probe,CR,corrosion probe,mm/y,PC-302-PIPE,PC-302,Common,0.12,Corrosion monitoring system
+TML-3154,Minimum wall thickness (TML survey),UT,inspection,mm,PC-302-FITTINGS,PC-302,Common,8.1,Inspection DB (RBI)
+CALC-3155,Water dew-point margin (calculated),UY,calculated,degC,PC-302-PIPE,PC-302,Common,22.0,KG derived (calculated)
+FI-3156,Injection rate,FI,sensor,L/h,X-301-MPUMP,X-301,Common,9000.0,PI historian
+LI-3157,Day-tank level,LI,sensor,%,X-301-TANK,X-301,Common,62.0,PI historian
+FI-3158,Injection rate,FI,sensor,L/h,X-302-MPUMP,X-302,Common,6.0,PI historian
+LI-3159,Day-tank level,LI,sensor,%,X-302-TANK,X-302,Common,62.0,PI historian
+FI-3160,Discharge flow,FI,sensor,m3/h,P-301A-PMP,P-301A,Common,490.0,PI historian
+PI-3161,Discharge pressure,PI,sensor,barg,P-301A-PMP,P-301A,Common,17.0,PI historian
+VI-3162,Radial bearing vibration,VI,sensor,mm/s,P-301A-RBRG,P-301A,Common,2.4,PI historian
+VI-3163,Thrust bearing vibration,VI,sensor,mm/s,P-301A-TBRG,P-301A,Common,1.9,PI historian
+TI-3164,Thrust bearing temperature,TI,sensor,degC,P-301A-TBRG,P-301A,Common,71.0,PI historian
+II-3165,Motor current,II,sensor,A,P-301A-DRV,P-301A,Common,394.0,PI historian
+FI-3166,Discharge flow,FI,sensor,m3/h,P-301B-PMP,P-301B,Common,0.0,PI historian
+PI-3167,Discharge pressure,PI,sensor,barg,P-301B-PMP,P-301B,Common,17.0,PI historian
+VI-3168,Radial bearing vibration,VI,sensor,mm/s,P-301B-RBRG,P-301B,Common,2.4,PI historian
+VI-3169,Thrust bearing vibration,VI,sensor,mm/s,P-301B-TBRG,P-301B,Common,1.9,PI historian
+TI-3170,Thrust bearing temperature,TI,sensor,degC,P-301B-TBRG,P-301B,Common,71.0,PI historian
+II-3171,Motor current,II,sensor,A,P-301B-DRV,P-301B,Common,0.0,PI historian
+FI-3172,Discharge flow,FI,sensor,m3/h,P-302A-PMP,P-302A,Common,600.0,PI historian
+PI-3173,Discharge pressure,PI,sensor,barg,P-302A-PMP,P-302A,Common,9.5,PI historian
+VI-3174,Radial bearing vibration,VI,sensor,mm/s,P-302A-RBRG,P-302A,Common,3.1,PI historian
+VI-3175,Thrust bearing vibration,VI,sensor,mm/s,P-302A-TBRG,P-302A,Common,2.5,PI historian
+TI-3176,Thrust bearing temperature,TI,sensor,degC,P-302A-TBRG,P-302A,Common,83.0,PI historian
+II-3177,Motor current,II,sensor,A,P-302A-DRV,P-302A,Common,250.0,PI historian
+PI-3178,Seal pot / barrier pressure,PI,sensor,barg,P-302A-SEAL,P-302A,Common,14.0,PI historian
+FI-3179,Discharge flow,FI,sensor,m3/h,P-302B-PMP,P-302B,Common,0.0,PI historian
+PI-3180,Discharge pressure,PI,sensor,barg,P-302B-PMP,P-302B,Common,9.5,PI historian
+VI-3181,Radial bearing vibration,VI,sensor,mm/s,P-302B-RBRG,P-302B,Common,2.4,PI historian
+VI-3182,Thrust bearing vibration,VI,sensor,mm/s,P-302B-TBRG,P-302B,Common,1.9,PI historian
+TI-3183,Thrust bearing temperature,TI,sensor,degC,P-302B-TBRG,P-302B,Common,83.0,PI historian
+II-3184,Motor current,II,sensor,A,P-302B-DRV,P-302B,Common,0.0,PI historian
+PI-3185,Seal pot / barrier pressure,PI,sensor,barg,P-302B-SEAL,P-302B,Common,14.0,PI historian
+FI-3186,Discharge flow,FI,sensor,m3/h,P-303A-PMP,P-303A,Common,300.0,PI historian
+PI-3187,Discharge pressure,PI,sensor,barg,P-303A-PMP,P-303A,Common,9.5,PI historian
+VI-3188,Radial bearing vibration,VI,sensor,mm/s,P-303A-RBRG,P-303A,Common,2.4,PI historian
+VI-3189,Thrust bearing vibration,VI,sensor,mm/s,P-303A-TBRG,P-303A,Common,1.9,PI historian
+TI-3190,Thrust bearing temperature,TI,sensor,degC,P-303A-TBRG,P-303A,Common,80.0,PI historian
+II-3191,Motor current,II,sensor,A,P-303A-DRV,P-303A,Common,145.0,PI historian
+PI-3192,Seal pot / barrier pressure,PI,sensor,barg,P-303A-SEAL,P-303A,Common,14.0,PI historian
+FI-3193,Discharge flow,FI,sensor,m3/h,P-303B-PMP,P-303B,Common,0.0,PI historian
+PI-3194,Discharge pressure,PI,sensor,barg,P-303B-PMP,P-303B,Common,9.5,PI historian
+VI-3195,Radial bearing vibration,VI,sensor,mm/s,P-303B-RBRG,P-303B,Common,2.4,PI historian
+VI-3196,Thrust bearing vibration,VI,sensor,mm/s,P-303B-TBRG,P-303B,Common,1.9,PI historian
+TI-3197,Thrust bearing temperature,TI,sensor,degC,P-303B-TBRG,P-303B,Common,80.0,PI historian
+II-3198,Motor current,II,sensor,A,P-303B-DRV,P-303B,Common,0.0,PI historian
+PI-3199,Seal pot / barrier pressure,PI,sensor,barg,P-303B-SEAL,P-303B,Common,14.0,PI historian
+FI-3200,Discharge flow,FI,sensor,m3/h,P-304A-PMP,P-304A,Common,75.0,PI historian
+PI-3201,Discharge pressure,PI,sensor,barg,P-304A-PMP,P-304A,Common,11.2,PI historian
+VI-3202,Radial bearing vibration,VI,sensor,mm/s,P-304A-RBRG,P-304A,Common,2.4,PI historian
+VI-3203,Thrust bearing vibration,VI,sensor,mm/s,P-304A-TBRG,P-304A,Common,1.9,PI historian
+TI-3204,Thrust bearing temperature,TI,sensor,degC,P-304A-TBRG,P-304A,Common,75.8,PI historian
+II-3205,Motor current,II,sensor,A,P-304A-DRV,P-304A,Common,66.0,PI historian
+FI-3206,Discharge flow,FI,sensor,m3/h,P-304B-PMP,P-304B,Common,0.0,PI historian
+PI-3207,Discharge pressure,PI,sensor,barg,P-304B-PMP,P-304B,Common,11.2,PI historian
+VI-3208,Radial bearing vibration,VI,sensor,mm/s,P-304B-RBRG,P-304B,Common,2.4,PI historian
+VI-3209,Thrust bearing vibration,VI,sensor,mm/s,P-304B-TBRG,P-304B,Common,1.9,PI historian
+TI-3210,Thrust bearing temperature,TI,sensor,degC,P-304B-TBRG,P-304B,Common,75.8,PI historian
+II-3211,Motor current,II,sensor,A,P-304B-DRV,P-304B,Common,0.0,PI historian
+FI-3212,Discharge flow,FI,sensor,m3/h,P-305A-PMP,P-305A,Common,400.0,PI historian
+PI-3213,Discharge pressure,PI,sensor,barg,P-305A-PMP,P-305A,Common,9.5,PI historian
+VI-3214,Radial bearing vibration,VI,sensor,mm/s,P-305A-RBRG,P-305A,Common,2.4,PI historian
+VI-3215,Thrust bearing vibration,VI,sensor,mm/s,P-305A-TBRG,P-305A,Common,1.9,PI historian
+TI-3216,Thrust bearing temperature,TI,sensor,degC,P-305A-TBRG,P-305A,Common,64.4,PI historian
+II-3217,Motor current,II,sensor,A,P-305A-DRV,P-305A,Common,184.0,PI historian
+PI-3218,Seal pot / barrier pressure,PI,sensor,barg,P-305A-SEAL,P-305A,Common,0.6,PI historian
+FI-3219,Discharge flow,FI,sensor,m3/h,P-305B-PMP,P-305B,Common,0.0,PI historian
+PI-3220,Discharge pressure,PI,sensor,barg,P-305B-PMP,P-305B,Common,9.5,PI historian
+VI-3221,Radial bearing vibration,VI,sensor,mm/s,P-305B-RBRG,P-305B,Common,2.4,PI historian
+VI-3222,Thrust bearing vibration,VI,sensor,mm/s,P-305B-TBRG,P-305B,Common,1.9,PI historian
+TI-3223,Thrust bearing temperature,TI,sensor,degC,P-305B-TBRG,P-305B,Common,64.4,PI historian
+II-3224,Motor current,II,sensor,A,P-305B-DRV,P-305B,Common,0.0,PI historian
+PI-3225,Seal pot / barrier pressure,PI,sensor,barg,P-305B-SEAL,P-305B,Common,0.6,PI historian
+FI-3226,Discharge flow,FI,sensor,m3/h,P-307A-PMP,P-307A,Common,30.0,PI historian
+PI-3227,Discharge pressure,PI,sensor,barg,P-307A-PMP,P-307A,Common,7.0,PI historian
+VI-3228,Radial bearing vibration,VI,sensor,mm/s,P-307A-RBRG,P-307A,Common,2.4,PI historian
+VI-3229,Thrust bearing vibration,VI,sensor,mm/s,P-307A-TBRG,P-307A,Common,1.9,PI historian
+TI-3230,Thrust bearing temperature,TI,sensor,degC,P-307A-TBRG,P-307A,Common,64.4,PI historian
+II-3231,Motor current,II,sensor,A,P-307A-DRV,P-307A,Common,39.0,PI historian
+FI-3232,Discharge flow,FI,sensor,m3/h,P-307B-PMP,P-307B,Common,0.0,PI historian
+PI-3233,Discharge pressure,PI,sensor,barg,P-307B-PMP,P-307B,Common,7.0,PI historian
+VI-3234,Radial bearing vibration,VI,sensor,mm/s,P-307B-RBRG,P-307B,Common,2.4,PI historian
+VI-3235,Thrust bearing vibration,VI,sensor,mm/s,P-307B-TBRG,P-307B,Common,1.9,PI historian
+TI-3236,Thrust bearing temperature,TI,sensor,degC,P-307B-TBRG,P-307B,Common,64.4,PI historian
+II-3237,Motor current,II,sensor,A,P-307B-DRV,P-307B,Common,0.0,PI historian
+FI-3238,Discharge flow,FI,sensor,m3/h,P-306A-PMP,P-306A,Common,120.0,PI historian
+PI-3239,Discharge pressure,PI,sensor,barg,P-306A-PMP,P-306A,Common,11.2,PI historian
+VI-3240,Radial bearing vibration,VI,sensor,mm/s,P-306A-RBRG,P-306A,Common,2.4,PI historian
+VI-3241,Thrust bearing vibration,VI,sensor,mm/s,P-306A-TBRG,P-306A,Common,1.9,PI historian
+TI-3242,Thrust bearing temperature,TI,sensor,degC,P-306A-TBRG,P-306A,Common,64.7,PI historian
+II-3243,Motor current,II,sensor,A,P-306A-DRV,P-306A,Common,79.0,PI historian
+PI-3244,Seal pot / barrier pressure,PI,sensor,barg,P-306A-SEAL,P-306A,Common,0.6,PI historian
+FI-3245,Discharge flow,FI,sensor,m3/h,P-306B-PMP,P-306B,Common,0.0,PI historian
+PI-3246,Discharge pressure,PI,sensor,barg,P-306B-PMP,P-306B,Common,11.2,PI historian
+VI-3247,Radial bearing vibration,VI,sensor,mm/s,P-306B-RBRG,P-306B,Common,2.4,PI historian
+VI-3248,Thrust bearing vibration,VI,sensor,mm/s,P-306B-TBRG,P-306B,Common,1.9,PI historian
+TI-3249,Thrust bearing temperature,TI,sensor,degC,P-306B-TBRG,P-306B,Common,64.7,PI historian
+II-3250,Motor current,II,sensor,A,P-306B-DRV,P-306B,Common,0.0,PI historian
+PI-3251,Seal pot / barrier pressure,PI,sensor,barg,P-306B-SEAL,P-306B,Common,0.6,PI historian
+FI-4001,Pass 1 flow,FI,sensor,m3/h,H-401-PASS1,H-401,Common,142.0,PI historian
+FI-4002,Pass 2 flow,FI,sensor,m3/h,H-401-PASS2,H-401,Common,142.0,PI historian
+FI-4003,Pass 3 flow,FI,sensor,m3/h,H-401-PASS3,H-401,Common,142.0,PI historian
+FI-4004,Pass 4 flow,FI,sensor,m3/h,H-401-PASS4,H-401,Common,142.0,PI historian
+TI-4005,Pass 1 outlet temperature (COT),TI,sensor,degC,H-401-PASS1,H-401,Common,378.0,PI historian
+TI-4006,Pass 2 outlet temperature (COT),TI,sensor,degC,H-401-PASS2,H-401,Common,378.0,PI historian
+TI-4007,Pass 3 outlet temperature (COT),TI,sensor,degC,H-401-PASS3,H-401,Common,378.0,PI historian
+TI-4008,Pass 4 outlet temperature (COT),TI,sensor,degC,H-401-PASS4,H-401,Common,378.0,PI historian
+TI-4009,Pass 1 tube-metal temperature (TMT),TI,sensor,degC,H-401-PASS1,H-401,Common,512.0,PI historian
+TI-4010,Pass 2 tube-metal temperature (TMT),TI,sensor,degC,H-401-PASS2,H-401,Common,518.0,PI historian
+TI-4011,Pass 3 tube-metal temperature (TMT),TI,sensor,degC,H-401-PASS3,H-401,Common,524.0,PI historian
+TI-4012,Pass 4 tube-metal temperature (TMT),TI,sensor,degC,H-401-PASS4,H-401,Common,515.0,PI historian
+TI-4013,Heater inlet temperature (CIT),TI,sensor,degC,H-401-RAD,H-401,Common,345.0,PI historian
+AI-4014,Flue-gas oxygen,AI,analyser,vol%,H-401-STK,H-401,Common,3.2,PI historian
+PI-4015,Arch draft,PI,sensor,mmH2O,H-401-STK,H-401,Common,-2.5,PI historian
+TI-4016,Stack temperature,TI,sensor,degC,H-401-STK,H-401,Common,175.0,PI historian
+FI-4017,Fuel gas flow,FI,sensor,Nm3/h,H-401-FUEL,H-401,Common,2293.0,PI historian
+PI-4018,Fuel gas pressure,PI,sensor,barg,H-401-FUEL,H-401,Common,2.4,PI historian
+CALC-4019,Absorbed duty (calculated),UY,calculated,MW,H-401-RAD,H-401,Common,21.5,KG derived (calculated)
+CALC-4020,Thermal efficiency (calculated),UY,calculated,%,H-401-STK,H-401,Common,89.0,KG derived (calculated)
+TI-4021,Bed 1 inlet temperature,TI,sensor,degC,R-401-BED1,R-401,Common,375.0,PI historian
+TI-4022,Bed 1 outlet temperature,TI,sensor,degC,R-401-BED1,R-401,Common,391.0,PI historian
+TI-4023,Bed 2 inlet temperature,TI,sensor,degC,R-401-BED2,R-401,Common,383.0,PI historian
+TI-4024,Bed 2 outlet temperature,TI,sensor,degC,R-401-BED2,R-401,Common,399.0,PI historian
+TI-4025,Bed 3 inlet temperature,TI,sensor,degC,R-401-BED3,R-401,Common,391.0,PI historian
+TI-4026,Bed 3 outlet temperature,TI,sensor,degC,R-401-BED3,R-401,Common,407.0,PI historian
+FI-4027,Quench 1 hydrogen flow,FI,sensor,kNm3/h,R-401-QD1,R-401,Common,30.0,PI historian
+FI-4028,Quench 2 hydrogen flow,FI,sensor,kNm3/h,R-401-QD2,R-401,Common,30.0,PI historian
+PI-4029,Reactor inlet pressure,PI,sensor,barg,R-401-SHL,R-401,Common,165.0,PI historian
+PDI-4030,Reactor pressure drop,PDI,sensor,bar,R-401-INT,R-401,Common,2.4,PI historian
+TI-4031,Shell skin temperature (max),TI,sensor,degC,R-401-SHL,R-401,Common,385.0,PI historian
+CALC-4032,Weighted average bed temperature (calculated),UY,calculated,degC,R-401-INT,R-401,Common,391.0,KG derived (calculated)
+TI-4033,Bed 1 inlet temperature,TI,sensor,degC,R-402-BED1,R-402,Common,386.0,PI historian
+TI-4034,Bed 1 outlet temperature,TI,sensor,degC,R-402-BED1,R-402,Common,400.0,PI historian
+TI-4035,Bed 2 inlet temperature,TI,sensor,degC,R-402-BED2,R-402,Common,390.0,PI historian
+TI-4036,Bed 2 outlet temperature,TI,sensor,degC,R-402-BED2,R-402,Common,404.0,PI historian
+TI-4037,Bed 3 inlet temperature,TI,sensor,degC,R-402-BED3,R-402,Common,394.0,PI historian
+TI-4038,Bed 3 outlet temperature,TI,sensor,degC,R-402-BED3,R-402,Common,408.0,PI historian
+TI-4039,Bed 4 inlet temperature,TI,sensor,degC,R-402-BED4,R-402,Common,398.0,PI historian
+TI-4040,Bed 4 outlet temperature,TI,sensor,degC,R-402-BED4,R-402,Common,412.0,PI historian
+FI-4041,Quench 1 hydrogen flow,FI,sensor,kNm3/h,R-402-QD1,R-402,Common,35.0,PI historian
+FI-4042,Quench 2 hydrogen flow,FI,sensor,kNm3/h,R-402-QD2,R-402,Common,35.0,PI historian
+FI-4043,Quench 3 hydrogen flow,FI,sensor,kNm3/h,R-402-QD3,R-402,Common,35.0,PI historian
+PI-4044,Reactor inlet pressure,PI,sensor,barg,R-402-SHL,R-402,Common,160.0,PI historian
+PDI-4045,Reactor pressure drop,PDI,sensor,bar,R-402-INT,R-402,Common,3.1,PI historian
+TI-4046,Shell skin temperature (max),TI,sensor,degC,R-402-SHL,R-402,Common,395.0,PI historian
+CALC-4047,Weighted average bed temperature (calculated),UY,calculated,degC,R-402-INT,R-402,Common,399.0,KG derived (calculated)
+TI-4048,Cold-side inlet temperature,TI,sensor,degC,E-401-TB,E-401,Common,180.0,PI historian
+TI-4049,Cold-side outlet temperature,TI,sensor,degC,E-401-TB,E-401,Common,340.0,PI historian
+TI-4050,Hot-side inlet temperature,TI,sensor,degC,E-401-SHL,E-401,Common,420.0,PI historian
+TI-4051,Hot-side outlet temperature,TI,sensor,degC,E-401-SHL,E-401,Common,270.0,PI historian
+PDI-4052,Cold-side pressure drop,PDI,sensor,bar,E-401-TB,E-401,Common,0.7,PI historian
+CALC-4053,Duty (calculated),UY,calculated,MW,E-401-TB,E-401,Common,60.0,KG derived (calculated)
+CALC-4054,Fouling resistance (calculated),UY,calculated,m2K/kW,E-401-TUBES,E-401,Common,0.2,KG derived (calculated)
+TI-4055,Cold-side inlet temperature,TI,sensor,degC,E-402-TB,E-402,Common,70.0,PI historian
+TI-4056,Cold-side outlet temperature,TI,sensor,degC,E-402-TB,E-402,Common,230.0,PI historian
+TI-4057,Hot-side inlet temperature,TI,sensor,degC,E-402-SHL,E-402,Common,260.0,PI historian
+TI-4058,Hot-side outlet temperature,TI,sensor,degC,E-402-SHL,E-402,Common,150.0,PI historian
+PDI-4059,Cold-side pressure drop,PDI,sensor,bar,E-402-TB,E-402,Common,0.7,PI historian
+CALC-4060,Duty (calculated),UY,calculated,MW,E-402-TB,E-402,Common,35.0,KG derived (calculated)
+CALC-4061,Fouling resistance (calculated),UY,calculated,m2K/kW,E-402-TUBES,E-402,Common,0.2,KG derived (calculated)
+LI-4062,Hydrocarbon level,LI,sensor,%,V-401-SHL,V-401,Common,50.0,PI historian
+PI-4063,Pressure,PI,sensor,barg,V-401-SHL,V-401,Common,155.0,PI historian
+TI-4064,Temperature,TI,sensor,degC,V-401-SHL,V-401,Common,260.0,PI historian
+LI-4065,Hydrocarbon level,LI,sensor,%,V-402-SHL,V-402,Common,50.0,PI historian
+PI-4066,Pressure,PI,sensor,barg,V-402-SHL,V-402,Common,152.0,PI historian
+TI-4067,Temperature,TI,sensor,degC,V-402-SHL,V-402,Common,50.0,PI historian
+LI-4068,Boot interface level,LI,sensor,%,V-402-BOOTV,V-402,Common,40.0,PI historian
+LI-4069,Hydrocarbon level,LI,sensor,%,V-403-SHL,V-403,Common,50.0,PI historian
+PI-4070,Pressure,PI,sensor,barg,V-403-SHL,V-403,Common,25.0,PI historian
+TI-4071,Temperature,TI,sensor,degC,V-403-SHL,V-403,Common,50.0,PI historian
+LI-4072,Boot interface level,LI,sensor,%,V-403-BOOTV,V-403,Common,40.0,PI historian
+LI-4073,Hydrocarbon level,LI,sensor,%,V-404-SHL,V-404,Common,50.0,PI historian
+PI-4074,Pressure,PI,sensor,barg,V-404-SHL,V-404,Common,150.0,PI historian
+TI-4075,Temperature,TI,sensor,degC,V-404-SHL,V-404,Common,55.0,PI historian
+PI-4076,Suction pressure,PI,sensor,barg,K-401-CMP,K-401,Common,150.0,PI historian
+PI-4077,Discharge pressure,PI,sensor,barg,K-401-CMP,K-401,Common,172.0,PI historian
+TI-4078,Discharge temperature,TI,sensor,degC,K-401-CMP,K-401,Common,72.0,PI historian
+FI-4079,Suction flow,FI,sensor,kNm3/h,K-401-CMP,K-401,Common,420.0,PI historian
+SI-4080,Shaft speed,SI,sensor,rpm,K-401-DRV,K-401,Common,10400.0,PI historian
+VI-4081,Journal bearing vibration,VI,sensor,um,K-401-JBRG,K-401,Common,41.0,PI historian
+ZI-4082,Axial displacement,ZI,sensor,mm,K-401-TBRG_C,K-401,Common,0.18,PI historian
+CALC-4083,Surge margin (calculated),UY,calculated,%,K-401-ASC,K-401,Common,10.0,KG derived (calculated)
+PI-4084,Stage 1 discharge pressure,PI,sensor,barg,K-402A-CYL,K-402A,Common,59.33,PI historian
+PI-4085,Stage 2 discharge pressure,PI,sensor,barg,K-402A-CYL,K-402A,Common,118.67,PI historian
+PI-4086,Stage 3 discharge pressure,PI,sensor,barg,K-402A-CYL,K-402A,Common,178.0,PI historian
+TI-4087,Stage 1 discharge temperature,TI,sensor,degC,K-402A-CYL,K-402A,Common,131.0,PI historian
+TI-4088,Stage 2 discharge temperature,TI,sensor,degC,K-402A-CYL,K-402A,Common,134.0,PI historian
+TI-4089,Stage 3 discharge temperature,TI,sensor,degC,K-402A-CYL,K-402A,Common,137.0,PI historian
+TI-4090,Valve cover temperature (max),TI,sensor,degC,K-402A-VALVES_C,K-402A,Common,149.0,PI historian
+VI-4091,Frame vibration,VI,sensor,mm/s,K-402A-FRAME,K-402A,Common,3.0,PI historian
+CALC-4092,Rod load (calculated),UY,calculated,% of rating,K-402A-FRAME,K-402A,Common,78.0,KG derived (calculated)
+PI-4093,Stage 1 discharge pressure,PI,sensor,barg,K-402B-CYL,K-402B,Common,59.33,PI historian
+PI-4094,Stage 2 discharge pressure,PI,sensor,barg,K-402B-CYL,K-402B,Common,118.67,PI historian
+PI-4095,Stage 3 discharge pressure,PI,sensor,barg,K-402B-CYL,K-402B,Common,178.0,PI historian
+TI-4096,Stage 1 discharge temperature,TI,sensor,degC,K-402B-CYL,K-402B,Common,131.0,PI historian
+TI-4097,Stage 2 discharge temperature,TI,sensor,degC,K-402B-CYL,K-402B,Common,134.0,PI historian
+TI-4098,Stage 3 discharge temperature,TI,sensor,degC,K-402B-CYL,K-402B,Common,137.0,PI historian
+TI-4099,Valve cover temperature (max),TI,sensor,degC,K-402B-VALVES_C,K-402B,Common,141.0,PI historian
+VI-4100,Frame vibration,VI,sensor,mm/s,K-402B-FRAME,K-402B,Common,3.0,PI historian
+CALC-4101,Rod load (calculated),UY,calculated,% of rating,K-402B-FRAME,K-402B,Common,78.0,KG derived (calculated)
+TI-4102,Column top temperature,TI,sensor,degC,C-401-TR_TOP,C-401,Common,110.0,PI historian
+PI-4103,Column top pressure,PI,sensor,barg,C-401-SHL,C-401,Common,8.0,PI historian
+TI-4104,Bottom temperature,TI,sensor,degC,C-401-TR_BOT,C-401,Common,250.0,PI historian
+PDI-4105,Column pressure drop,PDI,sensor,bar,C-401-INT,C-401,Common,0.3,PI historian
+LI-4106,Bottoms level,LI,sensor,%,C-401-SHL,C-401,Common,50.0,PI historian
+FI-4107,Reflux flow,FI,sensor,m3/h,C-401-TR_TOP,C-401,Common,90.0,PI historian
+TI-4108,Column top temperature,TI,sensor,degC,C-402-TR_TOP,C-402,Common,115.0,PI historian
+PI-4109,Column top pressure,PI,sensor,barg,C-402-SHL,C-402,Common,1.2,PI historian
+TI-4110,Bottom temperature,TI,sensor,degC,C-402-TR_BOT,C-402,Common,340.0,PI historian
+PDI-4111,Column pressure drop,PDI,sensor,bar,C-402-INT,C-402,Common,0.3,PI historian
+LI-4112,Bottoms level,LI,sensor,%,C-402-SHL,C-402,Common,50.0,PI historian
+FI-4113,Reflux flow,FI,sensor,m3/h,C-402-TR_TOP,C-402,Common,260.0,PI historian
+CR-4114,Corrosion probe,CR,corrosion probe,mm/y,PC-401-PIPE,PC-401,Common,0.21,Corrosion monitoring system
+TML-4115,Minimum wall thickness (TML survey),UT,inspection,mm,PC-401-FITTINGS,PC-401,Common,16.4,Inspection DB (RBI)
+CR-4116,Corrosion probe,CR,corrosion probe,mm/y,PC-402-PIPE,PC-402,Common,0.02,Corrosion monitoring system
+TML-4117,Minimum wall thickness (TML survey),UT,inspection,mm,PC-402-FITTINGS,PC-402,Common,38.6,Inspection DB (RBI)
+FI-4118,Injection rate,FI,sensor,L/h,X-401-MPUMP,X-401,Common,25000.0,PI historian
+LI-4119,Day-tank level,LI,sensor,%,X-401-TANK,X-401,Common,62.0,PI historian
+FI-4120,Injection rate,FI,sensor,L/h,X-402-MPUMP,X-402,Common,5.0,PI historian
+LI-4121,Day-tank level,LI,sensor,%,X-402-TANK,X-402,Common,62.0,PI historian
+TI-4122,Process inlet temperature,TI,sensor,degC,E-410A-HDR,E-410A,Common,150.0,PI historian
+TI-4123,Process outlet temperature,TI,sensor,degC,E-410A-HDR,E-410A,Common,50.0,PI historian
+II-4124,Fan motor current,II,sensor,A,E-410A-FMOTOR,E-410A,Common,48.0,PI historian
+VI-4125,Fan vibration,VI,sensor,mm/s,E-410A-FAN,E-410A,Common,2.8,PI historian
+TI-4126,Process inlet temperature,TI,sensor,degC,E-410B-HDR,E-410B,Common,150.0,PI historian
+TI-4127,Process outlet temperature,TI,sensor,degC,E-410B-HDR,E-410B,Common,50.0,PI historian
+II-4128,Fan motor current,II,sensor,A,E-410B-FMOTOR,E-410B,Common,48.0,PI historian
+VI-4129,Fan vibration,VI,sensor,mm/s,E-410B-FAN,E-410B,Common,2.8,PI historian
+TI-4130,Process inlet temperature,TI,sensor,degC,E-410C-HDR,E-410C,Common,150.0,PI historian
+TI-4131,Process outlet temperature,TI,sensor,degC,E-410C-HDR,E-410C,Common,50.0,PI historian
+II-4132,Fan motor current,II,sensor,A,E-410C-FMOTOR,E-410C,Common,48.0,PI historian
+VI-4133,Fan vibration,VI,sensor,mm/s,E-410C-FAN,E-410C,Common,2.8,PI historian
+TI-4134,Process inlet temperature,TI,sensor,degC,E-410D-HDR,E-410D,Common,150.0,PI historian
+TI-4135,Process outlet temperature,TI,sensor,degC,E-410D-HDR,E-410D,Common,50.0,PI historian
+II-4136,Fan motor current,II,sensor,A,E-410D-FMOTOR,E-410D,Common,48.0,PI historian
+VI-4137,Fan vibration,VI,sensor,mm/s,E-410D-FAN,E-410D,Common,2.8,PI historian
+FI-4138,Discharge flow,FI,sensor,m3/h,P-401A-PMP,P-401A,Common,570.0,PI historian
+PI-4139,Discharge pressure,PI,sensor,barg,P-401A-PMP,P-401A,Common,160.4,PI historian
+VI-4140,Radial bearing vibration,VI,sensor,mm/s,P-401A-RBRG,P-401A,Common,2.4,PI historian
+VI-4141,Thrust bearing vibration,VI,sensor,mm/s,P-401A-TBRG,P-401A,Common,1.9,PI historian
+TI-4142,Thrust bearing temperature,TI,sensor,degC,P-401A-TBRG,P-401A,Common,72.8,PI historian
+II-4143,Motor current,II,sensor,A,P-401A-DRV,P-401A,Common,289.0,PI historian
+FI-4144,Discharge flow,FI,sensor,m3/h,P-401B-PMP,P-401B,Common,0.0,PI historian
+PI-4145,Discharge pressure,PI,sensor,barg,P-401B-PMP,P-401B,Common,160.4,PI historian
+VI-4146,Radial bearing vibration,VI,sensor,mm/s,P-401B-RBRG,P-401B,Common,2.4,PI historian
+VI-4147,Thrust bearing vibration,VI,sensor,mm/s,P-401B-TBRG,P-401B,Common,1.9,PI historian
+TI-4148,Thrust bearing temperature,TI,sensor,degC,P-401B-TBRG,P-401B,Common,72.8,PI historian
+II-4149,Motor current,II,sensor,A,P-401B-DRV,P-401B,Common,0.0,PI historian
+FI-4150,Discharge flow,FI,sensor,m3/h,P-402A-PMP,P-402A,Common,25.0,PI historian
+PI-4151,Discharge pressure,PI,sensor,barg,P-402A-PMP,P-402A,Common,156.3,PI historian
+VI-4152,Radial bearing vibration,VI,sensor,mm/s,P-402A-RBRG,P-402A,Common,2.4,PI historian
+VI-4153,Thrust bearing vibration,VI,sensor,mm/s,P-402A-TBRG,P-402A,Common,1.9,PI historian
+TI-4154,Thrust bearing temperature,TI,sensor,degC,P-402A-TBRG,P-402A,Common,64.4,PI historian
+II-4155,Motor current,II,sensor,A,P-402A-DRV,P-402A,Common,223.0,PI historian
+FI-4156,Discharge flow,FI,sensor,m3/h,P-402B-PMP,P-402B,Common,0.0,PI historian
+PI-4157,Discharge pressure,PI,sensor,barg,P-402B-PMP,P-402B,Common,156.3,PI historian
+VI-4158,Radial bearing vibration,VI,sensor,mm/s,P-402B-RBRG,P-402B,Common,2.4,PI historian
+VI-4159,Thrust bearing vibration,VI,sensor,mm/s,P-402B-TBRG,P-402B,Common,1.9,PI historian
+TI-4160,Thrust bearing temperature,TI,sensor,degC,P-402B-TBRG,P-402B,Common,64.4,PI historian
+II-4161,Motor current,II,sensor,A,P-402B-DRV,P-402B,Common,0.0,PI historian
+FI-4162,Discharge flow,FI,sensor,m3/h,P-403A-PMP,P-403A,Common,120.0,PI historian
+PI-4163,Discharge pressure,PI,sensor,barg,P-403A-PMP,P-403A,Common,14.5,PI historian
+VI-4164,Radial bearing vibration,VI,sensor,mm/s,P-403A-RBRG,P-403A,Common,2.4,PI historian
+VI-4165,Thrust bearing vibration,VI,sensor,mm/s,P-403A-TBRG,P-403A,Common,1.9,PI historian
+TI-4166,Thrust bearing temperature,TI,sensor,degC,P-403A-TBRG,P-403A,Common,81.8,PI historian
+II-4167,Motor current,II,sensor,A,P-403A-DRV,P-403A,Common,105.0,PI historian
+PI-4168,Seal pot / barrier pressure,PI,sensor,barg,P-403A-SEAL,P-403A,Common,14.0,PI historian
+FI-4169,Discharge flow,FI,sensor,m3/h,P-403B-PMP,P-403B,Common,0.0,PI historian
+PI-4170,Discharge pressure,PI,sensor,barg,P-403B-PMP,P-403B,Common,14.5,PI historian
+VI-4171,Radial bearing vibration,VI,sensor,mm/s,P-403B-RBRG,P-403B,Common,2.4,PI historian
+VI-4172,Thrust bearing vibration,VI,sensor,mm/s,P-403B-TBRG,P-403B,Common,1.9,PI historian
+TI-4173,Thrust bearing temperature,TI,sensor,degC,P-403B-TBRG,P-403B,Common,81.8,PI historian
+II-4174,Motor current,II,sensor,A,P-403B-DRV,P-403B,Common,0.0,PI historian
+PI-4175,Seal pot / barrier pressure,PI,sensor,barg,P-403B-SEAL,P-403B,Common,14.0,PI historian
+FI-4176,Discharge flow,FI,sensor,m3/h,P-404A-PMP,P-404A,Common,230.0,PI historian
+PI-4177,Discharge pressure,PI,sensor,barg,P-404A-PMP,P-404A,Common,12.0,PI historian
+VI-4178,Radial bearing vibration,VI,sensor,mm/s,P-404A-RBRG,P-404A,Common,2.4,PI historian
+VI-4179,Thrust bearing vibration,VI,sensor,mm/s,P-404A-TBRG,P-404A,Common,1.9,PI historian
+TI-4180,Thrust bearing temperature,TI,sensor,degC,P-404A-TBRG,P-404A,Common,77.9,PI historian
+II-4181,Motor current,II,sensor,A,P-404A-DRV,P-404A,Common,145.0,PI historian
+PI-4182,Seal pot / barrier pressure,PI,sensor,barg,P-404A-SEAL,P-404A,Common,14.0,PI historian
+FI-4183,Discharge flow,FI,sensor,m3/h,P-404B-PMP,P-404B,Common,0.0,PI historian
+PI-4184,Discharge pressure,PI,sensor,barg,P-404B-PMP,P-404B,Common,12.0,PI historian
+VI-4185,Radial bearing vibration,VI,sensor,mm/s,P-404B-RBRG,P-404B,Common,2.4,PI historian
+VI-4186,Thrust bearing vibration,VI,sensor,mm/s,P-404B-TBRG,P-404B,Common,1.9,PI historian
+TI-4187,Thrust bearing temperature,TI,sensor,degC,P-404B-TBRG,P-404B,Common,77.9,PI historian
+II-4188,Motor current,II,sensor,A,P-404B-DRV,P-404B,Common,0.0,PI historian
+PI-4189,Seal pot / barrier pressure,PI,sensor,barg,P-404B-SEAL,P-404B,Common,14.0,PI historian
+FI-4190,Discharge flow,FI,sensor,m3/h,P-405A-PMP,P-405A,Common,300.0,PI historian
+PI-4191,Discharge pressure,PI,sensor,barg,P-405A-PMP,P-405A,Common,9.5,PI historian
+VI-4192,Radial bearing vibration,VI,sensor,mm/s,P-405A-RBRG,P-405A,Common,2.4,PI historian
+VI-4193,Thrust bearing vibration,VI,sensor,mm/s,P-405A-TBRG,P-405A,Common,1.9,PI historian
+TI-4194,Thrust bearing temperature,TI,sensor,degC,P-405A-TBRG,P-405A,Common,64.4,PI historian
+II-4195,Motor current,II,sensor,A,P-405A-DRV,P-405A,Common,145.0,PI historian
+PI-4196,Seal pot / barrier pressure,PI,sensor,barg,P-405A-SEAL,P-405A,Common,0.6,PI historian
+FI-4197,Discharge flow,FI,sensor,m3/h,P-405B-PMP,P-405B,Common,0.0,PI historian
+PI-4198,Discharge pressure,PI,sensor,barg,P-405B-PMP,P-405B,Common,9.5,PI historian
+VI-4199,Radial bearing vibration,VI,sensor,mm/s,P-405B-RBRG,P-405B,Common,2.4,PI historian
+VI-4200,Thrust bearing vibration,VI,sensor,mm/s,P-405B-TBRG,P-405B,Common,1.9,PI historian
+TI-4201,Thrust bearing temperature,TI,sensor,degC,P-405B-TBRG,P-405B,Common,64.4,PI historian
+II-4202,Motor current,II,sensor,A,P-405B-DRV,P-405B,Common,0.0,PI historian
+PI-4203,Seal pot / barrier pressure,PI,sensor,barg,P-405B-SEAL,P-405B,Common,0.6,PI historian
+FI-5001,Pass 1 flow,FI,sensor,m3/h,H-501-PASS1,H-501,Common,70.0,PI historian
+FI-5002,Pass 2 flow,FI,sensor,m3/h,H-501-PASS2,H-501,Common,70.0,PI historian
+FI-5003,Pass 3 flow,FI,sensor,m3/h,H-501-PASS3,H-501,Common,70.0,PI historian
+FI-5004,Pass 4 flow,FI,sensor,m3/h,H-501-PASS4,H-501,Common,70.0,PI historian
+TI-5005,Pass 1 outlet temperature (COT),TI,sensor,degC,H-501-PASS1,H-501,Common,496.0,PI historian
+TI-5006,Pass 2 outlet temperature (COT),TI,sensor,degC,H-501-PASS2,H-501,Common,496.0,PI historian
+TI-5007,Pass 3 outlet temperature (COT),TI,sensor,degC,H-501-PASS3,H-501,Common,496.0,PI historian
+TI-5008,Pass 4 outlet temperature (COT),TI,sensor,degC,H-501-PASS4,H-501,Common,496.0,PI historian
+TI-5009,Pass 1 tube-metal temperature (TMT),TI,sensor,degC,H-501-PASS1,H-501,Common,610.0,PI historian
+TI-5010,Pass 2 tube-metal temperature (TMT),TI,sensor,degC,H-501-PASS2,H-501,Common,615.0,PI historian
+TI-5011,Pass 3 tube-metal temperature (TMT),TI,sensor,degC,H-501-PASS3,H-501,Common,622.0,PI historian
+TI-5012,Pass 4 tube-metal temperature (TMT),TI,sensor,degC,H-501-PASS4,H-501,Common,618.0,PI historian
+TI-5013,Heater inlet temperature (CIT),TI,sensor,degC,H-501-RAD,H-501,Common,335.0,PI historian
+AI-5014,Flue-gas oxygen,AI,analyser,vol%,H-501-STK,H-501,Common,3.1,PI historian
+PI-5015,Arch draft,PI,sensor,mmH2O,H-501-STK,H-501,Common,-2.5,PI historian
+TI-5016,Stack temperature,TI,sensor,degC,H-501-STK,H-501,Common,205.0,PI historian
+FI-5017,Fuel gas flow,FI,sensor,Nm3/h,H-501-FUEL,H-501,Common,3268.0,PI historian
+PI-5018,Fuel gas pressure,PI,sensor,barg,H-501-FUEL,H-501,Common,2.4,PI historian
+CALC-5019,Absorbed duty (calculated),UY,calculated,MW,H-501-RAD,H-501,Common,30.5,KG derived (calculated)
+CALC-5020,Thermal efficiency (calculated),UY,calculated,%,H-501-STK,H-501,Common,88.5,KG derived (calculated)
+FI-5021,Pass 1 flow,FI,sensor,m3/h,H-502-PASS1,H-502,Common,70.0,PI historian
+FI-5022,Pass 2 flow,FI,sensor,m3/h,H-502-PASS2,H-502,Common,70.0,PI historian
+FI-5023,Pass 3 flow,FI,sensor,m3/h,H-502-PASS3,H-502,Common,70.0,PI historian
+FI-5024,Pass 4 flow,FI,sensor,m3/h,H-502-PASS4,H-502,Common,70.0,PI historian
+TI-5025,Pass 1 outlet temperature (COT),TI,sensor,degC,H-502-PASS1,H-502,Common,496.0,PI historian
+TI-5026,Pass 2 outlet temperature (COT),TI,sensor,degC,H-502-PASS2,H-502,Common,496.0,PI historian
+TI-5027,Pass 3 outlet temperature (COT),TI,sensor,degC,H-502-PASS3,H-502,Common,496.0,PI historian
+TI-5028,Pass 4 outlet temperature (COT),TI,sensor,degC,H-502-PASS4,H-502,Common,496.0,PI historian
+TI-5029,Pass 1 tube-metal temperature (TMT),TI,sensor,degC,H-502-PASS1,H-502,Common,632.0,PI historian
+TI-5030,Pass 2 tube-metal temperature (TMT),TI,sensor,degC,H-502-PASS2,H-502,Common,641.0,PI historian
+TI-5031,Pass 3 tube-metal temperature (TMT),TI,sensor,degC,H-502-PASS3,H-502,Common,648.0,PI historian
+TI-5032,Pass 4 tube-metal temperature (TMT),TI,sensor,degC,H-502-PASS4,H-502,Common,636.0,PI historian
+TI-5033,Heater inlet temperature (CIT),TI,sensor,degC,H-502-RAD,H-502,Common,335.0,PI historian
+AI-5034,Flue-gas oxygen,AI,analyser,vol%,H-502-STK,H-502,Common,3.4,PI historian
+PI-5035,Arch draft,PI,sensor,mmH2O,H-502-STK,H-502,Common,-2.5,PI historian
+TI-5036,Stack temperature,TI,sensor,degC,H-502-STK,H-502,Common,215.0,PI historian
+FI-5037,Fuel gas flow,FI,sensor,Nm3/h,H-502-FUEL,H-502,Common,3373.0,PI historian
+PI-5038,Fuel gas pressure,PI,sensor,barg,H-502-FUEL,H-502,Common,2.4,PI historian
+CALC-5039,Absorbed duty (calculated),UY,calculated,MW,H-502-RAD,H-502,Common,31.0,KG derived (calculated)
+CALC-5040,Thermal efficiency (calculated),UY,calculated,%,H-502-STK,H-502,Common,87.2,KG derived (calculated)
+PI-5041,Jet water pressure,PI,sensor,barg,DK-501-TOOL,DK-501,Common,280.0,PI historian
+ZI-5042,Cutting-mode indicator,ZI,sensor,state,DK-501-TOOL,DK-501,Common,0.0,PI historian
+II-5043,Motor current,II,sensor,A,CR-501-DRV,CR-501,Common,180.0,PI historian
+VI-5044,Gearbox vibration,VI,sensor,mm/s,CR-501-GEARBOX,CR-501,Common,3.2,PI historian
+TI-5045,Column top temperature,TI,sensor,degC,C-501-TR_TOP,C-501,Common,120.0,PI historian
+PI-5046,Column top pressure,PI,sensor,barg,C-501-SHL,C-501,Common,1.0,PI historian
+TI-5047,Bottom temperature,TI,sensor,degC,C-501-TR_BOT,C-501,Common,360.0,PI historian
+PDI-5048,Column pressure drop,PDI,sensor,bar,C-501-INT,C-501,Common,0.3,PI historian
+LI-5049,Bottoms level,LI,sensor,%,C-501-SHL,C-501,Common,50.0,PI historian
+FI-5050,Reflux flow,FI,sensor,m3/h,C-501-TR_TOP,C-501,Common,300.0,PI historian
+TI-5051,Column top temperature,TI,sensor,degC,C-502-TR_TOP,C-502,Common,90.0,PI historian
+PI-5052,Column top pressure,PI,sensor,barg,C-502-SHL,C-502,Common,0.3,PI historian
+TI-5053,Bottom temperature,TI,sensor,degC,C-502-TR_BOT,C-502,Common,200.0,PI historian
+PDI-5054,Column pressure drop,PDI,sensor,bar,C-502-INT,C-502,Common,0.3,PI historian
+LI-5055,Bottoms level,LI,sensor,%,C-502-SHL,C-502,Common,50.0,PI historian
+FI-5056,Reflux flow,FI,sensor,m3/h,C-502-TR_TOP,C-502,Common,40.0,PI historian
+LI-5057,Hydrocarbon level,LI,sensor,%,V-501-SHL,V-501,Common,50.0,PI historian
+PI-5058,Pressure,PI,sensor,barg,V-501-SHL,V-501,Common,0.8,PI historian
+TI-5059,Temperature,TI,sensor,degC,V-501-SHL,V-501,Common,40.0,PI historian
+LI-5060,Boot interface level,LI,sensor,%,V-501-BOOTV,V-501,Common,40.0,PI historian
+LAB-5061,Boot water chloride (lab),AL,lab,ppm,V-501-BOOTV,V-501,Common,4.0,LIMS
+AI-5062,Boot water pH,AI,analyser,pH,V-501-BOOTV,V-501,Common,8.6,PI historian
+LAB-5063,Boot water iron (lab),AL,lab,ppm,V-501-BOOTV,V-501,Common,0.5,LIMS
+LI-5064,Hydrocarbon level,LI,sensor,%,V-502-SHL,V-502,Common,50.0,PI historian
+PI-5065,Pressure,PI,sensor,barg,V-502-SHL,V-502,Common,3.0,PI historian
+TI-5066,Temperature,TI,sensor,degC,V-502-SHL,V-502,Common,300.0,PI historian
+PI-5067,Suction pressure,PI,sensor,barg,K-501-CMP,K-501,Common,0.5,PI historian
+PI-5068,Discharge pressure,PI,sensor,barg,K-501-CMP,K-501,Common,14.0,PI historian
+TI-5069,Discharge temperature,TI,sensor,degC,K-501-CMP,K-501,Common,120.0,PI historian
+FI-5070,Suction flow,FI,sensor,kNm3/h,K-501-CMP,K-501,Common,70.0,PI historian
+SI-5071,Shaft speed,SI,sensor,rpm,K-501-DRV,K-501,Common,8200.0,PI historian
+VI-5072,Journal bearing vibration,VI,sensor,um,K-501-JBRG,K-501,Common,30.0,PI historian
+ZI-5073,Axial displacement,ZI,sensor,mm,K-501-TBRG_C,K-501,Common,0.18,PI historian
+CALC-5074,Surge margin (calculated),UY,calculated,%,K-501-ASC,K-501,Common,15.0,KG derived (calculated)
+TI-5075,Cold-side inlet temperature,TI,sensor,degC,E-501-TB,E-501,Common,250.0,PI historian
+TI-5076,Cold-side outlet temperature,TI,sensor,degC,E-501-TB,E-501,Common,300.0,PI historian
+TI-5077,Hot-side inlet temperature,TI,sensor,degC,E-501-SHL,E-501,Common,360.0,PI historian
+TI-5078,Hot-side outlet temperature,TI,sensor,degC,E-501-SHL,E-501,Common,300.0,PI historian
+PDI-5079,Cold-side pressure drop,PDI,sensor,bar,E-501-TB,E-501,Common,0.7,PI historian
+CALC-5080,Duty (calculated),UY,calculated,MW,E-501-TB,E-501,Common,18.0,KG derived (calculated)
+CALC-5081,Fouling resistance (calculated),UY,calculated,m2K/kW,E-501-TUBES,E-501,Common,0.2,KG derived (calculated)
+TI-5082,Cold-side inlet temperature,TI,sensor,degC,E-511-TB,E-511,Common,30.0,PI historian
+TI-5083,Cold-side outlet temperature,TI,sensor,degC,E-511-TB,E-511,Common,40.0,PI historian
+TI-5084,Hot-side inlet temperature,TI,sensor,degC,E-511-SHL,E-511,Common,250.0,PI historian
+TI-5085,Hot-side outlet temperature,TI,sensor,degC,E-511-SHL,E-511,Common,60.0,PI historian
+PDI-5086,Cold-side pressure drop,PDI,sensor,bar,E-511-TB,E-511,Common,0.7,PI historian
+CALC-5087,Duty (calculated),UY,calculated,MW,E-511-TB,E-511,Common,7.0,KG derived (calculated)
+CALC-5088,Fouling resistance (calculated),UY,calculated,m2K/kW,E-511-TUBES,E-511,Common,0.2,KG derived (calculated)
+TI-5089,Process inlet temperature,TI,sensor,degC,E-510A-HDR,E-510A,Common,120.0,PI historian
+TI-5090,Process outlet temperature,TI,sensor,degC,E-510A-HDR,E-510A,Common,55.0,PI historian
+II-5091,Fan motor current,II,sensor,A,E-510A-FMOTOR,E-510A,Common,48.0,PI historian
+VI-5092,Fan vibration,VI,sensor,mm/s,E-510A-FAN,E-510A,Common,2.8,PI historian
+TI-5093,Process inlet temperature,TI,sensor,degC,E-510B-HDR,E-510B,Common,120.0,PI historian
+TI-5094,Process outlet temperature,TI,sensor,degC,E-510B-HDR,E-510B,Common,55.0,PI historian
+II-5095,Fan motor current,II,sensor,A,E-510B-FMOTOR,E-510B,Common,48.0,PI historian
+VI-5096,Fan vibration,VI,sensor,mm/s,E-510B-FAN,E-510B,Common,2.8,PI historian
+CR-5097,Corrosion probe,CR,corrosion probe,mm/y,PC-501-PIPE,PC-501,Common,0.08,Corrosion monitoring system
+TML-5098,Minimum wall thickness (TML survey),UT,inspection,mm,PC-501-FITTINGS,PC-501,Common,12.2,Inspection DB (RBI)
+CR-5099,Corrosion probe,CR,corrosion probe,mm/y,PC-502-PIPE,PC-502,Common,0.05,Corrosion monitoring system
+TML-5100,Minimum wall thickness (TML survey),UT,inspection,mm,PC-502-FITTINGS,PC-502,Common,11.4,Inspection DB (RBI)
+FI-5101,Injection rate,FI,sensor,L/h,X-501-MPUMP,X-501,Common,12.0,PI historian
+LI-5102,Day-tank level,LI,sensor,%,X-501-TANK,X-501,Common,62.0,PI historian
+TI-5103,Drum overhead temperature,TI,sensor,degC,D-501A-SHL,D-501A,Common,440.0,PI historian
+PI-5104,Drum pressure,PI,sensor,barg,D-501A-SHL,D-501A,Common,1.0,PI historian
+TI-5105,Shell skin temperature 1,TI,sensor,degC,D-501A-SHELL,D-501A,Common,425.0,PI historian
+TI-5106,Shell skin temperature 2,TI,sensor,degC,D-501A-SHELL,D-501A,Common,420.0,PI historian
+TI-5107,Shell skin temperature 3,TI,sensor,degC,D-501A-SHELL,D-501A,Common,415.0,PI historian
+LI-5108,Drum level (nuclear),LI,sensor,%,D-501A-SHL,D-501A,Common,72.0,PI historian
+CALC-5109,Cycle time (calculated),UY,calculated,h,D-501A-SHL,D-501A,Common,18.0,KG derived (calculated)
+CALC-5110,Cumulative cycles (calculated),UY,calculated,count,D-501A-SKIRT,D-501A,Common,5200.0,KG derived (calculated)
+TI-5111,Drum overhead temperature,TI,sensor,degC,D-501B-SHL,D-501B,Common,440.0,PI historian
+PI-5112,Drum pressure,PI,sensor,barg,D-501B-SHL,D-501B,Common,1.0,PI historian
+TI-5113,Shell skin temperature 1,TI,sensor,degC,D-501B-SHELL,D-501B,Common,425.0,PI historian
+TI-5114,Shell skin temperature 2,TI,sensor,degC,D-501B-SHELL,D-501B,Common,420.0,PI historian
+TI-5115,Shell skin temperature 3,TI,sensor,degC,D-501B-SHELL,D-501B,Common,415.0,PI historian
+LI-5116,Drum level (nuclear),LI,sensor,%,D-501B-SHL,D-501B,Common,68.0,PI historian
+CALC-5117,Cycle time (calculated),UY,calculated,h,D-501B-SHL,D-501B,Common,18.0,KG derived (calculated)
+CALC-5118,Cumulative cycles (calculated),UY,calculated,count,D-501B-SKIRT,D-501B,Common,5900.0,KG derived (calculated)
+TI-5119,Drum overhead temperature,TI,sensor,degC,D-502A-SHL,D-502A,Common,440.0,PI historian
+PI-5120,Drum pressure,PI,sensor,barg,D-502A-SHL,D-502A,Common,1.0,PI historian
+TI-5121,Shell skin temperature 1,TI,sensor,degC,D-502A-SHELL,D-502A,Common,425.0,PI historian
+TI-5122,Shell skin temperature 2,TI,sensor,degC,D-502A-SHELL,D-502A,Common,420.0,PI historian
+TI-5123,Shell skin temperature 3,TI,sensor,degC,D-502A-SHELL,D-502A,Common,415.0,PI historian
+LI-5124,Drum level (nuclear),LI,sensor,%,D-502A-SHL,D-502A,Common,75.0,PI historian
+CALC-5125,Cycle time (calculated),UY,calculated,h,D-502A-SHL,D-502A,Common,18.0,KG derived (calculated)
+CALC-5126,Cumulative cycles (calculated),UY,calculated,count,D-502A-SKIRT,D-502A,Common,4800.0,KG derived (calculated)
+TI-5127,Drum overhead temperature,TI,sensor,degC,D-502B-SHL,D-502B,Common,440.0,PI historian
+PI-5128,Drum pressure,PI,sensor,barg,D-502B-SHL,D-502B,Common,1.0,PI historian
+TI-5129,Shell skin temperature 1,TI,sensor,degC,D-502B-SHELL,D-502B,Common,425.0,PI historian
+TI-5130,Shell skin temperature 2,TI,sensor,degC,D-502B-SHELL,D-502B,Common,420.0,PI historian
+TI-5131,Shell skin temperature 3,TI,sensor,degC,D-502B-SHELL,D-502B,Common,415.0,PI historian
+LI-5132,Drum level (nuclear),LI,sensor,%,D-502B-SHL,D-502B,Common,70.0,PI historian
+CALC-5133,Cycle time (calculated),UY,calculated,h,D-502B-SHL,D-502B,Common,18.0,KG derived (calculated)
+CALC-5134,Cumulative cycles (calculated),UY,calculated,count,D-502B-SKIRT,D-502B,Common,5100.0,KG derived (calculated)
+FI-5135,Discharge flow,FI,sensor,m3/h,P-501A-PMP,P-501A,Common,570.0,PI historian
+PI-5136,Discharge pressure,PI,sensor,barg,P-501A-PMP,P-501A,Common,31.2,PI historian
+VI-5137,Radial bearing vibration,VI,sensor,mm/s,P-501A-RBRG,P-501A,Common,2.4,PI historian
+VI-5138,Thrust bearing vibration,VI,sensor,mm/s,P-501A-TBRG,P-501A,Common,1.9,PI historian
+TI-5139,Thrust bearing temperature,TI,sensor,degC,P-501A-TBRG,P-501A,Common,80.0,PI historian
+II-5140,Motor current,II,sensor,A,P-501A-DRV,P-501A,Common,55.0,PI historian
+PI-5141,Seal pot / barrier pressure,PI,sensor,barg,P-501A-SEAL,P-501A,Common,14.0,PI historian
+FI-5142,Discharge flow,FI,sensor,m3/h,P-501B-PMP,P-501B,Common,0.0,PI historian
+PI-5143,Discharge pressure,PI,sensor,barg,P-501B-PMP,P-501B,Common,31.2,PI historian
+VI-5144,Radial bearing vibration,VI,sensor,mm/s,P-501B-RBRG,P-501B,Common,2.4,PI historian
+VI-5145,Thrust bearing vibration,VI,sensor,mm/s,P-501B-TBRG,P-501B,Common,1.9,PI historian
+TI-5146,Thrust bearing temperature,TI,sensor,degC,P-501B-TBRG,P-501B,Common,80.0,PI historian
+II-5147,Motor current,II,sensor,A,P-501B-DRV,P-501B,Common,0.0,PI historian
+PI-5148,Seal pot / barrier pressure,PI,sensor,barg,P-501B-SEAL,P-501B,Common,14.0,PI historian
+FI-5149,Discharge flow,FI,sensor,m3/h,P-502A-PMP,P-502A,Common,250.0,PI historian
+PI-5150,Discharge pressure,PI,sensor,barg,P-502A-PMP,P-502A,Common,252.2,PI historian
+VI-5151,Radial bearing vibration,VI,sensor,mm/s,P-502A-RBRG,P-502A,Common,2.4,PI historian
+VI-5152,Thrust bearing vibration,VI,sensor,mm/s,P-502A-TBRG,P-502A,Common,1.9,PI historian
+TI-5153,Thrust bearing temperature,TI,sensor,degC,P-502A-TBRG,P-502A,Common,64.4,PI historian
+II-5154,Motor current,II,sensor,A,P-502A-DRV,P-502A,Common,201.0,PI historian
+FI-5155,Discharge flow,FI,sensor,m3/h,P-502B-PMP,P-502B,Common,0.0,PI historian
+PI-5156,Discharge pressure,PI,sensor,barg,P-502B-PMP,P-502B,Common,252.2,PI historian
+VI-5157,Radial bearing vibration,VI,sensor,mm/s,P-502B-RBRG,P-502B,Common,2.4,PI historian
+VI-5158,Thrust bearing vibration,VI,sensor,mm/s,P-502B-TBRG,P-502B,Common,1.9,PI historian
+TI-5159,Thrust bearing temperature,TI,sensor,degC,P-502B-TBRG,P-502B,Common,64.4,PI historian
+II-5160,Motor current,II,sensor,A,P-502B-DRV,P-502B,Common,0.0,PI historian
+FI-5161,Discharge flow,FI,sensor,m3/h,P-503A-PMP,P-503A,Common,140.0,PI historian
+PI-5162,Discharge pressure,PI,sensor,barg,P-503A-PMP,P-503A,Common,12.0,PI historian
+VI-5163,Radial bearing vibration,VI,sensor,mm/s,P-503A-RBRG,P-503A,Common,2.4,PI historian
+VI-5164,Thrust bearing vibration,VI,sensor,mm/s,P-503A-TBRG,P-503A,Common,1.9,PI historian
+TI-5165,Thrust bearing temperature,TI,sensor,degC,P-503A-TBRG,P-503A,Common,81.2,PI historian
+II-5166,Motor current,II,sensor,A,P-503A-DRV,P-503A,Common,92.0,PI historian
+PI-5167,Seal pot / barrier pressure,PI,sensor,barg,P-503A-SEAL,P-503A,Common,14.0,PI historian
+FI-5168,Discharge flow,FI,sensor,m3/h,P-503B-PMP,P-503B,Common,0.0,PI historian
+PI-5169,Discharge pressure,PI,sensor,barg,P-503B-PMP,P-503B,Common,12.0,PI historian
+VI-5170,Radial bearing vibration,VI,sensor,mm/s,P-503B-RBRG,P-503B,Common,2.4,PI historian
+VI-5171,Thrust bearing vibration,VI,sensor,mm/s,P-503B-TBRG,P-503B,Common,1.9,PI historian
+TI-5172,Thrust bearing temperature,TI,sensor,degC,P-503B-TBRG,P-503B,Common,81.2,PI historian
+II-5173,Motor current,II,sensor,A,P-503B-DRV,P-503B,Common,0.0,PI historian
+PI-5174,Seal pot / barrier pressure,PI,sensor,barg,P-503B-SEAL,P-503B,Common,14.0,PI historian
+FI-5175,Discharge flow,FI,sensor,m3/h,P-504A-PMP,P-504A,Common,120.0,PI historian
+PI-5176,Discharge pressure,PI,sensor,barg,P-504A-PMP,P-504A,Common,11.2,PI historian
+VI-5177,Radial bearing vibration,VI,sensor,mm/s,P-504A-RBRG,P-504A,Common,2.4,PI historian
+VI-5178,Thrust bearing vibration,VI,sensor,mm/s,P-504A-TBRG,P-504A,Common,1.9,PI historian
+TI-5179,Thrust bearing temperature,TI,sensor,degC,P-504A-TBRG,P-504A,Common,77.0,PI historian
+II-5180,Motor current,II,sensor,A,P-504A-DRV,P-504A,Common,79.0,PI historian
+FI-5181,Discharge flow,FI,sensor,m3/h,P-504B-PMP,P-504B,Common,0.0,PI historian
+PI-5182,Discharge pressure,PI,sensor,barg,P-504B-PMP,P-504B,Common,11.2,PI historian
+VI-5183,Radial bearing vibration,VI,sensor,mm/s,P-504B-RBRG,P-504B,Common,2.4,PI historian
+VI-5184,Thrust bearing vibration,VI,sensor,mm/s,P-504B-TBRG,P-504B,Common,1.9,PI historian
+TI-5185,Thrust bearing temperature,TI,sensor,degC,P-504B-TBRG,P-504B,Common,77.0,PI historian
+II-5186,Motor current,II,sensor,A,P-504B-DRV,P-504B,Common,0.0,PI historian
+FI-5187,Discharge flow,FI,sensor,m3/h,P-505A-PMP,P-505A,Common,280.0,PI historian
+PI-5188,Discharge pressure,PI,sensor,barg,P-505A-PMP,P-505A,Common,9.5,PI historian
+VI-5189,Radial bearing vibration,VI,sensor,mm/s,P-505A-RBRG,P-505A,Common,2.4,PI historian
+VI-5190,Thrust bearing vibration,VI,sensor,mm/s,P-505A-TBRG,P-505A,Common,1.9,PI historian
+TI-5191,Thrust bearing temperature,TI,sensor,degC,P-505A-TBRG,P-505A,Common,64.4,PI historian
+II-5192,Motor current,II,sensor,A,P-505A-DRV,P-505A,Common,131.0,PI historian
+PI-5193,Seal pot / barrier pressure,PI,sensor,barg,P-505A-SEAL,P-505A,Common,0.6,PI historian
+FI-5194,Discharge flow,FI,sensor,m3/h,P-505B-PMP,P-505B,Common,0.0,PI historian
+PI-5195,Discharge pressure,PI,sensor,barg,P-505B-PMP,P-505B,Common,9.5,PI historian
+VI-5196,Radial bearing vibration,VI,sensor,mm/s,P-505B-RBRG,P-505B,Common,2.4,PI historian
+VI-5197,Thrust bearing vibration,VI,sensor,mm/s,P-505B-TBRG,P-505B,Common,1.9,PI historian
+TI-5198,Thrust bearing temperature,TI,sensor,degC,P-505B-TBRG,P-505B,Common,64.4,PI historian
+II-5199,Motor current,II,sensor,A,P-505B-DRV,P-505B,Common,0.0,PI historian
+PI-5200,Seal pot / barrier pressure,PI,sensor,barg,P-505B-SEAL,P-505B,Common,0.6,PI historian
+FI-8001,Unit feed rate (DCS meter),FI,sensor,kbd,VDU-1,VDU-1,Common,193.6,PI historian
+FI-8002,Unit feed rate (DCS meter),FI,sensor,kbd,DCU-1,DCU-1,Common,84.8,PI historian
+FI-8003,Unit feed rate (DCS meter),FI,sensor,kbd,VGOHT-1,VGOHT-1,Common,74.0,PI historian
+FI-8004,Unit feed rate (DCS meter),FI,sensor,kbd,FCC-1,FCC-1,Common,74.0,PI historian
+FI-8005,Unit feed rate (DCS meter),FI,sensor,kbd,HCU-1,HCU-1,Common,85.9,PI historian
+FI-8006,Unit feed rate (DCS meter),FI,sensor,kbd,DHT-1,DHT-1,Common,124.9,PI historian
+FI-8007,Unit feed rate (DCS meter),FI,sensor,kbd,KHT-1,KHT-1,Common,58.1,PI historian
+FI-8008,Unit feed rate (DCS meter),FI,sensor,kbd,NHT-1,NHT-1,Common,109.5,PI historian
+FI-8009,Unit feed rate (DCS meter),FI,sensor,kbd,CCR-1,CCR-1,Common,90.0,PI historian
+FI-8010,Unit feed rate (DCS meter),FI,sensor,kbd,ISOM-1,ISOM-1,Common,35.0,PI historian
+FI-8011,Unit feed rate (DCS meter),FI,sensor,kbd,ARO-1,ARO-1,Common,48.0,PI historian
+FI-8012,Unit feed rate (DCS meter),FI,sensor,kbd,ALKY-1,ALKY-1,Common,17.9,PI historian
+FI-8013,Unit feed rate (DCS meter),FI,sensor,kbd,MTBE-1,MTBE-1,Common,4.5,PI historian
+FI-8014,Unit feed rate (DCS meter),FI,sensor,kbd,LUBE-1,LUBE-1,Common,22.0,PI historian
+FI-8015,Unit feed rate (DCS meter),FI,sensor,kbd,ASPH-1,ASPH-1,Common,12.0,PI historian
+FI-8016,Unit feed rate (DCS meter),FI,sensor,kbd,LPG-1,LPG-1,Common,13.5,PI historian
+FI-8017,Unit feed rate (DCS meter),FI,sensor,kbd,GBL-1,GBL-1,Common,148.4,PI historian
+FI-8018,Unit feed rate (DCS meter),FI,sensor,kbd,DBL-1,DBL-1,Common,244.0,PI historian
+FI-8019,Hydrogen production (PSA product meter),FI,sensor,MMSCFD,HMU-1,HMU-1,Common,184.1,PI historian
+WI-8020,Sulfur production (pit rundown / weighbridge),WI,sensor,t/d,SRU-1,SRU-1,Common,1090.0,PI historian

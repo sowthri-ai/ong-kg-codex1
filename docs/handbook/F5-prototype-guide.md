@@ -14,9 +14,10 @@ The prototype (v0.1) proves the design on synthetic data without any database. P
 | `ogkg/exports.py` | Turtle, Neo4j CSV + Cypher, explorer HTML |
 | `ogkg/turtle_lite.py` | Dependency-free Turtle syntax checker for CI |
 | `ogkg/catalogue.py` | Generates [F3](F3-class-and-relation-catalogue.md) from the ontology |
-| `ogkg/cdu_gamma.py`, `ogkg/cdu_templates.py` | Builds the Refinery Gamma CDU reference model ([F6](F6-reference-model-gamma-cdu.md)) |
+| `ogkg/cdu_gamma.py`, `ogkg/cdu_templates.py` | Builds the Refinery Gamma reference model: CDU trains and equipment templates ([F6](F6-reference-model-refinery-gamma.md)) |
+| `ogkg/refinery_units.py`, `ogkg/refinery_gamma.py` | Whole-refinery units, streams, hydrogen and sulfur balances, and the FCC, hydrocracker and coker at full depth |
 | `ogkg/ttl_v02.py`, `ogkg/shacl_lite.py` | Sector-split Turtle export in the v0.2 vocabulary, and SHACL-equivalent checks |
-| `ogkg/cdu_insights.py`, `ogkg/cdu_explorer.py` | CDU insights and explorer page |
+| `ogkg/cdu_insights.py`, `ogkg/refinery_insights.py`, `ogkg/cdu_explorer.py` | CDU and refinery-wide insights (8) and the explorer page |
 | `explorer/` | Interactive explorer (insights, L0–L10 trees, ask-the-graph) and storage blueprint |
 | `tests/` | Integrity, provenance, insight recalculation, handbook claims, Turtle syntax, MCP end-to-end |
 

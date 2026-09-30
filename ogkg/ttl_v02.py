@@ -19,7 +19,8 @@ ONTOLOGY_FILES = [ROOT / "ontology" / "ogkg-core.ttl", ROOT / "ontology" / "ext"
 CONF = {"high": "vocab:High", "medium": "vocab:Medium", "low": "vocab:Low"}
 METHOD = {m: "vocab:" + m.title() for m in ("measured", "recorded", "calculated", "declared", "indicative", "assumption")}
 METALLURGY = {"CarbonSteel": "vocab:CarbonSteel", "Cr5": "vocab:Cr5", "Cr9": "vocab:Cr9", "Titanium": "vocab:Titanium",
-              "SS410": "vocab:SS410", "Alloy400": "vocab:Alloy400", "SS316": "vocab:SS316"}
+              "SS410": "vocab:SS410", "Alloy400": "vocab:Alloy400", "SS316": "vocab:SS316", "Cr225Mo": "vocab:Cr225Mo",
+              "Cr125Mo": "vocab:Cr125Mo", "SS347": "vocab:SS347", "Alloy825": "vocab:Alloy825"}
 
 
 def lpg_map():
@@ -67,6 +68,8 @@ def export(kg_json, out_dir, ns_prefix, ns_iri):
         p = n["props"]
         if n["cls"] == "EquipmentUnit":
             parts.append(f"ogkg:eqClass {lit(p.get('eq_class', ''))}")
+        if n["cls"] == "PlantUnit" and p.get("model_depth"):
+            parts.append(f"ogkg:modelDepth {lit(p['model_depth'])}")
         if p.get("train"):
             parts.append(f"ogkg:trainId {lit(p['train'])}")
         if n["cls"] == "DataPoint":
@@ -104,6 +107,8 @@ def export(kg_json, out_dir, ns_prefix, ns_iri):
             c.append(f"ogkg:tan {lit(float(fs['tan']))}")
         if "salt_content" in fs:
             c.append(f"ogkg:saltContent {lit(float(fs['salt_content']))}")
+        if "nelson_factor" in fs:
+            c.append(f"ogkg:nelsonFactor {lit(float(fs['nelson_factor']))}")
         if "freshness_sla" in fs:
             c.append(f"ogkg:freshnessSlaHours {lit(float(fs['freshness_sla']))}")
         if "sampling_interval" in fs:

@@ -65,3 +65,9 @@ Format: **Context · Decision · Consequences · Status**
 - **Decision:** Private repository, synthetic data only, proprietary notice. Revisit after the Executive Director decision ([E4](../handbook/E4-commercial-packaging.md), decisions 2 and 6).
 - **Consequences:** No client data or licensed content in the repository; migration planned.
 - **Status:** Accepted, temporary (2026-09-30)
+
+## ADR-0011 Model depth follows the decision
+- **Context:** Extending the reference model from the CDU to a whole refinery. Modelling every unit to L10 would multiply effort without serving more decisions.
+- **Decision:** Every unit is modelled at L4–L5 with its capacity, feed, utilisation, Nelson factor and network role. Full L6–L10 depth is built only where a named decision needs equipment and tag data: the CDU, FCC, hydrocracker and delayed coker (heater run length, catalyst cycle, corrosion loops, compressor reliability). Each unit records its depth (`ogkg:modelDepth`).
+- **Consequences:** Refinery-wide questions (hydrogen, sulfur, complexity, bottlenecks) are answerable now. Equipment-level questions on skeleton units return "not modelled" rather than an invented answer. Deepening a unit is a catalogue addition in `ogkg/refinery_units.py`. See [F6](../handbook/F6-reference-model-refinery-gamma.md).
+- **Status:** Accepted (2026-10-01)

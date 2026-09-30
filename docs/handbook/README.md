@@ -60,7 +60,7 @@ The six parts answer six separate questions. Together they cover the whole plan,
 - [F3 Class and relation catalogue](F3-class-and-relation-catalogue.md)
 - [F4 Query cookbook](F4-query-cookbook.md)
 - [F5 Prototype guide](F5-prototype-guide.md)
-- [F6 Reference model: Refinery Gamma CDU](F6-reference-model-gamma-cdu.md)
+- [F6 Reference model: Refinery Gamma](F6-reference-model-refinery-gamma.md)
 
 ## Running example
 

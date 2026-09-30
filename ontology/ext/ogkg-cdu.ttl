@@ -11,13 +11,12 @@
 # =============================================================================
 
 <https://example.org/ogkg/ext/cdu> a owl:Ontology ;
-    rdfs:label "OGKG CDU extension" ; owl:versionInfo "0.2.1" ;
+    rdfs:label "OGKG refinery extension (CDU, conversion, treating, utilities)" ; owl:versionInfo "0.4.0" ;
     owl:imports <https://example.org/ogkg/core> , <https://example.org/ogkg/vocab> .
 
 # --- Units (L4)
 ogkg:TankFarm          a owl:Class ; rdfs:subClassOf ogkg:PlantUnit ; rdfs:label "Tank farm" .
 ogkg:CommonFacilities  a owl:Class ; rdfs:subClassOf ogkg:PlantUnit ; rdfs:label "Common facilities shared by several trains" .
-ogkg:OutOfScopeUnit    a owl:Class ; rdfs:subClassOf ogkg:PlantUnit ; rdfs:label "Downstream unit placeholder (not modelled)" .
 
 # --- Sections (L5) of a CDU train
 ogkg:CrudeChargeSystem       a owl:Class ; rdfs:subClassOf ogkg:SectionSystem .
@@ -50,3 +49,59 @@ ogkg:trainId          a owl:DatatypeProperty ; rdfs:range xsd:string ; rdfs:comm
 
 # --- Work performed on an asset (maintenance that is not a failure repair)
 ogkg:performedOn a owl:ObjectProperty ; rdfs:domain ogkg:WorkOrder ; rdfs:range ogkg:AssetSpineNode ; ogkg:lpgType "PERFORMED_ON" .
+
+# =============================================================================
+#  Refinery-wide additions (v0.4.0): units, conversion-unit equipment
+# =============================================================================
+ogkg:DelayedCoker            a owl:Class ; rdfs:subClassOf ogkg:PlantUnit ; ogkg:alignedTo "Nelson: thermal processes" .
+ogkg:Hydrocracker            a owl:Class ; rdfs:subClassOf ogkg:PlantUnit ; ogkg:alignedTo "Nelson: catalytic hydrocracking" .
+ogkg:Hydrotreater            a owl:Class ; rdfs:subClassOf ogkg:PlantUnit ; ogkg:alignedTo "Nelson: catalytic hydrorefining / hydrotreating" .
+ogkg:IsomerisationUnit       a owl:Class ; rdfs:subClassOf ogkg:PlantUnit ; ogkg:alignedTo "Nelson: aromatics / isomerisation" .
+ogkg:AlkylationUnit          a owl:Class ; rdfs:subClassOf ogkg:PlantUnit ; ogkg:alignedTo "Nelson: alkylation / polymerisation" .
+ogkg:OxygenatesUnit          a owl:Class ; rdfs:subClassOf ogkg:PlantUnit ; ogkg:alignedTo "Nelson: oxygenates" .
+ogkg:AromaticsComplex        a owl:Class ; rdfs:subClassOf ogkg:PlantUnit ; ogkg:alignedTo "Nelson: aromatics / isomerisation" .
+ogkg:LubeBaseOilPlant        a owl:Class ; rdfs:subClassOf ogkg:PlantUnit ; ogkg:alignedTo "Nelson: lubricants" .
+ogkg:AsphaltUnit             a owl:Class ; rdfs:subClassOf ogkg:PlantUnit ; ogkg:alignedTo "Nelson: asphalt" .
+ogkg:HydrogenPlant           a owl:Class ; rdfs:subClassOf ogkg:PlantUnit .
+ogkg:AmineRegenerationUnit   a owl:Class ; rdfs:subClassOf ogkg:PlantUnit .
+ogkg:SourWaterStripper       a owl:Class ; rdfs:subClassOf ogkg:PlantUnit .
+ogkg:SulfurRecoveryUnit      a owl:Class ; rdfs:subClassOf ogkg:PlantUnit .
+ogkg:TreatingUnit            a owl:Class ; rdfs:subClassOf ogkg:PlantUnit .
+ogkg:MarineTerminal          a owl:Class ; rdfs:subClassOf ogkg:PlantUnit .
+ogkg:UtilityUnit             a owl:Class ; rdfs:subClassOf ogkg:PlantUnit .
+
+# --- Generic sections (L5) used across refinery units
+ogkg:FeedSection                a owl:Class ; rdfs:subClassOf ogkg:SectionSystem .
+ogkg:ReactionSection            a owl:Class ; rdfs:subClassOf ogkg:SectionSystem .
+ogkg:SeparationSection          a owl:Class ; rdfs:subClassOf ogkg:SectionSystem .
+ogkg:FractionationSection       a owl:Class ; rdfs:subClassOf ogkg:SectionSystem .
+ogkg:CompressionSection         a owl:Class ; rdfs:subClassOf ogkg:SectionSystem .
+ogkg:TreatingSection            a owl:Class ; rdfs:subClassOf ogkg:SectionSystem .
+ogkg:FlueGasSection             a owl:Class ; rdfs:subClassOf ogkg:SectionSystem .
+ogkg:CokeDrumSection            a owl:Class ; rdfs:subClassOf ogkg:SectionSystem .
+ogkg:DecokingSection            a owl:Class ; rdfs:subClassOf ogkg:SectionSystem .
+ogkg:CatalystRegenerationSection a owl:Class ; rdfs:subClassOf ogkg:SectionSystem .
+ogkg:ExtractionSection          a owl:Class ; rdfs:subClassOf ogkg:SectionSystem .
+ogkg:BlendingSection            a owl:Class ; rdfs:subClassOf ogkg:SectionSystem .
+ogkg:StorageSection             a owl:Class ; rdfs:subClassOf ogkg:SectionSystem .
+ogkg:LoadingSection             a owl:Class ; rdfs:subClassOf ogkg:SectionSystem .
+ogkg:GenerationSection          a owl:Class ; rdfs:subClassOf ogkg:SectionSystem .
+ogkg:DistributionSection        a owl:Class ; rdfs:subClassOf ogkg:SectionSystem .
+
+ogkg:FixedBedReactor         a owl:Class ; rdfs:subClassOf ogkg:Vessel .
+ogkg:FCCReactor              a owl:Class ; rdfs:subClassOf ogkg:Vessel ; rdfs:label "FCC reactor / riser / stripper" .
+ogkg:FCCRegenerator          a owl:Class ; rdfs:subClassOf ogkg:Vessel .
+ogkg:SlideValve              a owl:Class ; rdfs:subClassOf ogkg:StaticEquipment .
+ogkg:CentrifugalCompressor   a owl:Class ; rdfs:subClassOf ogkg:Compressor .
+ogkg:ReciprocatingCompressor a owl:Class ; rdfs:subClassOf ogkg:Compressor .
+ogkg:PowerRecoveryExpander   a owl:Class ; rdfs:subClassOf ogkg:RotatingEquipment .
+ogkg:WasteHeatBoiler         a owl:Class ; rdfs:subClassOf ogkg:StaticEquipment .
+ogkg:CokeDrum                a owl:Class ; rdfs:subClassOf ogkg:Vessel .
+ogkg:DecokingSystem          a owl:Class ; rdfs:subClassOf ogkg:StaticEquipment .
+ogkg:Crusher                 a owl:Class ; rdfs:subClassOf ogkg:RotatingEquipment .
+
+# --- Nelson complexity (Sector 1a reference attribute on unit classes; values are Sector 2 facts)
+ogkg:modelDepth a owl:DatatypeProperty ; rdfs:domain ogkg:PlantUnit ; rdfs:range xsd:string ;
+    rdfs:comment "How deep the reference model goes for this unit: 'deep' (L6-L10 equipment and tags) or 'skeleton' (L4-L5 with unit facts)." .
+ogkg:nelsonFactor a owl:DatatypeProperty ; rdfs:domain ogkg:PlantUnit ; rdfs:range xsd:decimal ;
+    rdfs:comment "Nelson complexity factor applied to the unit (source cited on the fact)." .

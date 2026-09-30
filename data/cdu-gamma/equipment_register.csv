@@ -1,158 +1,262 @@
-description,equipment_class,ontology_class,section,service,tag,train,absorbed_duty,api_610_type,area,bays,burners,capacity,chemical,coil_metallurgy,corrosion_allowance,design_efficiency,design_pressure,design_rate,design_temperature,design_tmt,diameter,duty,height,length,line_size,material,material_class,model,motor_power,nominal_wall,passes,rated_flow,rated_head,roof_type,seal_plan,service_temperature,shell_material,stage,tema_type,top_cladding,transformer_kva,trays,tube_metallurgy
-Crude charge pump A,Pump,CentrifugalPump,Crude charge system (Train A),Crude,P-101A,A,,BB2,,,,,,,,,,,,,,,,,,,S-4,OEM-A BB2-300,710,,,830,260,,Plan11,40,,,,,,,
-Crude charge pump B,Pump,CentrifugalPump,Crude charge system (Train A),Crude,P-101B,A,,BB2,,,,,,,,,,,,,,,,,,,S-4,OEM-A BB2-300,710,,,830,260,,Plan11,40,,,,,,,
-Crude charge pump C,Pump,CentrifugalPump,Crude charge system (Train A),Crude,P-101C,A,,BB2,,,,,,,,,,,,,,,,,,,S-4,OEM-A BB2-300,710,,,830,260,,Plan11,40,,,,,,,
-Desalter wash-water pump A,Pump,CentrifugalPump,Desalting system (2-stage electrostatic) (Train A),Wash water,P-102A,A,,OH2,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,60,,,110,120,,Plan11,95,,,,,,,
-Desalter wash-water pump B,Pump,CentrifugalPump,Desalting system (2-stage electrostatic) (Train A),Wash water,P-102B,A,,OH2,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,60,,,110,120,,Plan11,95,,,,,,,
-Desalted crude booster pump A,Pump,CentrifugalPump,Hot preheat train (Train A),Desalted crude,P-103A,A,,BB2,,,,,,,,,,,,,,,,,,,S-4,OEM-A BB2-300,980,,,1660,180,,Plan11,135,,,,,,,
-Desalted crude booster pump B,Pump,CentrifugalPump,Hot preheat train (Train A),Desalted crude,P-103B,A,,BB2,,,,,,,,,,,,,,,,,,,S-4,OEM-A BB2-300,980,,,1660,180,,Plan11,135,,,,,,,
-Preflash bottoms pump A,Pump,CentrifugalPump,Preflash system (Train A),Topped crude,P-104A,A,,BB2,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,1120,,,1550,220,,Plan53B,272,,,,,,,
-Preflash bottoms pump B,Pump,CentrifugalPump,Preflash system (Train A),Topped crude,P-104B,A,,BB2,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,1120,,,1550,220,,Plan53B,272,,,,,,,
-Kerosene product pump A,Pump,CentrifugalPump,Atmospheric fractionation (Train A),Kerosene,P-105A,A,,OH2,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,100,,,200,120,,Plan11,190,,,,,,,
-Kerosene product pump B,Pump,CentrifugalPump,Atmospheric fractionation (Train A),Kerosene,P-105B,A,,OH2,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,100,,,200,120,,Plan11,190,,,,,,,
-Diesel product pump A,Pump,CentrifugalPump,Atmospheric fractionation (Train A),Diesel,P-106A,A,,OH2,,,,,,,,,,,,,,,,,,,C-6,OEM-B OH2-150H,160,,,330,130,,Plan11,255,,,,,,,
-Diesel product pump B,Pump,CentrifugalPump,Atmospheric fractionation (Train A),Diesel,P-106B,A,,OH2,,,,,,,,,,,,,,,,,,,C-6,OEM-B OH2-150H,160,,,330,130,,Plan11,255,,,,,,,
-AGO product pump A,Pump,CentrifugalPump,Atmospheric fractionation (Train A),Atmospheric gas oil,P-107A,A,,OH2,,,,,,,,,,,,,,,,,,,C-6,OEM-B OH2-150H,70,,,116,140,,Plan53B,330,,,,,,,
-AGO product pump B,Pump,CentrifugalPump,Atmospheric fractionation (Train A),Atmospheric gas oil,P-107B,A,,OH2,,,,,,,,,,,,,,,,,,,C-6,OEM-B OH2-150H,70,,,116,140,,Plan53B,330,,,,,,,
-Atmospheric residue pump A,Pump,CentrifugalPump,Atmospheric fractionation (Train A),Atmospheric residue,P-108A,A,,BB2,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,360,,,660,160,,Plan53B,350,,,,,,,
-Atmospheric residue pump B,Pump,CentrifugalPump,Atmospheric fractionation (Train A),Atmospheric residue,P-108B,A,,BB2,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,360,,,660,160,,Plan53B,350,,,,,,,
-Top pumparound pump A,Pump,CentrifugalPump,Pumparound circuits (Train A),Top pumparound,P-109A,A,,OH2,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,220,,,700,90,,Plan11,150,,,,,,,
-Top pumparound pump B,Pump,CentrifugalPump,Pumparound circuits (Train A),Top pumparound,P-109B,A,,OH2,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,220,,,700,90,,Plan11,150,,,,,,,
-Diesel pumparound pump A,Pump,CentrifugalPump,Pumparound circuits (Train A),Diesel pumparound,P-110A,A,,BB2,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,310,,,900,100,,Plan11,240,,,,,,,
-Diesel pumparound pump B,Pump,CentrifugalPump,Pumparound circuits (Train A),Diesel pumparound,P-110B,A,,BB2,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,310,,,900,100,,Plan11,240,,,,,,,
-Bottom pumparound pump A,Pump,CentrifugalPump,Pumparound circuits (Train A),Bottom pumparound,P-111A,A,,BB2,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,300,,,800,110,,Plan53B,300,,,,,,,
-Bottom pumparound pump B,Pump,CentrifugalPump,Pumparound circuits (Train A),Bottom pumparound,P-111B,A,,BB2,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,300,,,800,110,,Plan53B,300,,,,,,,
-Overhead reflux pump A,Pump,CentrifugalPump,Overhead system (Train A),Naphtha reflux,P-112A,A,,OH2,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,190,,,600,90,,Plan52,40,,,,,,,
-Overhead reflux pump B,Pump,CentrifugalPump,Overhead system (Train A),Naphtha reflux,P-112B,A,,OH2,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,190,,,600,90,,Plan52,40,,,,,,,
-Naphtha product pump A,Pump,CentrifugalPump,Overhead system (Train A),Unstabilised naphtha,P-113A,A,,OH2,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,160,,,350,120,,Plan52,40,,,,,,,
-Naphtha product pump B,Pump,CentrifugalPump,Overhead system (Train A),Unstabilised naphtha,P-113B,A,,OH2,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,160,,,350,120,,Plan52,40,,,,,,,
-Sour water pump A,Pump,CentrifugalPump,Overhead system (Train A),Sour water,P-114A,A,,OH2,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,30,,,60,60,,Plan11,40,,,,,,,
-Sour water pump B,Pump,CentrifugalPump,Overhead system (Train A),Sour water,P-114B,A,,OH2,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,30,,,60,60,,Plan11,40,,,,,,,
-Stabiliser reflux pump A,Pump,CentrifugalPump,Naphtha stabiliser (Train A),LPG,P-115A,A,,OH2,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,50,,,80,110,,Plan52,45,,,,,,,
-Stabiliser reflux pump B,Pump,CentrifugalPump,Naphtha stabiliser (Train A),LPG,P-115B,A,,OH2,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,50,,,80,110,,Plan52,45,,,,,,,
-Crude / kerosene product exchanger,Heat exchanger,ShellAndTubeHX,Cold preheat train (Train A),Crude / Kerosene product,E-101,A,,,1248.0,,,,,,,,25.0,,220,,,22.7,,,,,,,,,,,,,,190,,,AES,,,,CarbonSteel
-Crude / top pumparound exchanger,Heat exchanger,ShellAndTubeHX,Cold preheat train (Train A),Crude / Top pumparound,E-102,A,,,1248.0,,,,,,,,25.0,,180,,,22.7,,,,,,,,,,,,,,150,,,AES,,,,CarbonSteel
-Crude / diesel product exchanger,Heat exchanger,ShellAndTubeHX,Cold preheat train (Train A),Crude / Diesel product,E-103,A,,,996.0,,,,,,,,25.0,,285,,,18.1,,,,,,,,,,,,,,255,,,AES,,,,CarbonSteel
-Crude / AGO product exchanger,Heat exchanger,ShellAndTubeHX,Cold preheat train (Train A),Crude / AGO product,E-104,A,,,748.0,,,,,,,,25.0,,360,,,13.6,,,,,,,,,,,,,,330,,,AES,,,,CarbonSteel
-Crude / residue exchanger (cold end),Heat exchanger,ShellAndTubeHX,Cold preheat train (Train A),Crude / Atmospheric residue,E-105,A,,,500.0,,,,,,,,25.0,,235,,,9.1,,,,,,,,,,,,,,205,,,AES,,,,CarbonSteel
-Crude / diesel pumparound exchanger,Heat exchanger,ShellAndTubeHX,Hot preheat train (Train A),Crude / Diesel pumparound,E-107,A,,,1749.0,,,,,,,,25.0,,270,,,31.8,,,,,,,,,,,,,,240,,,AES,,,,CarbonSteel
-Crude / bottom pumparound exchanger,Heat exchanger,ShellAndTubeHX,Hot preheat train (Train A),Crude / Bottom pumparound,E-108,A,,,1749.0,,,,,,,,25.0,,330,,,31.8,,,,,,,,,,,,,,300,,,AES,,,,CarbonSteel
-Crude / residue exchanger 1,Heat exchanger,ShellAndTubeHX,Hot preheat train (Train A),Crude / Atmospheric residue,E-109,A,,,996.0,,,,,,,,25.0,,310,,,18.1,,,,,,,,,,,,,,280,,,AES,,,,Cr5
-Crude / residue exchanger 2,Heat exchanger,ShellAndTubeHX,Hot preheat train (Train A),Crude / Atmospheric residue,E-110,A,,,996.0,,,,,,,,25.0,,330,,,18.1,,,,,,,,,,,,,,300,,,AES,,,,Cr5
-Crude / residue exchanger 3,Heat exchanger,ShellAndTubeHX,Hot preheat train (Train A),Crude / Atmospheric residue,E-111,A,,,748.0,,,,,,,,25.0,,350,,,13.6,,,,,,,,,,,,,,320,,,AES,,,,Cr5
-Crude / residue exchanger 4,Heat exchanger,ShellAndTubeHX,Hot preheat train (Train A),Crude / Atmospheric residue,E-112,A,,,600.0,,,,,,,,25.0,,380,,,10.9,,,,,,,,,,,,,,350,,,AES,,,,Cr5
-Wash-water / brine exchanger,Heat exchanger,ShellAndTubeHX,Desalting system (2-stage electrostatic) (Train A),Wash water / Desalter brine,E-106,A,,,412.0,,,,,,,,10.0,,165,,,7.5,,,,,,,,,,,,,,135,,,BEM,,,,CarbonSteel
-Overhead trim cooler,Heat exchanger,ShellAndTubeHX,Overhead system (Train A),Cooling water / Overhead naphtha / water,E-121,A,,,495.0,,,,,,,,10.0,,85,,,9.0,,,,,,,,,,,,,,55,,,BEM,,,,Titanium
-Kerosene rundown cooler,Heat exchanger,ShellAndTubeHX,Product rundown & cooling (Train A),Cooling water / Kerosene,E-130,A,,,330.0,,,,,,,,10.0,,140,,,6.0,,,,,,,,,,,,,,110,,,BEM,,,,CarbonSteel
-Diesel rundown cooler,Heat exchanger,ShellAndTubeHX,Product rundown & cooling (Train A),Cooling water / Diesel,E-131,A,,,330.0,,,,,,,,10.0,,180,,,6.0,,,,,,,,,,,,,,150,,,BEM,,,,CarbonSteel
-AGO rundown cooler,Heat exchanger,ShellAndTubeHX,Product rundown & cooling (Train A),Cooling water / AGO,E-132,A,,,330.0,,,,,,,,10.0,,210,,,6.0,,,,,,,,,,,,,,180,,,BEM,,,,CarbonSteel
-Residue rundown cooler,Heat exchanger,ShellAndTubeHX,Product rundown & cooling (Train A),Cooling water / Atmospheric residue,E-133,A,,,330.0,,,,,,,,10.0,,275,,,6.0,,,,,,,,,,,,,,245,,,BEM,,,,CarbonSteel
-Stabiliser reboiler,Heat exchanger,ShellAndTubeHX,Naphtha stabiliser (Train A),Stabiliser bottoms / MP steam,E-140,A,,,358.0,,,,,,,,10.0,,220,,,6.5,,,,,,,,,,,,,,190,,,BEM,,,,CarbonSteel
-Stabiliser overhead condenser,Heat exchanger,ShellAndTubeHX,Naphtha stabiliser (Train A),Cooling water / LPG vapour,E-141,A,,,275.0,,,,,,,,10.0,,92,,,5.0,,,,,,,,,,,,,,62,,,BEM,,,,CarbonSteel
-Overhead air cooler A,Air cooler,AirCooledHX,Overhead system (Train A),Overhead vapour,E-120A,A,,,,4,,,,,,,5.0,,180,,,38.0,,,,,,,,,,,,,,128,,,,,,,CarbonSteel
-Overhead air cooler B,Air cooler,AirCooledHX,Overhead system (Train A),Overhead vapour,E-120B,A,,,,4,,,,,,,5.0,,180,,,38.0,,,,,,,,,,,,,,128,,,,,,,CarbonSteel
-1st-stage desalter,Desalter,Desalter,Desalting system (2-stage electrostatic) (Train A),Crude / wash water,D-101,A,,,,,,,,,,,16.0,,160,,4.3,,,33.0,,,,,,,,,,,,135,,1st-stage,,,300,,
-2nd-stage desalter,Desalter,Desalter,Desalting system (2-stage electrostatic) (Train A),Crude / wash water,D-102,A,,,,,,,,,,,16.0,,160,,4.3,,,33.0,,,,,,,,,,,,135,,2nd-stage,,,300,,
-Preflash drum,Vessel,Drum,Preflash system (Train A),Topped crude / vapour,V-101,A,,,,,,,,,,,6.0,,320,,4.0,,,12.0,,,,,,,,,,,,272,CarbonSteel,,,,,,
-Overhead receiver,Vessel,Drum,Overhead system (Train A),Naphtha / sour water,V-102,A,,,,,,,,,,,5.0,,90,,4.5,,,14.0,,,,,,,,,,,,40,CarbonSteel,,,,,,
-Stabiliser reflux drum,Vessel,Drum,Naphtha stabiliser (Train A),LPG,V-103,A,,,,,,,,,,,16.0,,90,,2.4,,,7.0,,,,,,,,,,,,42,CarbonSteel,,,,,,
-Atmospheric column,Column,Column,Atmospheric fractionation (Train A),Crude fractions,C-101,A,,,,,,,,,,,3.5,,400,,9.5,,58.0,,,,,,,,,,,,,362,SS410,,,Alloy400,,50,
-Kerosene side stripper,Side stripper,SideStripper,Atmospheric fractionation (Train A),Kerosene,C-102,A,,,,,,,,,,,3.5,,230,,2.2,,12.0,,,,,,,,,,,,,190,,,,,,6,
-Diesel side stripper,Side stripper,SideStripper,Atmospheric fractionation (Train A),Diesel,C-103,A,,,,,,,,,,,3.5,,295,,2.2,,12.0,,,,,,,,,,,,,255,,,,,,6,
-AGO side stripper,Side stripper,SideStripper,Atmospheric fractionation (Train A),AGO,C-104,A,,,,,,,,,,,3.5,,370,,2.2,,12.0,,,,,,,,,,,,,330,,,,,,6,
-Naphtha stabiliser,Column,Column,Naphtha stabiliser (Train A),Naphtha / LPG,C-105,A,,,,,,,,,,,16.0,,200,,2.8,,30.0,,,,,,,,,,,,,160,,,,,,30,
-Crude heater,Fired heater,FiredHeater,Crude heater system (Train A),Crude,H-101,A,150.0,,,,24,,,Cr9,,89.0,,,,650,,,,,,,,,,,4,,,,,365,,,,,,,
-Transfer line (heater to column),Piping circuit,PipingCircuit,Atmospheric fractionation (Train A),Partially vaporised crude,PC-101,A,,,,,,,,,3.0,,,,,,,,,,"36""",Cr9,,,,14.3,,,,,,365,,,,,,,
-Overhead line circuit,Piping circuit,PipingCircuit,Overhead system (Train A),Overhead vapour,PC-102,A,,,,,,,,,3.0,,,,,,,,,,"42""",CarbonSteel,,,,9.5,,,,,,128,,,,,,,
-Residue rundown circuit,Piping circuit,PipingCircuit,Product rundown & cooling (Train A),Atmospheric residue,PC-103,A,,,,,,,,,3.0,,,,,,,,,,"16""",Cr5,,,,12.7,,,,,,350,,,,,,,
-Neutraliser injection package,Chemical injection package,ChemicalInjectionPackage,Chemical injection (Train A),Neutralising amine,X-101,A,,,,,,,Neutralising amine,,,,,67.5,,,,,,,,,,,,,,,,,,40,,,,,,,
-Filming inhibitor injection package,Chemical injection package,ChemicalInjectionPackage,Chemical injection (Train A),Filming corrosion inhibitor,X-102,A,,,,,,,Filming corrosion inhibitor,,,,,12.0,,,,,,,,,,,,,,,,,,40,,,,,,,
-Overhead wash-water injection,Chemical injection package,ChemicalInjectionPackage,Chemical injection (Train A),Wash water,X-103,A,,,,,,,Wash water,,,,,18000.0,,,,,,,,,,,,,,,,,,40,,,,,,,
-Caustic injection package,Chemical injection package,ChemicalInjectionPackage,Chemical injection (Train A),Dilute caustic,X-104,A,,,,,,,Dilute caustic,,,,,45.0,,,,,,,,,,,,,,,,,,40,,,,,,,
-Demulsifier injection package,Chemical injection package,ChemicalInjectionPackage,Chemical injection (Train A),Demulsifier,X-105,A,,,,,,,Demulsifier,,,,,37.5,,,,,,,,,,,,,,,,,,40,,,,,,,
-Crude charge pump A,Pump,CentrifugalPump,Crude charge system (Train B),Crude,P-201A,B,,BB2,,,,,,,,,,,,,,,,,,,S-4,OEM-A BB2-300,710,,,830,260,,Plan11,40,,,,,,,
-Crude charge pump B,Pump,CentrifugalPump,Crude charge system (Train B),Crude,P-201B,B,,BB2,,,,,,,,,,,,,,,,,,,S-4,OEM-A BB2-300,710,,,830,260,,Plan11,40,,,,,,,
-Crude charge pump C,Pump,CentrifugalPump,Crude charge system (Train B),Crude,P-201C,B,,BB2,,,,,,,,,,,,,,,,,,,S-4,OEM-A BB2-300,710,,,830,260,,Plan11,40,,,,,,,
-Desalter wash-water pump A,Pump,CentrifugalPump,Desalting system (2-stage electrostatic) (Train B),Wash water,P-202A,B,,OH2,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,60,,,110,120,,Plan11,95,,,,,,,
-Desalter wash-water pump B,Pump,CentrifugalPump,Desalting system (2-stage electrostatic) (Train B),Wash water,P-202B,B,,OH2,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,60,,,110,120,,Plan11,95,,,,,,,
-Desalted crude booster pump A,Pump,CentrifugalPump,Hot preheat train (Train B),Desalted crude,P-203A,B,,BB2,,,,,,,,,,,,,,,,,,,S-4,OEM-A BB2-300,980,,,1660,180,,Plan11,135,,,,,,,
-Desalted crude booster pump B,Pump,CentrifugalPump,Hot preheat train (Train B),Desalted crude,P-203B,B,,BB2,,,,,,,,,,,,,,,,,,,S-4,OEM-A BB2-300,980,,,1660,180,,Plan11,135,,,,,,,
-Preflash bottoms pump A,Pump,CentrifugalPump,Preflash system (Train B),Topped crude,P-204A,B,,BB2,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,1120,,,1550,220,,Plan53B,272,,,,,,,
-Preflash bottoms pump B,Pump,CentrifugalPump,Preflash system (Train B),Topped crude,P-204B,B,,BB2,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,1120,,,1550,220,,Plan53B,272,,,,,,,
-Kerosene product pump A,Pump,CentrifugalPump,Atmospheric fractionation (Train B),Kerosene,P-205A,B,,OH2,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,100,,,200,120,,Plan11,190,,,,,,,
-Kerosene product pump B,Pump,CentrifugalPump,Atmospheric fractionation (Train B),Kerosene,P-205B,B,,OH2,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,100,,,200,120,,Plan11,190,,,,,,,
-Diesel product pump A,Pump,CentrifugalPump,Atmospheric fractionation (Train B),Diesel,P-206A,B,,OH2,,,,,,,,,,,,,,,,,,,C-6,OEM-B OH2-150H,160,,,330,130,,Plan11,255,,,,,,,
-Diesel product pump B,Pump,CentrifugalPump,Atmospheric fractionation (Train B),Diesel,P-206B,B,,OH2,,,,,,,,,,,,,,,,,,,C-6,OEM-B OH2-150H,160,,,330,130,,Plan11,255,,,,,,,
-AGO product pump A,Pump,CentrifugalPump,Atmospheric fractionation (Train B),Atmospheric gas oil,P-207A,B,,OH2,,,,,,,,,,,,,,,,,,,C-6,OEM-B OH2-150H,70,,,116,140,,Plan53B,330,,,,,,,
-AGO product pump B,Pump,CentrifugalPump,Atmospheric fractionation (Train B),Atmospheric gas oil,P-207B,B,,OH2,,,,,,,,,,,,,,,,,,,C-6,OEM-B OH2-150H,70,,,116,140,,Plan53B,330,,,,,,,
-Atmospheric residue pump A,Pump,CentrifugalPump,Atmospheric fractionation (Train B),Atmospheric residue,P-208A,B,,BB2,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,360,,,660,160,,Plan53B,350,,,,,,,
-Atmospheric residue pump B,Pump,CentrifugalPump,Atmospheric fractionation (Train B),Atmospheric residue,P-208B,B,,BB2,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,360,,,660,160,,Plan53B,350,,,,,,,
-Top pumparound pump A,Pump,CentrifugalPump,Pumparound circuits (Train B),Top pumparound,P-209A,B,,OH2,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,220,,,700,90,,Plan11,150,,,,,,,
-Top pumparound pump B,Pump,CentrifugalPump,Pumparound circuits (Train B),Top pumparound,P-209B,B,,OH2,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,220,,,700,90,,Plan11,150,,,,,,,
-Diesel pumparound pump A,Pump,CentrifugalPump,Pumparound circuits (Train B),Diesel pumparound,P-210A,B,,BB2,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,310,,,900,100,,Plan11,240,,,,,,,
-Diesel pumparound pump B,Pump,CentrifugalPump,Pumparound circuits (Train B),Diesel pumparound,P-210B,B,,BB2,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,310,,,900,100,,Plan11,240,,,,,,,
-Bottom pumparound pump A,Pump,CentrifugalPump,Pumparound circuits (Train B),Bottom pumparound,P-211A,B,,BB2,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,300,,,800,110,,Plan53B,300,,,,,,,
-Bottom pumparound pump B,Pump,CentrifugalPump,Pumparound circuits (Train B),Bottom pumparound,P-211B,B,,BB2,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,300,,,800,110,,Plan53B,300,,,,,,,
-Overhead reflux pump A,Pump,CentrifugalPump,Overhead system (Train B),Naphtha reflux,P-212A,B,,OH2,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,190,,,600,90,,Plan52,40,,,,,,,
-Overhead reflux pump B,Pump,CentrifugalPump,Overhead system (Train B),Naphtha reflux,P-212B,B,,OH2,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,190,,,600,90,,Plan52,40,,,,,,,
-Naphtha product pump A,Pump,CentrifugalPump,Overhead system (Train B),Unstabilised naphtha,P-213A,B,,OH2,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,160,,,350,120,,Plan52,40,,,,,,,
-Naphtha product pump B,Pump,CentrifugalPump,Overhead system (Train B),Unstabilised naphtha,P-213B,B,,OH2,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,160,,,350,120,,Plan52,40,,,,,,,
-Sour water pump A,Pump,CentrifugalPump,Overhead system (Train B),Sour water,P-214A,B,,OH2,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,30,,,60,60,,Plan11,40,,,,,,,
-Sour water pump B,Pump,CentrifugalPump,Overhead system (Train B),Sour water,P-214B,B,,OH2,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,30,,,60,60,,Plan11,40,,,,,,,
-Stabiliser reflux pump A,Pump,CentrifugalPump,Naphtha stabiliser (Train B),LPG,P-215A,B,,OH2,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,50,,,80,110,,Plan52,45,,,,,,,
-Stabiliser reflux pump B,Pump,CentrifugalPump,Naphtha stabiliser (Train B),LPG,P-215B,B,,OH2,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,50,,,80,110,,Plan52,45,,,,,,,
-Crude / kerosene product exchanger,Heat exchanger,ShellAndTubeHX,Cold preheat train (Train B),Crude / Kerosene product,E-201,B,,,1248.0,,,,,,,,25.0,,220,,,22.7,,,,,,,,,,,,,,190,,,AES,,,,CarbonSteel
-Crude / top pumparound exchanger,Heat exchanger,ShellAndTubeHX,Cold preheat train (Train B),Crude / Top pumparound,E-202,B,,,1248.0,,,,,,,,25.0,,180,,,22.7,,,,,,,,,,,,,,150,,,AES,,,,CarbonSteel
-Crude / diesel product exchanger,Heat exchanger,ShellAndTubeHX,Cold preheat train (Train B),Crude / Diesel product,E-203,B,,,996.0,,,,,,,,25.0,,285,,,18.1,,,,,,,,,,,,,,255,,,AES,,,,CarbonSteel
-Crude / AGO product exchanger,Heat exchanger,ShellAndTubeHX,Cold preheat train (Train B),Crude / AGO product,E-204,B,,,748.0,,,,,,,,25.0,,360,,,13.6,,,,,,,,,,,,,,330,,,AES,,,,CarbonSteel
-Crude / residue exchanger (cold end),Heat exchanger,ShellAndTubeHX,Cold preheat train (Train B),Crude / Atmospheric residue,E-205,B,,,500.0,,,,,,,,25.0,,235,,,9.1,,,,,,,,,,,,,,205,,,AES,,,,CarbonSteel
-Crude / diesel pumparound exchanger,Heat exchanger,ShellAndTubeHX,Hot preheat train (Train B),Crude / Diesel pumparound,E-207,B,,,1595.0,,,,,,,,25.0,,270,,,29.0,,,,,,,,,,,,,,240,,,AES,,,,CarbonSteel
-Crude / bottom pumparound exchanger,Heat exchanger,ShellAndTubeHX,Hot preheat train (Train B),Crude / Bottom pumparound,E-208,B,,,1595.0,,,,,,,,25.0,,330,,,29.0,,,,,,,,,,,,,,300,,,AES,,,,CarbonSteel
-Crude / residue exchanger 1,Heat exchanger,ShellAndTubeHX,Hot preheat train (Train B),Crude / Atmospheric residue,E-209,B,,,896.0,,,,,,,,25.0,,310,,,16.3,,,,,,,,,,,,,,280,,,AES,,,,Cr5
-Crude / residue exchanger 2,Heat exchanger,ShellAndTubeHX,Hot preheat train (Train B),Crude / Atmospheric residue,E-210,B,,,847.0,,,,,,,,25.0,,330,,,15.4,,,,,,,,,,,,,,300,,,AES,,,,Cr5
-Crude / residue exchanger 3,Heat exchanger,ShellAndTubeHX,Hot preheat train (Train B),Crude / Atmospheric residue,E-211,B,,,649.0,,,,,,,,25.0,,350,,,11.8,,,,,,,,,,,,,,320,,,AES,,,,Cr5
-Crude / residue exchanger 4,Heat exchanger,ShellAndTubeHX,Hot preheat train (Train B),Crude / Atmospheric residue,E-212,B,,,550.0,,,,,,,,25.0,,380,,,10.0,,,,,,,,,,,,,,350,,,AES,,,,Cr5
-Wash-water / brine exchanger,Heat exchanger,ShellAndTubeHX,Desalting system (2-stage electrostatic) (Train B),Wash water / Desalter brine,E-206,B,,,412.0,,,,,,,,10.0,,165,,,7.5,,,,,,,,,,,,,,135,,,BEM,,,,CarbonSteel
-Overhead trim cooler,Heat exchanger,ShellAndTubeHX,Overhead system (Train B),Cooling water / Overhead naphtha / water,E-221,B,,,495.0,,,,,,,,10.0,,85,,,9.0,,,,,,,,,,,,,,55,,,BEM,,,,Titanium
-Kerosene rundown cooler,Heat exchanger,ShellAndTubeHX,Product rundown & cooling (Train B),Cooling water / Kerosene,E-230,B,,,330.0,,,,,,,,10.0,,140,,,6.0,,,,,,,,,,,,,,110,,,BEM,,,,CarbonSteel
-Diesel rundown cooler,Heat exchanger,ShellAndTubeHX,Product rundown & cooling (Train B),Cooling water / Diesel,E-231,B,,,330.0,,,,,,,,10.0,,180,,,6.0,,,,,,,,,,,,,,150,,,BEM,,,,CarbonSteel
-AGO rundown cooler,Heat exchanger,ShellAndTubeHX,Product rundown & cooling (Train B),Cooling water / AGO,E-232,B,,,330.0,,,,,,,,10.0,,210,,,6.0,,,,,,,,,,,,,,180,,,BEM,,,,CarbonSteel
-Residue rundown cooler,Heat exchanger,ShellAndTubeHX,Product rundown & cooling (Train B),Cooling water / Atmospheric residue,E-233,B,,,330.0,,,,,,,,10.0,,275,,,6.0,,,,,,,,,,,,,,245,,,BEM,,,,CarbonSteel
-Stabiliser reboiler,Heat exchanger,ShellAndTubeHX,Naphtha stabiliser (Train B),Stabiliser bottoms / MP steam,E-240,B,,,358.0,,,,,,,,10.0,,220,,,6.5,,,,,,,,,,,,,,190,,,BEM,,,,CarbonSteel
-Stabiliser overhead condenser,Heat exchanger,ShellAndTubeHX,Naphtha stabiliser (Train B),Cooling water / LPG vapour,E-241,B,,,275.0,,,,,,,,10.0,,92,,,5.0,,,,,,,,,,,,,,62,,,BEM,,,,CarbonSteel
-Overhead air cooler A,Air cooler,AirCooledHX,Overhead system (Train B),Overhead vapour,E-220A,B,,,,4,,,,,,,5.0,,180,,,38.0,,,,,,,,,,,,,,128,,,,,,,CarbonSteel
-Overhead air cooler B,Air cooler,AirCooledHX,Overhead system (Train B),Overhead vapour,E-220B,B,,,,4,,,,,,,5.0,,180,,,38.0,,,,,,,,,,,,,,128,,,,,,,CarbonSteel
-1st-stage desalter,Desalter,Desalter,Desalting system (2-stage electrostatic) (Train B),Crude / wash water,D-201,B,,,,,,,,,,,16.0,,160,,4.3,,,33.0,,,,,,,,,,,,135,,1st-stage,,,300,,
-2nd-stage desalter,Desalter,Desalter,Desalting system (2-stage electrostatic) (Train B),Crude / wash water,D-202,B,,,,,,,,,,,16.0,,160,,4.3,,,33.0,,,,,,,,,,,,135,,2nd-stage,,,300,,
-Preflash drum,Vessel,Drum,Preflash system (Train B),Topped crude / vapour,V-201,B,,,,,,,,,,,6.0,,320,,4.0,,,12.0,,,,,,,,,,,,272,CarbonSteel,,,,,,
-Overhead receiver,Vessel,Drum,Overhead system (Train B),Naphtha / sour water,V-202,B,,,,,,,,,,,5.0,,90,,4.5,,,14.0,,,,,,,,,,,,40,CarbonSteel,,,,,,
-Stabiliser reflux drum,Vessel,Drum,Naphtha stabiliser (Train B),LPG,V-203,B,,,,,,,,,,,16.0,,90,,2.4,,,7.0,,,,,,,,,,,,42,CarbonSteel,,,,,,
-Atmospheric column,Column,Column,Atmospheric fractionation (Train B),Crude fractions,C-201,B,,,,,,,,,,,3.5,,400,,9.5,,58.0,,,,,,,,,,,,,362,SS410,,,Alloy400,,50,
-Kerosene side stripper,Side stripper,SideStripper,Atmospheric fractionation (Train B),Kerosene,C-202,B,,,,,,,,,,,3.5,,230,,2.2,,12.0,,,,,,,,,,,,,190,,,,,,6,
-Diesel side stripper,Side stripper,SideStripper,Atmospheric fractionation (Train B),Diesel,C-203,B,,,,,,,,,,,3.5,,295,,2.2,,12.0,,,,,,,,,,,,,255,,,,,,6,
-AGO side stripper,Side stripper,SideStripper,Atmospheric fractionation (Train B),AGO,C-204,B,,,,,,,,,,,3.5,,370,,2.2,,12.0,,,,,,,,,,,,,330,,,,,,6,
-Naphtha stabiliser,Column,Column,Naphtha stabiliser (Train B),Naphtha / LPG,C-205,B,,,,,,,,,,,16.0,,200,,2.8,,30.0,,,,,,,,,,,,,160,,,,,,30,
-Crude heater,Fired heater,FiredHeater,Crude heater system (Train B),Crude,H-201,B,150.0,,,,24,,,Cr9,,89.0,,,,650,,,,,,,,,,,4,,,,,365,,,,,,,
-Transfer line (heater to column),Piping circuit,PipingCircuit,Atmospheric fractionation (Train B),Partially vaporised crude,PC-201,B,,,,,,,,,3.0,,,,,,,,,,"36""",Cr9,,,,14.3,,,,,,365,,,,,,,
-Overhead line circuit,Piping circuit,PipingCircuit,Overhead system (Train B),Overhead vapour,PC-202,B,,,,,,,,,3.0,,,,,,,,,,"42""",CarbonSteel,,,,9.5,,,,,,128,,,,,,,
-Residue rundown circuit,Piping circuit,PipingCircuit,Product rundown & cooling (Train B),Atmospheric residue,PC-203,B,,,,,,,,,3.0,,,,,,,,,,"16""",Cr5,,,,12.7,,,,,,350,,,,,,,
-Neutraliser injection package,Chemical injection package,ChemicalInjectionPackage,Chemical injection (Train B),Neutralising amine,X-201,B,,,,,,,Neutralising amine,,,,,57.0,,,,,,,,,,,,,,,,,,40,,,,,,,
-Filming inhibitor injection package,Chemical injection package,ChemicalInjectionPackage,Chemical injection (Train B),Filming corrosion inhibitor,X-202,B,,,,,,,Filming corrosion inhibitor,,,,,12.0,,,,,,,,,,,,,,,,,,40,,,,,,,
-Overhead wash-water injection,Chemical injection package,ChemicalInjectionPackage,Chemical injection (Train B),Wash water,X-203,B,,,,,,,Wash water,,,,,18000.0,,,,,,,,,,,,,,,,,,40,,,,,,,
-Caustic injection package,Chemical injection package,ChemicalInjectionPackage,Chemical injection (Train B),Dilute caustic,X-204,B,,,,,,,Dilute caustic,,,,,45.0,,,,,,,,,,,,,,,,,,40,,,,,,,
-Demulsifier injection package,Chemical injection package,ChemicalInjectionPackage,Chemical injection (Train B),Demulsifier,X-205,B,,,,,,,Demulsifier,,,,,37.5,,,,,,,,,,,,,,,,,,40,,,,,,,
-Crude transfer pump A,Pump,CentrifugalPump,Crude feed system,Crude,P-001A,Common,,BB2,,,,,,,,,,,,,,,,,,,S-4,OEM-A BB2-300,390,,,1100,90,,Plan11,35,,,,,,,
-Crude transfer pump B,Pump,CentrifugalPump,Crude feed system,Crude,P-001B,Common,,BB2,,,,,,,,,,,,,,,,,,,S-4,OEM-A BB2-300,390,,,1100,90,,Plan11,35,,,,,,,
-Crude transfer pump C,Pump,CentrifugalPump,Crude feed system,Crude,P-001C,Common,,BB2,,,,,,,,,,,,,,,,,,,S-4,OEM-A BB2-300,390,,,1100,90,,Plan11,35,,,,,,,
-Crude transfer pump D,Pump,CentrifugalPump,Crude feed system,Crude,P-001D,Common,,BB2,,,,,,,,,,,,,,,,,,,S-4,OEM-A BB2-300,390,,,1100,90,,Plan11,35,,,,,,,
-Flare knock-out drum,Vessel,Drum,Relief & flare knock-out,Relief vapour / liquid,V-901,Common,,,,,,,,,,,3.5,,200,,4.5,,,15.0,,,,,,,,,,,,45,CarbonSteel,,,,,,
-Flare KO drum pump A,Pump,CentrifugalPump,Relief & flare knock-out,Slop oil,P-901A,Common,,OH2,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,20,,,40,60,,Plan11,45,,,,,,,
-Flare KO drum pump B,Pump,CentrifugalPump,Relief & flare knock-out,Slop oil,P-901B,Common,,OH2,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,20,,,40,60,,Plan11,45,,,,,,,
-Neutraliser bulk storage tank,Storage tank,StorageTank,Chemical storage,Neutralising amine,TK-901,Common,,,,,,0.35,,,,,,,,,4.0,,4.5,,,,,,,,,,,Fixed cone roof,,35,,,,,,,
-Corrosion inhibitor bulk storage tank,Storage tank,StorageTank,Chemical storage,Filming corrosion inhibitor,TK-902,Common,,,,,,0.35,,,,,,,,,4.0,,4.5,,,,,,,,,,,Fixed cone roof,,35,,,,,,,
-Crude storage tank 1,Storage tank,StorageTank,Crude storage,Crude,TK-001,Common,,,,,,600,,,,,,,,,78.0,,20.0,,,,,,,,,,,External floating roof,,35,,,,,,,
-Crude storage tank 2,Storage tank,StorageTank,Crude storage,Crude,TK-002,Common,,,,,,600,,,,,,,,,78.0,,20.0,,,,,,,,,,,External floating roof,,35,,,,,,,
-Crude storage tank 3,Storage tank,StorageTank,Crude storage,Crude,TK-003,Common,,,,,,600,,,,,,,,,78.0,,20.0,,,,,,,,,,,External floating roof,,35,,,,,,,
-Crude storage tank 4,Storage tank,StorageTank,Crude storage,Crude,TK-004,Common,,,,,,600,,,,,,,,,78.0,,20.0,,,,,,,,,,,External floating roof,,35,,,,,,,
-Crude storage tank 5,Storage tank,StorageTank,Crude storage,Crude,TK-005,Common,,,,,,600,,,,,,,,,78.0,,20.0,,,,,,,,,,,External floating roof,,35,,,,,,,
-Crude storage tank 6,Storage tank,StorageTank,Crude storage,Crude,TK-006,Common,,,,,,600,,,,,,,,,78.0,,20.0,,,,,,,,,,,External floating roof,,35,,,,,,,
+description,equipment_class,ontology_class,section,service,tag,train,absorbed_duty,api_610_type,area,bays,burners,capacity,catalyst_inventory,catalyst_volume,chemical,coil_metallurgy,corrosion_allowance,cutting_tool,design_efficiency,design_pressure,design_rate,design_temperature,design_tmt,design_wabt,diameter,driver,drum_cycle_design,duty,height,length,line_size,lining,material,material_class,model,motor_power,nominal_wall,passes,power_rating,rated_capacity,rated_flow,rated_head,rated_power,roof_type,seal_plan,service_temperature,shell_material,stage,steam_rating,tema_type,throughput_rating,top_cladding,transformer_kva,trays,tube_metallurgy,unit
+Crude charge pump A,Pump,CentrifugalPump,Crude charge system (Train A),Crude,P-101A,A,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-A BB2-300,710,,,,,830,260,,,Plan11,40,,,,,,,,,,CDU-A
+Crude charge pump B,Pump,CentrifugalPump,Crude charge system (Train A),Crude,P-101B,A,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-A BB2-300,710,,,,,830,260,,,Plan11,40,,,,,,,,,,CDU-A
+Crude charge pump C,Pump,CentrifugalPump,Crude charge system (Train A),Crude,P-101C,A,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-A BB2-300,710,,,,,830,260,,,Plan11,40,,,,,,,,,,CDU-A
+Desalter wash-water pump A,Pump,CentrifugalPump,Desalting system (2-stage electrostatic) (Train A),Wash water,P-102A,A,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,60,,,,,110,120,,,Plan11,95,,,,,,,,,,CDU-A
+Desalter wash-water pump B,Pump,CentrifugalPump,Desalting system (2-stage electrostatic) (Train A),Wash water,P-102B,A,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,60,,,,,110,120,,,Plan11,95,,,,,,,,,,CDU-A
+Desalted crude booster pump A,Pump,CentrifugalPump,Hot preheat train (Train A),Desalted crude,P-103A,A,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-A BB2-300,980,,,,,1660,180,,,Plan11,135,,,,,,,,,,CDU-A
+Desalted crude booster pump B,Pump,CentrifugalPump,Hot preheat train (Train A),Desalted crude,P-103B,A,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-A BB2-300,980,,,,,1660,180,,,Plan11,135,,,,,,,,,,CDU-A
+Preflash bottoms pump A,Pump,CentrifugalPump,Preflash system (Train A),Topped crude,P-104A,A,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,1120,,,,,1550,220,,,Plan53B,272,,,,,,,,,,CDU-A
+Preflash bottoms pump B,Pump,CentrifugalPump,Preflash system (Train A),Topped crude,P-104B,A,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,1120,,,,,1550,220,,,Plan53B,272,,,,,,,,,,CDU-A
+Kerosene product pump A,Pump,CentrifugalPump,Atmospheric fractionation (Train A),Kerosene,P-105A,A,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,100,,,,,200,120,,,Plan11,190,,,,,,,,,,CDU-A
+Kerosene product pump B,Pump,CentrifugalPump,Atmospheric fractionation (Train A),Kerosene,P-105B,A,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,100,,,,,200,120,,,Plan11,190,,,,,,,,,,CDU-A
+Diesel product pump A,Pump,CentrifugalPump,Atmospheric fractionation (Train A),Diesel,P-106A,A,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-B OH2-150H,160,,,,,330,130,,,Plan11,255,,,,,,,,,,CDU-A
+Diesel product pump B,Pump,CentrifugalPump,Atmospheric fractionation (Train A),Diesel,P-106B,A,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-B OH2-150H,160,,,,,330,130,,,Plan11,255,,,,,,,,,,CDU-A
+AGO product pump A,Pump,CentrifugalPump,Atmospheric fractionation (Train A),Atmospheric gas oil,P-107A,A,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-B OH2-150H,70,,,,,116,140,,,Plan53B,330,,,,,,,,,,CDU-A
+AGO product pump B,Pump,CentrifugalPump,Atmospheric fractionation (Train A),Atmospheric gas oil,P-107B,A,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-B OH2-150H,70,,,,,116,140,,,Plan53B,330,,,,,,,,,,CDU-A
+Atmospheric residue pump A,Pump,CentrifugalPump,Atmospheric fractionation (Train A),Atmospheric residue,P-108A,A,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,360,,,,,660,160,,,Plan53B,350,,,,,,,,,,CDU-A
+Atmospheric residue pump B,Pump,CentrifugalPump,Atmospheric fractionation (Train A),Atmospheric residue,P-108B,A,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,360,,,,,660,160,,,Plan53B,350,,,,,,,,,,CDU-A
+Top pumparound pump A,Pump,CentrifugalPump,Pumparound circuits (Train A),Top pumparound,P-109A,A,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,220,,,,,700,90,,,Plan11,150,,,,,,,,,,CDU-A
+Top pumparound pump B,Pump,CentrifugalPump,Pumparound circuits (Train A),Top pumparound,P-109B,A,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,220,,,,,700,90,,,Plan11,150,,,,,,,,,,CDU-A
+Diesel pumparound pump A,Pump,CentrifugalPump,Pumparound circuits (Train A),Diesel pumparound,P-110A,A,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,310,,,,,900,100,,,Plan11,240,,,,,,,,,,CDU-A
+Diesel pumparound pump B,Pump,CentrifugalPump,Pumparound circuits (Train A),Diesel pumparound,P-110B,A,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,310,,,,,900,100,,,Plan11,240,,,,,,,,,,CDU-A
+Bottom pumparound pump A,Pump,CentrifugalPump,Pumparound circuits (Train A),Bottom pumparound,P-111A,A,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,300,,,,,800,110,,,Plan53B,300,,,,,,,,,,CDU-A
+Bottom pumparound pump B,Pump,CentrifugalPump,Pumparound circuits (Train A),Bottom pumparound,P-111B,A,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,300,,,,,800,110,,,Plan53B,300,,,,,,,,,,CDU-A
+Overhead reflux pump A,Pump,CentrifugalPump,Overhead system (Train A),Naphtha reflux,P-112A,A,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,190,,,,,600,90,,,Plan52,40,,,,,,,,,,CDU-A
+Overhead reflux pump B,Pump,CentrifugalPump,Overhead system (Train A),Naphtha reflux,P-112B,A,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,190,,,,,600,90,,,Plan52,40,,,,,,,,,,CDU-A
+Naphtha product pump A,Pump,CentrifugalPump,Overhead system (Train A),Unstabilised naphtha,P-113A,A,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,160,,,,,350,120,,,Plan52,40,,,,,,,,,,CDU-A
+Naphtha product pump B,Pump,CentrifugalPump,Overhead system (Train A),Unstabilised naphtha,P-113B,A,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,160,,,,,350,120,,,Plan52,40,,,,,,,,,,CDU-A
+Sour water pump A,Pump,CentrifugalPump,Overhead system (Train A),Sour water,P-114A,A,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,30,,,,,60,60,,,Plan11,40,,,,,,,,,,CDU-A
+Sour water pump B,Pump,CentrifugalPump,Overhead system (Train A),Sour water,P-114B,A,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,30,,,,,60,60,,,Plan11,40,,,,,,,,,,CDU-A
+Stabiliser reflux pump A,Pump,CentrifugalPump,Naphtha stabiliser (Train A),LPG,P-115A,A,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,50,,,,,80,110,,,Plan52,45,,,,,,,,,,CDU-A
+Stabiliser reflux pump B,Pump,CentrifugalPump,Naphtha stabiliser (Train A),LPG,P-115B,A,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,50,,,,,80,110,,,Plan52,45,,,,,,,,,,CDU-A
+Crude / kerosene product exchanger,Heat exchanger,ShellAndTubeHX,Cold preheat train (Train A),Crude / Kerosene product,E-101,A,,,1248.0,,,,,,,,,,,25.0,,220,,,,,,22.7,,,,,,,,,,,,,,,,,,190,,,,AES,,,,,CarbonSteel,CDU-A
+Crude / top pumparound exchanger,Heat exchanger,ShellAndTubeHX,Cold preheat train (Train A),Crude / Top pumparound,E-102,A,,,1248.0,,,,,,,,,,,25.0,,180,,,,,,22.7,,,,,,,,,,,,,,,,,,150,,,,AES,,,,,CarbonSteel,CDU-A
+Crude / diesel product exchanger,Heat exchanger,ShellAndTubeHX,Cold preheat train (Train A),Crude / Diesel product,E-103,A,,,996.0,,,,,,,,,,,25.0,,285,,,,,,18.1,,,,,,,,,,,,,,,,,,255,,,,AES,,,,,CarbonSteel,CDU-A
+Crude / AGO product exchanger,Heat exchanger,ShellAndTubeHX,Cold preheat train (Train A),Crude / AGO product,E-104,A,,,748.0,,,,,,,,,,,25.0,,360,,,,,,13.6,,,,,,,,,,,,,,,,,,330,,,,AES,,,,,CarbonSteel,CDU-A
+Crude / residue exchanger (cold end),Heat exchanger,ShellAndTubeHX,Cold preheat train (Train A),Crude / Atmospheric residue,E-105,A,,,500.0,,,,,,,,,,,25.0,,235,,,,,,9.1,,,,,,,,,,,,,,,,,,205,,,,AES,,,,,CarbonSteel,CDU-A
+Crude / diesel pumparound exchanger,Heat exchanger,ShellAndTubeHX,Hot preheat train (Train A),Crude / Diesel pumparound,E-107,A,,,1749.0,,,,,,,,,,,25.0,,270,,,,,,31.8,,,,,,,,,,,,,,,,,,240,,,,AES,,,,,CarbonSteel,CDU-A
+Crude / bottom pumparound exchanger,Heat exchanger,ShellAndTubeHX,Hot preheat train (Train A),Crude / Bottom pumparound,E-108,A,,,1749.0,,,,,,,,,,,25.0,,330,,,,,,31.8,,,,,,,,,,,,,,,,,,300,,,,AES,,,,,CarbonSteel,CDU-A
+Crude / residue exchanger 1,Heat exchanger,ShellAndTubeHX,Hot preheat train (Train A),Crude / Atmospheric residue,E-109,A,,,996.0,,,,,,,,,,,25.0,,310,,,,,,18.1,,,,,,,,,,,,,,,,,,280,,,,AES,,,,,Cr5,CDU-A
+Crude / residue exchanger 2,Heat exchanger,ShellAndTubeHX,Hot preheat train (Train A),Crude / Atmospheric residue,E-110,A,,,996.0,,,,,,,,,,,25.0,,330,,,,,,18.1,,,,,,,,,,,,,,,,,,300,,,,AES,,,,,Cr5,CDU-A
+Crude / residue exchanger 3,Heat exchanger,ShellAndTubeHX,Hot preheat train (Train A),Crude / Atmospheric residue,E-111,A,,,748.0,,,,,,,,,,,25.0,,350,,,,,,13.6,,,,,,,,,,,,,,,,,,320,,,,AES,,,,,Cr5,CDU-A
+Crude / residue exchanger 4,Heat exchanger,ShellAndTubeHX,Hot preheat train (Train A),Crude / Atmospheric residue,E-112,A,,,600.0,,,,,,,,,,,25.0,,380,,,,,,10.9,,,,,,,,,,,,,,,,,,350,,,,AES,,,,,Cr5,CDU-A
+Wash-water / brine exchanger,Heat exchanger,ShellAndTubeHX,Desalting system (2-stage electrostatic) (Train A),Wash water / Desalter brine,E-106,A,,,412.0,,,,,,,,,,,10.0,,165,,,,,,7.5,,,,,,,,,,,,,,,,,,135,,,,BEM,,,,,CarbonSteel,CDU-A
+Overhead trim cooler,Heat exchanger,ShellAndTubeHX,Overhead system (Train A),Cooling water / Overhead naphtha / water,E-121,A,,,495.0,,,,,,,,,,,10.0,,85,,,,,,9.0,,,,,,,,,,,,,,,,,,55,,,,BEM,,,,,Titanium,CDU-A
+Kerosene rundown cooler,Heat exchanger,ShellAndTubeHX,Product rundown & cooling (Train A),Cooling water / Kerosene,E-130,A,,,330.0,,,,,,,,,,,10.0,,140,,,,,,6.0,,,,,,,,,,,,,,,,,,110,,,,BEM,,,,,CarbonSteel,CDU-A
+Diesel rundown cooler,Heat exchanger,ShellAndTubeHX,Product rundown & cooling (Train A),Cooling water / Diesel,E-131,A,,,330.0,,,,,,,,,,,10.0,,180,,,,,,6.0,,,,,,,,,,,,,,,,,,150,,,,BEM,,,,,CarbonSteel,CDU-A
+AGO rundown cooler,Heat exchanger,ShellAndTubeHX,Product rundown & cooling (Train A),Cooling water / AGO,E-132,A,,,330.0,,,,,,,,,,,10.0,,210,,,,,,6.0,,,,,,,,,,,,,,,,,,180,,,,BEM,,,,,CarbonSteel,CDU-A
+Residue rundown cooler,Heat exchanger,ShellAndTubeHX,Product rundown & cooling (Train A),Cooling water / Atmospheric residue,E-133,A,,,330.0,,,,,,,,,,,10.0,,275,,,,,,6.0,,,,,,,,,,,,,,,,,,245,,,,BEM,,,,,CarbonSteel,CDU-A
+Stabiliser reboiler,Heat exchanger,ShellAndTubeHX,Naphtha stabiliser (Train A),Stabiliser bottoms / MP steam,E-140,A,,,358.0,,,,,,,,,,,10.0,,220,,,,,,6.5,,,,,,,,,,,,,,,,,,190,,,,BEM,,,,,CarbonSteel,CDU-A
+Stabiliser overhead condenser,Heat exchanger,ShellAndTubeHX,Naphtha stabiliser (Train A),Cooling water / LPG vapour,E-141,A,,,275.0,,,,,,,,,,,10.0,,92,,,,,,5.0,,,,,,,,,,,,,,,,,,62,,,,BEM,,,,,CarbonSteel,CDU-A
+Overhead air cooler A,Air cooler,AirCooledHX,Overhead system (Train A),Overhead vapour,E-120A,A,,,,4,,,,,,,,,,5.0,,180,,,,,,38.0,,,,,,,,,,,,,,,,,,128,,,,,,,,,CarbonSteel,CDU-A
+Overhead air cooler B,Air cooler,AirCooledHX,Overhead system (Train A),Overhead vapour,E-120B,A,,,,4,,,,,,,,,,5.0,,180,,,,,,38.0,,,,,,,,,,,,,,,,,,128,,,,,,,,,CarbonSteel,CDU-A
+1st-stage desalter,Desalter,Desalter,Desalting system (2-stage electrostatic) (Train A),Crude / wash water,D-101,A,,,,,,,,,,,,,,16.0,,160,,,4.3,,,,,33.0,,,,,,,,,,,,,,,,135,,1st-stage,,,,,300,,,CDU-A
+2nd-stage desalter,Desalter,Desalter,Desalting system (2-stage electrostatic) (Train A),Crude / wash water,D-102,A,,,,,,,,,,,,,,16.0,,160,,,4.3,,,,,33.0,,,,,,,,,,,,,,,,135,,2nd-stage,,,,,300,,,CDU-A
+Preflash drum,Vessel,Drum,Preflash system (Train A),Topped crude / vapour,V-101,A,,,,,,,,,,,,,,6.0,,320,,,4.0,,,,,12.0,,,,,,,,,,,,,,,,272,CarbonSteel,,,,,,,,,CDU-A
+Overhead receiver,Vessel,Drum,Overhead system (Train A),Naphtha / sour water,V-102,A,,,,,,,,,,,,,,5.0,,90,,,4.5,,,,,14.0,,,,,,,,,,,,,,,,40,CarbonSteel,,,,,,,,,CDU-A
+Stabiliser reflux drum,Vessel,Drum,Naphtha stabiliser (Train A),LPG,V-103,A,,,,,,,,,,,,,,16.0,,90,,,2.4,,,,,7.0,,,,,,,,,,,,,,,,42,CarbonSteel,,,,,,,,,CDU-A
+Atmospheric column,Column,Column,Atmospheric fractionation (Train A),Crude fractions,C-101,A,,,,,,,,,,,,,,3.5,,400,,,9.5,,,,58.0,,,,,,,,,,,,,,,,,362,SS410,,,,,Alloy400,,50,,CDU-A
+Kerosene side stripper,Side stripper,SideStripper,Atmospheric fractionation (Train A),Kerosene,C-102,A,,,,,,,,,,,,,,3.5,,230,,,2.2,,,,12.0,,,,,,,,,,,,,,,,,190,,,,,,,,6,,CDU-A
+Diesel side stripper,Side stripper,SideStripper,Atmospheric fractionation (Train A),Diesel,C-103,A,,,,,,,,,,,,,,3.5,,295,,,2.2,,,,12.0,,,,,,,,,,,,,,,,,255,,,,,,,,6,,CDU-A
+AGO side stripper,Side stripper,SideStripper,Atmospheric fractionation (Train A),AGO,C-104,A,,,,,,,,,,,,,,3.5,,370,,,2.2,,,,12.0,,,,,,,,,,,,,,,,,330,,,,,,,,6,,CDU-A
+Naphtha stabiliser,Column,Column,Naphtha stabiliser (Train A),Naphtha / LPG,C-105,A,,,,,,,,,,,,,,16.0,,200,,,2.8,,,,30.0,,,,,,,,,,,,,,,,,160,,,,,,,,30,,CDU-A
+Crude heater,Fired heater,FiredHeater,Crude heater system (Train A),Crude,H-101,A,150.0,,,,24,,,,,Cr9,,,89.0,,,,650,,,,,,,,,,,,,,,4,,,,,,,,365,,,,,,,,,,CDU-A
+Transfer line (heater to column),Piping circuit,PipingCircuit,Atmospheric fractionation (Train A),Partially vaporised crude,PC-101,A,,,,,,,,,,,3.0,,,,,,,,,,,,,,"36""",,Cr9,,,,14.3,,,,,,,,,365,,,,,,,,,,CDU-A
+Overhead line circuit,Piping circuit,PipingCircuit,Overhead system (Train A),Overhead vapour,PC-102,A,,,,,,,,,,,3.0,,,,,,,,,,,,,,"42""",,CarbonSteel,,,,9.5,,,,,,,,,128,,,,,,,,,,CDU-A
+Residue rundown circuit,Piping circuit,PipingCircuit,Product rundown & cooling (Train A),Atmospheric residue,PC-103,A,,,,,,,,,,,3.0,,,,,,,,,,,,,,"16""",,Cr5,,,,12.7,,,,,,,,,350,,,,,,,,,,CDU-A
+Neutraliser injection package,Chemical injection package,ChemicalInjectionPackage,Chemical injection (Train A),Neutralising amine,X-101,A,,,,,,,,,Neutralising amine,,,,,,67.5,,,,,,,,,,,,,,,,,,,,,,,,,40,,,,,,,,,,CDU-A
+Filming inhibitor injection package,Chemical injection package,ChemicalInjectionPackage,Chemical injection (Train A),Filming corrosion inhibitor,X-102,A,,,,,,,,,Filming corrosion inhibitor,,,,,,12.0,,,,,,,,,,,,,,,,,,,,,,,,,40,,,,,,,,,,CDU-A
+Overhead wash-water injection,Chemical injection package,ChemicalInjectionPackage,Chemical injection (Train A),Wash water,X-103,A,,,,,,,,,Wash water,,,,,,18000.0,,,,,,,,,,,,,,,,,,,,,,,,,40,,,,,,,,,,CDU-A
+Caustic injection package,Chemical injection package,ChemicalInjectionPackage,Chemical injection (Train A),Dilute caustic,X-104,A,,,,,,,,,Dilute caustic,,,,,,45.0,,,,,,,,,,,,,,,,,,,,,,,,,40,,,,,,,,,,CDU-A
+Demulsifier injection package,Chemical injection package,ChemicalInjectionPackage,Chemical injection (Train A),Demulsifier,X-105,A,,,,,,,,,Demulsifier,,,,,,37.5,,,,,,,,,,,,,,,,,,,,,,,,,40,,,,,,,,,,CDU-A
+Crude charge pump A,Pump,CentrifugalPump,Crude charge system (Train B),Crude,P-201A,B,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-A BB2-300,710,,,,,830,260,,,Plan11,40,,,,,,,,,,CDU-B
+Crude charge pump B,Pump,CentrifugalPump,Crude charge system (Train B),Crude,P-201B,B,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-A BB2-300,710,,,,,830,260,,,Plan11,40,,,,,,,,,,CDU-B
+Crude charge pump C,Pump,CentrifugalPump,Crude charge system (Train B),Crude,P-201C,B,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-A BB2-300,710,,,,,830,260,,,Plan11,40,,,,,,,,,,CDU-B
+Desalter wash-water pump A,Pump,CentrifugalPump,Desalting system (2-stage electrostatic) (Train B),Wash water,P-202A,B,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,60,,,,,110,120,,,Plan11,95,,,,,,,,,,CDU-B
+Desalter wash-water pump B,Pump,CentrifugalPump,Desalting system (2-stage electrostatic) (Train B),Wash water,P-202B,B,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,60,,,,,110,120,,,Plan11,95,,,,,,,,,,CDU-B
+Desalted crude booster pump A,Pump,CentrifugalPump,Hot preheat train (Train B),Desalted crude,P-203A,B,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-A BB2-300,980,,,,,1660,180,,,Plan11,135,,,,,,,,,,CDU-B
+Desalted crude booster pump B,Pump,CentrifugalPump,Hot preheat train (Train B),Desalted crude,P-203B,B,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-A BB2-300,980,,,,,1660,180,,,Plan11,135,,,,,,,,,,CDU-B
+Preflash bottoms pump A,Pump,CentrifugalPump,Preflash system (Train B),Topped crude,P-204A,B,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,1120,,,,,1550,220,,,Plan53B,272,,,,,,,,,,CDU-B
+Preflash bottoms pump B,Pump,CentrifugalPump,Preflash system (Train B),Topped crude,P-204B,B,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,1120,,,,,1550,220,,,Plan53B,272,,,,,,,,,,CDU-B
+Kerosene product pump A,Pump,CentrifugalPump,Atmospheric fractionation (Train B),Kerosene,P-205A,B,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,100,,,,,200,120,,,Plan11,190,,,,,,,,,,CDU-B
+Kerosene product pump B,Pump,CentrifugalPump,Atmospheric fractionation (Train B),Kerosene,P-205B,B,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,100,,,,,200,120,,,Plan11,190,,,,,,,,,,CDU-B
+Diesel product pump A,Pump,CentrifugalPump,Atmospheric fractionation (Train B),Diesel,P-206A,B,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-B OH2-150H,160,,,,,330,130,,,Plan11,255,,,,,,,,,,CDU-B
+Diesel product pump B,Pump,CentrifugalPump,Atmospheric fractionation (Train B),Diesel,P-206B,B,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-B OH2-150H,160,,,,,330,130,,,Plan11,255,,,,,,,,,,CDU-B
+AGO product pump A,Pump,CentrifugalPump,Atmospheric fractionation (Train B),Atmospheric gas oil,P-207A,B,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-B OH2-150H,70,,,,,116,140,,,Plan53B,330,,,,,,,,,,CDU-B
+AGO product pump B,Pump,CentrifugalPump,Atmospheric fractionation (Train B),Atmospheric gas oil,P-207B,B,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-B OH2-150H,70,,,,,116,140,,,Plan53B,330,,,,,,,,,,CDU-B
+Atmospheric residue pump A,Pump,CentrifugalPump,Atmospheric fractionation (Train B),Atmospheric residue,P-208A,B,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,360,,,,,660,160,,,Plan53B,350,,,,,,,,,,CDU-B
+Atmospheric residue pump B,Pump,CentrifugalPump,Atmospheric fractionation (Train B),Atmospheric residue,P-208B,B,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,360,,,,,660,160,,,Plan53B,350,,,,,,,,,,CDU-B
+Top pumparound pump A,Pump,CentrifugalPump,Pumparound circuits (Train B),Top pumparound,P-209A,B,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,220,,,,,700,90,,,Plan11,150,,,,,,,,,,CDU-B
+Top pumparound pump B,Pump,CentrifugalPump,Pumparound circuits (Train B),Top pumparound,P-209B,B,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,220,,,,,700,90,,,Plan11,150,,,,,,,,,,CDU-B
+Diesel pumparound pump A,Pump,CentrifugalPump,Pumparound circuits (Train B),Diesel pumparound,P-210A,B,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,310,,,,,900,100,,,Plan11,240,,,,,,,,,,CDU-B
+Diesel pumparound pump B,Pump,CentrifugalPump,Pumparound circuits (Train B),Diesel pumparound,P-210B,B,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,310,,,,,900,100,,,Plan11,240,,,,,,,,,,CDU-B
+Bottom pumparound pump A,Pump,CentrifugalPump,Pumparound circuits (Train B),Bottom pumparound,P-211A,B,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,300,,,,,800,110,,,Plan53B,300,,,,,,,,,,CDU-B
+Bottom pumparound pump B,Pump,CentrifugalPump,Pumparound circuits (Train B),Bottom pumparound,P-211B,B,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,300,,,,,800,110,,,Plan53B,300,,,,,,,,,,CDU-B
+Overhead reflux pump A,Pump,CentrifugalPump,Overhead system (Train B),Naphtha reflux,P-212A,B,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,190,,,,,600,90,,,Plan52,40,,,,,,,,,,CDU-B
+Overhead reflux pump B,Pump,CentrifugalPump,Overhead system (Train B),Naphtha reflux,P-212B,B,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,190,,,,,600,90,,,Plan52,40,,,,,,,,,,CDU-B
+Naphtha product pump A,Pump,CentrifugalPump,Overhead system (Train B),Unstabilised naphtha,P-213A,B,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,160,,,,,350,120,,,Plan52,40,,,,,,,,,,CDU-B
+Naphtha product pump B,Pump,CentrifugalPump,Overhead system (Train B),Unstabilised naphtha,P-213B,B,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,160,,,,,350,120,,,Plan52,40,,,,,,,,,,CDU-B
+Sour water pump A,Pump,CentrifugalPump,Overhead system (Train B),Sour water,P-214A,B,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,30,,,,,60,60,,,Plan11,40,,,,,,,,,,CDU-B
+Sour water pump B,Pump,CentrifugalPump,Overhead system (Train B),Sour water,P-214B,B,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,30,,,,,60,60,,,Plan11,40,,,,,,,,,,CDU-B
+Stabiliser reflux pump A,Pump,CentrifugalPump,Naphtha stabiliser (Train B),LPG,P-215A,B,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,50,,,,,80,110,,,Plan52,45,,,,,,,,,,CDU-B
+Stabiliser reflux pump B,Pump,CentrifugalPump,Naphtha stabiliser (Train B),LPG,P-215B,B,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,50,,,,,80,110,,,Plan52,45,,,,,,,,,,CDU-B
+Crude / kerosene product exchanger,Heat exchanger,ShellAndTubeHX,Cold preheat train (Train B),Crude / Kerosene product,E-201,B,,,1248.0,,,,,,,,,,,25.0,,220,,,,,,22.7,,,,,,,,,,,,,,,,,,190,,,,AES,,,,,CarbonSteel,CDU-B
+Crude / top pumparound exchanger,Heat exchanger,ShellAndTubeHX,Cold preheat train (Train B),Crude / Top pumparound,E-202,B,,,1248.0,,,,,,,,,,,25.0,,180,,,,,,22.7,,,,,,,,,,,,,,,,,,150,,,,AES,,,,,CarbonSteel,CDU-B
+Crude / diesel product exchanger,Heat exchanger,ShellAndTubeHX,Cold preheat train (Train B),Crude / Diesel product,E-203,B,,,996.0,,,,,,,,,,,25.0,,285,,,,,,18.1,,,,,,,,,,,,,,,,,,255,,,,AES,,,,,CarbonSteel,CDU-B
+Crude / AGO product exchanger,Heat exchanger,ShellAndTubeHX,Cold preheat train (Train B),Crude / AGO product,E-204,B,,,748.0,,,,,,,,,,,25.0,,360,,,,,,13.6,,,,,,,,,,,,,,,,,,330,,,,AES,,,,,CarbonSteel,CDU-B
+Crude / residue exchanger (cold end),Heat exchanger,ShellAndTubeHX,Cold preheat train (Train B),Crude / Atmospheric residue,E-205,B,,,500.0,,,,,,,,,,,25.0,,235,,,,,,9.1,,,,,,,,,,,,,,,,,,205,,,,AES,,,,,CarbonSteel,CDU-B
+Crude / diesel pumparound exchanger,Heat exchanger,ShellAndTubeHX,Hot preheat train (Train B),Crude / Diesel pumparound,E-207,B,,,1595.0,,,,,,,,,,,25.0,,270,,,,,,29.0,,,,,,,,,,,,,,,,,,240,,,,AES,,,,,CarbonSteel,CDU-B
+Crude / bottom pumparound exchanger,Heat exchanger,ShellAndTubeHX,Hot preheat train (Train B),Crude / Bottom pumparound,E-208,B,,,1595.0,,,,,,,,,,,25.0,,330,,,,,,29.0,,,,,,,,,,,,,,,,,,300,,,,AES,,,,,CarbonSteel,CDU-B
+Crude / residue exchanger 1,Heat exchanger,ShellAndTubeHX,Hot preheat train (Train B),Crude / Atmospheric residue,E-209,B,,,896.0,,,,,,,,,,,25.0,,310,,,,,,16.3,,,,,,,,,,,,,,,,,,280,,,,AES,,,,,Cr5,CDU-B
+Crude / residue exchanger 2,Heat exchanger,ShellAndTubeHX,Hot preheat train (Train B),Crude / Atmospheric residue,E-210,B,,,847.0,,,,,,,,,,,25.0,,330,,,,,,15.4,,,,,,,,,,,,,,,,,,300,,,,AES,,,,,Cr5,CDU-B
+Crude / residue exchanger 3,Heat exchanger,ShellAndTubeHX,Hot preheat train (Train B),Crude / Atmospheric residue,E-211,B,,,649.0,,,,,,,,,,,25.0,,350,,,,,,11.8,,,,,,,,,,,,,,,,,,320,,,,AES,,,,,Cr5,CDU-B
+Crude / residue exchanger 4,Heat exchanger,ShellAndTubeHX,Hot preheat train (Train B),Crude / Atmospheric residue,E-212,B,,,550.0,,,,,,,,,,,25.0,,380,,,,,,10.0,,,,,,,,,,,,,,,,,,350,,,,AES,,,,,Cr5,CDU-B
+Wash-water / brine exchanger,Heat exchanger,ShellAndTubeHX,Desalting system (2-stage electrostatic) (Train B),Wash water / Desalter brine,E-206,B,,,412.0,,,,,,,,,,,10.0,,165,,,,,,7.5,,,,,,,,,,,,,,,,,,135,,,,BEM,,,,,CarbonSteel,CDU-B
+Overhead trim cooler,Heat exchanger,ShellAndTubeHX,Overhead system (Train B),Cooling water / Overhead naphtha / water,E-221,B,,,495.0,,,,,,,,,,,10.0,,85,,,,,,9.0,,,,,,,,,,,,,,,,,,55,,,,BEM,,,,,Titanium,CDU-B
+Kerosene rundown cooler,Heat exchanger,ShellAndTubeHX,Product rundown & cooling (Train B),Cooling water / Kerosene,E-230,B,,,330.0,,,,,,,,,,,10.0,,140,,,,,,6.0,,,,,,,,,,,,,,,,,,110,,,,BEM,,,,,CarbonSteel,CDU-B
+Diesel rundown cooler,Heat exchanger,ShellAndTubeHX,Product rundown & cooling (Train B),Cooling water / Diesel,E-231,B,,,330.0,,,,,,,,,,,10.0,,180,,,,,,6.0,,,,,,,,,,,,,,,,,,150,,,,BEM,,,,,CarbonSteel,CDU-B
+AGO rundown cooler,Heat exchanger,ShellAndTubeHX,Product rundown & cooling (Train B),Cooling water / AGO,E-232,B,,,330.0,,,,,,,,,,,10.0,,210,,,,,,6.0,,,,,,,,,,,,,,,,,,180,,,,BEM,,,,,CarbonSteel,CDU-B
+Residue rundown cooler,Heat exchanger,ShellAndTubeHX,Product rundown & cooling (Train B),Cooling water / Atmospheric residue,E-233,B,,,330.0,,,,,,,,,,,10.0,,275,,,,,,6.0,,,,,,,,,,,,,,,,,,245,,,,BEM,,,,,CarbonSteel,CDU-B
+Stabiliser reboiler,Heat exchanger,ShellAndTubeHX,Naphtha stabiliser (Train B),Stabiliser bottoms / MP steam,E-240,B,,,358.0,,,,,,,,,,,10.0,,220,,,,,,6.5,,,,,,,,,,,,,,,,,,190,,,,BEM,,,,,CarbonSteel,CDU-B
+Stabiliser overhead condenser,Heat exchanger,ShellAndTubeHX,Naphtha stabiliser (Train B),Cooling water / LPG vapour,E-241,B,,,275.0,,,,,,,,,,,10.0,,92,,,,,,5.0,,,,,,,,,,,,,,,,,,62,,,,BEM,,,,,CarbonSteel,CDU-B
+Overhead air cooler A,Air cooler,AirCooledHX,Overhead system (Train B),Overhead vapour,E-220A,B,,,,4,,,,,,,,,,5.0,,180,,,,,,38.0,,,,,,,,,,,,,,,,,,128,,,,,,,,,CarbonSteel,CDU-B
+Overhead air cooler B,Air cooler,AirCooledHX,Overhead system (Train B),Overhead vapour,E-220B,B,,,,4,,,,,,,,,,5.0,,180,,,,,,38.0,,,,,,,,,,,,,,,,,,128,,,,,,,,,CarbonSteel,CDU-B
+1st-stage desalter,Desalter,Desalter,Desalting system (2-stage electrostatic) (Train B),Crude / wash water,D-201,B,,,,,,,,,,,,,,16.0,,160,,,4.3,,,,,33.0,,,,,,,,,,,,,,,,135,,1st-stage,,,,,300,,,CDU-B
+2nd-stage desalter,Desalter,Desalter,Desalting system (2-stage electrostatic) (Train B),Crude / wash water,D-202,B,,,,,,,,,,,,,,16.0,,160,,,4.3,,,,,33.0,,,,,,,,,,,,,,,,135,,2nd-stage,,,,,300,,,CDU-B
+Preflash drum,Vessel,Drum,Preflash system (Train B),Topped crude / vapour,V-201,B,,,,,,,,,,,,,,6.0,,320,,,4.0,,,,,12.0,,,,,,,,,,,,,,,,272,CarbonSteel,,,,,,,,,CDU-B
+Overhead receiver,Vessel,Drum,Overhead system (Train B),Naphtha / sour water,V-202,B,,,,,,,,,,,,,,5.0,,90,,,4.5,,,,,14.0,,,,,,,,,,,,,,,,40,CarbonSteel,,,,,,,,,CDU-B
+Stabiliser reflux drum,Vessel,Drum,Naphtha stabiliser (Train B),LPG,V-203,B,,,,,,,,,,,,,,16.0,,90,,,2.4,,,,,7.0,,,,,,,,,,,,,,,,42,CarbonSteel,,,,,,,,,CDU-B
+Atmospheric column,Column,Column,Atmospheric fractionation (Train B),Crude fractions,C-201,B,,,,,,,,,,,,,,3.5,,400,,,9.5,,,,58.0,,,,,,,,,,,,,,,,,362,SS410,,,,,Alloy400,,50,,CDU-B
+Kerosene side stripper,Side stripper,SideStripper,Atmospheric fractionation (Train B),Kerosene,C-202,B,,,,,,,,,,,,,,3.5,,230,,,2.2,,,,12.0,,,,,,,,,,,,,,,,,190,,,,,,,,6,,CDU-B
+Diesel side stripper,Side stripper,SideStripper,Atmospheric fractionation (Train B),Diesel,C-203,B,,,,,,,,,,,,,,3.5,,295,,,2.2,,,,12.0,,,,,,,,,,,,,,,,,255,,,,,,,,6,,CDU-B
+AGO side stripper,Side stripper,SideStripper,Atmospheric fractionation (Train B),AGO,C-204,B,,,,,,,,,,,,,,3.5,,370,,,2.2,,,,12.0,,,,,,,,,,,,,,,,,330,,,,,,,,6,,CDU-B
+Naphtha stabiliser,Column,Column,Naphtha stabiliser (Train B),Naphtha / LPG,C-205,B,,,,,,,,,,,,,,16.0,,200,,,2.8,,,,30.0,,,,,,,,,,,,,,,,,160,,,,,,,,30,,CDU-B
+Crude heater,Fired heater,FiredHeater,Crude heater system (Train B),Crude,H-201,B,150.0,,,,24,,,,,Cr9,,,89.0,,,,650,,,,,,,,,,,,,,,4,,,,,,,,365,,,,,,,,,,CDU-B
+Transfer line (heater to column),Piping circuit,PipingCircuit,Atmospheric fractionation (Train B),Partially vaporised crude,PC-201,B,,,,,,,,,,,3.0,,,,,,,,,,,,,,"36""",,Cr9,,,,14.3,,,,,,,,,365,,,,,,,,,,CDU-B
+Overhead line circuit,Piping circuit,PipingCircuit,Overhead system (Train B),Overhead vapour,PC-202,B,,,,,,,,,,,3.0,,,,,,,,,,,,,,"42""",,CarbonSteel,,,,9.5,,,,,,,,,128,,,,,,,,,,CDU-B
+Residue rundown circuit,Piping circuit,PipingCircuit,Product rundown & cooling (Train B),Atmospheric residue,PC-203,B,,,,,,,,,,,3.0,,,,,,,,,,,,,,"16""",,Cr5,,,,12.7,,,,,,,,,350,,,,,,,,,,CDU-B
+Neutraliser injection package,Chemical injection package,ChemicalInjectionPackage,Chemical injection (Train B),Neutralising amine,X-201,B,,,,,,,,,Neutralising amine,,,,,,57.0,,,,,,,,,,,,,,,,,,,,,,,,,40,,,,,,,,,,CDU-B
+Filming inhibitor injection package,Chemical injection package,ChemicalInjectionPackage,Chemical injection (Train B),Filming corrosion inhibitor,X-202,B,,,,,,,,,Filming corrosion inhibitor,,,,,,12.0,,,,,,,,,,,,,,,,,,,,,,,,,40,,,,,,,,,,CDU-B
+Overhead wash-water injection,Chemical injection package,ChemicalInjectionPackage,Chemical injection (Train B),Wash water,X-203,B,,,,,,,,,Wash water,,,,,,18000.0,,,,,,,,,,,,,,,,,,,,,,,,,40,,,,,,,,,,CDU-B
+Caustic injection package,Chemical injection package,ChemicalInjectionPackage,Chemical injection (Train B),Dilute caustic,X-204,B,,,,,,,,,Dilute caustic,,,,,,45.0,,,,,,,,,,,,,,,,,,,,,,,,,40,,,,,,,,,,CDU-B
+Demulsifier injection package,Chemical injection package,ChemicalInjectionPackage,Chemical injection (Train B),Demulsifier,X-205,B,,,,,,,,,Demulsifier,,,,,,37.5,,,,,,,,,,,,,,,,,,,,,,,,,40,,,,,,,,,,CDU-B
+Crude transfer pump A,Pump,CentrifugalPump,Crude feed system,Crude,P-001A,Common,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-A BB2-300,390,,,,,1100,90,,,Plan11,35,,,,,,,,,,CDU-COM
+Crude transfer pump B,Pump,CentrifugalPump,Crude feed system,Crude,P-001B,Common,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-A BB2-300,390,,,,,1100,90,,,Plan11,35,,,,,,,,,,CDU-COM
+Crude transfer pump C,Pump,CentrifugalPump,Crude feed system,Crude,P-001C,Common,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-A BB2-300,390,,,,,1100,90,,,Plan11,35,,,,,,,,,,CDU-COM
+Crude transfer pump D,Pump,CentrifugalPump,Crude feed system,Crude,P-001D,Common,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-A BB2-300,390,,,,,1100,90,,,Plan11,35,,,,,,,,,,CDU-COM
+Flare knock-out drum,Vessel,Drum,Relief & flare knock-out,Relief vapour / liquid,V-901,Common,,,,,,,,,,,,,,3.5,,200,,,4.5,,,,,15.0,,,,,,,,,,,,,,,,45,CarbonSteel,,,,,,,,,CDU-COM
+Flare KO drum pump A,Pump,CentrifugalPump,Relief & flare knock-out,Slop oil,P-901A,Common,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,20,,,,,40,60,,,Plan11,45,,,,,,,,,,CDU-COM
+Flare KO drum pump B,Pump,CentrifugalPump,Relief & flare knock-out,Slop oil,P-901B,Common,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,20,,,,,40,60,,,Plan11,45,,,,,,,,,,CDU-COM
+Neutraliser bulk storage tank,Storage tank,StorageTank,Chemical storage,Neutralising amine,TK-901,Common,,,,,,0.35,,,,,,,,,,,,,4.0,,,,4.5,,,,,,,,,,,,,,,Fixed cone roof,,35,,,,,,,,,,CDU-COM
+Corrosion inhibitor bulk storage tank,Storage tank,StorageTank,Chemical storage,Filming corrosion inhibitor,TK-902,Common,,,,,,0.35,,,,,,,,,,,,,4.0,,,,4.5,,,,,,,,,,,,,,,Fixed cone roof,,35,,,,,,,,,,CDU-COM
+Crude storage tank 1,Storage tank,StorageTank,Crude storage,Crude,TK-001,Common,,,,,,600,,,,,,,,,,,,,78.0,,,,20.0,,,,,,,,,,,,,,,External floating roof,,35,,,,,,,,,,TF-1
+Crude storage tank 2,Storage tank,StorageTank,Crude storage,Crude,TK-002,Common,,,,,,600,,,,,,,,,,,,,78.0,,,,20.0,,,,,,,,,,,,,,,External floating roof,,35,,,,,,,,,,TF-1
+Crude storage tank 3,Storage tank,StorageTank,Crude storage,Crude,TK-003,Common,,,,,,600,,,,,,,,,,,,,78.0,,,,20.0,,,,,,,,,,,,,,,External floating roof,,35,,,,,,,,,,TF-1
+Crude storage tank 4,Storage tank,StorageTank,Crude storage,Crude,TK-004,Common,,,,,,600,,,,,,,,,,,,,78.0,,,,20.0,,,,,,,,,,,,,,,External floating roof,,35,,,,,,,,,,TF-1
+Crude storage tank 5,Storage tank,StorageTank,Crude storage,Crude,TK-005,Common,,,,,,600,,,,,,,,,,,,,78.0,,,,20.0,,,,,,,,,,,,,,,External floating roof,,35,,,,,,,,,,TF-1
+Crude storage tank 6,Storage tank,StorageTank,Crude storage,Crude,TK-006,Common,,,,,,600,,,,,,,,,,,,,78.0,,,,20.0,,,,,,,,,,,,,,,External floating roof,,35,,,,,,,,,,TF-1
+FCC feed preheater,Fired heater,FiredHeater,Feed preheat & injection,Hydrotreated VGO,H-301,-,28.0,,,,10,,,,,Cr5,,,87.0,,,,560,,,,,,,,,,,,,,,4,,,,,,,,290,,,,,,,,,,FCC-1
+"FCC reactor, riser & stripper",FCC reactor,FCCReactor,Reactor & regenerator,VGO / catalyst,R-301,-,,,,,,,,,,,,,,3.5,,565,,,5.2,,,,48.0,,,Abrasion-resistant refractory,,,,,,,,,,,,,,532,CarbonSteel,,,,,,,,,FCC-1
+FCC regenerator,FCC regenerator,FCCRegenerator,Reactor & regenerator,Catalyst / air / flue gas,R-302,-,,,,,,,420,,,,,,,3.5,,760,,,12.5,,,,35.0,,,,,,,,,,,,,,,,,712,CarbonSteel,,,,,,,,,FCC-1
+Regenerated catalyst slide valve,Slide valve,SlideValve,Reactor & regenerator,Regenerated catalyst,SV-301,-,,,,,,,,,,,,,,3.5,,760,,,,,,,,,"48""",,,,,,,,,,,,,,,712,,,,,,,,,,FCC-1
+Spent catalyst slide valve,Slide valve,SlideValve,Reactor & regenerator,Spent catalyst,SV-302,-,,,,,,,,,,,,,,3.5,,565,,,,,,,,,"42""",,,,,,,,,,,,,,,532,,,,,,,,,,FCC-1
+Main air blower,Compressor,CentrifugalCompressor,Flue gas & power recovery,Air,K-302,-,,,,,,,,,,,,,,3.5,,260,,,,Expander + motor-generator train,,,,,,,,,OEM-D AV-56,,,,,320,,,28000,,,215,,,,,,,,,,FCC-1
+Flue-gas power recovery expander,Expander,PowerRecoveryExpander,Flue gas & power recovery,Flue gas,EX-301,-,,,,,,,,,,,,,,3.5,,760,,,,,,,,,,,,,OEM-D EXP-50,,,,26.0,,,,,,,705,,,,,,,,,,FCC-1
+CO boiler / waste-heat boiler,Boiler,WasteHeatBoiler,Flue gas & power recovery,Flue gas / BFW,B-301,-,,,,,,,,,,,,,,45.0,,450,,,,,,,,,,,,,,,,,,,,,,,,705,,,200,,,,,,,FCC-1
+FCC main fractionator,Column,Column,Main fractionator,Reactor vapour,C-301,-,,,,,,,,,,,,,,3.5,,400,,,8.0,,,,50.0,,,,,,,,,,,,,,,,,350.0,Cr5,,,,,,,32,,FCC-1
+Primary absorber,Column,Column,Gas concentration,Wet gas / naphtha,C-302,-,,,,,,,,,,,,,,18.0,,90,,,2.4,,,,30.0,,,,,,,,,,,,,,,,,50.0,CarbonSteel,,,,,,,30,,FCC-1
+Debutaniser,Column,Column,Gas concentration,Naphtha / LPG,C-303,-,,,,,,,,,,,,,,14.0,,220,,,3.2,,,,36.0,,,,,,,,,,,,,,,,,180.0,CarbonSteel,,,,,,,40,,FCC-1
+C3/C4 splitter,Column,Column,Gas concentration,LPG,C-304,-,,,,,,,,,,,,,,22.0,,130,,,2.6,,,,45.0,,,,,,,,,,,,,,,,,100.0,CarbonSteel,,,,,,,60,,FCC-1
+Main fractionator overhead receiver,Vessel,Drum,Main fractionator overhead,Naphtha / sour water,V-301,-,,,,,,,,,,,,,,5.0,,90,,,4.2,,,,,13.0,,,,,,,,,,,,,,,,40,CarbonSteel,,,,,,,,,FCC-1
+Wet gas compressor interstage drum,Vessel,Drum,Wet gas compression,Wet gas / condensate,V-302,-,,,,,,,,,,,,,,8.0,,90,,,2.8,,,,,8.0,,,,,,,,,,,,,,,,40,CarbonSteel,,,,,,,,,FCC-1
+High-pressure separator,Vessel,Drum,Gas concentration,Gas / naphtha / water,V-303,-,,,,,,,,,,,,,,18.0,,90,,,3.0,,,,,9.0,,,,,,,,,,,,,,,,40,CarbonSteel,,,,,,,,,FCC-1
+Wet gas compressor,Compressor,CentrifugalCompressor,Wet gas compression,FCC wet gas,K-301,-,,,,,,,,,,,,,,20.0,,160,,,,Steam turbine,,,,,,,,,OEM-D MCL-806,,,,,105,,,11500,,,118,,,,,,,,,,FCC-1
+Feed / slurry pumparound exchanger,Heat exchanger,ShellAndTubeHX,Feed preheat & injection,Hydrotreated VGO / Slurry pumparound,E-301,-,,,1100.0,,,,,,,,,,,10.0,,380,,,,,,20.0,,,,,,,,,,,,,,,,,,350,,,,BEM,,,,,Cr5,FCC-1
+Slurry steam generator,Heat exchanger,ShellAndTubeHX,Main fractionator,BFW / Slurry pumparound,E-302,-,,,1375.0,,,,,,,,,,,10.0,,380,,,,,,25.0,,,,,,,,,,,,,,,,,,350,,,,BEM,,,,,Cr5,FCC-1
+Feed / LCO exchanger,Heat exchanger,ShellAndTubeHX,Feed preheat & injection,Hydrotreated VGO / LCO product,E-303,-,,,495.0,,,,,,,,,,,10.0,,260,,,,,,9.0,,,,,,,,,,,,,,,,,,230,,,,BEM,,,,,CarbonSteel,FCC-1
+Main fractionator overhead air cooler A,Air cooler,AirCooledHX,Main fractionator overhead,Overhead vapour,E-310A,-,,,,2,,,,,,,,,,5.0,,180,,,,,,30.0,,,,,,,,,,,,,,,,,,125,,,,,,,,,CarbonSteel,FCC-1
+Main fractionator overhead air cooler B,Air cooler,AirCooledHX,Main fractionator overhead,Overhead vapour,E-310B,-,,,,2,,,,,,,,,,5.0,,180,,,,,,30.0,,,,,,,,,,,,,,,,,,125,,,,,,,,,CarbonSteel,FCC-1
+Overhead trim cooler,Heat exchanger,ShellAndTubeHX,Main fractionator overhead,Cooling water / Overhead naphtha / water,E-311,-,,,440.0,,,,,,,,,,,10.0,,85,,,,,,8.0,,,,,,,,,,,,,,,,,,55,,,,BEM,,,,,Titanium,FCC-1
+Wet gas compressor interstage cooler,Heat exchanger,ShellAndTubeHX,Wet gas compression,Cooling water / Wet gas,E-312,-,,,385.0,,,,,,,,,,,10.0,,140,,,,,,7.0,,,,,,,,,,,,,,,,,,110,,,,BEM,,,,,CarbonSteel,FCC-1
+Debutaniser reboiler,Heat exchanger,ShellAndTubeHX,Gas concentration,Debutaniser bottoms / LCO pumparound,E-313,-,,,660.0,,,,,,,,,,,10.0,,260,,,,,,12.0,,,,,,,,,,,,,,,,,,230,,,,BEM,,,,,CarbonSteel,FCC-1
+Reactor overhead vapour line,Piping circuit,PipingCircuit,Main fractionator,Reactor vapour,PC-301,-,,,,,,,,,,,3.0,,,,,,,,,,,,,,"48""",,Cr5,,,,15.700000000000001,,,,,,,,,532,,,,,,,,,,FCC-1
+Main fractionator overhead line,Piping circuit,PipingCircuit,Main fractionator overhead,Overhead vapour,PC-302,-,,,,,,,,,,,3.0,,,,,,,,,,,,,,"36""",,CarbonSteel,,,,9.9,,,,,,,,,125,,,,,,,,,,FCC-1
+Overhead wash-water injection,Chemical injection package,ChemicalInjectionPackage,Main fractionator overhead,Wash water,X-301,-,,,,,,,,,Wash water,,,,,,13500.0,,,,,,,,,,,,,,,,,,,,,,,,,40,,,,,,,,,,FCC-1
+Antimony (nickel passivation) injection,Chemical injection package,ChemicalInjectionPackage,Feed preheat & injection,Antimony passivator,X-302,-,,,,,,,,,Antimony passivator,,,,,,9.0,,,,,,,,,,,,,,,,,,,,,,,,,40,,,,,,,,,,FCC-1
+FCC feed pump A,Pump,CentrifugalPump,Feed preheat & injection,Hydrotreated VGO,P-301A,-,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-A BB2-300,300,,,,,490,180,,,Plan11,150,,,,,,,,,,FCC-1
+FCC feed pump B,Pump,CentrifugalPump,Feed preheat & injection,Hydrotreated VGO,P-301B,-,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-A BB2-300,300,,,,,490,180,,,Plan11,150,,,,,,,,,,FCC-1
+Slurry pumparound pump A,Pump,CentrifugalPump,Main fractionator,Slurry pumparound,P-302A,-,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,190,,,,,600,90,,,Plan53B,350,,,,,,,,,,FCC-1
+Slurry pumparound pump B,Pump,CentrifugalPump,Main fractionator,Slurry pumparound,P-302B,-,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,190,,,,,600,90,,,Plan53B,350,,,,,,,,,,FCC-1
+HCO pumparound pump A,Pump,CentrifugalPump,Main fractionator,HCO pumparound,P-303A,-,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,110,,,,,300,90,,,Plan53B,300,,,,,,,,,,FCC-1
+HCO pumparound pump B,Pump,CentrifugalPump,Main fractionator,HCO pumparound,P-303B,-,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,110,,,,,300,90,,,Plan53B,300,,,,,,,,,,FCC-1
+LCO product pump A,Pump,CentrifugalPump,Main fractionator,LCO,P-304A,-,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-B OH2-150H,50,,,,,75,110,,,Plan11,230,,,,,,,,,,FCC-1
+LCO product pump B,Pump,CentrifugalPump,Main fractionator,LCO,P-304B,-,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-B OH2-150H,50,,,,,75,110,,,Plan11,230,,,,,,,,,,FCC-1
+Main fractionator reflux pump A,Pump,CentrifugalPump,Main fractionator overhead,Unstabilised naphtha,P-305A,-,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,140,,,,,400,90,,,Plan52,40,,,,,,,,,,FCC-1
+Main fractionator reflux pump B,Pump,CentrifugalPump,Main fractionator overhead,Unstabilised naphtha,P-305B,-,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,140,,,,,400,90,,,Plan52,40,,,,,,,,,,FCC-1
+FCC sour water pump A,Pump,CentrifugalPump,Main fractionator overhead,Sour water,P-307A,-,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,30,,,,,30,60,,,Plan11,40,,,,,,,,,,FCC-1
+FCC sour water pump B,Pump,CentrifugalPump,Main fractionator overhead,Sour water,P-307B,-,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,30,,,,,30,60,,,Plan11,40,,,,,,,,,,FCC-1
+Debutaniser reflux pump A,Pump,CentrifugalPump,Gas concentration,LPG,P-306A,-,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,60,,,,,120,110,,,Plan52,45,,,,,,,,,,FCC-1
+Debutaniser reflux pump B,Pump,CentrifugalPump,Gas concentration,LPG,P-306B,-,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,60,,,,,120,110,,,Plan52,45,,,,,,,,,,FCC-1
+Reactor charge heater,Fired heater,FiredHeater,"Reaction (heater, reactors, feed/effluent)",Feed / hydrogen,H-401,-,26.0,,,,12,,,,,SS347,,,89.5,,,,600,,,,,,,,,,,,,,,4,,,,,,,,378,,,,,,,,,,HCU-1
+Hydrotreating (first-stage) reactor,Reactor,FixedBedReactor,"Reaction (heater, reactors, feed/effluent)",VGO / hydrogen,R-401,-,,,,,,,,380,,,,,,185.0,,454,,400,4.8,,,,32.0,,,,,,,,,,,,,,,,,400,Cr225Mo,,,,,,,,,HCU-1
+Hydrocracking reactor,Reactor,FixedBedReactor,"Reaction (heater, reactors, feed/effluent)",Hydrotreated VGO / hydrogen,R-402,-,,,,,,,,520,,,,,,185.0,,454,,410,4.8,,,,38.0,,,,,,,,,,,,,,,,,410,Cr225Mo,,,,,,,,,HCU-1
+Feed / effluent exchanger,Heat exchanger,ShellAndTubeHX,"Reaction (heater, reactors, feed/effluent)",Reactor feed / Reactor effluent,E-401,-,,,3300.0,,,,,,,,,,,185.0,,450,,,,,,60.0,,,,,,,,,,,,,,,,,,420,,,,BEM,,,,,SS347,HCU-1
+Hot separator vapour / recycle gas exchanger,Heat exchanger,ShellAndTubeHX,High / low-pressure separation (REAC),Recycle gas / Hot separator vapour,E-402,-,,,1925.0,,,,,,,,,,,185.0,,290,,,,,,35.0,,,,,,,,,,,,,,,,,,260,,,,BEM,,,,,Cr225Mo,HCU-1
+Hot high-pressure separator,Vessel,Drum,High / low-pressure separation (REAC),Effluent / hydrogen,V-401,-,,,,,,,,,,,,,,185.0,,300,,,3.2,,,,,10.0,,,,,,,,,,,,,,,,260,Cr225Mo,,,,,,,,,HCU-1
+Cold high-pressure separator,Vessel,Drum,High / low-pressure separation (REAC),Hydrocarbon / sour water / hydrogen,V-402,-,,,,,,,,,,,,,,185.0,,90,,,3.4,,,,,12.0,,,,,,,,,,,,,,,,50,CarbonSteel,,,,,,,,,HCU-1
+Cold low-pressure separator,Vessel,Drum,High / low-pressure separation (REAC),Hydrocarbon / sour water,V-403,-,,,,,,,,,,,,,,35.0,,90,,,3.6,,,,,12.0,,,,,,,,,,,,,,,,50,CarbonSteel,,,,,,,,,HCU-1
+Recycle compressor knock-out drum,Vessel,Drum,Recycle gas compression,Recycle hydrogen,V-404,-,,,,,,,,,,,,,,185.0,,90,,,2.4,,,,,6.0,,,,,,,,,,,,,,,,55,CarbonSteel,,,,,,,,,HCU-1
+Recycle gas compressor,Compressor,CentrifugalCompressor,Recycle gas compression,Recycle hydrogen,K-401,-,,,,,,,,,,,,,,190.0,,120,,,,Steam turbine,,,,,,,,,OEM-D BCL-405,,,,,460,,,9500,,,72,,,,,,,,,,HCU-1
+Make-up hydrogen compressor A,Compressor,ReciprocatingCompressor,Make-up hydrogen compression,Make-up hydrogen,K-402A,-,,,,,,,,,,,,,,190.0,,160,,,,Electric motor,,,,,,,,,OEM-E 3HE-3,,,,,95,,,6500,,,45,,,,,,,,,,HCU-1
+Make-up hydrogen compressor B,Compressor,ReciprocatingCompressor,Make-up hydrogen compression,Make-up hydrogen,K-402B,-,,,,,,,,,,,,,,190.0,,160,,,,Electric motor,,,,,,,,,OEM-E 3HE-3,,,,,95,,,6500,,,45,,,,,,,,,,HCU-1
+Product stripper,Column,Column,Product fractionation,Hydrocracked product,C-401,-,,,,,,,,,,,,,,12.0,,300,,,3.6,,,,30.0,,,,,,,,,,,,,,,,,250.0,CarbonSteel,,,,,,,20,,HCU-1
+Main fractionator,Column,Column,Product fractionation,Hydrocracked product,C-402,-,,,,,,,,,,,,,,3.5,,380,,,6.4,,,,48.0,,,,,,,,,,,,,,,,,340.0,Cr5,,,,,,,40,,HCU-1
+REAC inlet circuit (NH4HS service),Piping circuit,PipingCircuit,High / low-pressure separation (REAC),Reactor effluent / wash water,PC-401,-,,,,,,,,,,,3.0,,,,,,,,,,,,,,"20""",,CarbonSteel,,,,18.2,,,,,,,,,150,,,,,,,,,,HCU-1
+Hot reactor effluent circuit,Piping circuit,PipingCircuit,"Reaction (heater, reactors, feed/effluent)",Reactor effluent / hydrogen,PC-402,-,,,,,,,,,,,3.0,,,,,,,,,,,,,,"16""",,SS347,,,,40.4,,,,,,,,,420,,,,,,,,,,HCU-1
+REAC wash-water injection,Chemical injection package,ChemicalInjectionPackage,Wash water & chemical injection,Wash water,X-401,-,,,,,,,,,Wash water,,,,,,37500.0,,,,,,,,,,,,,,,,,,,,,,,,,40,,,,,,,,,,HCU-1
+Fractionator overhead corrosion inhibitor,Chemical injection package,ChemicalInjectionPackage,Wash water & chemical injection,Filming corrosion inhibitor,X-402,-,,,,,,,,,Filming corrosion inhibitor,,,,,,7.5,,,,,,,,,,,,,,,,,,,,,,,,,40,,,,,,,,,,HCU-1
+Reactor effluent air cooler (REAC) A,Air cooler,AirCooledHX,High / low-pressure separation (REAC),Reactor effluent / wash water,E-410A,-,,,,2,,,,,,,,,,185.0,,200,,,,,,18.0,,,,,,,,,,,,,,,,,,150,,,,,,,,,Alloy825,HCU-1
+Reactor effluent air cooler (REAC) B,Air cooler,AirCooledHX,High / low-pressure separation (REAC),Reactor effluent / wash water,E-410B,-,,,,2,,,,,,,,,,185.0,,200,,,,,,18.0,,,,,,,,,,,,,,,,,,150,,,,,,,,,Alloy825,HCU-1
+Reactor effluent air cooler (REAC) C,Air cooler,AirCooledHX,High / low-pressure separation (REAC),Reactor effluent / wash water,E-410C,-,,,,2,,,,,,,,,,185.0,,200,,,,,,18.0,,,,,,,,,,,,,,,,,,150,,,,,,,,,Alloy825,HCU-1
+Reactor effluent air cooler (REAC) D,Air cooler,AirCooledHX,High / low-pressure separation (REAC),Reactor effluent / wash water,E-410D,-,,,,2,,,,,,,,,,185.0,,200,,,,,,18.0,,,,,,,,,,,,,,,,,,150,,,,,,,,,Alloy825,HCU-1
+Reactor feed pump A,Pump,CentrifugalPump,Feed & reactor charge,VGO feed,P-401A,-,,BB5,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-C BB5-200H,3500,,,,,570,1900,,,Plan11,180,,,,,,,,,,HCU-1
+Reactor feed pump B,Pump,CentrifugalPump,Feed & reactor charge,VGO feed,P-401B,-,,BB5,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-C BB5-200H,3500,,,,,570,1900,,,Plan11,180,,,,,,,,,,HCU-1
+Wash-water injection pump A,Pump,CentrifugalPump,Wash water & chemical injection,Wash water,P-402A,-,,BB5,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-C BB5-200H,170,,,,,25,1850,,,Plan11,40,,,,,,,,,,HCU-1
+Wash-water injection pump B,Pump,CentrifugalPump,Wash water & chemical injection,Wash water,P-402B,-,,BB5,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-C BB5-200H,170,,,,,25,1850,,,Plan11,40,,,,,,,,,,HCU-1
+Fractionator bottoms pump A,Pump,CentrifugalPump,Product fractionation,Unconverted oil,P-403A,-,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,80,,,,,120,150,,,Plan53B,330,,,,,,,,,,HCU-1
+Fractionator bottoms pump B,Pump,CentrifugalPump,Product fractionation,Unconverted oil,P-403B,-,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,80,,,,,120,150,,,Plan53B,330,,,,,,,,,,HCU-1
+Diesel product pump A,Pump,CentrifugalPump,Product fractionation,Hydrocracked diesel,P-404A,-,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-B OH2-150H,110,,,,,230,120,,,Plan53B,265,,,,,,,,,,HCU-1
+Diesel product pump B,Pump,CentrifugalPump,Product fractionation,Hydrocracked diesel,P-404B,-,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-B OH2-150H,110,,,,,230,120,,,Plan53B,265,,,,,,,,,,HCU-1
+Fractionator reflux pump A,Pump,CentrifugalPump,Product fractionation,Naphtha reflux,P-405A,-,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,110,,,,,300,90,,,Plan52,40,,,,,,,,,,HCU-1
+Fractionator reflux pump B,Pump,CentrifugalPump,Product fractionation,Naphtha reflux,P-405B,-,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,110,,,,,300,90,,,Plan52,40,,,,,,,,,,HCU-1
+Coker heater 1,Fired heater,FiredHeater,Coker heaters,Vacuum residue,H-501,-,36.0,,,,16,,,,,Cr9,,,89.0,,,,680,,,,,,,,,,,,,,,4,,,,,,,,496,,,,,,,,,,DCU-1
+Coker heater 2,Fired heater,FiredHeater,Coker heaters,Vacuum residue,H-502,-,36.0,,,,16,,,,,Cr9,,,89.0,,,,680,,,,,,,,,,,,,,,4,,,,,,,,496,,,,,,,,,,DCU-1
+Hydraulic decoking system,Decoking system,DecokingSystem,Decoking & coke handling,Cutting water,DK-501,-,,,,,,,,,,,,Combination drilling / cutting tool,,300.0,,60,,,,,,,,,,,,,,,,,,,,,,,,40,,,,,,,,,,DCU-1
+Coke crusher,Crusher,Crusher,Decoking & coke handling,Petroleum coke,CR-501,-,,,,,,,,,,,,,,,,100,,,,,,,,,,,,,,450,,,,,,,,,,60,,,,,600,,,,,DCU-1
+Combination fractionator,Column,Column,Combination fractionator,Coke drum vapour,C-501,-,,,,,,,,,,,,,,3.5,,430,,,7.0,,,,42.0,,,,,,,,,,,,,,,,,360.0,Cr5,,,,,,,30,,DCU-1
+Blowdown tower,Column,Column,Blowdown system,Blowdown vapour / oil,C-502,-,,,,,,,,,,,,,,3.5,,450,,,3.0,,,,18.0,,,,,,,,,,,,,,,,,200.0,CarbonSteel,,,,,,,10,,DCU-1
+Fractionator overhead receiver,Vessel,Drum,Fractionator overhead,Naphtha / sour water,V-501,-,,,,,,,,,,,,,,5.0,,90,,,3.8,,,,,12.0,,,,,,,,,,,,,,,,40,CarbonSteel,,,,,,,,,DCU-1
+Feed surge drum,Vessel,Drum,Feed surge & heater charge,Vacuum residue,V-502,-,,,,,,,,,,,,,,6.0,,340,,,4.5,,,,,14.0,,,,,,,,,,,,,,,,300,CarbonSteel,,,,,,,,,DCU-1
+Coker wet gas compressor,Compressor,CentrifugalCompressor,Wet gas compression,Coker wet gas,K-501,-,,,,,,,,,,,,,,18.0,,160,,,,Steam turbine,,,,,,,,,OEM-D MCL-705,,,,,80,,,8000,,,120,,,,,,,,,,DCU-1
+Feed / HCGO exchanger,Heat exchanger,ShellAndTubeHX,Feed surge & heater charge,Vacuum residue / HCGO pumparound,E-501,-,,,990.0,,,,,,,,,,,10.0,,390,,,,,,18.0,,,,,,,,,,,,,,,,,,360,,,,BEM,,,,,Cr5,DCU-1
+LCGO rundown cooler,Heat exchanger,ShellAndTubeHX,Combination fractionator,Cooling water / LCGO,E-511,-,,,385.0,,,,,,,,,,,10.0,,280,,,,,,7.0,,,,,,,,,,,,,,,,,,250,,,,BEM,,,,,CarbonSteel,DCU-1
+Fractionator overhead air cooler A,Air cooler,AirCooledHX,Fractionator overhead,Overhead vapour,E-510A,-,,,,2,,,,,,,,,,5.0,,180,,,,,,26.0,,,,,,,,,,,,,,,,,,120,,,,,,,,,CarbonSteel,DCU-1
+Fractionator overhead air cooler B,Air cooler,AirCooledHX,Fractionator overhead,Overhead vapour,E-510B,-,,,,2,,,,,,,,,,5.0,,180,,,,,,26.0,,,,,,,,,,,,,,,,,,120,,,,,,,,,CarbonSteel,DCU-1
+Heater outlet transfer lines,Piping circuit,PipingCircuit,Coker heaters,Cracked residue,PC-501,-,,,,,,,,,,,3.0,,,,,,,,,,,,,,"8""",,Cr9,,,,14.0,,,,,,,,,496,,,,,,,,,,DCU-1
+Coke drum overhead vapour line,Piping circuit,PipingCircuit,Coke drums,Coke drum vapour,PC-502,-,,,,,,,,,,,3.0,,,,,,,,,,,,,,"24""",,Cr125Mo,,,,13.200000000000001,,,,,,,,,440,,,,,,,,,,DCU-1
+Antifoam injection package,Chemical injection package,ChemicalInjectionPackage,Coke drums,Silicone antifoam,X-501,-,,,,,,,,,Silicone antifoam,,,,,,18.0,,,,,,,,,,,,,,,,,,,,,,,,,40,,,,,,,,,,DCU-1
+Coke drum 1A,Coke drum,CokeDrum,Coke drums,Cracked residue / coke,D-501A,-,,,,,,,,,,,,,,4.5,,490,,,8.5,,18,,36.0,,,,,,,,,,,,,,,,,470,Cr125Mo,,,,,,,,,DCU-1
+Coke drum 1B,Coke drum,CokeDrum,Coke drums,Cracked residue / coke,D-501B,-,,,,,,,,,,,,,,4.5,,490,,,8.5,,18,,36.0,,,,,,,,,,,,,,,,,470,Cr125Mo,,,,,,,,,DCU-1
+Coke drum 2A,Coke drum,CokeDrum,Coke drums,Cracked residue / coke,D-502A,-,,,,,,,,,,,,,,4.5,,490,,,8.5,,18,,36.0,,,,,,,,,,,,,,,,,470,Cr125Mo,,,,,,,,,DCU-1
+Coke drum 2B,Coke drum,CokeDrum,Coke drums,Cracked residue / coke,D-502B,-,,,,,,,,,,,,,,4.5,,490,,,8.5,,18,,36.0,,,,,,,,,,,,,,,,,470,Cr125Mo,,,,,,,,,DCU-1
+Heater charge pump A,Pump,CentrifugalPump,Feed surge & heater charge,Vacuum residue,P-501A,-,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,660,,,,,570,350,,,Plan53B,300,,,,,,,,,,DCU-1
+Heater charge pump B,Pump,CentrifugalPump,Feed surge & heater charge,Vacuum residue,P-501B,-,,BB2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-C BB2-250H,660,,,,,570,350,,,Plan53B,300,,,,,,,,,,DCU-1
+Decoking jet pump A,Pump,CentrifugalPump,Decoking & coke handling,Cutting water,P-502A,-,,BB5,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-C BB5-200H,2430,,,,,250,3000,,,Plan11,40,,,,,,,,,,DCU-1
+Decoking jet pump B,Pump,CentrifugalPump,Decoking & coke handling,Cutting water,P-502B,-,,BB5,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-C BB5-200H,2430,,,,,250,3000,,,Plan11,40,,,,,,,,,,DCU-1
+HCGO product pump A,Pump,CentrifugalPump,Combination fractionator,Heavy coker gas oil,P-503A,-,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-B OH2-150H,70,,,,,140,120,,,Plan53B,320,,,,,,,,,,DCU-1
+HCGO product pump B,Pump,CentrifugalPump,Combination fractionator,Heavy coker gas oil,P-503B,-,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-B OH2-150H,70,,,,,140,120,,,Plan53B,320,,,,,,,,,,DCU-1
+LCGO product pump A,Pump,CentrifugalPump,Combination fractionator,Light coker gas oil,P-504A,-,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-B OH2-150H,60,,,,,120,110,,,Plan11,250,,,,,,,,,,DCU-1
+LCGO product pump B,Pump,CentrifugalPump,Combination fractionator,Light coker gas oil,P-504B,-,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,C-6,OEM-B OH2-150H,60,,,,,120,110,,,Plan11,250,,,,,,,,,,DCU-1
+Fractionator reflux pump A,Pump,CentrifugalPump,Fractionator overhead,Coker naphtha,P-505A,-,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,100,,,,,280,90,,,Plan52,40,,,,,,,,,,DCU-1
+Fractionator reflux pump B,Pump,CentrifugalPump,Fractionator overhead,Coker naphtha,P-505B,-,,OH2,,,,,,,,,,,,,,,,,,,,,,,,,,S-4,OEM-B OH2-150,100,,,,,280,90,,,Plan52,40,,,,,,,,,,DCU-1

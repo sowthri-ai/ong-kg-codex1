@@ -27,11 +27,11 @@ ACTS_ON, GOVERNS, CONSUMES and INSTANTIATED_BY; materials and events link into b
 
 mcp = FastMCP("og-value-chain-kg", instructions=ANSWER_CONTRACT)
 
-# OGKG_DATASET=gamma serves the Refinery Gamma CDU reference model instead of the two-refinery demo
+# OGKG_DATASET=gamma serves the Refinery Gamma reference model (whole refinery) instead of the two-refinery demo
 import os
 from pathlib import Path
 if os.environ.get("OGKG_DATASET") == "gamma":
-    from . import cdu_insights as ins
+    from . import refinery_insights as ins
     kg = KG(Path(__file__).resolve().parent.parent / "data" / "cdu-gamma" / "kg.json")
 else:
     kg = KG()

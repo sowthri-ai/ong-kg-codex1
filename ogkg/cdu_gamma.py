@@ -17,6 +17,7 @@ from pathlib import Path
 
 from .build_dataset import Builder
 from .cdu_templates import ITEM_ONTO, TEMPLATES
+from .refinery_units import CDU_DEST
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "data" / "cdu-gamma"
@@ -46,6 +47,8 @@ def seal_plan(T, fluid):
 
 
 def pump_model(api_type, T):
+    if api_type == "BB5":
+        return ("OEM-C BB5-200H", "OEM-C")
     if api_type == "BB2":
         return ("OEM-A BB2-300", "OEM-A") if T < 200 else ("OEM-C BB2-250H", "OEM-C")
     return ("OEM-B OH2-150", "OEM-B") if T < 200 else ("OEM-B OH2-150H", "OEM-B")
@@ -338,12 +341,6 @@ def build():
             F(uid, "design_capacity", cap, "kbd", as_of=DESIGN_DATE, src="Process design basis", ref=f"DB-{uid}",
               owner="ROLE-PROC", method="declared")
     F("TF-1", "storage_capacity", 3600, "kbbl", as_of=DESIGN_DATE, src="Asset register (CMMS)", owner="ROLE-OPS", method="declared")
-    oos = [("OOS-VDU", "Vacuum distillation unit (not modelled)"), ("OOS-NHT", "Naphtha hydrotreater (not modelled)"),
-           ("OOS-KTR", "Kerosene treater (not modelled)"), ("OOS-DHT", "Diesel hydrotreater (not modelled)"),
-           ("OOS-LPG", "LPG treater (not modelled)"), ("OOS-SWS", "Sour water stripper (not modelled)"),
-           ("OOS-FG", "Fuel gas system (not modelled)")]
-    for oid, on in oos:
-        N(oid, "PlantUnit", on, "asset", 4, SITE, onto_class="OutOfScopeUnit", modelled=False)
 
     # --- sections (L5) and equipment
     common_sections = [("CDU-COM-CFD", "Crude feed system", "CrudeFeedSystem", "CDU-COM"),
@@ -388,6 +385,8 @@ def build():
     _process_spine(b)
     _applications(b)
     _information(b)
+    from . import refinery_gamma          # whole refinery (v0.4.0): appended so CDU fact IDs stay stable
+    refinery_gamma.extend(b, reg_rows, tag_rows)
     return b, reg_rows, tag_rows
 
 
@@ -395,15 +394,19 @@ def _build_equipment(b, e, reg_rows, tag_rows):
     N, E, F = b.node, b.edge, b.fact
     tpl = TEMPLATES[e["tpl"]]
     eid = e["id"]
+    plant_unit = e["section"].rsplit("-", 1)[0]
     N(eid, "EquipmentUnit", e["name"], "asset", 6, e["section"], eq_class=tpl["eq_class"], onto_class=tpl["onto"],
-      train=e["train"], service_fluid=e["fluid"])
+      train=e["train"], service_fluid=e["fluid"], plant_unit=plant_unit)
     # design data (Sector 2 facts, declared)
     d = e["design"]
-    src_ds, owner = "Equipment datasheet (EDMS)", ("ROLE-ROT" if e["tpl"] == "pump" else "ROLE-MECH")
+    rotating = tpl["eq_class"] in ("Pump", "Compressor", "Expander", "Crusher")
+    src_ds, owner = "Equipment datasheet (EDMS)", ("ROLE-ROT" if rotating else "ROLE-MECH")
     units = dict(rated_flow="m3/h", rated_head="m", service_temperature="degC", motor_power="kW", duty="MW",
                  design_temperature="degC", design_pressure="barg", diameter="m", length="m", height="m",
                  transformer_kva="kVA", absorbed_duty="MW", design_tmt="degC", design_efficiency="%", area="m2",
-                 corrosion_allowance="mm", nominal_wall="mm", design_rate="L/h", capacity=d.get("capacity_unit", ""))
+                 corrosion_allowance="mm", nominal_wall="mm", design_rate="L/h", capacity=d.get("capacity_unit", ""),
+                 rated_power="kW", rated_capacity="kNm3/h", catalyst_volume="m3", catalyst_inventory="t", design_wabt="degC",
+                 power_rating="MW", steam_rating="t/h", drum_cycle_design="h", throughput_rating="t/h")
     for k, v in d.items():
         if k in ("oem", "capacity_unit"):
             continue
@@ -427,7 +430,7 @@ def _build_equipment(b, e, reg_rows, tag_rows):
                 codes[pcode] = pid
     # tags L10
     ctx = e["ctx"]
-    t = TRAINS.get(e["train"], 0)
+    t = e.get("tagbase") or TRAINS.get(e["train"], 0)
     measured = []          # latest-value facts of this equipment's measured tags (inputs to its calculations)
     for ttype, desc, unit, attach, kind, fn, cond in tpl["tags"]:
         if cond and not cond(ctx):
@@ -447,7 +450,8 @@ def _build_equipment(b, e, reg_rows, tag_rows):
         fid = _tag(b, tag_rows, codes.get(attach, eid), tag_id, ttype, f"{desc}", unit, kind, value, e["train"], eid, lineage)
         if kind not in ("calculated", "inspection", "corrosion probe"):
             measured.append(fid)
-    reg_rows.append(dict(tag=eid, description=e["name"].split(" ", 1)[1], train=e["train"] or "Common",
+    reg_rows.append(dict(tag=eid, description=e["name"].split(" ", 1)[1], unit=plant_unit,
+                         train=e["train"] or ("Common" if plant_unit in ("CDU-COM", "TF-1") else "-"),
                          section=b.nodes[e["section"]]["name"], equipment_class=tpl["eq_class"], ontology_class=tpl["onto"],
                          service=e["fluid"], **{k: v for k, v in d.items() if k not in ("oem", "capacity_unit")}))
 
@@ -487,9 +491,9 @@ def _material(b):
     E("TF-1", "PRODUCES", "STR-CRUDE")
     for tr in TRAINS:
         E("STR-CRUDE", "FEEDS", f"CDU-{tr}")
-        for code, name, dest in [("LPG", "LPG", "OOS-LPG"), ("OFFGAS", "Off-gas", "OOS-FG"), ("NAP", "Stabilised naphtha", "OOS-NHT"),
-                                 ("KERO", "Kerosene", "OOS-KTR"), ("DSL", "Diesel", "OOS-DHT"), ("AGO", "Atmospheric gas oil", "OOS-DHT"),
-                                 ("AR", "Atmospheric residue", "OOS-VDU"), ("SW", "Sour water", "OOS-SWS")]:
+        for code, name in [("LPG", "LPG"), ("OFFGAS", "Off-gas"), ("NAP", "Stabilised naphtha"), ("KERO", "Kerosene"),
+                           ("DSL", "Diesel"), ("AGO", "Atmospheric gas oil"), ("AR", "Atmospheric residue"), ("SW", "Sour water")]:
+            dest = CDU_DEST[code]
             sid = f"STR-{tr}-{code}"
             N(sid, "Stream", f"{name} (Train {tr})", "material", train=tr)
             E(f"CDU-{tr}", "PRODUCES", sid)
@@ -813,7 +817,7 @@ def main():
     _tag.counter.clear()
     b, reg, tags = build()
     OUT.mkdir(parents=True, exist_ok=True)
-    data = dict(meta=dict(name="Refinery Gamma — CDU reference model (500 kbpd, 2 × 250 kbpd trains)", as_of=AS_OF,
+    data = dict(meta=dict(name="Refinery Gamma — reference model (500 kbpd, Nelson complexity ≈ 15)", as_of=AS_OF,
                           disclaimer="Fictional refinery and synthetic engineering data for demonstration. Crude assays are "
                                      "indicative typical values. Not for design or operating decisions."),
                 nodes=list(b.nodes.values()), edges=b.edges, facts=b.facts)

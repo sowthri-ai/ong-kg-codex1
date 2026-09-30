@@ -118,8 +118,10 @@ def model_completeness(kg):
         tags = [d for n in items for d in kg.descendants(n["id"]) if kg.nodes[d]["cls"] == "DataPoint"]
         tag_ok = sum(1 for t in tags if kg.fact(t, "engineering_unit") and kg.fact(t, "latest_value"))
         per_train = Counter(n["props"].get("train") or "Common" for n in items)
+        units = Counter(n["props"].get("plant_unit") for n in items if not n["props"].get("train"))
         rows.append(dict(equipment_class=cls, items=len(items), train_A=per_train.get("A", 0), train_B=per_train.get("B", 0),
-                         common=per_train.get("Common", 0), decomposed_pct=round(100 * dec / len(items)),
+                         other_units=", ".join(f"{u} {c}" for u, c in sorted(units.items())) or "-",
+                         decomposed_pct=round(100 * dec / len(items)),
                          design_data_pct=round(100 * des / len(items)), tags=len(tags),
                          tags_complete_pct=round(100 * tag_ok / len(tags)) if tags else 100))
         if dec < len(items) or des < len(items) or tag_ok < len(tags):
@@ -130,14 +132,14 @@ def model_completeness(kg):
     return dict(
         id="model-completeness",
         title="Model completeness scorecard",
-        question="Is every equipment item fully modelled, from L6 down to L10, on both trains?",
-        headline=(f"{len(eq)} equipment items with {total_tags} equipment tags (+{other_tags} unit-level and lab tags) across both trains, "
-                  f"common facilities and tank farm. "
+        question="Is every full-depth equipment item modelled from L6 down to L10, and are the CDU trains symmetric?",
+        headline=(f"{len(eq)} equipment items with {total_tags} equipment tags (+{other_tags} unit-level and lab tags) across the two CDU "
+                  f"trains, CDU common facilities, crude tank farm and the three full-depth conversion units (FCC-1, HCU-1, DCU-1). "
                   f"{'All' if not gaps else 'Not all'} classes are fully decomposed with design data and tag values; "
                   f"the two trains are {'symmetric' if sym else 'NOT symmetric'}."),
         value_usd=None,
         domains=["Asset hierarchy (L0–L10)", "Equipment datasheets", "Tag configuration", "Historian / LIMS"],
-        rows=rows, path=["SITE-GAMMA", "CDU-A", "CDU-B", "CDU-COM", "TF-1"], evidence=[],
+        rows=rows, path=["SITE-GAMMA", "CDU-A", "CDU-B", "CDU-COM", "TF-1", "FCC-1", "HCU-1", "DCU-1"], evidence=[],
         recommendation="Use this scorecard as the acceptance gate when a real site's data replaces the synthetic model.",
         decision_owner="Ontology lead with data owners",
         caveat="Completeness is structural; it does not check that values are correct.",
