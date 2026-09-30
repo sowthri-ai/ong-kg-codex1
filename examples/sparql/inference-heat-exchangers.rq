@@ -1,0 +1,13 @@
+# Handbook C4.2 — "List every heat exchanger at Refinery Alpha."
+# Works on any SPARQL 1.1 store (no reasoner needed): class chain = Type DNA, part-of chain = Lineage DNA.
+# Expected on demo data: E-101A, E-101B, E-301
+PREFIX ogkg:  <https://example.org/ogkg/core#>
+PREFIX alpha: <https://example.org/ogkg/data/alpha#>
+PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?eq ?label WHERE {
+  ?eq a/rdfs:subClassOf* ogkg:HeatExchanger ;
+      ogkg:partOf+ alpha:SITE-ALPHA ;
+      rdfs:label ?label .
+}
+ORDER BY ?eq

@@ -1,0 +1,4088 @@
+@prefix ogkg: <https://example.org/og-vckg#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+
+ogkg:ROLE-CRPLAN a ogkg:Role ;
+    rdfs:label "Crude & Planning Manager" ;
+    ogkg:spine "org" .
+ogkg:ROLE-CORR a ogkg:Role ;
+    rdfs:label "Corrosion / Integrity Engineer" ;
+    ogkg:spine "org" .
+ogkg:ROLE-REL a ogkg:Role ;
+    rdfs:label "Reliability Engineer" ;
+    ogkg:spine "org" .
+ogkg:ROLE-BLEND a ogkg:Role ;
+    rdfs:label "Blending Planner" ;
+    ogkg:spine "org" .
+ogkg:ROLE-TA a ogkg:Role ;
+    rdfs:label "Turnaround Manager" ;
+    ogkg:spine "org" .
+ogkg:ROLE-PROC a ogkg:Role ;
+    rdfs:label "Process Engineer" ;
+    ogkg:spine "org" .
+ogkg:ROLE-LAB a ogkg:Role ;
+    rdfs:label "Laboratory Manager" ;
+    ogkg:spine "org" .
+ogkg:ROLE-ECON a ogkg:Role ;
+    rdfs:label "Site Economist" ;
+    ogkg:spine "org" .
+ogkg:ROLE-OPS a ogkg:Role ;
+    rdfs:label "Operations Superintendent" ;
+    ogkg:spine "org" .
+ogkg:ROLE-MAINT a ogkg:Role ;
+    rdfs:label "Maintenance Manager" ;
+    ogkg:spine "org" .
+ogkg:OG a ogkg:Industry ;
+    rdfs:label "Oil & Gas" ;
+    ogkg:spine "trunk" ;
+    ogkg:level 0 .
+ogkg:SEG-UPSTREAM a ogkg:Segment ;
+    rdfs:label "Upstream" ;
+    ogkg:spine "trunk" ;
+    ogkg:level 1 .
+ogkg:SEG-MIDSTREAM a ogkg:Segment ;
+    rdfs:label "Midstream" ;
+    ogkg:spine "trunk" ;
+    ogkg:level 1 .
+ogkg:SEG-DOWNSTREAM a ogkg:Segment ;
+    rdfs:label "Downstream" ;
+    ogkg:spine "trunk" ;
+    ogkg:level 1 .
+ogkg:BC-REF a ogkg:BusinessCategory ;
+    rdfs:label "Refining" ;
+    ogkg:spine "asset" ;
+    ogkg:level 2 .
+ogkg:BC-EP a ogkg:BusinessCategory ;
+    rdfs:label "Exploration & Production" ;
+    ogkg:spine "asset" ;
+    ogkg:level 2 .
+ogkg:BC-PT a ogkg:BusinessCategory ;
+    rdfs:label "Pipelines & Terminals" ;
+    ogkg:spine "asset" ;
+    ogkg:level 2 .
+ogkg:FIELD-F1 a ogkg:Installation ;
+    rdfs:label "Field F1" ;
+    ogkg:spine "asset" ;
+    ogkg:level 3 .
+ogkg:CPF-1 a ogkg:PlantUnit ;
+    rdfs:label "Central Processing Facility 1" ;
+    ogkg:spine "asset" ;
+    ogkg:level 4 .
+ogkg:CPF-1-SEP a ogkg:SectionSystem ;
+    rdfs:label "Separation train" ;
+    ogkg:spine "asset" ;
+    ogkg:level 5 .
+ogkg:V-1001 a ogkg:EquipmentUnit ;
+    rdfs:label "V-1001 HP separator" ;
+    ogkg:spine "asset" ;
+    ogkg:level 6 ;
+    ogkg:eq_class "Vessel" .
+ogkg:T-F1-OIL a ogkg:DataPoint ;
+    rdfs:label "FI-9001 Export oil rate" ;
+    ogkg:spine "asset" ;
+    ogkg:level 10 ;
+    ogkg:kind "sensor" .
+ogkg:TERM-T1 a ogkg:Installation ;
+    rdfs:label "Crude Terminal T1" ;
+    ogkg:spine "asset" ;
+    ogkg:level 3 .
+ogkg:TFARM-1 a ogkg:PlantUnit ;
+    rdfs:label "Crude tank farm" ;
+    ogkg:spine "asset" ;
+    ogkg:level 4 .
+ogkg:TFARM-1-S a ogkg:SectionSystem ;
+    rdfs:label "Crude storage" ;
+    ogkg:spine "asset" ;
+    ogkg:level 5 .
+ogkg:TK-01 a ogkg:EquipmentUnit ;
+    rdfs:label "TK-01 Crude tank" ;
+    ogkg:spine "asset" ;
+    ogkg:level 6 ;
+    ogkg:eq_class "Storage tank" .
+ogkg:T-TK01-LVL a ogkg:DataPoint ;
+    rdfs:label "LI-7001 Tank level" ;
+    ogkg:spine "asset" ;
+    ogkg:level 10 ;
+    ogkg:kind "sensor" .
+ogkg:SITE-ALPHA a ogkg:Installation ;
+    rdfs:label "Refinery Alpha" ;
+    ogkg:spine "asset" ;
+    ogkg:level 3 .
+ogkg:SITE-BETA a ogkg:Installation ;
+    rdfs:label "Refinery Beta" ;
+    ogkg:spine "asset" ;
+    ogkg:level 3 .
+ogkg:CDU-1 a ogkg:PlantUnit ;
+    rdfs:label "CDU-1 Crude distillation" ;
+    ogkg:spine "asset" ;
+    ogkg:level 4 .
+ogkg:VDU-1 a ogkg:PlantUnit ;
+    rdfs:label "VDU-1 Vacuum distillation" ;
+    ogkg:spine "asset" ;
+    ogkg:level 4 .
+ogkg:FCC-1 a ogkg:PlantUnit ;
+    rdfs:label "FCC-1 Fluid catalytic cracker" ;
+    ogkg:spine "asset" ;
+    ogkg:level 4 .
+ogkg:REF-1 a ogkg:PlantUnit ;
+    rdfs:label "REF-1 Catalytic reformer" ;
+    ogkg:spine "asset" ;
+    ogkg:level 4 .
+ogkg:GBL-1 a ogkg:PlantUnit ;
+    rdfs:label "GBL-1 Gasoline blender" ;
+    ogkg:spine "asset" ;
+    ogkg:level 4 .
+ogkg:CDU-2 a ogkg:PlantUnit ;
+    rdfs:label "CDU-2 Crude distillation" ;
+    ogkg:spine "asset" ;
+    ogkg:level 4 .
+ogkg:VDU-2 a ogkg:PlantUnit ;
+    rdfs:label "VDU-2 Vacuum distillation" ;
+    ogkg:spine "asset" ;
+    ogkg:level 4 .
+ogkg:FCC-2 a ogkg:PlantUnit ;
+    rdfs:label "FCC-2 Fluid catalytic cracker" ;
+    ogkg:spine "asset" ;
+    ogkg:level 4 .
+ogkg:REF-2 a ogkg:PlantUnit ;
+    rdfs:label "REF-2 Catalytic reformer" ;
+    ogkg:spine "asset" ;
+    ogkg:level 4 .
+ogkg:GBL-2 a ogkg:PlantUnit ;
+    rdfs:label "GBL-2 Gasoline blender" ;
+    ogkg:spine "asset" ;
+    ogkg:level 4 .
+ogkg:CDU-1-DS a ogkg:SectionSystem ;
+    rdfs:label "Desalter system" ;
+    ogkg:spine "asset" ;
+    ogkg:level 5 .
+ogkg:CDU-1-PH a ogkg:SectionSystem ;
+    rdfs:label "Preheat train" ;
+    ogkg:spine "asset" ;
+    ogkg:level 5 .
+ogkg:CDU-1-FR a ogkg:SectionSystem ;
+    rdfs:label "Atmospheric fractionation" ;
+    ogkg:spine "asset" ;
+    ogkg:level 5 .
+ogkg:CDU-1-OVH a ogkg:SectionSystem ;
+    rdfs:label "Overhead system" ;
+    ogkg:spine "asset" ;
+    ogkg:level 5 .
+ogkg:VDU-1-VR a ogkg:SectionSystem ;
+    rdfs:label "Vacuum resid system" ;
+    ogkg:spine "asset" ;
+    ogkg:level 5 .
+ogkg:VDU-1-TL a ogkg:SectionSystem ;
+    rdfs:label "Transfer line & flash zone" ;
+    ogkg:spine "asset" ;
+    ogkg:level 5 .
+ogkg:FCC-1-FR a ogkg:SectionSystem ;
+    rdfs:label "Main fractionator & slurry" ;
+    ogkg:spine "asset" ;
+    ogkg:level 5 .
+ogkg:REF-1-RX a ogkg:SectionSystem ;
+    rdfs:label "Reactor & feed/effluent" ;
+    ogkg:spine "asset" ;
+    ogkg:level 5 .
+ogkg:REF-1-STB a ogkg:SectionSystem ;
+    rdfs:label "Stabiliser" ;
+    ogkg:spine "asset" ;
+    ogkg:level 5 .
+ogkg:GBL-1-HDR a ogkg:SectionSystem ;
+    rdfs:label "Blend header & analysers" ;
+    ogkg:spine "asset" ;
+    ogkg:level 5 .
+ogkg:CDU-2-DS a ogkg:SectionSystem ;
+    rdfs:label "Desalter system" ;
+    ogkg:spine "asset" ;
+    ogkg:level 5 .
+ogkg:CDU-2-PH a ogkg:SectionSystem ;
+    rdfs:label "Preheat train" ;
+    ogkg:spine "asset" ;
+    ogkg:level 5 .
+ogkg:CDU-2-FR a ogkg:SectionSystem ;
+    rdfs:label "Atmospheric fractionation" ;
+    ogkg:spine "asset" ;
+    ogkg:level 5 .
+ogkg:CDU-2-OVH a ogkg:SectionSystem ;
+    rdfs:label "Overhead system" ;
+    ogkg:spine "asset" ;
+    ogkg:level 5 .
+ogkg:VDU-2-VR a ogkg:SectionSystem ;
+    rdfs:label "Vacuum resid system" ;
+    ogkg:spine "asset" ;
+    ogkg:level 5 .
+ogkg:VDU-2-TL a ogkg:SectionSystem ;
+    rdfs:label "Transfer line & flash zone" ;
+    ogkg:spine "asset" ;
+    ogkg:level 5 .
+ogkg:FCC-2-FR a ogkg:SectionSystem ;
+    rdfs:label "Main fractionator & slurry" ;
+    ogkg:spine "asset" ;
+    ogkg:level 5 .
+ogkg:REF-2-RX a ogkg:SectionSystem ;
+    rdfs:label "Reactor & feed/effluent" ;
+    ogkg:spine "asset" ;
+    ogkg:level 5 .
+ogkg:REF-2-STB a ogkg:SectionSystem ;
+    rdfs:label "Stabiliser" ;
+    ogkg:spine "asset" ;
+    ogkg:level 5 .
+ogkg:GBL-2-HDR a ogkg:SectionSystem ;
+    rdfs:label "Blend header & analysers" ;
+    ogkg:spine "asset" ;
+    ogkg:level 5 .
+ogkg:E-101A a ogkg:EquipmentUnit ;
+    rdfs:label "E-101A Overhead condenser A" ;
+    ogkg:spine "asset" ;
+    ogkg:level 6 ;
+    ogkg:eq_class "Heat exchanger" ;
+    ogkg:metallurgy "Carbon steel tubes" .
+ogkg:E-101B a ogkg:EquipmentUnit ;
+    rdfs:label "E-101B Overhead condenser B" ;
+    ogkg:spine "asset" ;
+    ogkg:level 6 ;
+    ogkg:eq_class "Heat exchanger" ;
+    ogkg:metallurgy "Carbon steel tubes" .
+ogkg:V-102 a ogkg:EquipmentUnit ;
+    rdfs:label "V-102 Overhead accumulator" ;
+    ogkg:spine "asset" ;
+    ogkg:level 6 ;
+    ogkg:eq_class "Vessel" .
+ogkg:P-103 a ogkg:EquipmentUnit ;
+    rdfs:label "P-103 Reflux pump" ;
+    ogkg:spine "asset" ;
+    ogkg:level 6 ;
+    ogkg:eq_class "Pump" .
+ogkg:PC-101 a ogkg:EquipmentUnit ;
+    rdfs:label "PC-101 Overhead piping circuit" ;
+    ogkg:spine "asset" ;
+    ogkg:level 6 ;
+    ogkg:eq_class "Piping circuit" .
+ogkg:V-110 a ogkg:EquipmentUnit ;
+    rdfs:label "V-110 Desalter" ;
+    ogkg:spine "asset" ;
+    ogkg:level 6 ;
+    ogkg:eq_class "Vessel" .
+ogkg:C-101 a ogkg:EquipmentUnit ;
+    rdfs:label "C-101 Atmospheric column" ;
+    ogkg:spine "asset" ;
+    ogkg:level 6 ;
+    ogkg:eq_class "Column" .
+ogkg:H-101 a ogkg:EquipmentUnit ;
+    rdfs:label "H-101 Crude heater" ;
+    ogkg:spine "asset" ;
+    ogkg:level 6 ;
+    ogkg:eq_class "Fired heater" .
+ogkg:PC-201 a ogkg:EquipmentUnit ;
+    rdfs:label "PC-201 VDU transfer line circuit" ;
+    ogkg:spine "asset" ;
+    ogkg:level 6 ;
+    ogkg:eq_class "Piping circuit" ;
+    ogkg:metallurgy "5Cr" .
+ogkg:E-301 a ogkg:EquipmentUnit ;
+    rdfs:label "E-301 Combined feed/effluent exchanger" ;
+    ogkg:spine "asset" ;
+    ogkg:level 6 ;
+    ogkg:eq_class "Heat exchanger" .
+ogkg:E-401A a ogkg:EquipmentUnit ;
+    rdfs:label "E-401A Overhead condenser" ;
+    ogkg:spine "asset" ;
+    ogkg:level 6 ;
+    ogkg:eq_class "Heat exchanger" ;
+    ogkg:metallurgy "Titanium tubes" .
+ogkg:V-402 a ogkg:EquipmentUnit ;
+    rdfs:label "V-402 Overhead accumulator" ;
+    ogkg:spine "asset" ;
+    ogkg:level 6 ;
+    ogkg:eq_class "Vessel" .
+ogkg:E-601 a ogkg:EquipmentUnit ;
+    rdfs:label "E-601 Combined feed/effluent exchanger" ;
+    ogkg:spine "asset" ;
+    ogkg:level 6 ;
+    ogkg:eq_class "Heat exchanger" .
+ogkg:P-201A a ogkg:EquipmentUnit ;
+    rdfs:label "P-201A Vacuum resid pump A" ;
+    ogkg:spine "asset" ;
+    ogkg:level 6 ;
+    ogkg:eq_class "Pump" .
+ogkg:P-201A-SS a ogkg:Subunit ;
+    rdfs:label "Seal system" ;
+    ogkg:spine "asset" ;
+    ogkg:level 7 .
+ogkg:P-201A-MS a ogkg:MaintainableItem ;
+    rdfs:label "Mechanical seal" ;
+    ogkg:spine "asset" ;
+    ogkg:level 8 .
+ogkg:P-201A-SF a ogkg:Part ;
+    rdfs:label "Seal faces" ;
+    ogkg:spine "asset" ;
+    ogkg:level 9 .
+ogkg:P-201A-OR a ogkg:Part ;
+    rdfs:label "O-rings" ;
+    ogkg:spine "asset" ;
+    ogkg:level 9 .
+ogkg:P-201A-BH a ogkg:Subunit ;
+    rdfs:label "Bearing housing" ;
+    ogkg:spine "asset" ;
+    ogkg:level 7 .
+ogkg:P-201A-BRG a ogkg:MaintainableItem ;
+    rdfs:label "Bearings" ;
+    ogkg:spine "asset" ;
+    ogkg:level 8 .
+ogkg:P-201B a ogkg:EquipmentUnit ;
+    rdfs:label "P-201B Vacuum resid pump B" ;
+    ogkg:spine "asset" ;
+    ogkg:level 6 ;
+    ogkg:eq_class "Pump" .
+ogkg:P-201B-SS a ogkg:Subunit ;
+    rdfs:label "Seal system" ;
+    ogkg:spine "asset" ;
+    ogkg:level 7 .
+ogkg:P-201B-MS a ogkg:MaintainableItem ;
+    rdfs:label "Mechanical seal" ;
+    ogkg:spine "asset" ;
+    ogkg:level 8 .
+ogkg:P-201B-SF a ogkg:Part ;
+    rdfs:label "Seal faces" ;
+    ogkg:spine "asset" ;
+    ogkg:level 9 .
+ogkg:P-201B-OR a ogkg:Part ;
+    rdfs:label "O-rings" ;
+    ogkg:spine "asset" ;
+    ogkg:level 9 .
+ogkg:P-201B-BH a ogkg:Subunit ;
+    rdfs:label "Bearing housing" ;
+    ogkg:spine "asset" ;
+    ogkg:level 7 .
+ogkg:P-201B-BRG a ogkg:MaintainableItem ;
+    rdfs:label "Bearings" ;
+    ogkg:spine "asset" ;
+    ogkg:level 8 .
+ogkg:P-501 a ogkg:EquipmentUnit ;
+    rdfs:label "P-501 FCC slurry pump" ;
+    ogkg:spine "asset" ;
+    ogkg:level 6 ;
+    ogkg:eq_class "Pump" .
+ogkg:P-501-SS a ogkg:Subunit ;
+    rdfs:label "Seal system" ;
+    ogkg:spine "asset" ;
+    ogkg:level 7 .
+ogkg:P-501-MS a ogkg:MaintainableItem ;
+    rdfs:label "Mechanical seal" ;
+    ogkg:spine "asset" ;
+    ogkg:level 8 .
+ogkg:P-501-SF a ogkg:Part ;
+    rdfs:label "Seal faces" ;
+    ogkg:spine "asset" ;
+    ogkg:level 9 .
+ogkg:P-501-OR a ogkg:Part ;
+    rdfs:label "O-rings" ;
+    ogkg:spine "asset" ;
+    ogkg:level 9 .
+ogkg:P-501-BH a ogkg:Subunit ;
+    rdfs:label "Bearing housing" ;
+    ogkg:spine "asset" ;
+    ogkg:level 7 .
+ogkg:P-501-BRG a ogkg:MaintainableItem ;
+    rdfs:label "Bearings" ;
+    ogkg:spine "asset" ;
+    ogkg:level 8 .
+ogkg:P-401A a ogkg:EquipmentUnit ;
+    rdfs:label "P-401A Vacuum resid pump A" ;
+    ogkg:spine "asset" ;
+    ogkg:level 6 ;
+    ogkg:eq_class "Pump" .
+ogkg:P-401A-SS a ogkg:Subunit ;
+    rdfs:label "Seal system" ;
+    ogkg:spine "asset" ;
+    ogkg:level 7 .
+ogkg:P-401A-MS a ogkg:MaintainableItem ;
+    rdfs:label "Mechanical seal" ;
+    ogkg:spine "asset" ;
+    ogkg:level 8 .
+ogkg:P-401A-SF a ogkg:Part ;
+    rdfs:label "Seal faces" ;
+    ogkg:spine "asset" ;
+    ogkg:level 9 .
+ogkg:P-401A-OR a ogkg:Part ;
+    rdfs:label "O-rings" ;
+    ogkg:spine "asset" ;
+    ogkg:level 9 .
+ogkg:P-401A-BH a ogkg:Subunit ;
+    rdfs:label "Bearing housing" ;
+    ogkg:spine "asset" ;
+    ogkg:level 7 .
+ogkg:P-401A-BRG a ogkg:MaintainableItem ;
+    rdfs:label "Bearings" ;
+    ogkg:spine "asset" ;
+    ogkg:level 8 .
+ogkg:P-401B a ogkg:EquipmentUnit ;
+    rdfs:label "P-401B Vacuum resid pump B" ;
+    ogkg:spine "asset" ;
+    ogkg:level 6 ;
+    ogkg:eq_class "Pump" .
+ogkg:P-401B-SS a ogkg:Subunit ;
+    rdfs:label "Seal system" ;
+    ogkg:spine "asset" ;
+    ogkg:level 7 .
+ogkg:P-401B-MS a ogkg:MaintainableItem ;
+    rdfs:label "Mechanical seal" ;
+    ogkg:spine "asset" ;
+    ogkg:level 8 .
+ogkg:P-401B-SF a ogkg:Part ;
+    rdfs:label "Seal faces" ;
+    ogkg:spine "asset" ;
+    ogkg:level 9 .
+ogkg:P-401B-OR a ogkg:Part ;
+    rdfs:label "O-rings" ;
+    ogkg:spine "asset" ;
+    ogkg:level 9 .
+ogkg:P-401B-BH a ogkg:Subunit ;
+    rdfs:label "Bearing housing" ;
+    ogkg:spine "asset" ;
+    ogkg:level 7 .
+ogkg:P-401B-BRG a ogkg:MaintainableItem ;
+    rdfs:label "Bearings" ;
+    ogkg:spine "asset" ;
+    ogkg:level 8 .
+ogkg:P-306 a ogkg:EquipmentUnit ;
+    rdfs:label "P-306 AGO pumparound pump" ;
+    ogkg:spine "asset" ;
+    ogkg:level 6 ;
+    ogkg:eq_class "Pump" .
+ogkg:P-306-SS a ogkg:Subunit ;
+    rdfs:label "Seal system" ;
+    ogkg:spine "asset" ;
+    ogkg:level 7 .
+ogkg:P-306-MS a ogkg:MaintainableItem ;
+    rdfs:label "Mechanical seal" ;
+    ogkg:spine "asset" ;
+    ogkg:level 8 .
+ogkg:P-306-SF a ogkg:Part ;
+    rdfs:label "Seal faces" ;
+    ogkg:spine "asset" ;
+    ogkg:level 9 .
+ogkg:P-306-OR a ogkg:Part ;
+    rdfs:label "O-rings" ;
+    ogkg:spine "asset" ;
+    ogkg:level 9 .
+ogkg:P-306-BH a ogkg:Subunit ;
+    rdfs:label "Bearing housing" ;
+    ogkg:spine "asset" ;
+    ogkg:level 7 .
+ogkg:P-306-BRG a ogkg:MaintainableItem ;
+    rdfs:label "Bearings" ;
+    ogkg:spine "asset" ;
+    ogkg:level 8 .
+ogkg:E-101A-TB a ogkg:Subunit ;
+    rdfs:label "Tube bundle" ;
+    ogkg:spine "asset" ;
+    ogkg:level 7 .
+ogkg:E-101A-TU a ogkg:MaintainableItem ;
+    rdfs:label "Tubes" ;
+    ogkg:spine "asset" ;
+    ogkg:level 8 .
+ogkg:E-101B-TB a ogkg:Subunit ;
+    rdfs:label "Tube bundle" ;
+    ogkg:spine "asset" ;
+    ogkg:level 7 .
+ogkg:E-101B-TU a ogkg:MaintainableItem ;
+    rdfs:label "Tubes" ;
+    ogkg:spine "asset" ;
+    ogkg:level 8 .
+ogkg:E-401A-TB a ogkg:Subunit ;
+    rdfs:label "Tube bundle" ;
+    ogkg:spine "asset" ;
+    ogkg:level 7 .
+ogkg:E-401A-TU a ogkg:MaintainableItem ;
+    rdfs:label "Tubes" ;
+    ogkg:spine "asset" ;
+    ogkg:level 8 .
+ogkg:T-CDU1-CL a ogkg:DataPoint ;
+    rdfs:label "AI-1021 Overhead water chloride" ;
+    ogkg:spine "asset" ;
+    ogkg:level 10 ;
+    ogkg:kind "lab/online analyser" .
+ogkg:T-CDU1-PH a ogkg:DataPoint ;
+    rdfs:label "AI-1022 Overhead water pH" ;
+    ogkg:spine "asset" ;
+    ogkg:level 10 ;
+    ogkg:kind "online analyser" .
+ogkg:T-CDU1-FI a ogkg:DataPoint ;
+    rdfs:label "FI-1001 Crude charge rate" ;
+    ogkg:spine "asset" ;
+    ogkg:level 10 ;
+    ogkg:kind "sensor" .
+ogkg:T-CDU1-DSS a ogkg:DataPoint ;
+    rdfs:label "AI-1010 Desalted crude salt" ;
+    ogkg:spine "asset" ;
+    ogkg:level 10 ;
+    ogkg:kind "lab" .
+ogkg:T-REF1-RON a ogkg:DataPoint ;
+    rdfs:label "LIMS Reformate RON" ;
+    ogkg:spine "asset" ;
+    ogkg:level 10 ;
+    ogkg:kind "lab" .
+ogkg:T-REF1-TI a ogkg:DataPoint ;
+    rdfs:label "TI-1310 Reactor inlet temperature" ;
+    ogkg:spine "asset" ;
+    ogkg:level 10 ;
+    ogkg:kind "sensor" .
+ogkg:T-GBL1-RON a ogkg:DataPoint ;
+    rdfs:label "LIMS Gasoline product RON" ;
+    ogkg:spine "asset" ;
+    ogkg:level 10 ;
+    ogkg:kind "lab" .
+ogkg:T-CDU2-CL a ogkg:DataPoint ;
+    rdfs:label "AI-2021 Overhead water chloride" ;
+    ogkg:spine "asset" ;
+    ogkg:level 10 ;
+    ogkg:kind "lab/online analyser" .
+ogkg:T-CDU2-PH a ogkg:DataPoint ;
+    rdfs:label "AI-2022 Overhead water pH" ;
+    ogkg:spine "asset" ;
+    ogkg:level 10 ;
+    ogkg:kind "online analyser" .
+ogkg:T-CDU2-FI a ogkg:DataPoint ;
+    rdfs:label "FI-2001 Crude charge rate" ;
+    ogkg:spine "asset" ;
+    ogkg:level 10 ;
+    ogkg:kind "sensor" .
+ogkg:T-CDU2-DSS a ogkg:DataPoint ;
+    rdfs:label "AI-2010 Desalted crude salt" ;
+    ogkg:spine "asset" ;
+    ogkg:level 10 ;
+    ogkg:kind "lab" .
+ogkg:T-REF2-RON a ogkg:DataPoint ;
+    rdfs:label "LIMS Reformate RON" ;
+    ogkg:spine "asset" ;
+    ogkg:level 10 ;
+    ogkg:kind "lab" .
+ogkg:T-REF2-TI a ogkg:DataPoint ;
+    rdfs:label "TI-2310 Reactor inlet temperature" ;
+    ogkg:spine "asset" ;
+    ogkg:level 10 ;
+    ogkg:kind "sensor" .
+ogkg:T-GBL2-RON a ogkg:DataPoint ;
+    rdfs:label "LIMS Gasoline product RON" ;
+    ogkg:spine "asset" ;
+    ogkg:level 10 ;
+    ogkg:kind "lab" .
+ogkg:T-VDU1-CR a ogkg:DataPoint ;
+    rdfs:label "CR-2011 Transfer line corrosion probe" ;
+    ogkg:spine "asset" ;
+    ogkg:level 10 ;
+    ogkg:kind "corrosion probe" .
+ogkg:T-E301-RF a ogkg:DataPoint ;
+    rdfs:label "E-301 Fouling resistance (calc)" ;
+    ogkg:spine "asset" ;
+    ogkg:level 10 ;
+    ogkg:kind "calculated" .
+ogkg:T-E601-RF a ogkg:DataPoint ;
+    rdfs:label "E-601 Fouling resistance (calc)" ;
+    ogkg:spine "asset" ;
+    ogkg:level 10 ;
+    ogkg:kind "calculated" .
+ogkg:CR-AL a ogkg:CrudeGrade ;
+    rdfs:label "Arab Light" ;
+    ogkg:spine "material" .
+ogkg:CR-BM a ogkg:CrudeGrade ;
+    rdfs:label "Basrah Medium" ;
+    ogkg:spine "material" .
+ogkg:CR-MUR a ogkg:CrudeGrade ;
+    rdfs:label "Murban" ;
+    ogkg:spine "material" .
+ogkg:CR-QM a ogkg:CrudeGrade ;
+    rdfs:label "Qatar Marine" ;
+    ogkg:spine "material" .
+ogkg:CR-DOBA a ogkg:CrudeGrade ;
+    rdfs:label "Doba" ;
+    ogkg:spine "material" .
+ogkg:CR-HSOB a ogkg:CrudeGrade ;
+    rdfs:label "Heavy Sour Opportunity Blend" ;
+    ogkg:spine "material" .
+ogkg:CR-F1 a ogkg:CrudeGrade ;
+    rdfs:label "F1 Blend" ;
+    ogkg:spine "material" .
+ogkg:CMP-A1 a ogkg:CrudeCampaign ;
+    rdfs:label "CMP-A1 Heavy Sour Opportunity Blend campaign" ;
+    ogkg:spine "material" ;
+    ogkg:start "2025-11-10" ;
+    ogkg:end "2025-11-24" ;
+    ogkg:opportunity "true"^^xsd:boolean .
+ogkg:CMP-A2H a ogkg:CrudeCampaign ;
+    rdfs:label "CMP-A2H Heavy Sour Opportunity Blend campaign" ;
+    ogkg:spine "material" ;
+    ogkg:start "2026-02-05" ;
+    ogkg:end "2026-02-20" ;
+    ogkg:opportunity "true"^^xsd:boolean .
+ogkg:CMP-A2D a ogkg:CrudeCampaign ;
+    rdfs:label "CMP-A2D Doba campaign" ;
+    ogkg:spine "material" ;
+    ogkg:start "2026-02-05" ;
+    ogkg:end "2026-02-20" ;
+    ogkg:opportunity "true"^^xsd:boolean .
+ogkg:CMP-A3 a ogkg:CrudeCampaign ;
+    rdfs:label "CMP-A3 Heavy Sour Opportunity Blend campaign" ;
+    ogkg:spine "material" ;
+    ogkg:start "2026-06-01" ;
+    ogkg:end "2026-06-18" ;
+    ogkg:opportunity "true"^^xsd:boolean .
+ogkg:CMP-AB-AL a ogkg:CrudeCampaign ;
+    rdfs:label "Alpha base slate — Arab Light" ;
+    ogkg:spine "material" ;
+    ogkg:start "2025-10-01" ;
+    ogkg:end "2026-09-30" ;
+    ogkg:opportunity "false"^^xsd:boolean .
+ogkg:CMP-AB-BM a ogkg:CrudeCampaign ;
+    rdfs:label "Alpha base slate — Basrah Medium" ;
+    ogkg:spine "material" ;
+    ogkg:start "2025-10-01" ;
+    ogkg:end "2026-09-30" ;
+    ogkg:opportunity "false"^^xsd:boolean .
+ogkg:CMP-AB-MUR a ogkg:CrudeCampaign ;
+    rdfs:label "Alpha base slate — Murban" ;
+    ogkg:spine "material" ;
+    ogkg:start "2025-10-01" ;
+    ogkg:end "2026-09-30" ;
+    ogkg:opportunity "false"^^xsd:boolean .
+ogkg:CMP-AB-QM a ogkg:CrudeCampaign ;
+    rdfs:label "Alpha base slate — Qatar Marine" ;
+    ogkg:spine "material" ;
+    ogkg:start "2025-10-01" ;
+    ogkg:end "2026-09-30" ;
+    ogkg:opportunity "false"^^xsd:boolean .
+ogkg:CMP-BB-AL a ogkg:CrudeCampaign ;
+    rdfs:label "Beta base slate — Arab Light" ;
+    ogkg:spine "material" ;
+    ogkg:start "2025-10-01" ;
+    ogkg:end "2026-09-30" ;
+    ogkg:opportunity "false"^^xsd:boolean .
+ogkg:CMP-BB-MUR a ogkg:CrudeCampaign ;
+    rdfs:label "Beta base slate — Murban" ;
+    ogkg:spine "material" ;
+    ogkg:start "2025-10-01" ;
+    ogkg:end "2026-09-30" ;
+    ogkg:opportunity "false"^^xsd:boolean .
+ogkg:CMP-BB-F1 a ogkg:CrudeCampaign ;
+    rdfs:label "Beta base slate — F1 Blend" ;
+    ogkg:spine "material" ;
+    ogkg:start "2025-10-01" ;
+    ogkg:end "2026-09-30" ;
+    ogkg:opportunity "false"^^xsd:boolean .
+ogkg:STR-SRN-1 a ogkg:Stream ;
+    rdfs:label "Straight-run naphtha (Alpha)" ;
+    ogkg:spine "material" .
+ogkg:STR-AR-1 a ogkg:Stream ;
+    rdfs:label "Atmospheric residue (Alpha)" ;
+    ogkg:spine "material" .
+ogkg:STR-AGO-1 a ogkg:Stream ;
+    rdfs:label "Atmospheric gasoil (Alpha)" ;
+    ogkg:spine "material" .
+ogkg:STR-VGO-1 a ogkg:Stream ;
+    rdfs:label "Vacuum gasoil (Alpha)" ;
+    ogkg:spine "material" .
+ogkg:STR-VR-1 a ogkg:Stream ;
+    rdfs:label "Vacuum residue (Alpha)" ;
+    ogkg:spine "material" .
+ogkg:STR-FCCG-1 a ogkg:Stream ;
+    rdfs:label "FCC gasoline (Alpha)" ;
+    ogkg:spine "material" .
+ogkg:STR-REFM-1 a ogkg:Stream ;
+    rdfs:label "Reformate (Alpha)" ;
+    ogkg:spine "material" .
+ogkg:PRD-GAS-1 a ogkg:Product ;
+    rdfs:label "Gasoline RON95 (Alpha)" ;
+    ogkg:spine "material" .
+ogkg:PRD-DSL-1 a ogkg:Product ;
+    rdfs:label "Diesel (Alpha)" ;
+    ogkg:spine "material" .
+ogkg:PRD-FO-1 a ogkg:Product ;
+    rdfs:label "Fuel oil (Alpha)" ;
+    ogkg:spine "material" .
+ogkg:STR-SRN-2 a ogkg:Stream ;
+    rdfs:label "Straight-run naphtha (Beta)" ;
+    ogkg:spine "material" .
+ogkg:STR-AR-2 a ogkg:Stream ;
+    rdfs:label "Atmospheric residue (Beta)" ;
+    ogkg:spine "material" .
+ogkg:STR-AGO-2 a ogkg:Stream ;
+    rdfs:label "Atmospheric gasoil (Beta)" ;
+    ogkg:spine "material" .
+ogkg:STR-VGO-2 a ogkg:Stream ;
+    rdfs:label "Vacuum gasoil (Beta)" ;
+    ogkg:spine "material" .
+ogkg:STR-VR-2 a ogkg:Stream ;
+    rdfs:label "Vacuum residue (Beta)" ;
+    ogkg:spine "material" .
+ogkg:STR-FCCG-2 a ogkg:Stream ;
+    rdfs:label "FCC gasoline (Beta)" ;
+    ogkg:spine "material" .
+ogkg:STR-REFM-2 a ogkg:Stream ;
+    rdfs:label "Reformate (Beta)" ;
+    ogkg:spine "material" .
+ogkg:PRD-GAS-2 a ogkg:Product ;
+    rdfs:label "Gasoline RON95 (Beta)" ;
+    ogkg:spine "material" .
+ogkg:PRD-DSL-2 a ogkg:Product ;
+    rdfs:label "Diesel (Beta)" ;
+    ogkg:spine "material" .
+ogkg:PRD-FO-2 a ogkg:Product ;
+    rdfs:label "Fuel oil (Beta)" ;
+    ogkg:spine "material" .
+ogkg:MKT-DOM a ogkg:Market ;
+    rdfs:label "Domestic retail fuels" ;
+    ogkg:spine "material" .
+ogkg:MKT-EXP a ogkg:Market ;
+    rdfs:label "Export — Asia" ;
+    ogkg:spine "material" .
+ogkg:IOW-001 a ogkg:IOWExceedance ;
+    rdfs:label "IOW-001 on AI-1021 Overhead water chloride" ;
+    ogkg:spine "event" ;
+    ogkg:date "2025-11-13" .
+ogkg:IOW-002 a ogkg:IOWExceedance ;
+    rdfs:label "IOW-002 on AI-1021 Overhead water chloride" ;
+    ogkg:spine "event" ;
+    ogkg:date "2026-02-08" .
+ogkg:IOW-003 a ogkg:IOWExceedance ;
+    rdfs:label "IOW-003 on AI-1021 Overhead water chloride" ;
+    ogkg:spine "event" ;
+    ogkg:date "2026-06-04" .
+ogkg:IOW-004 a ogkg:IOWExceedance ;
+    rdfs:label "IOW-004 on AI-1022 Overhead water pH" ;
+    ogkg:spine "event" ;
+    ogkg:date "2026-02-10" .
+ogkg:IOW-005 a ogkg:IOWExceedance ;
+    rdfs:label "IOW-005 on CR-2011 Transfer line corrosion probe" ;
+    ogkg:spine "event" ;
+    ogkg:date "2026-02-12" .
+ogkg:IOW-006 a ogkg:IOWExceedance ;
+    rdfs:label "IOW-006 on AI-2021 Overhead water chloride" ;
+    ogkg:spine "event" ;
+    ogkg:date "2026-04-02" .
+ogkg:FL-001 a ogkg:Failure ;
+    rdfs:label "FL-001 E-101A tubes" ;
+    ogkg:spine "event" ;
+    ogkg:date "2025-12-02" .
+ogkg:WO-001 a ogkg:WorkOrder ;
+    rdfs:label "WO-001 repair" ;
+    ogkg:spine "event" ;
+    ogkg:date "2025-12-02" .
+ogkg:FL-002 a ogkg:Failure ;
+    rdfs:label "FL-002 E-101B tubes" ;
+    ogkg:spine "event" ;
+    ogkg:date "2026-03-05" .
+ogkg:WO-002 a ogkg:WorkOrder ;
+    rdfs:label "WO-002 repair" ;
+    ogkg:spine "event" ;
+    ogkg:date "2026-03-05" .
+ogkg:FL-003 a ogkg:Failure ;
+    rdfs:label "FL-003 PC-101 Overhead piping circuit" ;
+    ogkg:spine "event" ;
+    ogkg:date "2026-06-28" .
+ogkg:WO-003 a ogkg:WorkOrder ;
+    rdfs:label "WO-003 repair" ;
+    ogkg:spine "event" ;
+    ogkg:date "2026-06-28" .
+ogkg:FL-004 a ogkg:Failure ;
+    rdfs:label "FL-004 PC-201 VDU transfer line circuit" ;
+    ogkg:spine "event" ;
+    ogkg:date "2026-03-20" .
+ogkg:WO-004 a ogkg:WorkOrder ;
+    rdfs:label "WO-004 repair" ;
+    ogkg:spine "event" ;
+    ogkg:date "2026-03-20" .
+ogkg:FL-101 a ogkg:Failure ;
+    rdfs:label "FL-101 P-201A mechanical seal" ;
+    ogkg:spine "event" ;
+    ogkg:date "2025-10-20" .
+ogkg:WO-101 a ogkg:WorkOrder ;
+    rdfs:label "WO-101 repair" ;
+    ogkg:spine "event" ;
+    ogkg:date "2025-10-20" .
+ogkg:FL-102 a ogkg:Failure ;
+    rdfs:label "FL-102 P-201A mechanical seal" ;
+    ogkg:spine "event" ;
+    ogkg:date "2026-01-15" .
+ogkg:WO-102 a ogkg:WorkOrder ;
+    rdfs:label "WO-102 repair" ;
+    ogkg:spine "event" ;
+    ogkg:date "2026-01-15" .
+ogkg:FL-103 a ogkg:Failure ;
+    rdfs:label "FL-103 P-201A mechanical seal" ;
+    ogkg:spine "event" ;
+    ogkg:date "2026-04-22" .
+ogkg:WO-103 a ogkg:WorkOrder ;
+    rdfs:label "WO-103 repair" ;
+    ogkg:spine "event" ;
+    ogkg:date "2026-04-22" .
+ogkg:FL-104 a ogkg:Failure ;
+    rdfs:label "FL-104 P-201A mechanical seal" ;
+    ogkg:spine "event" ;
+    ogkg:date "2026-08-10" .
+ogkg:WO-104 a ogkg:WorkOrder ;
+    rdfs:label "WO-104 repair" ;
+    ogkg:spine "event" ;
+    ogkg:date "2026-08-10" .
+ogkg:FL-105 a ogkg:Failure ;
+    rdfs:label "FL-105 P-201B mechanical seal" ;
+    ogkg:spine "event" ;
+    ogkg:date "2025-12-18" .
+ogkg:WO-105 a ogkg:WorkOrder ;
+    rdfs:label "WO-105 repair" ;
+    ogkg:spine "event" ;
+    ogkg:date "2025-12-18" .
+ogkg:FL-106 a ogkg:Failure ;
+    rdfs:label "FL-106 P-201B mechanical seal" ;
+    ogkg:spine "event" ;
+    ogkg:date "2026-04-01" .
+ogkg:WO-106 a ogkg:WorkOrder ;
+    rdfs:label "WO-106 repair" ;
+    ogkg:spine "event" ;
+    ogkg:date "2026-04-01" .
+ogkg:FL-107 a ogkg:Failure ;
+    rdfs:label "FL-107 P-201B mechanical seal" ;
+    ogkg:spine "event" ;
+    ogkg:date "2026-07-19" .
+ogkg:WO-107 a ogkg:WorkOrder ;
+    rdfs:label "WO-107 repair" ;
+    ogkg:spine "event" ;
+    ogkg:date "2026-07-19" .
+ogkg:FL-108 a ogkg:Failure ;
+    rdfs:label "FL-108 P-501 mechanical seal" ;
+    ogkg:spine "event" ;
+    ogkg:date "2025-11-05" .
+ogkg:WO-108 a ogkg:WorkOrder ;
+    rdfs:label "WO-108 repair" ;
+    ogkg:spine "event" ;
+    ogkg:date "2025-11-05" .
+ogkg:FL-109 a ogkg:Failure ;
+    rdfs:label "FL-109 P-501 mechanical seal" ;
+    ogkg:spine "event" ;
+    ogkg:date "2026-03-12" .
+ogkg:WO-109 a ogkg:WorkOrder ;
+    rdfs:label "WO-109 repair" ;
+    ogkg:spine "event" ;
+    ogkg:date "2026-03-12" .
+ogkg:FL-110 a ogkg:Failure ;
+    rdfs:label "FL-110 P-501 mechanical seal" ;
+    ogkg:spine "event" ;
+    ogkg:date "2026-07-30" .
+ogkg:WO-110 a ogkg:WorkOrder ;
+    rdfs:label "WO-110 repair" ;
+    ogkg:spine "event" ;
+    ogkg:date "2026-07-30" .
+ogkg:FL-111 a ogkg:Failure ;
+    rdfs:label "FL-111 P-401A mechanical seal" ;
+    ogkg:spine "event" ;
+    ogkg:date "2025-10-28" .
+ogkg:WO-111 a ogkg:WorkOrder ;
+    rdfs:label "WO-111 repair" ;
+    ogkg:spine "event" ;
+    ogkg:date "2025-10-28" .
+ogkg:FL-112 a ogkg:Failure ;
+    rdfs:label "FL-112 P-401A mechanical seal" ;
+    ogkg:spine "event" ;
+    ogkg:date "2026-02-02" .
+ogkg:WO-112 a ogkg:WorkOrder ;
+    rdfs:label "WO-112 repair" ;
+    ogkg:spine "event" ;
+    ogkg:date "2026-02-02" .
+ogkg:FL-113 a ogkg:Failure ;
+    rdfs:label "FL-113 P-401A mechanical seal" ;
+    ogkg:spine "event" ;
+    ogkg:date "2026-05-14" .
+ogkg:WO-113 a ogkg:WorkOrder ;
+    rdfs:label "WO-113 repair" ;
+    ogkg:spine "event" ;
+    ogkg:date "2026-05-14" .
+ogkg:FL-114 a ogkg:Failure ;
+    rdfs:label "FL-114 P-401A mechanical seal" ;
+    ogkg:spine "event" ;
+    ogkg:date "2026-08-25" .
+ogkg:WO-114 a ogkg:WorkOrder ;
+    rdfs:label "WO-114 repair" ;
+    ogkg:spine "event" ;
+    ogkg:date "2026-08-25" .
+ogkg:FL-115 a ogkg:Failure ;
+    rdfs:label "FL-115 P-401B mechanical seal" ;
+    ogkg:spine "event" ;
+    ogkg:date "2026-06-10" .
+ogkg:WO-115 a ogkg:WorkOrder ;
+    rdfs:label "WO-115 repair" ;
+    ogkg:spine "event" ;
+    ogkg:date "2026-06-10" .
+ogkg:TA-ALPHA-27 a ogkg:Turnaround ;
+    rdfs:label "Refinery Alpha major turnaround 2027" ;
+    ogkg:spine "event" ;
+    ogkg:date "2027-03-01" .
+ogkg:SI-01 a ogkg:ScopeItem ;
+    rdfs:label "Retube & inspect E-101A" ;
+    ogkg:spine "event" .
+ogkg:SI-02 a ogkg:ScopeItem ;
+    rdfs:label "Accumulator internal inspection" ;
+    ogkg:spine "event" .
+ogkg:SI-03 a ogkg:ScopeItem ;
+    rdfs:label "Heater tube inspection" ;
+    ogkg:spine "event" .
+ogkg:SI-04 a ogkg:ScopeItem ;
+    rdfs:label "Column tray replacement" ;
+    ogkg:spine "event" .
+ogkg:SI-05 a ogkg:ScopeItem ;
+    rdfs:label "Pump overhaul" ;
+    ogkg:spine "event" .
+ogkg:VS-PTS a ogkg:ValueStream ;
+    rdfs:label "Produce-to-Sell" ;
+    ogkg:spine "process" ;
+    ogkg:level 2 .
+ogkg:VS-LOG a ogkg:ValueStream ;
+    rdfs:label "Crude Logistics" ;
+    ogkg:spine "process" ;
+    ogkg:level 2 .
+ogkg:PG-TERM a ogkg:ProcessGroup ;
+    rdfs:label "Terminal Operations" ;
+    ogkg:spine "process" ;
+    ogkg:level 3 .
+ogkg:VS-C2P a ogkg:ValueStream ;
+    rdfs:label "Crude-to-Product (Hydrocarbon Supply Chain)" ;
+    ogkg:spine "process" ;
+    ogkg:level 2 .
+ogkg:VS-P2M a ogkg:ValueStream ;
+    rdfs:label "Plan-to-Maintain (Asset Reliability & Integrity)" ;
+    ogkg:spine "process" ;
+    ogkg:level 2 .
+ogkg:PG-CSV a ogkg:ProcessGroup ;
+    rdfs:label "Crude Supply & Valuation" ;
+    ogkg:spine "process" ;
+    ogkg:level 3 .
+ogkg:PG-PS a ogkg:ProcessGroup ;
+    rdfs:label "Planning & Scheduling" ;
+    ogkg:spine "process" ;
+    ogkg:level 3 .
+ogkg:PG-OPS a ogkg:ProcessGroup ;
+    rdfs:label "Unit Operations" ;
+    ogkg:spine "process" ;
+    ogkg:level 3 .
+ogkg:PG-BLD a ogkg:ProcessGroup ;
+    rdfs:label "Blending & Product Quality" ;
+    ogkg:spine "process" ;
+    ogkg:level 3 .
+ogkg:PG-REL a ogkg:ProcessGroup ;
+    rdfs:label "Reliability Management" ;
+    ogkg:spine "process" ;
+    ogkg:level 3 .
+ogkg:PG-INT a ogkg:ProcessGroup ;
+    rdfs:label "Integrity Management" ;
+    ogkg:spine "process" ;
+    ogkg:level 3 .
+ogkg:PG-TA a ogkg:ProcessGroup ;
+    rdfs:label "Turnaround Management" ;
+    ogkg:spine "process" ;
+    ogkg:level 3 .
+ogkg:PG-WM a ogkg:ProcessGroup ;
+    rdfs:label "Work Management" ;
+    ogkg:spine "process" ;
+    ogkg:level 3 .
+ogkg:P-CRSEL a ogkg:Process ;
+    rdfs:label "Crude Selection & Valuation" ;
+    ogkg:spine "process" ;
+    ogkg:level 4 .
+ogkg:P-LP a ogkg:Process ;
+    rdfs:label "Monthly LP Planning" ;
+    ogkg:spine "process" ;
+    ogkg:level 4 .
+ogkg:P-OPMON a ogkg:Process ;
+    rdfs:label "Unit Operations Monitoring" ;
+    ogkg:spine "process" ;
+    ogkg:level 4 .
+ogkg:P-BLEND a ogkg:Process ;
+    rdfs:label "Gasoline Blending" ;
+    ogkg:spine "process" ;
+    ogkg:level 4 .
+ogkg:P-BADACT a ogkg:Process ;
+    rdfs:label "Bad Actor Management" ;
+    ogkg:spine "process" ;
+    ogkg:level 4 .
+ogkg:P-IOW a ogkg:Process ;
+    rdfs:label "IOW Management" ;
+    ogkg:spine "process" ;
+    ogkg:level 4 .
+ogkg:P-CORR a ogkg:Process ;
+    rdfs:label "Corrosion Management" ;
+    ogkg:spine "process" ;
+    ogkg:level 4 .
+ogkg:P-TAS a ogkg:Process ;
+    rdfs:label "Turnaround Scope Definition" ;
+    ogkg:spine "process" ;
+    ogkg:level 4 .
+ogkg:P-WO a ogkg:Process ;
+    rdfs:label "Work Order Execution" ;
+    ogkg:spine "process" ;
+    ogkg:level 4 .
+ogkg:SP-ASSAY a ogkg:SubProcess ;
+    rdfs:label "Assay Evaluation" ;
+    ogkg:spine "process" ;
+    ogkg:level 5 .
+ogkg:ACT-SCREEN a ogkg:Activity ;
+    rdfs:label "Screen crude contaminants vs metallurgy limits" ;
+    ogkg:spine "process" ;
+    ogkg:level 6 .
+ogkg:TSK-CONTAM a ogkg:Task ;
+    rdfs:label "Check TAN / salt / sulfur against unit corrosion envelope" ;
+    ogkg:spine "process" ;
+    ogkg:level 7 .
+ogkg:DEC-CRACC a ogkg:DecisionPoint ;
+    rdfs:label "Accept crude into slate & set max blend %" ;
+    ogkg:spine "process" ;
+    ogkg:level 8 .
+ogkg:DOB-ASSAY a ogkg:DataObject ;
+    rdfs:label "Crude Assay" ;
+    ogkg:spine "process" ;
+    ogkg:level 9 .
+ogkg:SP-CVAL a ogkg:SubProcess ;
+    rdfs:label "Crude Valuation (netback)" ;
+    ogkg:spine "process" ;
+    ogkg:level 5 .
+ogkg:ACT-NETB a ogkg:Activity ;
+    rdfs:label "Compute crude netback in LP" ;
+    ogkg:spine "process" ;
+    ogkg:level 6 .
+ogkg:TSK-LPCASE a ogkg:Task ;
+    rdfs:label "Run marginal-crude LP case" ;
+    ogkg:spine "process" ;
+    ogkg:level 7 .
+ogkg:DEC-CRBUY a ogkg:DecisionPoint ;
+    rdfs:label "Buy / reject opportunity cargo" ;
+    ogkg:spine "process" ;
+    ogkg:level 8 .
+ogkg:DOB-LPCASE a ogkg:DataObject ;
+    rdfs:label "LP Case" ;
+    ogkg:spine "process" ;
+    ogkg:level 9 .
+ogkg:SP-IOWMON a ogkg:SubProcess ;
+    rdfs:label "Exceedance Monitoring & Response" ;
+    ogkg:spine "process" ;
+    ogkg:level 5 .
+ogkg:ACT-IOWREV a ogkg:Activity ;
+    rdfs:label "Review IOW exceedances" ;
+    ogkg:spine "process" ;
+    ogkg:level 6 .
+ogkg:TSK-OVHCL a ogkg:Task ;
+    rdfs:label "Review overhead water chloride & pH daily" ;
+    ogkg:spine "process" ;
+    ogkg:level 7 .
+ogkg:DEC-NEUT a ogkg:DecisionPoint ;
+    rdfs:label "Adjust neutraliser / wash-water rate" ;
+    ogkg:spine "process" ;
+    ogkg:level 8 .
+ogkg:DOB-IOWREG a ogkg:DataObject ;
+    rdfs:label "IOW Register" ;
+    ogkg:spine "process" ;
+    ogkg:level 9 .
+ogkg:SP-RECIPE a ogkg:SubProcess ;
+    rdfs:label "Blend Recipe Optimisation" ;
+    ogkg:spine "process" ;
+    ogkg:level 5 .
+ogkg:ACT-RECIPE a ogkg:Activity ;
+    rdfs:label "Optimise blend recipe" ;
+    ogkg:spine "process" ;
+    ogkg:level 6 .
+ogkg:TSK-COMPQ a ogkg:Task ;
+    rdfs:label "Update component qualities" ;
+    ogkg:spine "process" ;
+    ogkg:level 7 .
+ogkg:DEC-RECIPE a ogkg:DecisionPoint ;
+    rdfs:label "Release blend recipe" ;
+    ogkg:spine "process" ;
+    ogkg:level 8 .
+ogkg:DOB-RECIPE a ogkg:DataObject ;
+    rdfs:label "Blend Recipe" ;
+    ogkg:spine "process" ;
+    ogkg:level 9 .
+ogkg:SP-SCOPE a ogkg:SubProcess ;
+    rdfs:label "Scope Challenge & Freeze" ;
+    ogkg:spine "process" ;
+    ogkg:level 5 .
+ogkg:ACT-SCOPECH a ogkg:Activity ;
+    rdfs:label "Challenge scope against integrity threats" ;
+    ogkg:spine "process" ;
+    ogkg:level 6 .
+ogkg:TSK-RBI a ogkg:Task ;
+    rdfs:label "Link inspection items to active damage mechanisms" ;
+    ogkg:spine "process" ;
+    ogkg:level 7 .
+ogkg:DEC-SCOPEFRZ a ogkg:DecisionPoint ;
+    rdfs:label "Freeze turnaround scope" ;
+    ogkg:spine "process" ;
+    ogkg:level 8 .
+ogkg:DOB-TASCOPE a ogkg:DataObject ;
+    rdfs:label "TA Scope List" ;
+    ogkg:spine "process" ;
+    ogkg:level 9 .
+ogkg:SP-RCA a ogkg:SubProcess ;
+    rdfs:label "Failure Analysis (RCA)" ;
+    ogkg:spine "process" ;
+    ogkg:level 5 .
+ogkg:ACT-FLEET a ogkg:Activity ;
+    rdfs:label "Compare failure patterns across the fleet" ;
+    ogkg:spine "process" ;
+    ogkg:level 6 .
+ogkg:TSK-MTBF a ogkg:Task ;
+    rdfs:label "Compute MTBF by model & service" ;
+    ogkg:spine "process" ;
+    ogkg:level 7 .
+ogkg:DEC-STD a ogkg:DecisionPoint ;
+    rdfs:label "Set equipment / seal-plan standard" ;
+    ogkg:spine "process" ;
+    ogkg:level 8 .
+ogkg:DOB-FAILREC a ogkg:DataObject ;
+    rdfs:label "Failure Record (ISO 14224)" ;
+    ogkg:spine "process" ;
+    ogkg:level 9 .
+ogkg:SP-CORRCOST a ogkg:SubProcess ;
+    rdfs:label "Corrosion Cost Tracking" ;
+    ogkg:spine "process" ;
+    ogkg:level 5 .
+ogkg:ACT-CORRCOST a ogkg:Activity ;
+    rdfs:label "Aggregate corrosion repair cost & lost margin" ;
+    ogkg:spine "process" ;
+    ogkg:level 6 .
+ogkg:TSK-CORRCOST a ogkg:Task ;
+    rdfs:label "Attribute failures to damage mechanism" ;
+    ogkg:spine "process" ;
+    ogkg:level 7 .
+ogkg:DEC-CORRBUD a ogkg:DecisionPoint ;
+    rdfs:label "Set corrosion-control budget" ;
+    ogkg:spine "process" ;
+    ogkg:level 8 .
+ogkg:DOB-CORRLOG a ogkg:DataObject ;
+    rdfs:label "Corrosion Cost Log" ;
+    ogkg:spine "process" ;
+    ogkg:level 9 .
+ogkg:DE-TAN a ogkg:DataElement ;
+    rdfs:label "Total acid number" ;
+    ogkg:spine "process" ;
+    ogkg:level 10 ;
+    ogkg:domain "crude quality" ;
+    ogkg:maps_to_predicate "tan" .
+ogkg:DE-SALT a ogkg:DataElement ;
+    rdfs:label "Salt content" ;
+    ogkg:spine "process" ;
+    ogkg:level 10 ;
+    ogkg:domain "crude quality" ;
+    ogkg:maps_to_predicate "salt_content" .
+ogkg:DE-SULF a ogkg:DataElement ;
+    rdfs:label "Sulfur" ;
+    ogkg:spine "process" ;
+    ogkg:level 10 ;
+    ogkg:domain "crude quality" ;
+    ogkg:maps_to_predicate "sulfur" .
+ogkg:DE-API a ogkg:DataElement ;
+    rdfs:label "API gravity" ;
+    ogkg:spine "process" ;
+    ogkg:level 10 ;
+    ogkg:domain "crude quality" ;
+    ogkg:maps_to_predicate "api_gravity" .
+ogkg:DE-GRMUP a ogkg:DataElement ;
+    rdfs:label "LP GRM uplift" ;
+    ogkg:spine "process" ;
+    ogkg:level 10 ;
+    ogkg:domain "economics" ;
+    ogkg:maps_to_predicate "lp_uplift_per_bbl" .
+ogkg:DE-CL a ogkg:DataElement ;
+    rdfs:label "Overhead water chloride" ;
+    ogkg:spine "process" ;
+    ogkg:level 10 ;
+    ogkg:domain "integrity" .
+ogkg:DE-PH a ogkg:DataElement ;
+    rdfs:label "Overhead water pH" ;
+    ogkg:spine "process" ;
+    ogkg:level 10 ;
+    ogkg:domain "integrity" .
+ogkg:DE-RONREF a ogkg:DataElement ;
+    rdfs:label "Reformate RON" ;
+    ogkg:spine "process" ;
+    ogkg:level 10 ;
+    ogkg:domain "product quality" .
+ogkg:DE-RONPROD a ogkg:DataElement ;
+    rdfs:label "Gasoline product RON" ;
+    ogkg:spine "process" ;
+    ogkg:level 10 ;
+    ogkg:domain "product quality" .
+ogkg:DE-SCOPE a ogkg:DataElement ;
+    rdfs:label "Scope item inclusion" ;
+    ogkg:spine "process" ;
+    ogkg:level 10 ;
+    ogkg:domain "integrity" .
+ogkg:DE-MTBF a ogkg:DataElement ;
+    rdfs:label "MTBF by model & service" ;
+    ogkg:spine "process" ;
+    ogkg:level 10 ;
+    ogkg:domain "reliability" ;
+    ogkg:maps_to_predicate "mtbf_days" .
+ogkg:DE-FMECH a ogkg:DataElement ;
+    rdfs:label "Failure mechanism" ;
+    ogkg:spine "process" ;
+    ogkg:level 10 ;
+    ogkg:domain "reliability" ;
+    ogkg:maps_to_predicate "failure_mechanism" .
+ogkg:DE-CORRCOST a ogkg:DataElement ;
+    rdfs:label "Corrosion repair cost & lost margin" ;
+    ogkg:spine "process" ;
+    ogkg:level 10 ;
+    ogkg:domain "reliability" ;
+    ogkg:maps_to_predicate "lost_margin" .
+ogkg:SEG-UPSTREAM ogkg:PART_OF ogkg:OG .
+ogkg:SEG-MIDSTREAM ogkg:PART_OF ogkg:OG .
+ogkg:SEG-DOWNSTREAM ogkg:PART_OF ogkg:OG .
+ogkg:BC-REF ogkg:PART_OF ogkg:SEG-DOWNSTREAM .
+ogkg:BC-EP ogkg:PART_OF ogkg:SEG-UPSTREAM .
+ogkg:BC-PT ogkg:PART_OF ogkg:SEG-MIDSTREAM .
+ogkg:FIELD-F1 ogkg:PART_OF ogkg:BC-EP .
+ogkg:CPF-1 ogkg:PART_OF ogkg:FIELD-F1 .
+ogkg:CPF-1-SEP ogkg:PART_OF ogkg:CPF-1 .
+ogkg:V-1001 ogkg:PART_OF ogkg:CPF-1-SEP .
+ogkg:T-F1-OIL ogkg:PART_OF ogkg:V-1001 .
+ogkg:TERM-T1 ogkg:PART_OF ogkg:BC-PT .
+ogkg:TFARM-1 ogkg:PART_OF ogkg:TERM-T1 .
+ogkg:TFARM-1-S ogkg:PART_OF ogkg:TFARM-1 .
+ogkg:TK-01 ogkg:PART_OF ogkg:TFARM-1-S .
+ogkg:T-TK01-LVL ogkg:PART_OF ogkg:TK-01 .
+ogkg:FIELD-F1 ogkg:SUPPLIES ogkg:TERM-T1 .
+ogkg:SITE-ALPHA ogkg:PART_OF ogkg:BC-REF .
+ogkg:TERM-T1 ogkg:SUPPLIES ogkg:SITE-ALPHA .
+ogkg:SITE-BETA ogkg:PART_OF ogkg:BC-REF .
+ogkg:TERM-T1 ogkg:SUPPLIES ogkg:SITE-BETA .
+ogkg:CDU-1 ogkg:PART_OF ogkg:SITE-ALPHA .
+ogkg:VDU-1 ogkg:PART_OF ogkg:SITE-ALPHA .
+ogkg:FCC-1 ogkg:PART_OF ogkg:SITE-ALPHA .
+ogkg:REF-1 ogkg:PART_OF ogkg:SITE-ALPHA .
+ogkg:GBL-1 ogkg:PART_OF ogkg:SITE-ALPHA .
+ogkg:CDU-2 ogkg:PART_OF ogkg:SITE-BETA .
+ogkg:VDU-2 ogkg:PART_OF ogkg:SITE-BETA .
+ogkg:FCC-2 ogkg:PART_OF ogkg:SITE-BETA .
+ogkg:REF-2 ogkg:PART_OF ogkg:SITE-BETA .
+ogkg:GBL-2 ogkg:PART_OF ogkg:SITE-BETA .
+ogkg:CDU-1-DS ogkg:PART_OF ogkg:CDU-1 .
+ogkg:CDU-1-PH ogkg:PART_OF ogkg:CDU-1 .
+ogkg:CDU-1-FR ogkg:PART_OF ogkg:CDU-1 .
+ogkg:CDU-1-OVH ogkg:PART_OF ogkg:CDU-1 .
+ogkg:VDU-1-VR ogkg:PART_OF ogkg:VDU-1 .
+ogkg:VDU-1-TL ogkg:PART_OF ogkg:VDU-1 .
+ogkg:FCC-1-FR ogkg:PART_OF ogkg:FCC-1 .
+ogkg:REF-1-RX ogkg:PART_OF ogkg:REF-1 .
+ogkg:REF-1-STB ogkg:PART_OF ogkg:REF-1 .
+ogkg:GBL-1-HDR ogkg:PART_OF ogkg:GBL-1 .
+ogkg:CDU-2-DS ogkg:PART_OF ogkg:CDU-2 .
+ogkg:CDU-2-PH ogkg:PART_OF ogkg:CDU-2 .
+ogkg:CDU-2-FR ogkg:PART_OF ogkg:CDU-2 .
+ogkg:CDU-2-OVH ogkg:PART_OF ogkg:CDU-2 .
+ogkg:VDU-2-VR ogkg:PART_OF ogkg:VDU-2 .
+ogkg:VDU-2-TL ogkg:PART_OF ogkg:VDU-2 .
+ogkg:FCC-2-FR ogkg:PART_OF ogkg:FCC-2 .
+ogkg:REF-2-RX ogkg:PART_OF ogkg:REF-2 .
+ogkg:REF-2-STB ogkg:PART_OF ogkg:REF-2 .
+ogkg:GBL-2-HDR ogkg:PART_OF ogkg:GBL-2 .
+ogkg:E-101A ogkg:PART_OF ogkg:CDU-1-OVH .
+ogkg:E-101B ogkg:PART_OF ogkg:CDU-1-OVH .
+ogkg:V-102 ogkg:PART_OF ogkg:CDU-1-OVH .
+ogkg:P-103 ogkg:PART_OF ogkg:CDU-1-OVH .
+ogkg:PC-101 ogkg:PART_OF ogkg:CDU-1-OVH .
+ogkg:V-110 ogkg:PART_OF ogkg:CDU-1-DS .
+ogkg:C-101 ogkg:PART_OF ogkg:CDU-1-FR .
+ogkg:H-101 ogkg:PART_OF ogkg:CDU-1-PH .
+ogkg:PC-201 ogkg:PART_OF ogkg:VDU-1-TL .
+ogkg:E-301 ogkg:PART_OF ogkg:REF-1-RX .
+ogkg:E-401A ogkg:PART_OF ogkg:CDU-2-OVH .
+ogkg:V-402 ogkg:PART_OF ogkg:CDU-2-OVH .
+ogkg:E-601 ogkg:PART_OF ogkg:REF-2-RX .
+ogkg:P-201A ogkg:PART_OF ogkg:VDU-1-VR .
+ogkg:P-201A-SS ogkg:PART_OF ogkg:P-201A .
+ogkg:P-201A-MS ogkg:PART_OF ogkg:P-201A-SS .
+ogkg:P-201A-SF ogkg:PART_OF ogkg:P-201A-MS .
+ogkg:P-201A-OR ogkg:PART_OF ogkg:P-201A-MS .
+ogkg:P-201A-BH ogkg:PART_OF ogkg:P-201A .
+ogkg:P-201A-BRG ogkg:PART_OF ogkg:P-201A-BH .
+ogkg:P-201B ogkg:PART_OF ogkg:VDU-1-VR .
+ogkg:P-201B-SS ogkg:PART_OF ogkg:P-201B .
+ogkg:P-201B-MS ogkg:PART_OF ogkg:P-201B-SS .
+ogkg:P-201B-SF ogkg:PART_OF ogkg:P-201B-MS .
+ogkg:P-201B-OR ogkg:PART_OF ogkg:P-201B-MS .
+ogkg:P-201B-BH ogkg:PART_OF ogkg:P-201B .
+ogkg:P-201B-BRG ogkg:PART_OF ogkg:P-201B-BH .
+ogkg:P-501 ogkg:PART_OF ogkg:FCC-1-FR .
+ogkg:P-501-SS ogkg:PART_OF ogkg:P-501 .
+ogkg:P-501-MS ogkg:PART_OF ogkg:P-501-SS .
+ogkg:P-501-SF ogkg:PART_OF ogkg:P-501-MS .
+ogkg:P-501-OR ogkg:PART_OF ogkg:P-501-MS .
+ogkg:P-501-BH ogkg:PART_OF ogkg:P-501 .
+ogkg:P-501-BRG ogkg:PART_OF ogkg:P-501-BH .
+ogkg:P-401A ogkg:PART_OF ogkg:VDU-2-VR .
+ogkg:P-401A-SS ogkg:PART_OF ogkg:P-401A .
+ogkg:P-401A-MS ogkg:PART_OF ogkg:P-401A-SS .
+ogkg:P-401A-SF ogkg:PART_OF ogkg:P-401A-MS .
+ogkg:P-401A-OR ogkg:PART_OF ogkg:P-401A-MS .
+ogkg:P-401A-BH ogkg:PART_OF ogkg:P-401A .
+ogkg:P-401A-BRG ogkg:PART_OF ogkg:P-401A-BH .
+ogkg:P-401B ogkg:PART_OF ogkg:VDU-2-VR .
+ogkg:P-401B-SS ogkg:PART_OF ogkg:P-401B .
+ogkg:P-401B-MS ogkg:PART_OF ogkg:P-401B-SS .
+ogkg:P-401B-SF ogkg:PART_OF ogkg:P-401B-MS .
+ogkg:P-401B-OR ogkg:PART_OF ogkg:P-401B-MS .
+ogkg:P-401B-BH ogkg:PART_OF ogkg:P-401B .
+ogkg:P-401B-BRG ogkg:PART_OF ogkg:P-401B-BH .
+ogkg:P-306 ogkg:PART_OF ogkg:CDU-2-FR .
+ogkg:P-306-SS ogkg:PART_OF ogkg:P-306 .
+ogkg:P-306-MS ogkg:PART_OF ogkg:P-306-SS .
+ogkg:P-306-SF ogkg:PART_OF ogkg:P-306-MS .
+ogkg:P-306-OR ogkg:PART_OF ogkg:P-306-MS .
+ogkg:P-306-BH ogkg:PART_OF ogkg:P-306 .
+ogkg:P-306-BRG ogkg:PART_OF ogkg:P-306-BH .
+ogkg:E-101A-TB ogkg:PART_OF ogkg:E-101A .
+ogkg:E-101A-TU ogkg:PART_OF ogkg:E-101A-TB .
+ogkg:E-101B-TB ogkg:PART_OF ogkg:E-101B .
+ogkg:E-101B-TU ogkg:PART_OF ogkg:E-101B-TB .
+ogkg:E-401A-TB ogkg:PART_OF ogkg:E-401A .
+ogkg:E-401A-TU ogkg:PART_OF ogkg:E-401A-TB .
+ogkg:T-CDU1-CL ogkg:PART_OF ogkg:CDU-1-OVH .
+ogkg:T-CDU1-PH ogkg:PART_OF ogkg:CDU-1-OVH .
+ogkg:T-CDU1-FI ogkg:PART_OF ogkg:CDU-1 .
+ogkg:T-CDU1-DSS ogkg:PART_OF ogkg:CDU-1-DS .
+ogkg:T-REF1-RON ogkg:PART_OF ogkg:REF-1-STB .
+ogkg:T-REF1-TI ogkg:PART_OF ogkg:REF-1-RX .
+ogkg:T-GBL1-RON ogkg:PART_OF ogkg:GBL-1-HDR .
+ogkg:T-CDU2-CL ogkg:PART_OF ogkg:CDU-2-OVH .
+ogkg:T-CDU2-PH ogkg:PART_OF ogkg:CDU-2-OVH .
+ogkg:T-CDU2-FI ogkg:PART_OF ogkg:CDU-2 .
+ogkg:T-CDU2-DSS ogkg:PART_OF ogkg:CDU-2-DS .
+ogkg:T-REF2-RON ogkg:PART_OF ogkg:REF-2-STB .
+ogkg:T-REF2-TI ogkg:PART_OF ogkg:REF-2-RX .
+ogkg:T-GBL2-RON ogkg:PART_OF ogkg:GBL-2-HDR .
+ogkg:T-VDU1-CR ogkg:PART_OF ogkg:PC-201 .
+ogkg:T-E301-RF ogkg:PART_OF ogkg:E-301 .
+ogkg:T-E601-RF ogkg:PART_OF ogkg:E-601 .
+ogkg:CR-F1 ogkg:PRODUCED_AT ogkg:FIELD-F1 .
+ogkg:CMP-A1 ogkg:OF_GRADE ogkg:CR-HSOB .
+ogkg:CMP-A1 ogkg:PROCESSED_IN ogkg:CDU-1 .
+ogkg:CMP-A1 ogkg:DELIVERED_VIA ogkg:TERM-T1 .
+ogkg:CMP-A2H ogkg:OF_GRADE ogkg:CR-HSOB .
+ogkg:CMP-A2H ogkg:PROCESSED_IN ogkg:CDU-1 .
+ogkg:CMP-A2H ogkg:DELIVERED_VIA ogkg:TERM-T1 .
+ogkg:CMP-A2D ogkg:OF_GRADE ogkg:CR-DOBA .
+ogkg:CMP-A2D ogkg:PROCESSED_IN ogkg:CDU-1 .
+ogkg:CMP-A2D ogkg:DELIVERED_VIA ogkg:TERM-T1 .
+ogkg:CMP-A3 ogkg:OF_GRADE ogkg:CR-HSOB .
+ogkg:CMP-A3 ogkg:PROCESSED_IN ogkg:CDU-1 .
+ogkg:CMP-A3 ogkg:DELIVERED_VIA ogkg:TERM-T1 .
+ogkg:CMP-AB-AL ogkg:OF_GRADE ogkg:CR-AL .
+ogkg:CMP-AB-AL ogkg:PROCESSED_IN ogkg:CDU-1 .
+ogkg:CMP-AB-AL ogkg:DELIVERED_VIA ogkg:TERM-T1 .
+ogkg:CMP-AB-BM ogkg:OF_GRADE ogkg:CR-BM .
+ogkg:CMP-AB-BM ogkg:PROCESSED_IN ogkg:CDU-1 .
+ogkg:CMP-AB-BM ogkg:DELIVERED_VIA ogkg:TERM-T1 .
+ogkg:CMP-AB-MUR ogkg:OF_GRADE ogkg:CR-MUR .
+ogkg:CMP-AB-MUR ogkg:PROCESSED_IN ogkg:CDU-1 .
+ogkg:CMP-AB-MUR ogkg:DELIVERED_VIA ogkg:TERM-T1 .
+ogkg:CMP-AB-QM ogkg:OF_GRADE ogkg:CR-QM .
+ogkg:CMP-AB-QM ogkg:PROCESSED_IN ogkg:CDU-1 .
+ogkg:CMP-AB-QM ogkg:DELIVERED_VIA ogkg:TERM-T1 .
+ogkg:CMP-BB-AL ogkg:OF_GRADE ogkg:CR-AL .
+ogkg:CMP-BB-AL ogkg:PROCESSED_IN ogkg:CDU-2 .
+ogkg:CMP-BB-AL ogkg:DELIVERED_VIA ogkg:TERM-T1 .
+ogkg:CMP-BB-MUR ogkg:OF_GRADE ogkg:CR-MUR .
+ogkg:CMP-BB-MUR ogkg:PROCESSED_IN ogkg:CDU-2 .
+ogkg:CMP-BB-MUR ogkg:DELIVERED_VIA ogkg:TERM-T1 .
+ogkg:CMP-BB-F1 ogkg:OF_GRADE ogkg:CR-F1 .
+ogkg:CMP-BB-F1 ogkg:PROCESSED_IN ogkg:CDU-2 .
+ogkg:CMP-BB-F1 ogkg:DELIVERED_VIA ogkg:TERM-T1 .
+ogkg:CDU-1 ogkg:PRODUCES ogkg:STR-SRN-1 .
+ogkg:STR-SRN-1 ogkg:FEEDS ogkg:REF-1 .
+ogkg:CDU-1 ogkg:PRODUCES ogkg:STR-AR-1 .
+ogkg:STR-AR-1 ogkg:FEEDS ogkg:VDU-1 .
+ogkg:CDU-1 ogkg:PRODUCES ogkg:STR-AGO-1 .
+ogkg:VDU-1 ogkg:PRODUCES ogkg:STR-VGO-1 .
+ogkg:STR-VGO-1 ogkg:FEEDS ogkg:FCC-1 .
+ogkg:VDU-1 ogkg:PRODUCES ogkg:STR-VR-1 .
+ogkg:FCC-1 ogkg:PRODUCES ogkg:STR-FCCG-1 .
+ogkg:STR-FCCG-1 ogkg:FEEDS ogkg:GBL-1 .
+ogkg:REF-1 ogkg:PRODUCES ogkg:STR-REFM-1 .
+ogkg:STR-REFM-1 ogkg:FEEDS ogkg:GBL-1 .
+ogkg:STR-FCCG-1 ogkg:COMPONENT_OF ogkg:PRD-GAS-1 .
+ogkg:STR-REFM-1 ogkg:COMPONENT_OF ogkg:PRD-GAS-1 .
+ogkg:STR-AGO-1 ogkg:COMPONENT_OF ogkg:PRD-DSL-1 .
+ogkg:STR-VR-1 ogkg:COMPONENT_OF ogkg:PRD-FO-1 .
+ogkg:PRD-GAS-1 ogkg:BLENDED_AT ogkg:GBL-1 .
+ogkg:CDU-2 ogkg:PRODUCES ogkg:STR-SRN-2 .
+ogkg:STR-SRN-2 ogkg:FEEDS ogkg:REF-2 .
+ogkg:CDU-2 ogkg:PRODUCES ogkg:STR-AR-2 .
+ogkg:STR-AR-2 ogkg:FEEDS ogkg:VDU-2 .
+ogkg:CDU-2 ogkg:PRODUCES ogkg:STR-AGO-2 .
+ogkg:VDU-2 ogkg:PRODUCES ogkg:STR-VGO-2 .
+ogkg:STR-VGO-2 ogkg:FEEDS ogkg:FCC-2 .
+ogkg:VDU-2 ogkg:PRODUCES ogkg:STR-VR-2 .
+ogkg:FCC-2 ogkg:PRODUCES ogkg:STR-FCCG-2 .
+ogkg:STR-FCCG-2 ogkg:FEEDS ogkg:GBL-2 .
+ogkg:REF-2 ogkg:PRODUCES ogkg:STR-REFM-2 .
+ogkg:STR-REFM-2 ogkg:FEEDS ogkg:GBL-2 .
+ogkg:STR-FCCG-2 ogkg:COMPONENT_OF ogkg:PRD-GAS-2 .
+ogkg:STR-REFM-2 ogkg:COMPONENT_OF ogkg:PRD-GAS-2 .
+ogkg:STR-AGO-2 ogkg:COMPONENT_OF ogkg:PRD-DSL-2 .
+ogkg:STR-VR-2 ogkg:COMPONENT_OF ogkg:PRD-FO-2 .
+ogkg:PRD-GAS-2 ogkg:BLENDED_AT ogkg:GBL-2 .
+ogkg:PRD-GAS-1 ogkg:SOLD_TO ogkg:MKT-DOM .
+ogkg:PRD-DSL-1 ogkg:SOLD_TO ogkg:MKT-DOM .
+ogkg:PRD-FO-1 ogkg:SOLD_TO ogkg:MKT-EXP .
+ogkg:PRD-GAS-2 ogkg:SOLD_TO ogkg:MKT-DOM .
+ogkg:PRD-DSL-2 ogkg:SOLD_TO ogkg:MKT-DOM .
+ogkg:PRD-FO-2 ogkg:SOLD_TO ogkg:MKT-EXP .
+ogkg:IOW-001 ogkg:ON_DATAPOINT ogkg:T-CDU1-CL .
+ogkg:IOW-002 ogkg:ON_DATAPOINT ogkg:T-CDU1-CL .
+ogkg:IOW-003 ogkg:ON_DATAPOINT ogkg:T-CDU1-CL .
+ogkg:IOW-004 ogkg:ON_DATAPOINT ogkg:T-CDU1-PH .
+ogkg:IOW-005 ogkg:ON_DATAPOINT ogkg:T-VDU1-CR .
+ogkg:IOW-006 ogkg:ON_DATAPOINT ogkg:T-CDU2-CL .
+ogkg:FL-001 ogkg:FAILURE_OF ogkg:E-101A-TU .
+ogkg:WO-001 ogkg:REMEDIATES ogkg:FL-001 .
+ogkg:FL-002 ogkg:FAILURE_OF ogkg:E-101B-TU .
+ogkg:WO-002 ogkg:REMEDIATES ogkg:FL-002 .
+ogkg:FL-003 ogkg:FAILURE_OF ogkg:PC-101 .
+ogkg:WO-003 ogkg:REMEDIATES ogkg:FL-003 .
+ogkg:FL-004 ogkg:FAILURE_OF ogkg:PC-201 .
+ogkg:WO-004 ogkg:REMEDIATES ogkg:FL-004 .
+ogkg:FL-101 ogkg:FAILURE_OF ogkg:P-201A-MS .
+ogkg:WO-101 ogkg:REMEDIATES ogkg:FL-101 .
+ogkg:FL-102 ogkg:FAILURE_OF ogkg:P-201A-MS .
+ogkg:WO-102 ogkg:REMEDIATES ogkg:FL-102 .
+ogkg:FL-103 ogkg:FAILURE_OF ogkg:P-201A-MS .
+ogkg:WO-103 ogkg:REMEDIATES ogkg:FL-103 .
+ogkg:FL-104 ogkg:FAILURE_OF ogkg:P-201A-MS .
+ogkg:WO-104 ogkg:REMEDIATES ogkg:FL-104 .
+ogkg:FL-105 ogkg:FAILURE_OF ogkg:P-201B-MS .
+ogkg:WO-105 ogkg:REMEDIATES ogkg:FL-105 .
+ogkg:FL-106 ogkg:FAILURE_OF ogkg:P-201B-MS .
+ogkg:WO-106 ogkg:REMEDIATES ogkg:FL-106 .
+ogkg:FL-107 ogkg:FAILURE_OF ogkg:P-201B-MS .
+ogkg:WO-107 ogkg:REMEDIATES ogkg:FL-107 .
+ogkg:FL-108 ogkg:FAILURE_OF ogkg:P-501-MS .
+ogkg:WO-108 ogkg:REMEDIATES ogkg:FL-108 .
+ogkg:FL-109 ogkg:FAILURE_OF ogkg:P-501-MS .
+ogkg:WO-109 ogkg:REMEDIATES ogkg:FL-109 .
+ogkg:FL-110 ogkg:FAILURE_OF ogkg:P-501-MS .
+ogkg:WO-110 ogkg:REMEDIATES ogkg:FL-110 .
+ogkg:FL-111 ogkg:FAILURE_OF ogkg:P-401A-MS .
+ogkg:WO-111 ogkg:REMEDIATES ogkg:FL-111 .
+ogkg:FL-112 ogkg:FAILURE_OF ogkg:P-401A-MS .
+ogkg:WO-112 ogkg:REMEDIATES ogkg:FL-112 .
+ogkg:FL-113 ogkg:FAILURE_OF ogkg:P-401A-MS .
+ogkg:WO-113 ogkg:REMEDIATES ogkg:FL-113 .
+ogkg:FL-114 ogkg:FAILURE_OF ogkg:P-401A-MS .
+ogkg:WO-114 ogkg:REMEDIATES ogkg:FL-114 .
+ogkg:FL-115 ogkg:FAILURE_OF ogkg:P-401B-MS .
+ogkg:WO-115 ogkg:REMEDIATES ogkg:FL-115 .
+ogkg:TA-ALPHA-27 ogkg:AT_SITE ogkg:SITE-ALPHA .
+ogkg:SI-01 ogkg:IN_SCOPE_OF ogkg:TA-ALPHA-27 .
+ogkg:SI-01 ogkg:TARGETS ogkg:E-101A .
+ogkg:SI-02 ogkg:IN_SCOPE_OF ogkg:TA-ALPHA-27 .
+ogkg:SI-02 ogkg:TARGETS ogkg:V-102 .
+ogkg:SI-03 ogkg:IN_SCOPE_OF ogkg:TA-ALPHA-27 .
+ogkg:SI-03 ogkg:TARGETS ogkg:H-101 .
+ogkg:SI-04 ogkg:IN_SCOPE_OF ogkg:TA-ALPHA-27 .
+ogkg:SI-04 ogkg:TARGETS ogkg:C-101 .
+ogkg:SI-05 ogkg:IN_SCOPE_OF ogkg:TA-ALPHA-27 .
+ogkg:SI-05 ogkg:TARGETS ogkg:P-201A .
+ogkg:VS-PTS ogkg:PART_OF ogkg:SEG-UPSTREAM .
+ogkg:VS-LOG ogkg:PART_OF ogkg:SEG-MIDSTREAM .
+ogkg:PG-TERM ogkg:PART_OF ogkg:VS-LOG .
+ogkg:PG-TERM ogkg:OWNED_BY ogkg:ROLE-OPS .
+ogkg:PG-TERM ogkg:ACTS_ON ogkg:TERM-T1 .
+ogkg:VS-PTS ogkg:ACTS_ON ogkg:FIELD-F1 .
+ogkg:VS-C2P ogkg:PART_OF ogkg:SEG-DOWNSTREAM .
+ogkg:VS-P2M ogkg:PART_OF ogkg:SEG-DOWNSTREAM .
+ogkg:PG-CSV ogkg:PART_OF ogkg:VS-C2P .
+ogkg:PG-CSV ogkg:OWNED_BY ogkg:ROLE-CRPLAN .
+ogkg:PG-PS ogkg:PART_OF ogkg:VS-C2P .
+ogkg:PG-PS ogkg:OWNED_BY ogkg:ROLE-CRPLAN .
+ogkg:PG-OPS ogkg:PART_OF ogkg:VS-C2P .
+ogkg:PG-OPS ogkg:OWNED_BY ogkg:ROLE-OPS .
+ogkg:PG-BLD ogkg:PART_OF ogkg:VS-C2P .
+ogkg:PG-BLD ogkg:OWNED_BY ogkg:ROLE-BLEND .
+ogkg:PG-REL ogkg:PART_OF ogkg:VS-P2M .
+ogkg:PG-REL ogkg:OWNED_BY ogkg:ROLE-REL .
+ogkg:PG-INT ogkg:PART_OF ogkg:VS-P2M .
+ogkg:PG-INT ogkg:OWNED_BY ogkg:ROLE-CORR .
+ogkg:PG-TA ogkg:PART_OF ogkg:VS-P2M .
+ogkg:PG-TA ogkg:OWNED_BY ogkg:ROLE-TA .
+ogkg:PG-WM ogkg:PART_OF ogkg:VS-P2M .
+ogkg:PG-WM ogkg:OWNED_BY ogkg:ROLE-MAINT .
+ogkg:P-CRSEL ogkg:PART_OF ogkg:PG-CSV .
+ogkg:P-CRSEL ogkg:OWNED_BY ogkg:ROLE-CRPLAN .
+ogkg:P-LP ogkg:PART_OF ogkg:PG-PS .
+ogkg:P-LP ogkg:OWNED_BY ogkg:ROLE-CRPLAN .
+ogkg:P-OPMON ogkg:PART_OF ogkg:PG-OPS .
+ogkg:P-OPMON ogkg:OWNED_BY ogkg:ROLE-OPS .
+ogkg:P-BLEND ogkg:PART_OF ogkg:PG-BLD .
+ogkg:P-BLEND ogkg:OWNED_BY ogkg:ROLE-BLEND .
+ogkg:P-BADACT ogkg:PART_OF ogkg:PG-REL .
+ogkg:P-BADACT ogkg:OWNED_BY ogkg:ROLE-REL .
+ogkg:P-IOW ogkg:PART_OF ogkg:PG-INT .
+ogkg:P-IOW ogkg:OWNED_BY ogkg:ROLE-CORR .
+ogkg:P-CORR ogkg:PART_OF ogkg:PG-INT .
+ogkg:P-CORR ogkg:OWNED_BY ogkg:ROLE-CORR .
+ogkg:P-TAS ogkg:PART_OF ogkg:PG-TA .
+ogkg:P-TAS ogkg:OWNED_BY ogkg:ROLE-TA .
+ogkg:P-WO ogkg:PART_OF ogkg:PG-WM .
+ogkg:P-WO ogkg:OWNED_BY ogkg:ROLE-MAINT .
+ogkg:P-CRSEL ogkg:ACTS_ON ogkg:CDU-1 .
+ogkg:P-CRSEL ogkg:ACTS_ON ogkg:CDU-2 .
+ogkg:P-LP ogkg:ACTS_ON ogkg:SITE-ALPHA .
+ogkg:P-LP ogkg:ACTS_ON ogkg:SITE-BETA .
+ogkg:P-OPMON ogkg:ACTS_ON ogkg:SITE-ALPHA .
+ogkg:P-OPMON ogkg:ACTS_ON ogkg:SITE-BETA .
+ogkg:P-BLEND ogkg:ACTS_ON ogkg:GBL-1 .
+ogkg:P-BLEND ogkg:ACTS_ON ogkg:GBL-2 .
+ogkg:P-BADACT ogkg:ACTS_ON ogkg:SITE-ALPHA .
+ogkg:P-BADACT ogkg:ACTS_ON ogkg:SITE-BETA .
+ogkg:P-IOW ogkg:ACTS_ON ogkg:CDU-1-OVH .
+ogkg:P-IOW ogkg:ACTS_ON ogkg:CDU-2-OVH .
+ogkg:P-IOW ogkg:ACTS_ON ogkg:VDU-1-TL .
+ogkg:P-CORR ogkg:ACTS_ON ogkg:CDU-1-OVH .
+ogkg:P-CORR ogkg:ACTS_ON ogkg:CDU-2-OVH .
+ogkg:P-TAS ogkg:ACTS_ON ogkg:SITE-ALPHA .
+ogkg:P-WO ogkg:ACTS_ON ogkg:SITE-ALPHA .
+ogkg:P-WO ogkg:ACTS_ON ogkg:SITE-BETA .
+ogkg:SP-ASSAY ogkg:PART_OF ogkg:P-CRSEL .
+ogkg:ACT-SCREEN ogkg:PART_OF ogkg:SP-ASSAY .
+ogkg:TSK-CONTAM ogkg:PART_OF ogkg:ACT-SCREEN .
+ogkg:DEC-CRACC ogkg:PART_OF ogkg:TSK-CONTAM .
+ogkg:DOB-ASSAY ogkg:PART_OF ogkg:DEC-CRACC .
+ogkg:SP-CVAL ogkg:PART_OF ogkg:P-CRSEL .
+ogkg:ACT-NETB ogkg:PART_OF ogkg:SP-CVAL .
+ogkg:TSK-LPCASE ogkg:PART_OF ogkg:ACT-NETB .
+ogkg:DEC-CRBUY ogkg:PART_OF ogkg:TSK-LPCASE .
+ogkg:DOB-LPCASE ogkg:PART_OF ogkg:DEC-CRBUY .
+ogkg:SP-IOWMON ogkg:PART_OF ogkg:P-IOW .
+ogkg:ACT-IOWREV ogkg:PART_OF ogkg:SP-IOWMON .
+ogkg:TSK-OVHCL ogkg:PART_OF ogkg:ACT-IOWREV .
+ogkg:DEC-NEUT ogkg:PART_OF ogkg:TSK-OVHCL .
+ogkg:DOB-IOWREG ogkg:PART_OF ogkg:DEC-NEUT .
+ogkg:SP-RECIPE ogkg:PART_OF ogkg:P-BLEND .
+ogkg:ACT-RECIPE ogkg:PART_OF ogkg:SP-RECIPE .
+ogkg:TSK-COMPQ ogkg:PART_OF ogkg:ACT-RECIPE .
+ogkg:DEC-RECIPE ogkg:PART_OF ogkg:TSK-COMPQ .
+ogkg:DOB-RECIPE ogkg:PART_OF ogkg:DEC-RECIPE .
+ogkg:SP-SCOPE ogkg:PART_OF ogkg:P-TAS .
+ogkg:ACT-SCOPECH ogkg:PART_OF ogkg:SP-SCOPE .
+ogkg:TSK-RBI ogkg:PART_OF ogkg:ACT-SCOPECH .
+ogkg:DEC-SCOPEFRZ ogkg:PART_OF ogkg:TSK-RBI .
+ogkg:DOB-TASCOPE ogkg:PART_OF ogkg:DEC-SCOPEFRZ .
+ogkg:SP-RCA ogkg:PART_OF ogkg:P-BADACT .
+ogkg:ACT-FLEET ogkg:PART_OF ogkg:SP-RCA .
+ogkg:TSK-MTBF ogkg:PART_OF ogkg:ACT-FLEET .
+ogkg:DEC-STD ogkg:PART_OF ogkg:TSK-MTBF .
+ogkg:DOB-FAILREC ogkg:PART_OF ogkg:DEC-STD .
+ogkg:SP-CORRCOST ogkg:PART_OF ogkg:P-CORR .
+ogkg:ACT-CORRCOST ogkg:PART_OF ogkg:SP-CORRCOST .
+ogkg:TSK-CORRCOST ogkg:PART_OF ogkg:ACT-CORRCOST .
+ogkg:DEC-CORRBUD ogkg:PART_OF ogkg:TSK-CORRCOST .
+ogkg:DOB-CORRLOG ogkg:PART_OF ogkg:DEC-CORRBUD .
+ogkg:DE-TAN ogkg:PART_OF ogkg:DOB-ASSAY .
+ogkg:DE-TAN ogkg:OWNED_BY ogkg:ROLE-CRPLAN .
+ogkg:DE-SALT ogkg:PART_OF ogkg:DOB-ASSAY .
+ogkg:DE-SALT ogkg:OWNED_BY ogkg:ROLE-CRPLAN .
+ogkg:DE-SULF ogkg:PART_OF ogkg:DOB-ASSAY .
+ogkg:DE-SULF ogkg:OWNED_BY ogkg:ROLE-CRPLAN .
+ogkg:DE-API ogkg:PART_OF ogkg:DOB-ASSAY .
+ogkg:DE-API ogkg:OWNED_BY ogkg:ROLE-CRPLAN .
+ogkg:DE-GRMUP ogkg:PART_OF ogkg:DOB-LPCASE .
+ogkg:DE-GRMUP ogkg:OWNED_BY ogkg:ROLE-CRPLAN .
+ogkg:DE-CL ogkg:PART_OF ogkg:DOB-IOWREG .
+ogkg:DE-CL ogkg:OWNED_BY ogkg:ROLE-CORR .
+ogkg:DE-CL ogkg:INSTANTIATED_BY ogkg:T-CDU1-CL .
+ogkg:DE-CL ogkg:INSTANTIATED_BY ogkg:T-CDU2-CL .
+ogkg:DE-PH ogkg:PART_OF ogkg:DOB-IOWREG .
+ogkg:DE-PH ogkg:OWNED_BY ogkg:ROLE-CORR .
+ogkg:DE-PH ogkg:INSTANTIATED_BY ogkg:T-CDU1-PH .
+ogkg:DE-PH ogkg:INSTANTIATED_BY ogkg:T-CDU2-PH .
+ogkg:DE-RONREF ogkg:PART_OF ogkg:DOB-RECIPE .
+ogkg:DE-RONREF ogkg:OWNED_BY ogkg:ROLE-BLEND .
+ogkg:DE-RONREF ogkg:INSTANTIATED_BY ogkg:T-REF1-RON .
+ogkg:DE-RONREF ogkg:INSTANTIATED_BY ogkg:T-REF2-RON .
+ogkg:DE-RONPROD ogkg:PART_OF ogkg:DOB-RECIPE .
+ogkg:DE-RONPROD ogkg:OWNED_BY ogkg:ROLE-BLEND .
+ogkg:DE-RONPROD ogkg:INSTANTIATED_BY ogkg:T-GBL1-RON .
+ogkg:DE-RONPROD ogkg:INSTANTIATED_BY ogkg:T-GBL2-RON .
+ogkg:DE-SCOPE ogkg:PART_OF ogkg:DOB-TASCOPE .
+ogkg:DE-SCOPE ogkg:OWNED_BY ogkg:ROLE-TA .
+ogkg:DE-MTBF ogkg:PART_OF ogkg:DOB-FAILREC .
+ogkg:DE-MTBF ogkg:OWNED_BY ogkg:ROLE-REL .
+ogkg:DE-FMECH ogkg:PART_OF ogkg:DOB-FAILREC .
+ogkg:DE-FMECH ogkg:OWNED_BY ogkg:ROLE-REL .
+ogkg:DE-CORRCOST ogkg:PART_OF ogkg:DOB-CORRLOG .
+ogkg:DE-CORRCOST ogkg:OWNED_BY ogkg:ROLE-CORR .
+ogkg:DEC-CRACC ogkg:GOVERNS ogkg:CDU-1 .
+ogkg:DEC-CRACC ogkg:GOVERNS ogkg:CDU-2 .
+ogkg:DEC-CRACC ogkg:CONSUMES ogkg:DE-TAN .
+ogkg:DEC-CRACC ogkg:CONSUMES ogkg:DE-SALT .
+ogkg:DEC-CRACC ogkg:CONSUMES ogkg:DE-SULF .
+ogkg:DEC-CRACC ogkg:CONSUMES ogkg:DE-API .
+ogkg:DEC-CRBUY ogkg:GOVERNS ogkg:CDU-1 .
+ogkg:DEC-CRBUY ogkg:GOVERNS ogkg:CDU-2 .
+ogkg:DEC-CRBUY ogkg:CONSUMES ogkg:DE-GRMUP .
+ogkg:DEC-NEUT ogkg:GOVERNS ogkg:CDU-1-OVH .
+ogkg:DEC-NEUT ogkg:GOVERNS ogkg:CDU-2-OVH .
+ogkg:DEC-NEUT ogkg:CONSUMES ogkg:DE-CL .
+ogkg:DEC-NEUT ogkg:CONSUMES ogkg:DE-PH .
+ogkg:DEC-RECIPE ogkg:GOVERNS ogkg:GBL-1 .
+ogkg:DEC-RECIPE ogkg:GOVERNS ogkg:GBL-2 .
+ogkg:DEC-RECIPE ogkg:CONSUMES ogkg:DE-RONREF .
+ogkg:DEC-RECIPE ogkg:CONSUMES ogkg:DE-RONPROD .
+ogkg:DEC-SCOPEFRZ ogkg:GOVERNS ogkg:SITE-ALPHA .
+ogkg:DEC-SCOPEFRZ ogkg:CONSUMES ogkg:DE-SCOPE .
+ogkg:DEC-STD ogkg:GOVERNS ogkg:SITE-ALPHA .
+ogkg:DEC-STD ogkg:GOVERNS ogkg:SITE-BETA .
+ogkg:DEC-STD ogkg:CONSUMES ogkg:DE-MTBF .
+ogkg:DEC-STD ogkg:CONSUMES ogkg:DE-FMECH .
+ogkg:DEC-CORRBUD ogkg:GOVERNS ogkg:CDU-1-OVH .
+ogkg:DEC-CORRBUD ogkg:GOVERNS ogkg:CDU-2-OVH .
+ogkg:DEC-CORRBUD ogkg:CONSUMES ogkg:DE-CORRCOST .
+ogkg:F-00001 a ogkg:Fact ;
+    ogkg:subject ogkg:T-F1-OIL ;
+    ogkg:predicate "latest_value" ;
+    ogkg:value "45.0"^^xsd:decimal ;
+    ogkg:unit "kbd" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Upstream Historian" ;
+    ogkg:sourceRef "FI-9001" ;
+    ogkg:owner ogkg:ROLE-OPS ;
+    ogkg:confidence "high" ;
+    ogkg:method "measured" .
+ogkg:F-00002 a ogkg:Fact ;
+    ogkg:subject ogkg:TK-01 ;
+    ogkg:predicate "capacity" ;
+    ogkg:value "1.0"^^xsd:decimal ;
+    ogkg:unit "MMbbl" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Asset Register" ;
+    ogkg:sourceRef "TK-01" ;
+    ogkg:owner ogkg:ROLE-OPS ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00003 a ogkg:Fact ;
+    ogkg:subject ogkg:T-TK01-LVL ;
+    ogkg:predicate "latest_value" ;
+    ogkg:value "62.0"^^xsd:decimal ;
+    ogkg:unit "%" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Terminal SCADA" ;
+    ogkg:sourceRef "LI-7001" ;
+    ogkg:owner ogkg:ROLE-OPS ;
+    ogkg:confidence "high" ;
+    ogkg:method "measured" .
+ogkg:F-00004 a ogkg:Fact ;
+    ogkg:subject ogkg:SITE-ALPHA ;
+    ogkg:predicate "crude_capacity" ;
+    ogkg:value "200"^^xsd:integer ;
+    ogkg:unit "kbd" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Asset Register" ;
+    ogkg:sourceRef "SITE-ALPHA" ;
+    ogkg:owner ogkg:ROLE-OPS ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00005 a ogkg:Fact ;
+    ogkg:subject ogkg:SITE-ALPHA ;
+    ogkg:predicate "grm_fy2026" ;
+    ogkg:value "8.2"^^xsd:decimal ;
+    ogkg:unit "USD/bbl" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Site Economics (monthly close)" ;
+    ogkg:sourceRef "GRM-ALPHA-FY26" ;
+    ogkg:owner ogkg:ROLE-ECON ;
+    ogkg:confidence "high" ;
+    ogkg:method "calculated" .
+ogkg:F-00006 a ogkg:Fact ;
+    ogkg:subject ogkg:SITE-ALPHA ;
+    ogkg:predicate "nelson_complexity" ;
+    ogkg:value "9.5"^^xsd:decimal ;
+    ogkg:unit "index" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Asset Register" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-PROC ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00007 a ogkg:Fact ;
+    ogkg:subject ogkg:SITE-BETA ;
+    ogkg:predicate "crude_capacity" ;
+    ogkg:value "120"^^xsd:integer ;
+    ogkg:unit "kbd" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Asset Register" ;
+    ogkg:sourceRef "SITE-BETA" ;
+    ogkg:owner ogkg:ROLE-OPS ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00008 a ogkg:Fact ;
+    ogkg:subject ogkg:SITE-BETA ;
+    ogkg:predicate "grm_fy2026" ;
+    ogkg:value "6.9"^^xsd:decimal ;
+    ogkg:unit "USD/bbl" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Site Economics (monthly close)" ;
+    ogkg:sourceRef "GRM-BETA-FY26" ;
+    ogkg:owner ogkg:ROLE-ECON ;
+    ogkg:confidence "high" ;
+    ogkg:method "calculated" .
+ogkg:F-00009 a ogkg:Fact ;
+    ogkg:subject ogkg:SITE-BETA ;
+    ogkg:predicate "nelson_complexity" ;
+    ogkg:value "7.8"^^xsd:decimal ;
+    ogkg:unit "index" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Asset Register" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-PROC ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00010 a ogkg:Fact ;
+    ogkg:subject ogkg:CDU-1 ;
+    ogkg:predicate "design_capacity" ;
+    ogkg:value "200"^^xsd:integer ;
+    ogkg:unit "kbd" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Asset Register" ;
+    ogkg:sourceRef "CDU-1" ;
+    ogkg:owner ogkg:ROLE-PROC ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00011 a ogkg:Fact ;
+    ogkg:subject ogkg:VDU-1 ;
+    ogkg:predicate "design_capacity" ;
+    ogkg:value "90"^^xsd:integer ;
+    ogkg:unit "kbd" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Asset Register" ;
+    ogkg:sourceRef "VDU-1" ;
+    ogkg:owner ogkg:ROLE-PROC ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00012 a ogkg:Fact ;
+    ogkg:subject ogkg:FCC-1 ;
+    ogkg:predicate "design_capacity" ;
+    ogkg:value "60"^^xsd:integer ;
+    ogkg:unit "kbd" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Asset Register" ;
+    ogkg:sourceRef "FCC-1" ;
+    ogkg:owner ogkg:ROLE-PROC ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00013 a ogkg:Fact ;
+    ogkg:subject ogkg:REF-1 ;
+    ogkg:predicate "design_capacity" ;
+    ogkg:value "30"^^xsd:integer ;
+    ogkg:unit "kbd" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Asset Register" ;
+    ogkg:sourceRef "REF-1" ;
+    ogkg:owner ogkg:ROLE-PROC ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00014 a ogkg:Fact ;
+    ogkg:subject ogkg:GBL-1 ;
+    ogkg:predicate "design_capacity" ;
+    ogkg:value "60"^^xsd:integer ;
+    ogkg:unit "kbd" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Asset Register" ;
+    ogkg:sourceRef "GBL-1" ;
+    ogkg:owner ogkg:ROLE-PROC ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00015 a ogkg:Fact ;
+    ogkg:subject ogkg:CDU-2 ;
+    ogkg:predicate "design_capacity" ;
+    ogkg:value "120"^^xsd:integer ;
+    ogkg:unit "kbd" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Asset Register" ;
+    ogkg:sourceRef "CDU-2" ;
+    ogkg:owner ogkg:ROLE-PROC ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00016 a ogkg:Fact ;
+    ogkg:subject ogkg:VDU-2 ;
+    ogkg:predicate "design_capacity" ;
+    ogkg:value "54"^^xsd:integer ;
+    ogkg:unit "kbd" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Asset Register" ;
+    ogkg:sourceRef "VDU-2" ;
+    ogkg:owner ogkg:ROLE-PROC ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00017 a ogkg:Fact ;
+    ogkg:subject ogkg:FCC-2 ;
+    ogkg:predicate "design_capacity" ;
+    ogkg:value "36"^^xsd:integer ;
+    ogkg:unit "kbd" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Asset Register" ;
+    ogkg:sourceRef "FCC-2" ;
+    ogkg:owner ogkg:ROLE-PROC ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00018 a ogkg:Fact ;
+    ogkg:subject ogkg:REF-2 ;
+    ogkg:predicate "design_capacity" ;
+    ogkg:value "18"^^xsd:integer ;
+    ogkg:unit "kbd" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Asset Register" ;
+    ogkg:sourceRef "REF-2" ;
+    ogkg:owner ogkg:ROLE-PROC ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00019 a ogkg:Fact ;
+    ogkg:subject ogkg:GBL-2 ;
+    ogkg:predicate "design_capacity" ;
+    ogkg:value "36"^^xsd:integer ;
+    ogkg:unit "kbd" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Asset Register" ;
+    ogkg:sourceRef "GBL-2" ;
+    ogkg:owner ogkg:ROLE-PROC ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00020 a ogkg:Fact ;
+    ogkg:subject ogkg:E-101A ;
+    ogkg:predicate "last_inspection" ;
+    ogkg:value "2021-03-10" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Inspection DB (RBI)" ;
+    ogkg:sourceRef "INSP-E-101A" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00021 a ogkg:Fact ;
+    ogkg:subject ogkg:E-101A ;
+    ogkg:predicate "next_inspection_due" ;
+    ogkg:value "2027-03-01" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Inspection DB (RBI)" ;
+    ogkg:sourceRef "INSP-E-101A" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00022 a ogkg:Fact ;
+    ogkg:subject ogkg:E-101A ;
+    ogkg:predicate "rbi_risk_rank" ;
+    ogkg:value "High" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2025-06-30"^^xsd:date ;
+    ogkg:sourceSystem "Inspection DB (RBI)" ;
+    ogkg:sourceRef "RBI-E-101A" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "medium" ;
+    ogkg:method "calculated" .
+ogkg:F-00023 a ogkg:Fact ;
+    ogkg:subject ogkg:E-101A ;
+    ogkg:predicate "measured_corrosion_rate" ;
+    ogkg:value "0.35"^^xsd:decimal ;
+    ogkg:unit "mm/y" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Inspection DB (RBI)" ;
+    ogkg:sourceRef "UT-E-101A" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "measured" .
+ogkg:F-00024 a ogkg:Fact ;
+    ogkg:subject ogkg:E-101B ;
+    ogkg:predicate "last_inspection" ;
+    ogkg:value "2021-03-10" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Inspection DB (RBI)" ;
+    ogkg:sourceRef "INSP-E-101B" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00025 a ogkg:Fact ;
+    ogkg:subject ogkg:E-101B ;
+    ogkg:predicate "next_inspection_due" ;
+    ogkg:value "2029-03-01" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Inspection DB (RBI)" ;
+    ogkg:sourceRef "INSP-E-101B" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00026 a ogkg:Fact ;
+    ogkg:subject ogkg:E-101B ;
+    ogkg:predicate "rbi_risk_rank" ;
+    ogkg:value "Medium" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2025-06-30"^^xsd:date ;
+    ogkg:sourceSystem "Inspection DB (RBI)" ;
+    ogkg:sourceRef "RBI-E-101B" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "medium" ;
+    ogkg:method "calculated" .
+ogkg:F-00027 a ogkg:Fact ;
+    ogkg:subject ogkg:E-101B ;
+    ogkg:predicate "measured_corrosion_rate" ;
+    ogkg:value "0.3"^^xsd:decimal ;
+    ogkg:unit "mm/y" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Inspection DB (RBI)" ;
+    ogkg:sourceRef "UT-E-101B" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "measured" .
+ogkg:F-00028 a ogkg:Fact ;
+    ogkg:subject ogkg:PC-101 ;
+    ogkg:predicate "last_inspection" ;
+    ogkg:value "2023-09-18" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Inspection DB (RBI)" ;
+    ogkg:sourceRef "INSP-PC-101" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00029 a ogkg:Fact ;
+    ogkg:subject ogkg:PC-101 ;
+    ogkg:predicate "next_inspection_due" ;
+    ogkg:value "2028-09-18" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Inspection DB (RBI)" ;
+    ogkg:sourceRef "INSP-PC-101" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00030 a ogkg:Fact ;
+    ogkg:subject ogkg:PC-101 ;
+    ogkg:predicate "rbi_risk_rank" ;
+    ogkg:value "Medium" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2025-06-30"^^xsd:date ;
+    ogkg:sourceSystem "Inspection DB (RBI)" ;
+    ogkg:sourceRef "RBI-PC-101" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "medium" ;
+    ogkg:method "calculated" .
+ogkg:F-00031 a ogkg:Fact ;
+    ogkg:subject ogkg:PC-101 ;
+    ogkg:predicate "measured_corrosion_rate" ;
+    ogkg:value "0.4"^^xsd:decimal ;
+    ogkg:unit "mm/y" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Inspection DB (RBI)" ;
+    ogkg:sourceRef "UT-PC-101" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "measured" .
+ogkg:F-00032 a ogkg:Fact ;
+    ogkg:subject ogkg:V-102 ;
+    ogkg:predicate "last_inspection" ;
+    ogkg:value "2021-03-12" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Inspection DB (RBI)" ;
+    ogkg:sourceRef "INSP-V-102" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00033 a ogkg:Fact ;
+    ogkg:subject ogkg:V-102 ;
+    ogkg:predicate "next_inspection_due" ;
+    ogkg:value "2027-03-01" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Inspection DB (RBI)" ;
+    ogkg:sourceRef "INSP-V-102" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00034 a ogkg:Fact ;
+    ogkg:subject ogkg:V-102 ;
+    ogkg:predicate "rbi_risk_rank" ;
+    ogkg:value "Medium" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2025-06-30"^^xsd:date ;
+    ogkg:sourceSystem "Inspection DB (RBI)" ;
+    ogkg:sourceRef "RBI-V-102" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "medium" ;
+    ogkg:method "calculated" .
+ogkg:F-00035 a ogkg:Fact ;
+    ogkg:subject ogkg:V-102 ;
+    ogkg:predicate "measured_corrosion_rate" ;
+    ogkg:value "0.12"^^xsd:decimal ;
+    ogkg:unit "mm/y" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Inspection DB (RBI)" ;
+    ogkg:sourceRef "UT-V-102" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "measured" .
+ogkg:F-00036 a ogkg:Fact ;
+    ogkg:subject ogkg:P-103 ;
+    ogkg:predicate "last_inspection" ;
+    ogkg:value "2022-06-01" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Inspection DB (RBI)" ;
+    ogkg:sourceRef "INSP-P-103" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00037 a ogkg:Fact ;
+    ogkg:subject ogkg:P-103 ;
+    ogkg:predicate "next_inspection_due" ;
+    ogkg:value "2028-06-01" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Inspection DB (RBI)" ;
+    ogkg:sourceRef "INSP-P-103" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00038 a ogkg:Fact ;
+    ogkg:subject ogkg:P-103 ;
+    ogkg:predicate "rbi_risk_rank" ;
+    ogkg:value "Low" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2025-06-30"^^xsd:date ;
+    ogkg:sourceSystem "Inspection DB (RBI)" ;
+    ogkg:sourceRef "RBI-P-103" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "medium" ;
+    ogkg:method "calculated" .
+ogkg:F-00039 a ogkg:Fact ;
+    ogkg:subject ogkg:PC-201 ;
+    ogkg:predicate "last_inspection" ;
+    ogkg:value "2022-11-05" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Inspection DB (RBI)" ;
+    ogkg:sourceRef "INSP-PC-201" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00040 a ogkg:Fact ;
+    ogkg:subject ogkg:PC-201 ;
+    ogkg:predicate "next_inspection_due" ;
+    ogkg:value "2027-11-05" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Inspection DB (RBI)" ;
+    ogkg:sourceRef "INSP-PC-201" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00041 a ogkg:Fact ;
+    ogkg:subject ogkg:PC-201 ;
+    ogkg:predicate "rbi_risk_rank" ;
+    ogkg:value "Medium" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2025-06-30"^^xsd:date ;
+    ogkg:sourceSystem "Inspection DB (RBI)" ;
+    ogkg:sourceRef "RBI-PC-201" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "medium" ;
+    ogkg:method "calculated" .
+ogkg:F-00042 a ogkg:Fact ;
+    ogkg:subject ogkg:PC-201 ;
+    ogkg:predicate "measured_corrosion_rate" ;
+    ogkg:value "0.28"^^xsd:decimal ;
+    ogkg:unit "mm/y" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Inspection DB (RBI)" ;
+    ogkg:sourceRef "UT-PC-201" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "measured" .
+ogkg:F-00043 a ogkg:Fact ;
+    ogkg:subject ogkg:P-201A ;
+    ogkg:predicate "model" ;
+    ogkg:value "HX-300 (OEM-A)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Asset Register" ;
+    ogkg:sourceRef "P-201A" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00044 a ogkg:Fact ;
+    ogkg:subject ogkg:P-201A ;
+    ogkg:predicate "service_temperature" ;
+    ogkg:value "365"^^xsd:integer ;
+    ogkg:unit "degC" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Process Datasheet" ;
+    ogkg:sourceRef "DS-P-201A" ;
+    ogkg:owner ogkg:ROLE-PROC ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00045 a ogkg:Fact ;
+    ogkg:subject ogkg:P-201A ;
+    ogkg:predicate "seal_plan" ;
+    ogkg:value "API 682 Plan 32 single seal" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Asset Register" ;
+    ogkg:sourceRef "P-201A" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00046 a ogkg:Fact ;
+    ogkg:subject ogkg:P-201B ;
+    ogkg:predicate "model" ;
+    ogkg:value "HX-300 (OEM-A)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Asset Register" ;
+    ogkg:sourceRef "P-201B" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00047 a ogkg:Fact ;
+    ogkg:subject ogkg:P-201B ;
+    ogkg:predicate "service_temperature" ;
+    ogkg:value "365"^^xsd:integer ;
+    ogkg:unit "degC" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Process Datasheet" ;
+    ogkg:sourceRef "DS-P-201B" ;
+    ogkg:owner ogkg:ROLE-PROC ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00048 a ogkg:Fact ;
+    ogkg:subject ogkg:P-201B ;
+    ogkg:predicate "seal_plan" ;
+    ogkg:value "API 682 Plan 32 single seal" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Asset Register" ;
+    ogkg:sourceRef "P-201B" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00049 a ogkg:Fact ;
+    ogkg:subject ogkg:P-501 ;
+    ogkg:predicate "model" ;
+    ogkg:value "HX-300 (OEM-A)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Asset Register" ;
+    ogkg:sourceRef "P-501" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00050 a ogkg:Fact ;
+    ogkg:subject ogkg:P-501 ;
+    ogkg:predicate "service_temperature" ;
+    ogkg:value "350"^^xsd:integer ;
+    ogkg:unit "degC" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Process Datasheet" ;
+    ogkg:sourceRef "DS-P-501" ;
+    ogkg:owner ogkg:ROLE-PROC ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00051 a ogkg:Fact ;
+    ogkg:subject ogkg:P-501 ;
+    ogkg:predicate "seal_plan" ;
+    ogkg:value "API 682 Plan 32 single seal" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Asset Register" ;
+    ogkg:sourceRef "P-501" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00052 a ogkg:Fact ;
+    ogkg:subject ogkg:P-401A ;
+    ogkg:predicate "model" ;
+    ogkg:value "HX-300 (OEM-A)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Asset Register" ;
+    ogkg:sourceRef "P-401A" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00053 a ogkg:Fact ;
+    ogkg:subject ogkg:P-401A ;
+    ogkg:predicate "service_temperature" ;
+    ogkg:value "360"^^xsd:integer ;
+    ogkg:unit "degC" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Process Datasheet" ;
+    ogkg:sourceRef "DS-P-401A" ;
+    ogkg:owner ogkg:ROLE-PROC ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00054 a ogkg:Fact ;
+    ogkg:subject ogkg:P-401A ;
+    ogkg:predicate "seal_plan" ;
+    ogkg:value "API 682 Plan 32 single seal" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Asset Register" ;
+    ogkg:sourceRef "P-401A" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00055 a ogkg:Fact ;
+    ogkg:subject ogkg:P-401B ;
+    ogkg:predicate "model" ;
+    ogkg:value "VS-450 (OEM-C)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Asset Register" ;
+    ogkg:sourceRef "P-401B" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00056 a ogkg:Fact ;
+    ogkg:subject ogkg:P-401B ;
+    ogkg:predicate "service_temperature" ;
+    ogkg:value "360"^^xsd:integer ;
+    ogkg:unit "degC" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Process Datasheet" ;
+    ogkg:sourceRef "DS-P-401B" ;
+    ogkg:owner ogkg:ROLE-PROC ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00057 a ogkg:Fact ;
+    ogkg:subject ogkg:P-401B ;
+    ogkg:predicate "seal_plan" ;
+    ogkg:value "API 682 Plan 53B dual seal" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Asset Register" ;
+    ogkg:sourceRef "P-401B" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00058 a ogkg:Fact ;
+    ogkg:subject ogkg:P-306 ;
+    ogkg:predicate "model" ;
+    ogkg:value "HX-300 (OEM-A)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Asset Register" ;
+    ogkg:sourceRef "P-306" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00059 a ogkg:Fact ;
+    ogkg:subject ogkg:P-306 ;
+    ogkg:predicate "service_temperature" ;
+    ogkg:value "260"^^xsd:integer ;
+    ogkg:unit "degC" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Process Datasheet" ;
+    ogkg:sourceRef "DS-P-306" ;
+    ogkg:owner ogkg:ROLE-PROC ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00060 a ogkg:Fact ;
+    ogkg:subject ogkg:P-306 ;
+    ogkg:predicate "seal_plan" ;
+    ogkg:value "API 682 Plan 32 single seal" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Asset Register" ;
+    ogkg:sourceRef "P-306" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00061 a ogkg:Fact ;
+    ogkg:subject ogkg:T-CDU1-CL ;
+    ogkg:predicate "iow_limit_standard" ;
+    ogkg:value "20"^^xsd:integer ;
+    ogkg:unit "ppm" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "IOW Register (API 584)" ;
+    ogkg:sourceRef "IOW-CDU1-CL" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00062 a ogkg:Fact ;
+    ogkg:subject ogkg:T-CDU1-CL ;
+    ogkg:predicate "iow_limit_critical" ;
+    ogkg:value "50"^^xsd:integer ;
+    ogkg:unit "ppm" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "IOW Register (API 584)" ;
+    ogkg:sourceRef "IOW-CDU1-CL" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00063 a ogkg:Fact ;
+    ogkg:subject ogkg:T-CDU1-PH ;
+    ogkg:predicate "iow_limit_low" ;
+    ogkg:value "5.5"^^xsd:decimal ;
+    ogkg:unit "pH" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "IOW Register (API 584)" ;
+    ogkg:sourceRef "IOW-CDU1-PH" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00064 a ogkg:Fact ;
+    ogkg:subject ogkg:T-CDU2-CL ;
+    ogkg:predicate "iow_limit_standard" ;
+    ogkg:value "20"^^xsd:integer ;
+    ogkg:unit "ppm" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "IOW Register (API 584)" ;
+    ogkg:sourceRef "IOW-CDU2-CL" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00065 a ogkg:Fact ;
+    ogkg:subject ogkg:T-CDU2-CL ;
+    ogkg:predicate "iow_limit_critical" ;
+    ogkg:value "50"^^xsd:integer ;
+    ogkg:unit "ppm" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "IOW Register (API 584)" ;
+    ogkg:sourceRef "IOW-CDU2-CL" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00066 a ogkg:Fact ;
+    ogkg:subject ogkg:T-CDU2-PH ;
+    ogkg:predicate "iow_limit_low" ;
+    ogkg:value "5.5"^^xsd:decimal ;
+    ogkg:unit "pH" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "IOW Register (API 584)" ;
+    ogkg:sourceRef "IOW-CDU2-PH" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00067 a ogkg:Fact ;
+    ogkg:subject ogkg:T-VDU1-CR ;
+    ogkg:predicate "iow_limit_standard" ;
+    ogkg:value "0.25"^^xsd:decimal ;
+    ogkg:unit "mm/y" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "IOW Register (API 584)" ;
+    ogkg:sourceRef "IOW-VDU1-CR" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00068 a ogkg:Fact ;
+    ogkg:subject ogkg:T-CDU1-FI ;
+    ogkg:predicate "latest_value" ;
+    ogkg:value "196.0"^^xsd:decimal ;
+    ogkg:unit "kbd" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "PI Historian" ;
+    ogkg:sourceRef "FI-1001" ;
+    ogkg:owner ogkg:ROLE-OPS ;
+    ogkg:confidence "high" ;
+    ogkg:method "measured" .
+ogkg:F-00069 a ogkg:Fact ;
+    ogkg:subject ogkg:T-CDU2-FI ;
+    ogkg:predicate "latest_value" ;
+    ogkg:value "117.0"^^xsd:decimal ;
+    ogkg:unit "kbd" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "PI Historian" ;
+    ogkg:sourceRef "FI-2001" ;
+    ogkg:owner ogkg:ROLE-OPS ;
+    ogkg:confidence "high" ;
+    ogkg:method "measured" .
+ogkg:F-00070 a ogkg:Fact ;
+    ogkg:subject ogkg:T-REF1-RON ;
+    ogkg:predicate "sampling_interval" ;
+    ogkg:value "24"^^xsd:integer ;
+    ogkg:unit "h" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "LIMS" ;
+    ogkg:sourceRef "SP-REF1-RON" ;
+    ogkg:owner ogkg:ROLE-LAB ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00071 a ogkg:Fact ;
+    ogkg:subject ogkg:T-REF2-RON ;
+    ogkg:predicate "sampling_interval" ;
+    ogkg:value "8"^^xsd:integer ;
+    ogkg:unit "h" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "LIMS" ;
+    ogkg:sourceRef "SP-REF2-RON" ;
+    ogkg:owner ogkg:ROLE-LAB ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00072 a ogkg:Fact ;
+    ogkg:subject ogkg:T-REF1-RON ;
+    ogkg:predicate "ron_std_dev_12m" ;
+    ogkg:value "1.4"^^xsd:decimal ;
+    ogkg:unit "RON" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "LIMS" ;
+    ogkg:sourceRef "REF1-RON-STATS" ;
+    ogkg:owner ogkg:ROLE-LAB ;
+    ogkg:confidence "high" ;
+    ogkg:method "calculated" .
+ogkg:F-00073 a ogkg:Fact ;
+    ogkg:subject ogkg:T-REF2-RON ;
+    ogkg:predicate "ron_std_dev_12m" ;
+    ogkg:value "0.5"^^xsd:decimal ;
+    ogkg:unit "RON" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "LIMS" ;
+    ogkg:sourceRef "REF2-RON-STATS" ;
+    ogkg:owner ogkg:ROLE-LAB ;
+    ogkg:confidence "high" ;
+    ogkg:method "calculated" .
+ogkg:F-00074 a ogkg:Fact ;
+    ogkg:subject ogkg:T-REF1-TI ;
+    ogkg:predicate "temp_std_dev_12m" ;
+    ogkg:value "4.8"^^xsd:decimal ;
+    ogkg:unit "degC" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "PI Historian" ;
+    ogkg:sourceRef "TI-1310" ;
+    ogkg:owner ogkg:ROLE-PROC ;
+    ogkg:confidence "high" ;
+    ogkg:method "calculated" .
+ogkg:F-00075 a ogkg:Fact ;
+    ogkg:subject ogkg:T-REF2-TI ;
+    ogkg:predicate "temp_std_dev_12m" ;
+    ogkg:value "1.6"^^xsd:decimal ;
+    ogkg:unit "degC" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "PI Historian" ;
+    ogkg:sourceRef "TI-2310" ;
+    ogkg:owner ogkg:ROLE-PROC ;
+    ogkg:confidence "high" ;
+    ogkg:method "calculated" .
+ogkg:F-00076 a ogkg:Fact ;
+    ogkg:subject ogkg:T-E301-RF ;
+    ogkg:predicate "fouling_resistance_trend" ;
+    ogkg:value "+62% vs clean (12 months)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "PI Historian (calc)" ;
+    ogkg:sourceRef "E-301-RF" ;
+    ogkg:owner ogkg:ROLE-PROC ;
+    ogkg:confidence "medium" ;
+    ogkg:method "calculated" .
+ogkg:F-00077 a ogkg:Fact ;
+    ogkg:subject ogkg:T-E601-RF ;
+    ogkg:predicate "fouling_resistance_trend" ;
+    ogkg:value "+14% vs clean (12 months)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "PI Historian (calc)" ;
+    ogkg:sourceRef "E-601-RF" ;
+    ogkg:owner ogkg:ROLE-PROC ;
+    ogkg:confidence "medium" ;
+    ogkg:method "calculated" .
+ogkg:F-00078 a ogkg:Fact ;
+    ogkg:subject ogkg:T-E301-RF ;
+    ogkg:predicate "last_cleaned" ;
+    ogkg:value "2024-04-15" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM" ;
+    ogkg:sourceRef "WO-E301-CLEAN" ;
+    ogkg:owner ogkg:ROLE-MAINT ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00079 a ogkg:Fact ;
+    ogkg:subject ogkg:CR-AL ;
+    ogkg:predicate "api_gravity" ;
+    ogkg:value "33.0"^^xsd:decimal ;
+    ogkg:unit "degAPI" ;
+    ogkg:asOf "2026-06-30"^^xsd:date ;
+    ogkg:sourceSystem "Public assay (typical values)" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "medium" ;
+    ogkg:method "indicative" .
+ogkg:F-00080 a ogkg:Fact ;
+    ogkg:subject ogkg:CR-AL ;
+    ogkg:predicate "sulfur" ;
+    ogkg:value "1.9"^^xsd:decimal ;
+    ogkg:unit "wt%" ;
+    ogkg:asOf "2026-06-30"^^xsd:date ;
+    ogkg:sourceSystem "Public assay (typical values)" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "medium" ;
+    ogkg:method "indicative" .
+ogkg:F-00081 a ogkg:Fact ;
+    ogkg:subject ogkg:CR-AL ;
+    ogkg:predicate "tan" ;
+    ogkg:value "0.1"^^xsd:decimal ;
+    ogkg:unit "mgKOH/g" ;
+    ogkg:asOf "2026-06-30"^^xsd:date ;
+    ogkg:sourceSystem "Public assay (typical values)" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "medium" ;
+    ogkg:method "indicative" .
+ogkg:F-00082 a ogkg:Fact ;
+    ogkg:subject ogkg:CR-AL ;
+    ogkg:predicate "salt_content" ;
+    ogkg:value "5"^^xsd:integer ;
+    ogkg:unit "PTB" ;
+    ogkg:asOf "2026-06-30"^^xsd:date ;
+    ogkg:sourceSystem "Synthetic demo assay" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "low" ;
+    ogkg:method "assumption" .
+ogkg:F-00083 a ogkg:Fact ;
+    ogkg:subject ogkg:CR-BM ;
+    ogkg:predicate "api_gravity" ;
+    ogkg:value "29.0"^^xsd:decimal ;
+    ogkg:unit "degAPI" ;
+    ogkg:asOf "2026-06-30"^^xsd:date ;
+    ogkg:sourceSystem "Public assay (typical values)" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "medium" ;
+    ogkg:method "indicative" .
+ogkg:F-00084 a ogkg:Fact ;
+    ogkg:subject ogkg:CR-BM ;
+    ogkg:predicate "sulfur" ;
+    ogkg:value "2.9"^^xsd:decimal ;
+    ogkg:unit "wt%" ;
+    ogkg:asOf "2026-06-30"^^xsd:date ;
+    ogkg:sourceSystem "Public assay (typical values)" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "medium" ;
+    ogkg:method "indicative" .
+ogkg:F-00085 a ogkg:Fact ;
+    ogkg:subject ogkg:CR-BM ;
+    ogkg:predicate "tan" ;
+    ogkg:value "0.2"^^xsd:decimal ;
+    ogkg:unit "mgKOH/g" ;
+    ogkg:asOf "2026-06-30"^^xsd:date ;
+    ogkg:sourceSystem "Public assay (typical values)" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "medium" ;
+    ogkg:method "indicative" .
+ogkg:F-00086 a ogkg:Fact ;
+    ogkg:subject ogkg:CR-BM ;
+    ogkg:predicate "salt_content" ;
+    ogkg:value "8"^^xsd:integer ;
+    ogkg:unit "PTB" ;
+    ogkg:asOf "2026-06-30"^^xsd:date ;
+    ogkg:sourceSystem "Synthetic demo assay" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "low" ;
+    ogkg:method "assumption" .
+ogkg:F-00087 a ogkg:Fact ;
+    ogkg:subject ogkg:CR-MUR ;
+    ogkg:predicate "api_gravity" ;
+    ogkg:value "40.0"^^xsd:decimal ;
+    ogkg:unit "degAPI" ;
+    ogkg:asOf "2026-06-30"^^xsd:date ;
+    ogkg:sourceSystem "Public assay (typical values)" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "medium" ;
+    ogkg:method "indicative" .
+ogkg:F-00088 a ogkg:Fact ;
+    ogkg:subject ogkg:CR-MUR ;
+    ogkg:predicate "sulfur" ;
+    ogkg:value "0.8"^^xsd:decimal ;
+    ogkg:unit "wt%" ;
+    ogkg:asOf "2026-06-30"^^xsd:date ;
+    ogkg:sourceSystem "Public assay (typical values)" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "medium" ;
+    ogkg:method "indicative" .
+ogkg:F-00089 a ogkg:Fact ;
+    ogkg:subject ogkg:CR-MUR ;
+    ogkg:predicate "tan" ;
+    ogkg:value "0.05"^^xsd:decimal ;
+    ogkg:unit "mgKOH/g" ;
+    ogkg:asOf "2026-06-30"^^xsd:date ;
+    ogkg:sourceSystem "Public assay (typical values)" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "medium" ;
+    ogkg:method "indicative" .
+ogkg:F-00090 a ogkg:Fact ;
+    ogkg:subject ogkg:CR-MUR ;
+    ogkg:predicate "salt_content" ;
+    ogkg:value "2"^^xsd:integer ;
+    ogkg:unit "PTB" ;
+    ogkg:asOf "2026-06-30"^^xsd:date ;
+    ogkg:sourceSystem "Synthetic demo assay" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "low" ;
+    ogkg:method "assumption" .
+ogkg:F-00091 a ogkg:Fact ;
+    ogkg:subject ogkg:CR-QM ;
+    ogkg:predicate "api_gravity" ;
+    ogkg:value "36.0"^^xsd:decimal ;
+    ogkg:unit "degAPI" ;
+    ogkg:asOf "2026-06-30"^^xsd:date ;
+    ogkg:sourceSystem "Public assay (typical values)" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "medium" ;
+    ogkg:method "indicative" .
+ogkg:F-00092 a ogkg:Fact ;
+    ogkg:subject ogkg:CR-QM ;
+    ogkg:predicate "sulfur" ;
+    ogkg:value "1.5"^^xsd:decimal ;
+    ogkg:unit "wt%" ;
+    ogkg:asOf "2026-06-30"^^xsd:date ;
+    ogkg:sourceSystem "Public assay (typical values)" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "medium" ;
+    ogkg:method "indicative" .
+ogkg:F-00093 a ogkg:Fact ;
+    ogkg:subject ogkg:CR-QM ;
+    ogkg:predicate "tan" ;
+    ogkg:value "0.1"^^xsd:decimal ;
+    ogkg:unit "mgKOH/g" ;
+    ogkg:asOf "2026-06-30"^^xsd:date ;
+    ogkg:sourceSystem "Public assay (typical values)" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "medium" ;
+    ogkg:method "indicative" .
+ogkg:F-00094 a ogkg:Fact ;
+    ogkg:subject ogkg:CR-QM ;
+    ogkg:predicate "salt_content" ;
+    ogkg:value "4"^^xsd:integer ;
+    ogkg:unit "PTB" ;
+    ogkg:asOf "2026-06-30"^^xsd:date ;
+    ogkg:sourceSystem "Synthetic demo assay" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "low" ;
+    ogkg:method "assumption" .
+ogkg:F-00095 a ogkg:Fact ;
+    ogkg:subject ogkg:CR-DOBA ;
+    ogkg:predicate "api_gravity" ;
+    ogkg:value "21.0"^^xsd:decimal ;
+    ogkg:unit "degAPI" ;
+    ogkg:asOf "2026-06-30"^^xsd:date ;
+    ogkg:sourceSystem "Public assay (typical values)" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "medium" ;
+    ogkg:method "indicative" .
+ogkg:F-00096 a ogkg:Fact ;
+    ogkg:subject ogkg:CR-DOBA ;
+    ogkg:predicate "sulfur" ;
+    ogkg:value "0.1"^^xsd:decimal ;
+    ogkg:unit "wt%" ;
+    ogkg:asOf "2026-06-30"^^xsd:date ;
+    ogkg:sourceSystem "Public assay (typical values)" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "medium" ;
+    ogkg:method "indicative" .
+ogkg:F-00097 a ogkg:Fact ;
+    ogkg:subject ogkg:CR-DOBA ;
+    ogkg:predicate "tan" ;
+    ogkg:value "4.5"^^xsd:decimal ;
+    ogkg:unit "mgKOH/g" ;
+    ogkg:asOf "2026-06-30"^^xsd:date ;
+    ogkg:sourceSystem "Public assay (typical values)" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "medium" ;
+    ogkg:method "indicative" .
+ogkg:F-00098 a ogkg:Fact ;
+    ogkg:subject ogkg:CR-DOBA ;
+    ogkg:predicate "salt_content" ;
+    ogkg:value "10"^^xsd:integer ;
+    ogkg:unit "PTB" ;
+    ogkg:asOf "2026-06-30"^^xsd:date ;
+    ogkg:sourceSystem "Synthetic demo assay" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "low" ;
+    ogkg:method "assumption" .
+ogkg:F-00099 a ogkg:Fact ;
+    ogkg:subject ogkg:CR-HSOB ;
+    ogkg:predicate "api_gravity" ;
+    ogkg:value "22.0"^^xsd:decimal ;
+    ogkg:unit "degAPI" ;
+    ogkg:asOf "2026-06-30"^^xsd:date ;
+    ogkg:sourceSystem "Synthetic demo assay" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "low" ;
+    ogkg:method "assumption" .
+ogkg:F-00100 a ogkg:Fact ;
+    ogkg:subject ogkg:CR-HSOB ;
+    ogkg:predicate "sulfur" ;
+    ogkg:value "3.4"^^xsd:decimal ;
+    ogkg:unit "wt%" ;
+    ogkg:asOf "2026-06-30"^^xsd:date ;
+    ogkg:sourceSystem "Synthetic demo assay" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "low" ;
+    ogkg:method "assumption" .
+ogkg:F-00101 a ogkg:Fact ;
+    ogkg:subject ogkg:CR-HSOB ;
+    ogkg:predicate "tan" ;
+    ogkg:value "1.2"^^xsd:decimal ;
+    ogkg:unit "mgKOH/g" ;
+    ogkg:asOf "2026-06-30"^^xsd:date ;
+    ogkg:sourceSystem "Synthetic demo assay" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "low" ;
+    ogkg:method "assumption" .
+ogkg:F-00102 a ogkg:Fact ;
+    ogkg:subject ogkg:CR-HSOB ;
+    ogkg:predicate "salt_content" ;
+    ogkg:value "25"^^xsd:integer ;
+    ogkg:unit "PTB" ;
+    ogkg:asOf "2026-06-30"^^xsd:date ;
+    ogkg:sourceSystem "Synthetic demo assay" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "low" ;
+    ogkg:method "assumption" .
+ogkg:F-00103 a ogkg:Fact ;
+    ogkg:subject ogkg:CR-F1 ;
+    ogkg:predicate "api_gravity" ;
+    ogkg:value "37.0"^^xsd:decimal ;
+    ogkg:unit "degAPI" ;
+    ogkg:asOf "2026-06-30"^^xsd:date ;
+    ogkg:sourceSystem "Synthetic demo assay" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "low" ;
+    ogkg:method "assumption" .
+ogkg:F-00104 a ogkg:Fact ;
+    ogkg:subject ogkg:CR-F1 ;
+    ogkg:predicate "sulfur" ;
+    ogkg:value "0.6"^^xsd:decimal ;
+    ogkg:unit "wt%" ;
+    ogkg:asOf "2026-06-30"^^xsd:date ;
+    ogkg:sourceSystem "Synthetic demo assay" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "low" ;
+    ogkg:method "assumption" .
+ogkg:F-00105 a ogkg:Fact ;
+    ogkg:subject ogkg:CR-F1 ;
+    ogkg:predicate "tan" ;
+    ogkg:value "0.1"^^xsd:decimal ;
+    ogkg:unit "mgKOH/g" ;
+    ogkg:asOf "2026-06-30"^^xsd:date ;
+    ogkg:sourceSystem "Synthetic demo assay" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "low" ;
+    ogkg:method "assumption" .
+ogkg:F-00106 a ogkg:Fact ;
+    ogkg:subject ogkg:CR-F1 ;
+    ogkg:predicate "salt_content" ;
+    ogkg:value "3"^^xsd:integer ;
+    ogkg:unit "PTB" ;
+    ogkg:asOf "2026-06-30"^^xsd:date ;
+    ogkg:sourceSystem "Synthetic demo assay" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "low" ;
+    ogkg:method "assumption" .
+ogkg:F-00107 a ogkg:Fact ;
+    ogkg:subject ogkg:CMP-A1 ;
+    ogkg:predicate "volume_processed" ;
+    ogkg:value "900.0"^^xsd:decimal ;
+    ogkg:unit "kbbl" ;
+    ogkg:asOf "2025-11-24"^^xsd:date ;
+    ogkg:sourceSystem "Hydrocarbon Accounting" ;
+    ogkg:sourceRef "HA-CMP-A1" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00108 a ogkg:Fact ;
+    ogkg:subject ogkg:CMP-A1 ;
+    ogkg:predicate "slate_share" ;
+    ogkg:value "0.3"^^xsd:decimal ;
+    ogkg:unit "fraction" ;
+    ogkg:asOf "2025-11-24"^^xsd:date ;
+    ogkg:sourceSystem "Crude Schedule" ;
+    ogkg:sourceRef "SCH-CMP-A1" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00109 a ogkg:Fact ;
+    ogkg:subject ogkg:CMP-A1 ;
+    ogkg:predicate "lp_uplift_per_bbl" ;
+    ogkg:value "2.1"^^xsd:decimal ;
+    ogkg:unit "USD/bbl" ;
+    ogkg:asOf "2025-11-10"^^xsd:date ;
+    ogkg:sourceSystem "LP Planning Model" ;
+    ogkg:sourceRef "LP-CASE-CMP-A1" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "medium" ;
+    ogkg:method "calculated" .
+ogkg:F-00110 a ogkg:Fact ;
+    ogkg:subject ogkg:CMP-A1 ;
+    ogkg:predicate "lp_uplift_total" ;
+    ogkg:value "1890000"^^xsd:integer ;
+    ogkg:unit "USD" ;
+    ogkg:asOf "2025-11-24"^^xsd:date ;
+    ogkg:sourceSystem "KG derived" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-ECON ;
+    ogkg:confidence "medium" ;
+    ogkg:method "calculated" ;
+    ogkg:derivedFrom ogkg:F-00107 ;
+    ogkg:derivedFrom ogkg:F-00109 .
+ogkg:F-00111 a ogkg:Fact ;
+    ogkg:subject ogkg:CMP-A1 ;
+    ogkg:predicate "incremental_treatment_cost" ;
+    ogkg:value "90000"^^xsd:integer ;
+    ogkg:unit "USD" ;
+    ogkg:asOf "2025-11-24"^^xsd:date ;
+    ogkg:sourceSystem "Chemical Treatment Vendor Report" ;
+    ogkg:sourceRef "CHEM-CMP-A1" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00112 a ogkg:Fact ;
+    ogkg:subject ogkg:CMP-A2H ;
+    ogkg:predicate "volume_processed" ;
+    ogkg:value "800.0"^^xsd:decimal ;
+    ogkg:unit "kbbl" ;
+    ogkg:asOf "2026-02-20"^^xsd:date ;
+    ogkg:sourceSystem "Hydrocarbon Accounting" ;
+    ogkg:sourceRef "HA-CMP-A2H" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00113 a ogkg:Fact ;
+    ogkg:subject ogkg:CMP-A2H ;
+    ogkg:predicate "slate_share" ;
+    ogkg:value "0.25"^^xsd:decimal ;
+    ogkg:unit "fraction" ;
+    ogkg:asOf "2026-02-20"^^xsd:date ;
+    ogkg:sourceSystem "Crude Schedule" ;
+    ogkg:sourceRef "SCH-CMP-A2H" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00114 a ogkg:Fact ;
+    ogkg:subject ogkg:CMP-A2H ;
+    ogkg:predicate "lp_uplift_per_bbl" ;
+    ogkg:value "2.1"^^xsd:decimal ;
+    ogkg:unit "USD/bbl" ;
+    ogkg:asOf "2026-02-05"^^xsd:date ;
+    ogkg:sourceSystem "LP Planning Model" ;
+    ogkg:sourceRef "LP-CASE-CMP-A2H" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "medium" ;
+    ogkg:method "calculated" .
+ogkg:F-00115 a ogkg:Fact ;
+    ogkg:subject ogkg:CMP-A2H ;
+    ogkg:predicate "lp_uplift_total" ;
+    ogkg:value "1680000"^^xsd:integer ;
+    ogkg:unit "USD" ;
+    ogkg:asOf "2026-02-20"^^xsd:date ;
+    ogkg:sourceSystem "KG derived" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-ECON ;
+    ogkg:confidence "medium" ;
+    ogkg:method "calculated" ;
+    ogkg:derivedFrom ogkg:F-00112 ;
+    ogkg:derivedFrom ogkg:F-00114 .
+ogkg:F-00116 a ogkg:Fact ;
+    ogkg:subject ogkg:CMP-A2H ;
+    ogkg:predicate "incremental_treatment_cost" ;
+    ogkg:value "140000"^^xsd:integer ;
+    ogkg:unit "USD" ;
+    ogkg:asOf "2026-02-20"^^xsd:date ;
+    ogkg:sourceSystem "Chemical Treatment Vendor Report" ;
+    ogkg:sourceRef "CHEM-CMP-A2H" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00117 a ogkg:Fact ;
+    ogkg:subject ogkg:CMP-A2D ;
+    ogkg:predicate "volume_processed" ;
+    ogkg:value "480.0"^^xsd:decimal ;
+    ogkg:unit "kbbl" ;
+    ogkg:asOf "2026-02-20"^^xsd:date ;
+    ogkg:sourceSystem "Hydrocarbon Accounting" ;
+    ogkg:sourceRef "HA-CMP-A2D" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00118 a ogkg:Fact ;
+    ogkg:subject ogkg:CMP-A2D ;
+    ogkg:predicate "slate_share" ;
+    ogkg:value "0.15"^^xsd:decimal ;
+    ogkg:unit "fraction" ;
+    ogkg:asOf "2026-02-20"^^xsd:date ;
+    ogkg:sourceSystem "Crude Schedule" ;
+    ogkg:sourceRef "SCH-CMP-A2D" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00119 a ogkg:Fact ;
+    ogkg:subject ogkg:CMP-A2D ;
+    ogkg:predicate "lp_uplift_per_bbl" ;
+    ogkg:value "1.6"^^xsd:decimal ;
+    ogkg:unit "USD/bbl" ;
+    ogkg:asOf "2026-02-05"^^xsd:date ;
+    ogkg:sourceSystem "LP Planning Model" ;
+    ogkg:sourceRef "LP-CASE-CMP-A2D" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "medium" ;
+    ogkg:method "calculated" .
+ogkg:F-00120 a ogkg:Fact ;
+    ogkg:subject ogkg:CMP-A2D ;
+    ogkg:predicate "lp_uplift_total" ;
+    ogkg:value "768000"^^xsd:integer ;
+    ogkg:unit "USD" ;
+    ogkg:asOf "2026-02-20"^^xsd:date ;
+    ogkg:sourceSystem "KG derived" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-ECON ;
+    ogkg:confidence "medium" ;
+    ogkg:method "calculated" ;
+    ogkg:derivedFrom ogkg:F-00117 ;
+    ogkg:derivedFrom ogkg:F-00119 .
+ogkg:F-00121 a ogkg:Fact ;
+    ogkg:subject ogkg:CMP-A3 ;
+    ogkg:predicate "volume_processed" ;
+    ogkg:value "1260.0"^^xsd:decimal ;
+    ogkg:unit "kbbl" ;
+    ogkg:asOf "2026-06-18"^^xsd:date ;
+    ogkg:sourceSystem "Hydrocarbon Accounting" ;
+    ogkg:sourceRef "HA-CMP-A3" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00122 a ogkg:Fact ;
+    ogkg:subject ogkg:CMP-A3 ;
+    ogkg:predicate "slate_share" ;
+    ogkg:value "0.35"^^xsd:decimal ;
+    ogkg:unit "fraction" ;
+    ogkg:asOf "2026-06-18"^^xsd:date ;
+    ogkg:sourceSystem "Crude Schedule" ;
+    ogkg:sourceRef "SCH-CMP-A3" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00123 a ogkg:Fact ;
+    ogkg:subject ogkg:CMP-A3 ;
+    ogkg:predicate "lp_uplift_per_bbl" ;
+    ogkg:value "2.1"^^xsd:decimal ;
+    ogkg:unit "USD/bbl" ;
+    ogkg:asOf "2026-06-01"^^xsd:date ;
+    ogkg:sourceSystem "LP Planning Model" ;
+    ogkg:sourceRef "LP-CASE-CMP-A3" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "medium" ;
+    ogkg:method "calculated" .
+ogkg:F-00124 a ogkg:Fact ;
+    ogkg:subject ogkg:CMP-A3 ;
+    ogkg:predicate "lp_uplift_total" ;
+    ogkg:value "2646000"^^xsd:integer ;
+    ogkg:unit "USD" ;
+    ogkg:asOf "2026-06-18"^^xsd:date ;
+    ogkg:sourceSystem "KG derived" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-ECON ;
+    ogkg:confidence "medium" ;
+    ogkg:method "calculated" ;
+    ogkg:derivedFrom ogkg:F-00121 ;
+    ogkg:derivedFrom ogkg:F-00123 .
+ogkg:F-00125 a ogkg:Fact ;
+    ogkg:subject ogkg:CMP-A3 ;
+    ogkg:predicate "incremental_treatment_cost" ;
+    ogkg:value "120000"^^xsd:integer ;
+    ogkg:unit "USD" ;
+    ogkg:asOf "2026-06-18"^^xsd:date ;
+    ogkg:sourceSystem "Chemical Treatment Vendor Report" ;
+    ogkg:sourceRef "CHEM-CMP-A3" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00126 a ogkg:Fact ;
+    ogkg:subject ogkg:CMP-AB-AL ;
+    ogkg:predicate "volume_processed" ;
+    ogkg:value "28000"^^xsd:integer ;
+    ogkg:unit "kbbl" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Hydrocarbon Accounting" ;
+    ogkg:sourceRef "HA-CMP-AB-AL" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00127 a ogkg:Fact ;
+    ogkg:subject ogkg:CMP-AB-BM ;
+    ogkg:predicate "volume_processed" ;
+    ogkg:value "16000"^^xsd:integer ;
+    ogkg:unit "kbbl" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Hydrocarbon Accounting" ;
+    ogkg:sourceRef "HA-CMP-AB-BM" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00128 a ogkg:Fact ;
+    ogkg:subject ogkg:CMP-AB-MUR ;
+    ogkg:predicate "volume_processed" ;
+    ogkg:value "12000"^^xsd:integer ;
+    ogkg:unit "kbbl" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Hydrocarbon Accounting" ;
+    ogkg:sourceRef "HA-CMP-AB-MUR" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00129 a ogkg:Fact ;
+    ogkg:subject ogkg:CMP-AB-QM ;
+    ogkg:predicate "volume_processed" ;
+    ogkg:value "10000"^^xsd:integer ;
+    ogkg:unit "kbbl" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Hydrocarbon Accounting" ;
+    ogkg:sourceRef "HA-CMP-AB-QM" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00130 a ogkg:Fact ;
+    ogkg:subject ogkg:CMP-BB-AL ;
+    ogkg:predicate "volume_processed" ;
+    ogkg:value "18000"^^xsd:integer ;
+    ogkg:unit "kbbl" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Hydrocarbon Accounting" ;
+    ogkg:sourceRef "HA-CMP-BB-AL" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00131 a ogkg:Fact ;
+    ogkg:subject ogkg:CMP-BB-MUR ;
+    ogkg:predicate "volume_processed" ;
+    ogkg:value "9000"^^xsd:integer ;
+    ogkg:unit "kbbl" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Hydrocarbon Accounting" ;
+    ogkg:sourceRef "HA-CMP-BB-MUR" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00132 a ogkg:Fact ;
+    ogkg:subject ogkg:CMP-BB-F1 ;
+    ogkg:predicate "volume_processed" ;
+    ogkg:value "14000"^^xsd:integer ;
+    ogkg:unit "kbbl" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Hydrocarbon Accounting" ;
+    ogkg:sourceRef "HA-CMP-BB-F1" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00133 a ogkg:Fact ;
+    ogkg:subject ogkg:PRD-GAS-1 ;
+    ogkg:predicate "production_rate" ;
+    ogkg:value "55"^^xsd:integer ;
+    ogkg:unit "kbd" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Hydrocarbon Accounting" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-BLEND ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00134 a ogkg:Fact ;
+    ogkg:subject ogkg:PRD-GAS-1 ;
+    ogkg:predicate "ron_spec_min" ;
+    ogkg:value "95.0"^^xsd:decimal ;
+    ogkg:unit "RON" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Product Specification" ;
+    ogkg:sourceRef "SPEC-GAS95" ;
+    ogkg:owner ogkg:ROLE-BLEND ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00135 a ogkg:Fact ;
+    ogkg:subject ogkg:PRD-GAS-1 ;
+    ogkg:predicate "ron_avg_12m" ;
+    ogkg:value "95.62"^^xsd:decimal ;
+    ogkg:unit "RON" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "LIMS" ;
+    ogkg:sourceRef "GBL1-CERT-STATS" ;
+    ogkg:owner ogkg:ROLE-LAB ;
+    ogkg:confidence "high" ;
+    ogkg:method "calculated" .
+ogkg:F-00136 a ogkg:Fact ;
+    ogkg:subject ogkg:PRD-GAS-2 ;
+    ogkg:predicate "production_rate" ;
+    ogkg:value "30"^^xsd:integer ;
+    ogkg:unit "kbd" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Hydrocarbon Accounting" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-BLEND ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00137 a ogkg:Fact ;
+    ogkg:subject ogkg:PRD-GAS-2 ;
+    ogkg:predicate "ron_spec_min" ;
+    ogkg:value "95.0"^^xsd:decimal ;
+    ogkg:unit "RON" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Product Specification" ;
+    ogkg:sourceRef "SPEC-GAS95" ;
+    ogkg:owner ogkg:ROLE-BLEND ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00138 a ogkg:Fact ;
+    ogkg:subject ogkg:PRD-GAS-2 ;
+    ogkg:predicate "ron_avg_12m" ;
+    ogkg:value "95.18"^^xsd:decimal ;
+    ogkg:unit "RON" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "LIMS" ;
+    ogkg:sourceRef "GBL2-CERT-STATS" ;
+    ogkg:owner ogkg:ROLE-LAB ;
+    ogkg:confidence "high" ;
+    ogkg:method "calculated" .
+ogkg:F-00139 a ogkg:Fact ;
+    ogkg:subject ogkg:PRD-GAS-1 ;
+    ogkg:predicate "octane_value" ;
+    ogkg:value "0.6"^^xsd:decimal ;
+    ogkg:unit "USD per RON-bbl" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Planning assumption" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-CRPLAN ;
+    ogkg:confidence "low" ;
+    ogkg:method "assumption" .
+ogkg:F-00140 a ogkg:Fact ;
+    ogkg:subject ogkg:IOW-001 ;
+    ogkg:predicate "peak_value" ;
+    ogkg:value "48"^^xsd:integer ;
+    ogkg:unit "ppm" ;
+    ogkg:asOf "2025-11-13"^^xsd:date ;
+    ogkg:sourceSystem "PI Historian / IOW Monitor" ;
+    ogkg:sourceRef "IOW-001" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "measured" .
+ogkg:F-00141 a ogkg:Fact ;
+    ogkg:subject ogkg:IOW-001 ;
+    ogkg:predicate "duration" ;
+    ogkg:value "9"^^xsd:integer ;
+    ogkg:unit "days" ;
+    ogkg:asOf "2025-11-13"^^xsd:date ;
+    ogkg:sourceSystem "PI Historian / IOW Monitor" ;
+    ogkg:sourceRef "IOW-001" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "measured" .
+ogkg:F-00142 a ogkg:Fact ;
+    ogkg:subject ogkg:IOW-002 ;
+    ogkg:predicate "peak_value" ;
+    ogkg:value "65"^^xsd:integer ;
+    ogkg:unit "ppm" ;
+    ogkg:asOf "2026-02-08"^^xsd:date ;
+    ogkg:sourceSystem "PI Historian / IOW Monitor" ;
+    ogkg:sourceRef "IOW-002" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "measured" .
+ogkg:F-00143 a ogkg:Fact ;
+    ogkg:subject ogkg:IOW-002 ;
+    ogkg:predicate "duration" ;
+    ogkg:value "11"^^xsd:integer ;
+    ogkg:unit "days" ;
+    ogkg:asOf "2026-02-08"^^xsd:date ;
+    ogkg:sourceSystem "PI Historian / IOW Monitor" ;
+    ogkg:sourceRef "IOW-002" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "measured" .
+ogkg:F-00144 a ogkg:Fact ;
+    ogkg:subject ogkg:IOW-003 ;
+    ogkg:predicate "peak_value" ;
+    ogkg:value "57"^^xsd:integer ;
+    ogkg:unit "ppm" ;
+    ogkg:asOf "2026-06-04"^^xsd:date ;
+    ogkg:sourceSystem "PI Historian / IOW Monitor" ;
+    ogkg:sourceRef "IOW-003" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "measured" .
+ogkg:F-00145 a ogkg:Fact ;
+    ogkg:subject ogkg:IOW-003 ;
+    ogkg:predicate "duration" ;
+    ogkg:value "13"^^xsd:integer ;
+    ogkg:unit "days" ;
+    ogkg:asOf "2026-06-04"^^xsd:date ;
+    ogkg:sourceSystem "PI Historian / IOW Monitor" ;
+    ogkg:sourceRef "IOW-003" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "measured" .
+ogkg:F-00146 a ogkg:Fact ;
+    ogkg:subject ogkg:IOW-004 ;
+    ogkg:predicate "peak_value" ;
+    ogkg:value "4.9"^^xsd:decimal ;
+    ogkg:unit "pH" ;
+    ogkg:asOf "2026-02-10"^^xsd:date ;
+    ogkg:sourceSystem "PI Historian / IOW Monitor" ;
+    ogkg:sourceRef "IOW-004" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "measured" .
+ogkg:F-00147 a ogkg:Fact ;
+    ogkg:subject ogkg:IOW-004 ;
+    ogkg:predicate "duration" ;
+    ogkg:value "6"^^xsd:integer ;
+    ogkg:unit "days" ;
+    ogkg:asOf "2026-02-10"^^xsd:date ;
+    ogkg:sourceSystem "PI Historian / IOW Monitor" ;
+    ogkg:sourceRef "IOW-004" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "measured" .
+ogkg:F-00148 a ogkg:Fact ;
+    ogkg:subject ogkg:IOW-005 ;
+    ogkg:predicate "peak_value" ;
+    ogkg:value "0.45"^^xsd:decimal ;
+    ogkg:unit "mm/y" ;
+    ogkg:asOf "2026-02-12"^^xsd:date ;
+    ogkg:sourceSystem "PI Historian / IOW Monitor" ;
+    ogkg:sourceRef "IOW-005" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "measured" .
+ogkg:F-00149 a ogkg:Fact ;
+    ogkg:subject ogkg:IOW-005 ;
+    ogkg:predicate "duration" ;
+    ogkg:value "14"^^xsd:integer ;
+    ogkg:unit "days" ;
+    ogkg:asOf "2026-02-12"^^xsd:date ;
+    ogkg:sourceSystem "PI Historian / IOW Monitor" ;
+    ogkg:sourceRef "IOW-005" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "measured" .
+ogkg:F-00150 a ogkg:Fact ;
+    ogkg:subject ogkg:IOW-006 ;
+    ogkg:predicate "peak_value" ;
+    ogkg:value "24"^^xsd:integer ;
+    ogkg:unit "ppm" ;
+    ogkg:asOf "2026-04-02"^^xsd:date ;
+    ogkg:sourceSystem "PI Historian / IOW Monitor" ;
+    ogkg:sourceRef "IOW-006" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "measured" .
+ogkg:F-00151 a ogkg:Fact ;
+    ogkg:subject ogkg:IOW-006 ;
+    ogkg:predicate "duration" ;
+    ogkg:value "1"^^xsd:integer ;
+    ogkg:unit "days" ;
+    ogkg:asOf "2026-04-02"^^xsd:date ;
+    ogkg:sourceSystem "PI Historian / IOW Monitor" ;
+    ogkg:sourceRef "IOW-006" ;
+    ogkg:owner ogkg:ROLE-CORR ;
+    ogkg:confidence "high" ;
+    ogkg:method "measured" .
+ogkg:F-00152 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-001 ;
+    ogkg:predicate "failure_mode" ;
+    ogkg:value "External leakage – process medium (ELP)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2025-12-02"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-001" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00153 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-001 ;
+    ogkg:predicate "failure_mechanism" ;
+    ogkg:value "Corrosion (ISO 14224 2.2) — HCl / ammonium chloride" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2025-12-02"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-001" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00154 a ogkg:Fact ;
+    ogkg:subject ogkg:WO-001 ;
+    ogkg:predicate "actual_cost" ;
+    ogkg:value "420000"^^xsd:integer ;
+    ogkg:unit "USD" ;
+    ogkg:asOf "2025-12-02"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM" ;
+    ogkg:sourceRef "WO-001" ;
+    ogkg:owner ogkg:ROLE-MAINT ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00155 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-001 ;
+    ogkg:predicate "rate_reduction" ;
+    ogkg:value "50"^^xsd:integer ;
+    ogkg:unit "kbd" ;
+    ogkg:asOf "2025-12-02"^^xsd:date ;
+    ogkg:sourceSystem "Operations Logbook" ;
+    ogkg:sourceRef "FL-001" ;
+    ogkg:owner ogkg:ROLE-OPS ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00156 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-001 ;
+    ogkg:predicate "rate_reduction_days" ;
+    ogkg:value "5"^^xsd:integer ;
+    ogkg:unit "days" ;
+    ogkg:asOf "2025-12-02"^^xsd:date ;
+    ogkg:sourceSystem "Operations Logbook" ;
+    ogkg:sourceRef "FL-001" ;
+    ogkg:owner ogkg:ROLE-OPS ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00157 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-001 ;
+    ogkg:predicate "lost_margin" ;
+    ogkg:value "2050000"^^xsd:integer ;
+    ogkg:unit "USD" ;
+    ogkg:asOf "2025-12-02"^^xsd:date ;
+    ogkg:sourceSystem "KG derived" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-ECON ;
+    ogkg:confidence "medium" ;
+    ogkg:method "calculated" ;
+    ogkg:derivedFrom ogkg:F-00155 ;
+    ogkg:derivedFrom ogkg:F-00156 ;
+    ogkg:derivedFrom ogkg:F-00005 .
+ogkg:F-00158 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-002 ;
+    ogkg:predicate "failure_mode" ;
+    ogkg:value "External leakage – process medium (ELP)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-03-05"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-002" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00159 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-002 ;
+    ogkg:predicate "failure_mechanism" ;
+    ogkg:value "Corrosion (ISO 14224 2.2) — HCl / ammonium chloride" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-03-05"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-002" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00160 a ogkg:Fact ;
+    ogkg:subject ogkg:WO-002 ;
+    ogkg:predicate "actual_cost" ;
+    ogkg:value "160000"^^xsd:integer ;
+    ogkg:unit "USD" ;
+    ogkg:asOf "2026-03-05"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM" ;
+    ogkg:sourceRef "WO-002" ;
+    ogkg:owner ogkg:ROLE-MAINT ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00161 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-002 ;
+    ogkg:predicate "rate_reduction" ;
+    ogkg:value "50"^^xsd:integer ;
+    ogkg:unit "kbd" ;
+    ogkg:asOf "2026-03-05"^^xsd:date ;
+    ogkg:sourceSystem "Operations Logbook" ;
+    ogkg:sourceRef "FL-002" ;
+    ogkg:owner ogkg:ROLE-OPS ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00162 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-002 ;
+    ogkg:predicate "rate_reduction_days" ;
+    ogkg:value "4"^^xsd:integer ;
+    ogkg:unit "days" ;
+    ogkg:asOf "2026-03-05"^^xsd:date ;
+    ogkg:sourceSystem "Operations Logbook" ;
+    ogkg:sourceRef "FL-002" ;
+    ogkg:owner ogkg:ROLE-OPS ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00163 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-002 ;
+    ogkg:predicate "lost_margin" ;
+    ogkg:value "1640000"^^xsd:integer ;
+    ogkg:unit "USD" ;
+    ogkg:asOf "2026-03-05"^^xsd:date ;
+    ogkg:sourceSystem "KG derived" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-ECON ;
+    ogkg:confidence "medium" ;
+    ogkg:method "calculated" ;
+    ogkg:derivedFrom ogkg:F-00161 ;
+    ogkg:derivedFrom ogkg:F-00162 ;
+    ogkg:derivedFrom ogkg:F-00005 .
+ogkg:F-00164 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-003 ;
+    ogkg:predicate "failure_mode" ;
+    ogkg:value "External leakage – process medium (ELP)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-06-28"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-003" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00165 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-003 ;
+    ogkg:predicate "failure_mechanism" ;
+    ogkg:value "Corrosion (ISO 14224 2.2) — HCl / ammonium chloride" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-06-28"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-003" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00166 a ogkg:Fact ;
+    ogkg:subject ogkg:WO-003 ;
+    ogkg:predicate "actual_cost" ;
+    ogkg:value "310000"^^xsd:integer ;
+    ogkg:unit "USD" ;
+    ogkg:asOf "2026-06-28"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM" ;
+    ogkg:sourceRef "WO-003" ;
+    ogkg:owner ogkg:ROLE-MAINT ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00167 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-003 ;
+    ogkg:predicate "rate_reduction" ;
+    ogkg:value "80"^^xsd:integer ;
+    ogkg:unit "kbd" ;
+    ogkg:asOf "2026-06-28"^^xsd:date ;
+    ogkg:sourceSystem "Operations Logbook" ;
+    ogkg:sourceRef "FL-003" ;
+    ogkg:owner ogkg:ROLE-OPS ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00168 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-003 ;
+    ogkg:predicate "rate_reduction_days" ;
+    ogkg:value "6"^^xsd:integer ;
+    ogkg:unit "days" ;
+    ogkg:asOf "2026-06-28"^^xsd:date ;
+    ogkg:sourceSystem "Operations Logbook" ;
+    ogkg:sourceRef "FL-003" ;
+    ogkg:owner ogkg:ROLE-OPS ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00169 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-003 ;
+    ogkg:predicate "lost_margin" ;
+    ogkg:value "3936000"^^xsd:integer ;
+    ogkg:unit "USD" ;
+    ogkg:asOf "2026-06-28"^^xsd:date ;
+    ogkg:sourceSystem "KG derived" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-ECON ;
+    ogkg:confidence "medium" ;
+    ogkg:method "calculated" ;
+    ogkg:derivedFrom ogkg:F-00167 ;
+    ogkg:derivedFrom ogkg:F-00168 ;
+    ogkg:derivedFrom ogkg:F-00005 .
+ogkg:F-00170 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-004 ;
+    ogkg:predicate "failure_mode" ;
+    ogkg:value "Structural deficiency (STD)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-03-20"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-004" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00171 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-004 ;
+    ogkg:predicate "failure_mechanism" ;
+    ogkg:value "Corrosion (ISO 14224 2.2) — naphthenic acid" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-03-20"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-004" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00172 a ogkg:Fact ;
+    ogkg:subject ogkg:WO-004 ;
+    ogkg:predicate "actual_cost" ;
+    ogkg:value "95000"^^xsd:integer ;
+    ogkg:unit "USD" ;
+    ogkg:asOf "2026-03-20"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM" ;
+    ogkg:sourceRef "WO-004" ;
+    ogkg:owner ogkg:ROLE-MAINT ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00173 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-101 ;
+    ogkg:predicate "failure_mode" ;
+    ogkg:value "External leakage – process medium (ELP)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2025-10-20"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-101" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00174 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-101 ;
+    ogkg:predicate "failure_mechanism" ;
+    ogkg:value "Wear / thermal distortion (ISO 14224 1.x)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2025-10-20"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-101" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00175 a ogkg:Fact ;
+    ogkg:subject ogkg:WO-101 ;
+    ogkg:predicate "actual_cost" ;
+    ogkg:value "38000"^^xsd:integer ;
+    ogkg:unit "USD" ;
+    ogkg:asOf "2025-10-20"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM" ;
+    ogkg:sourceRef "WO-101" ;
+    ogkg:owner ogkg:ROLE-MAINT ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00176 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-102 ;
+    ogkg:predicate "failure_mode" ;
+    ogkg:value "External leakage – process medium (ELP)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-01-15"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-102" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00177 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-102 ;
+    ogkg:predicate "failure_mechanism" ;
+    ogkg:value "Wear / thermal distortion (ISO 14224 1.x)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-01-15"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-102" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00178 a ogkg:Fact ;
+    ogkg:subject ogkg:WO-102 ;
+    ogkg:predicate "actual_cost" ;
+    ogkg:value "38000"^^xsd:integer ;
+    ogkg:unit "USD" ;
+    ogkg:asOf "2026-01-15"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM" ;
+    ogkg:sourceRef "WO-102" ;
+    ogkg:owner ogkg:ROLE-MAINT ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00179 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-103 ;
+    ogkg:predicate "failure_mode" ;
+    ogkg:value "External leakage – process medium (ELP)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-04-22"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-103" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00180 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-103 ;
+    ogkg:predicate "failure_mechanism" ;
+    ogkg:value "Wear / thermal distortion (ISO 14224 1.x)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-04-22"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-103" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00181 a ogkg:Fact ;
+    ogkg:subject ogkg:WO-103 ;
+    ogkg:predicate "actual_cost" ;
+    ogkg:value "38000"^^xsd:integer ;
+    ogkg:unit "USD" ;
+    ogkg:asOf "2026-04-22"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM" ;
+    ogkg:sourceRef "WO-103" ;
+    ogkg:owner ogkg:ROLE-MAINT ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00182 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-104 ;
+    ogkg:predicate "failure_mode" ;
+    ogkg:value "External leakage – process medium (ELP)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-08-10"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-104" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00183 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-104 ;
+    ogkg:predicate "failure_mechanism" ;
+    ogkg:value "Wear / thermal distortion (ISO 14224 1.x)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-08-10"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-104" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00184 a ogkg:Fact ;
+    ogkg:subject ogkg:WO-104 ;
+    ogkg:predicate "actual_cost" ;
+    ogkg:value "38000"^^xsd:integer ;
+    ogkg:unit "USD" ;
+    ogkg:asOf "2026-08-10"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM" ;
+    ogkg:sourceRef "WO-104" ;
+    ogkg:owner ogkg:ROLE-MAINT ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00185 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-105 ;
+    ogkg:predicate "failure_mode" ;
+    ogkg:value "External leakage – process medium (ELP)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2025-12-18"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-105" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00186 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-105 ;
+    ogkg:predicate "failure_mechanism" ;
+    ogkg:value "Wear / thermal distortion (ISO 14224 1.x)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2025-12-18"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-105" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00187 a ogkg:Fact ;
+    ogkg:subject ogkg:WO-105 ;
+    ogkg:predicate "actual_cost" ;
+    ogkg:value "38000"^^xsd:integer ;
+    ogkg:unit "USD" ;
+    ogkg:asOf "2025-12-18"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM" ;
+    ogkg:sourceRef "WO-105" ;
+    ogkg:owner ogkg:ROLE-MAINT ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00188 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-106 ;
+    ogkg:predicate "failure_mode" ;
+    ogkg:value "External leakage – process medium (ELP)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-04-01"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-106" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00189 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-106 ;
+    ogkg:predicate "failure_mechanism" ;
+    ogkg:value "Wear / thermal distortion (ISO 14224 1.x)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-04-01"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-106" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00190 a ogkg:Fact ;
+    ogkg:subject ogkg:WO-106 ;
+    ogkg:predicate "actual_cost" ;
+    ogkg:value "38000"^^xsd:integer ;
+    ogkg:unit "USD" ;
+    ogkg:asOf "2026-04-01"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM" ;
+    ogkg:sourceRef "WO-106" ;
+    ogkg:owner ogkg:ROLE-MAINT ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00191 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-107 ;
+    ogkg:predicate "failure_mode" ;
+    ogkg:value "External leakage – process medium (ELP)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-07-19"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-107" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00192 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-107 ;
+    ogkg:predicate "failure_mechanism" ;
+    ogkg:value "Wear / thermal distortion (ISO 14224 1.x)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-07-19"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-107" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00193 a ogkg:Fact ;
+    ogkg:subject ogkg:WO-107 ;
+    ogkg:predicate "actual_cost" ;
+    ogkg:value "38000"^^xsd:integer ;
+    ogkg:unit "USD" ;
+    ogkg:asOf "2026-07-19"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM" ;
+    ogkg:sourceRef "WO-107" ;
+    ogkg:owner ogkg:ROLE-MAINT ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00194 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-108 ;
+    ogkg:predicate "failure_mode" ;
+    ogkg:value "External leakage – process medium (ELP)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2025-11-05"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-108" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00195 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-108 ;
+    ogkg:predicate "failure_mechanism" ;
+    ogkg:value "Wear / thermal distortion (ISO 14224 1.x)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2025-11-05"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-108" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00196 a ogkg:Fact ;
+    ogkg:subject ogkg:WO-108 ;
+    ogkg:predicate "actual_cost" ;
+    ogkg:value "38000"^^xsd:integer ;
+    ogkg:unit "USD" ;
+    ogkg:asOf "2025-11-05"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM" ;
+    ogkg:sourceRef "WO-108" ;
+    ogkg:owner ogkg:ROLE-MAINT ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00197 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-109 ;
+    ogkg:predicate "failure_mode" ;
+    ogkg:value "External leakage – process medium (ELP)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-03-12"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-109" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00198 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-109 ;
+    ogkg:predicate "failure_mechanism" ;
+    ogkg:value "Wear / thermal distortion (ISO 14224 1.x)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-03-12"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-109" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00199 a ogkg:Fact ;
+    ogkg:subject ogkg:WO-109 ;
+    ogkg:predicate "actual_cost" ;
+    ogkg:value "38000"^^xsd:integer ;
+    ogkg:unit "USD" ;
+    ogkg:asOf "2026-03-12"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM" ;
+    ogkg:sourceRef "WO-109" ;
+    ogkg:owner ogkg:ROLE-MAINT ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00200 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-110 ;
+    ogkg:predicate "failure_mode" ;
+    ogkg:value "External leakage – process medium (ELP)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-07-30"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-110" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00201 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-110 ;
+    ogkg:predicate "failure_mechanism" ;
+    ogkg:value "Wear / thermal distortion (ISO 14224 1.x)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-07-30"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-110" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00202 a ogkg:Fact ;
+    ogkg:subject ogkg:WO-110 ;
+    ogkg:predicate "actual_cost" ;
+    ogkg:value "38000"^^xsd:integer ;
+    ogkg:unit "USD" ;
+    ogkg:asOf "2026-07-30"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM" ;
+    ogkg:sourceRef "WO-110" ;
+    ogkg:owner ogkg:ROLE-MAINT ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00203 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-111 ;
+    ogkg:predicate "failure_mode" ;
+    ogkg:value "External leakage – process medium (ELP)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2025-10-28"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-111" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00204 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-111 ;
+    ogkg:predicate "failure_mechanism" ;
+    ogkg:value "Wear / thermal distortion (ISO 14224 1.x)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2025-10-28"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-111" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00205 a ogkg:Fact ;
+    ogkg:subject ogkg:WO-111 ;
+    ogkg:predicate "actual_cost" ;
+    ogkg:value "35000"^^xsd:integer ;
+    ogkg:unit "USD" ;
+    ogkg:asOf "2025-10-28"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM" ;
+    ogkg:sourceRef "WO-111" ;
+    ogkg:owner ogkg:ROLE-MAINT ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00206 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-112 ;
+    ogkg:predicate "failure_mode" ;
+    ogkg:value "External leakage – process medium (ELP)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-02-02"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-112" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00207 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-112 ;
+    ogkg:predicate "failure_mechanism" ;
+    ogkg:value "Wear / thermal distortion (ISO 14224 1.x)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-02-02"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-112" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00208 a ogkg:Fact ;
+    ogkg:subject ogkg:WO-112 ;
+    ogkg:predicate "actual_cost" ;
+    ogkg:value "35000"^^xsd:integer ;
+    ogkg:unit "USD" ;
+    ogkg:asOf "2026-02-02"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM" ;
+    ogkg:sourceRef "WO-112" ;
+    ogkg:owner ogkg:ROLE-MAINT ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00209 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-113 ;
+    ogkg:predicate "failure_mode" ;
+    ogkg:value "External leakage – process medium (ELP)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-05-14"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-113" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00210 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-113 ;
+    ogkg:predicate "failure_mechanism" ;
+    ogkg:value "Wear / thermal distortion (ISO 14224 1.x)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-05-14"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-113" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00211 a ogkg:Fact ;
+    ogkg:subject ogkg:WO-113 ;
+    ogkg:predicate "actual_cost" ;
+    ogkg:value "35000"^^xsd:integer ;
+    ogkg:unit "USD" ;
+    ogkg:asOf "2026-05-14"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM" ;
+    ogkg:sourceRef "WO-113" ;
+    ogkg:owner ogkg:ROLE-MAINT ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00212 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-114 ;
+    ogkg:predicate "failure_mode" ;
+    ogkg:value "External leakage – process medium (ELP)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-08-25"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-114" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00213 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-114 ;
+    ogkg:predicate "failure_mechanism" ;
+    ogkg:value "Wear / thermal distortion (ISO 14224 1.x)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-08-25"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-114" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00214 a ogkg:Fact ;
+    ogkg:subject ogkg:WO-114 ;
+    ogkg:predicate "actual_cost" ;
+    ogkg:value "35000"^^xsd:integer ;
+    ogkg:unit "USD" ;
+    ogkg:asOf "2026-08-25"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM" ;
+    ogkg:sourceRef "WO-114" ;
+    ogkg:owner ogkg:ROLE-MAINT ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00215 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-115 ;
+    ogkg:predicate "failure_mode" ;
+    ogkg:value "External leakage – process medium (ELP)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-06-10"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-115" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00216 a ogkg:Fact ;
+    ogkg:subject ogkg:FL-115 ;
+    ogkg:predicate "failure_mechanism" ;
+    ogkg:value "Wear / thermal distortion (ISO 14224 1.x)" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-06-10"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM (ISO 14224 coding)" ;
+    ogkg:sourceRef "WO-115" ;
+    ogkg:owner ogkg:ROLE-REL ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00217 a ogkg:Fact ;
+    ogkg:subject ogkg:WO-115 ;
+    ogkg:predicate "actual_cost" ;
+    ogkg:value "35000"^^xsd:integer ;
+    ogkg:unit "USD" ;
+    ogkg:asOf "2026-06-10"^^xsd:date ;
+    ogkg:sourceSystem "SAP PM" ;
+    ogkg:sourceRef "WO-115" ;
+    ogkg:owner ogkg:ROLE-MAINT ;
+    ogkg:confidence "high" ;
+    ogkg:method "recorded" .
+ogkg:F-00218 a ogkg:Fact ;
+    ogkg:subject ogkg:TA-ALPHA-27 ;
+    ogkg:predicate "scope_freeze_date" ;
+    ogkg:value "2026-11-15" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "TA Planning System" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-TA ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00219 a ogkg:Fact ;
+    ogkg:subject ogkg:TA-ALPHA-27 ;
+    ogkg:predicate "start_date" ;
+    ogkg:value "2027-03-01" ;
+    ogkg:unit "" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "TA Planning System" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-TA ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .
+ogkg:F-00220 a ogkg:Fact ;
+    ogkg:subject ogkg:DE-RONREF ;
+    ogkg:predicate "freshness_sla" ;
+    ogkg:value "8"^^xsd:integer ;
+    ogkg:unit "h" ;
+    ogkg:asOf "2026-09-28"^^xsd:date ;
+    ogkg:sourceSystem "Data Governance Catalogue" ;
+    ogkg:sourceRef "" ;
+    ogkg:owner ogkg:ROLE-BLEND ;
+    ogkg:confidence "high" ;
+    ogkg:method "declared" .

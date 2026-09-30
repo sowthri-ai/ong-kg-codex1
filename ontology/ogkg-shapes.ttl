@@ -1,0 +1,124 @@
+@prefix ogkg:  <https://example.org/ogkg/core#> .
+@prefix vocab: <https://example.org/ogkg/vocab#> .
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+
+# =============================================================================
+#  OGKG SHACL shapes v0.2.0 (handbook C4.5)
+#  Run with pySHACL or the triplestore's SHACL engine against the RDF mirror.
+# =============================================================================
+
+ogkg:SpineNodeShape a sh:NodeShape ;
+    sh:targetClass ogkg:AssetSpineNode , ogkg:ProcessSpineNode , ogkg:Segment ;
+    sh:property [ sh:path ogkg:partOf ; sh:minCount 1 ; sh:maxCount 1 ;
+                  sh:message "Every spine node except L0 has exactly one asserted PART_OF parent (rule H3)." ] ;
+    sh:property [ sh:path ogkg:hasLevel ; sh:minCount 1 ; sh:maxCount 1 ; sh:class ogkg:Level ] ;
+    sh:property [ sh:path rdfs:label ; sh:minCount 1 ] .
+
+ogkg:EquipmentUnitShape a sh:NodeShape ;
+    sh:targetClass ogkg:EquipmentUnit ;
+    sh:property [ sh:path ogkg:partOf ;
+                  sh:or ( [ sh:class ogkg:SectionSystem ] [ sh:class ogkg:PlantUnit ] [ sh:class ogkg:Installation ] ) ;
+                  sh:message "Equipment sits under a section, unit or installation (levels may be skipped, not reordered)." ] ;
+    sh:property [ sh:path ogkg:eqClass ; sh:minCount 1 ; sh:datatype xsd:string ] .
+
+ogkg:PumpShape a sh:NodeShape ;
+    sh:targetClass ogkg:Pump ;
+    sh:property [ sh:path ogkg:ofModel ; sh:minCount 1 ; sh:class ogkg:EquipmentModel ;
+                  sh:message "Pump has no model: it will drop out of fleet (bad-actor) analysis." ] ;
+    sh:property [ sh:path ogkg:sealPlan ; sh:minCount 1 ; sh:class skos:Concept ] ;
+    sh:property [ sh:path ogkg:serviceTemperature ; sh:minCount 1 ; sh:datatype xsd:decimal ] .
+
+ogkg:FactShape a sh:NodeShape ;
+    sh:targetClass ogkg:Fact ;
+    sh:property [ sh:path ogkg:subject ; sh:minCount 1 ; sh:maxCount 1 ; sh:class ogkg:Entity ] ;
+    sh:property [ sh:path ogkg:predicateKey ; sh:minCount 1 ; sh:datatype xsd:string ] ;
+    sh:property [ sh:path ogkg:value ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path ogkg:asOf ; sh:minCount 1 ; sh:datatype xsd:date ] ;
+    sh:property [ sh:path [ sh:alternativePath ( ogkg:sourceSystem ogkg:sourceSystemName ) ] ; sh:minCount 1 ;
+                  sh:message "Every fact names its source system." ] ;
+    sh:property [ sh:path ogkg:factOwner ; sh:minCount 1 ; sh:class ogkg:Role ] ;
+    sh:property [ sh:path ogkg:confidence ; sh:minCount 1 ; sh:in ( vocab:High vocab:Medium vocab:Low ) ] ;
+    sh:property [ sh:path ogkg:method ; sh:minCount 1 ;
+                  sh:in ( vocab:Measured vocab:Recorded vocab:Calculated vocab:Declared vocab:Indicative vocab:Assumption ) ] ;
+    sh:property [ sh:path ogkg:derivedFrom ; sh:class ogkg:Fact ] .
+
+ogkg:DerivedFactShape a sh:NodeShape ;
+    sh:targetClass ogkg:Fact ;
+    sh:sparql [
+        sh:message "A calculated fact must declare the facts it was derived from." ;
+        sh:prefixes ogkg:PrefixDecl ;
+        sh:select """
+            SELECT $this WHERE {
+                $this ogkg:method vocab:Calculated .
+                FILTER NOT EXISTS { $this ogkg:derivedFrom ?x }
+                FILTER NOT EXISTS { $this ogkg:sourceSystemName ?s . FILTER(?s != "KG derived") }
+            }""" ] .
+
+ogkg:PrefixDecl a owl:Ontology ;
+    sh:declare [ sh:prefix "ogkg" ; sh:namespace "https://example.org/ogkg/core#"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "vocab" ; sh:namespace "https://example.org/ogkg/vocab#"^^xsd:anyURI ] .
+
+ogkg:KPIShape a sh:NodeShape ;
+    sh:targetClass ogkg:KPI ;
+    sh:property [ sh:path ogkg:formula ; sh:minCount 1 ] ;
+    sh:property [ sh:path ogkg:aggregationRule ; sh:minCount 1 ] ;
+    sh:property [ sh:path ogkg:applicableLevel ; sh:minCount 1 ; sh:class ogkg:Level ] ;
+    sh:property [ sh:path ogkg:ownedBy ; sh:minCount 1 ; sh:class ogkg:Role ] ;
+    sh:property [ sh:path ogkg:kpiTier ; sh:minCount 1 ; sh:in ( vocab:Strategic vocab:Tactical vocab:Operational ) ] .
+
+ogkg:KPFShape a sh:NodeShape ;
+    sh:targetClass ogkg:KPF ;
+    sh:property [ sh:path ogkg:drives ; sh:minCount 1 ; sh:class ogkg:KPI ;
+                  sh:message "A KPF must drive at least one KPI." ] ;
+    sh:property [ sh:path ogkg:controlledBy ; sh:minCount 1 ; sh:class ogkg:DecisionPoint ] .
+
+ogkg:ApplicationInstanceShape a sh:NodeShape ;
+    sh:targetClass ogkg:ApplicationInstance ;
+    sh:property [ sh:path ogkg:instanceOf ; sh:minCount 1 ; sh:maxCount 1 ; sh:class ogkg:Application ] ;
+    sh:property [ sh:path ogkg:scopedTo ; sh:minCount 1 ; sh:class ogkg:SpineNode ] .
+
+ogkg:DataElementShape a sh:NodeShape ;
+    sh:targetClass ogkg:DataElement ;
+    sh:property [ sh:path ogkg:ownedBy ; sh:minCount 1 ; sh:class ogkg:Role ] ;
+    sh:or ( [ sh:path ogkg:instantiatedBy ; sh:minCount 1 ]
+            [ sh:path ogkg:mapsToPredicate ; sh:minCount 1 ] ) ;
+    sh:message "A data element needs a system of record: a tag or a fact predicate." .
+
+ogkg:HypothesisShape a sh:NodeShape ;
+    sh:targetClass ogkg:HypothesisAssertion ;
+    sh:property [ sh:path ogkg:hypSubject ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path ogkg:hypPredicate ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path ogkg:hypObject ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path ogkg:status ; sh:minCount 1 ; sh:in ( vocab:Proposed vocab:Validated vocab:Rejected ) ] ;
+    sh:property [ sh:path ogkg:confidenceScore ; sh:minCount 1 ; sh:datatype xsd:decimal ;
+                  sh:minInclusive 0 ; sh:maxInclusive 1 ] ;
+    sh:property [ sh:path ogkg:inferredBy ; sh:minCount 1 ] ;
+    sh:property [ sh:path ogkg:runId ; sh:minCount 1 ] .
+
+ogkg:ValidatedHypothesisShape a sh:NodeShape ;
+    sh:targetClass ogkg:HypothesisAssertion ;
+    sh:sparql [
+        sh:message "A validated or rejected hypothesis must name its reviewer and review date (D3.4)." ;
+        sh:prefixes ogkg:PrefixDecl ;
+        sh:select """
+            SELECT $this WHERE {
+                $this ogkg:status ?s . FILTER(?s IN (vocab:Validated, vocab:Rejected))
+                FILTER NOT EXISTS { $this ogkg:reviewedBy ?r ; ogkg:reviewedOn ?d }
+            }""" ] .
+
+ogkg:FacetBindingShape a sh:NodeShape ;
+    sh:targetClass ogkg:FacetBinding ;
+    sh:property [ sh:path ogkg:bindsEntity ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path ogkg:bindsTo ; sh:minCount 1 ; sh:maxCount 1 ] ;
+    sh:property [ sh:path ogkg:bindingFacet ; sh:minCount 1 ; sh:class skos:Concept ] ;
+    sh:property [ sh:path ogkg:bindingLevel ; sh:minCount 1 ; sh:class ogkg:Level ] ;
+    sh:property [ sh:path ogkg:validFrom ; sh:minCount 1 ; sh:datatype xsd:date ] .
+
+ogkg:GroupingShape a sh:NodeShape ;
+    sh:targetClass ogkg:Grouping ;
+    sh:property [ sh:path ogkg:ownedBy ; sh:minCount 1 ; sh:class ogkg:Role ;
+                  sh:message "Every dotted-branch grouping has a named owner (rule R2)." ] .

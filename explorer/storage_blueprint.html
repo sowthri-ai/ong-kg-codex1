@@ -1,0 +1,544 @@
+<title>OGKG Storage Blueprint</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: engineering drawing sheet — title block, one master figure, then worked examples; each store keeps one colour everywhere */
+:root{
+  --paper:#eef2f3; --panel:#ffffff; --panel-2:#f5f7f8; --ink:#132029; --ink-2:#4b5c67; --ink-3:#7a8a94; --line:#cfd8dd;
+  --sem:#3d4fa1; --sem-soft:#e6e9f6;      /* OWL / git: the meaning */
+  --tri:#0b6e74; --tri-soft:#dcefef;      /* triplestore */
+  --lpg:#95560f; --lpg-soft:#f5eadb;      /* property graph runtime */
+  --hyp:#b0462b;                          /* inferred / hypothesis */
+  --ok:#2e7d4f; --crit:#b3261e;
+  --display:"IBM Plex Sans Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"IBM Plex Sans",-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0e1418; --panel:#152027; --panel-2:#1a262e; --ink:#e2eaee; --ink-2:#a2b3bd; --ink-3:#74868f; --line:#2a3842;
+  --sem:#9aa8f4; --sem-soft:#1f2645; --tri:#4fc1c4; --tri-soft:#133335; --lpg:#e2a75c; --lpg-soft:#3a2a15;
+  --hyp:#f0896b; --ok:#6fcf97; --crit:#ff8a80; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0e1418; --panel:#152027; --panel-2:#1a262e; --ink:#e2eaee; --ink-2:#a2b3bd; --ink-3:#74868f; --line:#2a3842;
+  --sem:#9aa8f4; --sem-soft:#1f2645; --tri:#4fc1c4; --tri-soft:#133335; --lpg:#e2a75c; --lpg-soft:#3a2a15;
+  --hyp:#f0896b; --ok:#6fcf97; --crit:#ff8a80; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:14.5px;line-height:1.55}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:16px;padding-block:20px 56px;display:flex;flex-direction:column;gap:28px}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance}
+p{margin:0}
+code,pre{font-family:var(--mono)}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.muted{color:var(--ink-2)}
+
+.titleblock{border:1.5px solid var(--ink);background:var(--panel);padding:18px 20px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px 28px;align-items:end}
+.titleblock h1{font-size:clamp(26px,4vw,38px);font-weight:700;line-height:1.05;margin-top:4px}
+.titleblock p{margin-top:8px;max-width:70ch;color:var(--ink-2)}
+.keys{display:flex;flex-direction:column;gap:6px;font-size:13px}
+.key{display:flex;align-items:center;gap:8px}
+.key i{width:14px;height:14px;border-radius:3px;border:2px solid;display:inline-block}
+@media (max-width:760px){.titleblock{grid-template-columns:1fr}}
+
+section{display:flex;flex-direction:column;gap:12px}
+section > h2{font-size:22px;font-weight:600}
+section > .lede{max-width:75ch;color:var(--ink-2)}
+figure{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.scroll{overflow-x:auto}
+figure svg{display:block;width:100%;height:auto;min-width:820px}
+figcaption{padding:10px 16px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-2)}
+
+/* svg classes */
+.b-sem{fill:var(--sem-soft);stroke:var(--sem);stroke-width:1.5}
+.b-tri{fill:var(--tri-soft);stroke:var(--tri);stroke-width:1.5}
+.b-lpg{fill:var(--lpg-soft);stroke:var(--lpg);stroke-width:1.5}
+.b-plain{fill:var(--panel);stroke:var(--ink-3);stroke-width:1.2}
+.b-dash{fill:var(--panel-2);stroke:var(--ink-3);stroke-width:1.2;stroke-dasharray:5 4}
+.b-row{fill:var(--panel);stroke:var(--line);stroke-width:1}
+.b-hyp{fill:var(--panel);stroke:var(--hyp);stroke-width:1.5;stroke-dasharray:5 4}
+.b-bad{fill:var(--panel);stroke:var(--crit);stroke-width:1.5}
+.pill{fill:var(--panel);stroke:var(--ink);stroke-width:1.2}
+.t{fill:var(--ink);font-family:var(--body);font-size:12.5px}
+.t-b{fill:var(--ink);font-family:var(--display);font-size:15px;font-weight:600}
+.t-s{fill:var(--ink-2);font-family:var(--body);font-size:11.5px}
+.t-m{fill:var(--ink);font-family:var(--mono);font-size:11.5px}
+.t-lab{fill:var(--ink-2);font-family:var(--mono);font-size:11px}
+.t-hyp{fill:var(--hyp);font-family:var(--mono);font-size:11px}
+.t-bad{fill:var(--crit);font-family:var(--mono);font-size:11px}
+.t-hdr{fill:var(--ink-3);font-family:var(--mono);font-size:11px;letter-spacing:1.2px}
+.l{stroke:var(--ink-2);stroke-width:1.4;fill:none}
+.l-hyp{stroke:var(--hyp);stroke-width:1.6;fill:none;stroke-dasharray:6 4}
+.l-dash{stroke:var(--ink-3);stroke-width:1.4;fill:none;stroke-dasharray:5 4}
+.l-sem{stroke:var(--sem);stroke-width:1.6;fill:none}
+.ah{fill:var(--ink-2)} .ah-hyp{fill:var(--hyp)} .ah-sem{fill:var(--sem)}
+.panel-bg{fill:var(--panel-2);stroke:var(--line)}
+
+/* tabs & examples */
+.tabs{display:flex;gap:2px;border-bottom:1.5px solid var(--ink);overflow-x:auto}
+.tab{background:none;border:0;padding:9px 14px;font-family:var(--display);font-size:16px;font-weight:600;color:var(--ink-2);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1.5px;white-space:nowrap}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--tri)}
+.tab:focus-visible,.copy:focus-visible{outline:2px solid var(--tri);outline-offset:2px}
+.ex{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:16px;background:var(--panel);border:1px solid var(--line);border-top:0;border-radius:0 0 6px 6px;padding:18px}
+@media (max-width:900px){.ex{grid-template-columns:1fr}}
+.ex-left,.ex-right{display:flex;flex-direction:column;gap:12px;min-width:0}
+.q{font-family:var(--display);font-size:18px;font-weight:600;line-height:1.25}
+.ex svg{width:100%;height:auto;display:block;background:var(--panel-2);border:1px solid var(--line);border-radius:6px}
+.codehead{display:flex;justify-content:space-between;align-items:center;gap:8px}
+pre{margin:0;background:var(--panel-2);border:1px solid var(--line);border-radius:6px;padding:12px 14px;font-size:12px;line-height:1.55;overflow-x:auto;color:var(--ink)}
+.copy{background:var(--panel);border:1px solid var(--line);border-radius:5px;padding:3px 10px;font:12px var(--body);color:var(--ink);cursor:pointer}
+.result{border-left:3px solid var(--tri);background:var(--tri-soft);padding:10px 12px;border-radius:0 6px 6px 0;font-size:13.5px}
+.result.hyp{border-left-color:var(--hyp);background:var(--panel-2)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.chip{font-family:var(--mono);font-size:12px;padding:2px 8px;border-radius:4px;border:1px solid var(--line);background:var(--panel)}
+.chip.ok{color:var(--ok);border-color:currentColor}
+.chip.bad{color:var(--crit);border-color:currentColor}
+.chip.hyp{color:var(--hyp);border-color:currentColor;border-style:dashed}
+.flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:13px}
+
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{padding:8px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);font-weight:500;background:var(--panel-2)}
+tr:last-child td{border-bottom:0}
+.tbl{background:var(--panel);border:1px solid var(--line);border-radius:6px;overflow-x:auto}
+.store{display:inline-block;font-family:var(--mono);font-size:11.5px;padding:1px 8px;border-radius:99px;border:1.5px solid;white-space:nowrap}
+.s-tri{color:var(--tri)} .s-lpg{color:var(--lpg)} .s-both{color:var(--hyp)}
+td.c{text-align:center;font-family:var(--mono)}
+.yes{color:var(--ok)} .no{color:var(--crit)}
+
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.rule{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.rule h3{font-size:16px;font-weight:600}
+.rule .n{font-family:var(--mono);font-size:11px;color:var(--ink-3)}
+</style>
+
+<div class="wrap">
+  <header class="titleblock">
+    <div>
+      <div class="eyebrow">O&amp;G Value Chain Knowledge Graph · Architecture sheet A-02 · Prototype v0.2 design</div>
+      <h1>One model, three stores</h1>
+      <p>OWL holds the meaning, the triplestore reasons, validates and exchanges, and the property graph runs the day-to-day queries. Every entity keeps one IRI in all three, so a fact about E-101B means the same thing wherever it's read.</p>
+    </div>
+    <div class="keys" aria-label="Colour key">
+      <span class="key"><i style="border-color:var(--sem);background:var(--sem-soft)"></i>OWL · SHACL · SKOS (git)</span>
+      <span class="key"><i style="border-color:var(--tri);background:var(--tri-soft)"></i>Triplestore (RDF)</span>
+      <span class="key"><i style="border-color:var(--lpg);background:var(--lpg-soft)"></i>Property graph runtime (LPG)</span>
+      <span class="key"><i style="border-color:var(--hyp);border-style:dashed;background:transparent"></i>Inferred / hypothesis</span>
+    </div>
+  </header>
+
+  <!-- ============ FIGURE 1 ============ -->
+  <section>
+    <h2>Who writes where, and what flows between the stores</h2>
+    <p class="lede">Each kind of data has exactly one writer. Source systems write instances into the property graph. The ontology is authored only in git. The triplestore's reasoning returns to the property graph only as hypothesis edges.</p>
+    <figure>
+      <div class="scroll">
+      <svg viewBox="0 0 1160 520" role="img" aria-label="Architecture: git ontology loads into the triplestore and compiles the property graph schema; source systems write to the property graph; the property graph syncs selected RDF to the triplestore; triplestore inferences return as hypothesis edges; partners exchange through SPARQL; AI reads context packs from the property graph and vector index.">
+        <defs>
+          <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah"/></marker>
+          <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah-hyp"/></marker>
+          <marker id="as" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah-sem"/></marker>
+        </defs>
+        <text x="135" y="18" text-anchor="middle" class="t-hdr">AUTHORED</text>
+        <text x="525" y="18" text-anchor="middle" class="t-hdr">STORES</text>
+        <text x="845" y="18" text-anchor="middle" class="t-hdr">SHARED / SERVED</text>
+        <text x="1065" y="18" text-anchor="middle" class="t-hdr">CONSUMERS</text>
+
+        <!-- git -->
+        <rect x="20" y="40" width="230" height="96" rx="5" class="b-sem"/>
+        <text x="36" y="66" class="t-b">Ontology repo (git)</text>
+        <text x="36" y="88" class="t">OWL classes &amp; relations</text>
+        <text x="36" y="106" class="t">SHACL shapes · SKOS vocabularies</text>
+        <text x="36" y="124" class="t">Facet registry · versioned</text>
+        <!-- sources -->
+        <rect x="20" y="300" width="230" height="110" rx="5" class="b-plain"/>
+        <text x="36" y="326" class="t-b">Source systems</text>
+        <text x="36" y="348" class="t">SAP PM · PI historian · LIMS</text>
+        <text x="36" y="366" class="t">LP model · CTRM · RBI database</text>
+        <text x="36" y="384" class="t">Documents (P&amp;IDs, procedures)</text>
+        <!-- historian -->
+        <rect x="20" y="440" width="230" height="60" rx="5" class="b-dash"/>
+        <text x="36" y="466" class="t-b" style="font-size:13.5px">Time series stays at source</text>
+        <text x="36" y="486" class="t-s">raw historian &amp; lab data, logs</text>
+
+        <!-- triplestore -->
+        <rect x="380" y="30" width="290" height="200" rx="5" class="b-tri"/>
+        <text x="396" y="56" class="t-b">Triplestore · RDF</text>
+        <text x="396" y="74" class="t-s">SPARQL · reasoning · SHACL validation</text>
+        <rect x="396" y="88" width="258" height="22" rx="3" class="b-row"/><text x="406" y="103" class="t-m">urn:ogkg:ontology:v0.2</text>
+        <rect x="396" y="114" width="258" height="22" rx="3" class="b-row"/><text x="406" y="129" class="t-m">urn:ogkg:data:alpha  (mirror)</text>
+        <rect x="396" y="140" width="258" height="22" rx="3" class="b-row"/><text x="406" y="155" class="t-m">urn:ogkg:inferred:2026-09-30</text>
+        <rect x="396" y="166" width="258" height="22" rx="3" class="b-row"/><text x="406" y="181" class="t-m">urn:ogkg:staging:epc-hu2</text>
+        <text x="396" y="214" class="t-s">Job: meaning, inference, validation, exchange</text>
+
+        <!-- LPG -->
+        <rect x="380" y="290" width="290" height="210" rx="5" class="b-lpg"/>
+        <text x="396" y="316" class="t-b">Property graph (LPG) runtime</text>
+        <text x="396" y="334" class="t-s">Cypher / GQL · graph algorithms</text>
+        <rect x="396" y="346" width="258" height="22" rx="3" class="b-row"/><text x="406" y="361" class="t">Entities L0–L10 + facet bindings</text>
+        <rect x="396" y="372" width="258" height="22" rx="3" class="b-row"/><text x="406" y="387" class="t">Fact nodes (source · as-of · confidence)</text>
+        <rect x="396" y="398" width="258" height="22" rx="3" class="b-row"/><text x="406" y="413" class="t">Events · problems · dotted branches</text>
+        <rect x="396" y="424" width="258" height="22" rx="3" class="b-hyp"/><text x="406" y="439" class="t">Hypothesis edges (proposed → validated)</text>
+        <rect x="396" y="450" width="258" height="22" rx="3" class="b-row"/><text x="406" y="465" class="t">Latest values cached for speed</text>
+        <text x="396" y="490" class="t-s">Job: runtime, traversal, GraphRAG</text>
+
+        <!-- right column -->
+        <rect x="750" y="60" width="190" height="90" rx="5" class="b-plain"/>
+        <text x="766" y="86" class="t-b" style="font-size:13px">Partners · EPC · regulators</text>
+        <text x="766" y="106" class="t">JV assay exchange</text>
+        <text x="766" y="124" class="t">CFIHOS handover</text>
+        <text x="766" y="142" class="t">Audit exports</text>
+        <rect x="750" y="300" width="190" height="84" rx="5" class="b-plain"/>
+        <text x="766" y="326" class="t-b">AI access layer</text>
+        <text x="766" y="346" class="t-m">MCP · get_context</text>
+        <text x="766" y="364" class="t-m" style="font-size:10.5px">run_insight, explain_fact</text>
+        <rect x="750" y="420" width="190" height="64" rx="5" class="b-plain"/>
+        <text x="766" y="446" class="t-b">Vector index</text>
+        <text x="766" y="466" class="t-s">doc chunks tagged by entity id</text>
+        <rect x="990" y="300" width="150" height="84" rx="5" class="b-plain"/>
+        <text x="1006" y="326" class="t-b">Copilots &amp; agents</text>
+        <text x="1006" y="346" class="t-s">cite fact IDs</text>
+        <text x="1006" y="364" class="t-s">never invent numbers</text>
+
+        <!-- arrows -->
+        <line x1="250" y1="78" x2="378" y2="78" class="l-sem" marker-end="url(#as)"/>
+        <text x="314" y="70" text-anchor="middle" class="t-lab">load</text>
+        <polyline points="250,118 300,118 300,322 378,322" class="l-sem" marker-end="url(#as)"/>
+        <text x="308" y="214" class="t-lab">compile</text><text x="308" y="228" class="t-lab">schema</text>
+        <line x1="250" y1="356" x2="378" y2="356" class="l" marker-end="url(#a)"/>
+        <text x="314" y="348" text-anchor="middle" class="t-lab">ingest · CDC</text>
+        <line x1="250" y1="470" x2="378" y2="470" class="l-dash" marker-end="url(#a)"/>
+        <text x="314" y="462" text-anchor="middle" class="t-lab">refs + aggregates</text>
+        <line x1="470" y1="288" x2="470" y2="233" class="l" marker-end="url(#a)"/>
+        <text x="462" y="256" text-anchor="end" class="t-lab">RDF sync</text><text x="462" y="270" text-anchor="end" class="t-lab">(selected)</text>
+        <line x1="580" y1="232" x2="580" y2="287" class="l-hyp" marker-end="url(#ah)"/>
+        <text x="588" y="256" class="t-hyp">inferred →</text><text x="588" y="270" class="t-hyp">hypothesis edges</text>
+        <rect x="487" y="250" width="78" height="20" rx="10" class="pill"/>
+        <text x="526" y="264" text-anchor="middle" class="t-m" style="font-size:10.5px">shared IRI</text>
+        <line x1="672" y1="105" x2="748" y2="105" class="l" marker-start="url(#a)" marker-end="url(#a)"/>
+        <text x="710" y="96" text-anchor="middle" class="t-lab">SPARQL</text><text x="710" y="121" text-anchor="middle" class="t-lab">CFIHOS</text>
+        <line x1="672" y1="342" x2="748" y2="342" class="l" marker-end="url(#a)"/>
+        <text x="710" y="334" text-anchor="middle" class="t-lab">subgraph</text><text x="710" y="358" text-anchor="middle" class="t-lab">+ facts</text>
+        <line x1="672" y1="452" x2="748" y2="452" class="l" marker-end="url(#a)"/>
+        <text x="710" y="444" text-anchor="middle" class="t-lab">entity ids</text>
+        <line x1="845" y1="418" x2="845" y2="387" class="l" marker-end="url(#a)"/>
+        <text x="853" y="407" class="t-lab">chunks</text>
+        <line x1="942" y1="342" x2="988" y2="342" class="l" marker-end="url(#a)"/>
+        <text x="965" y="334" text-anchor="middle" class="t-lab">context</text><text x="965" y="358" text-anchor="middle" class="t-lab">pack</text>
+      </svg>
+      </div>
+      <figcaption>The ontology is the only hand-authored schema. The property-graph schema is compiled from it, and the property graph mirrors selected data back to the triplestore as RDF. Time series never enters either store; the graph holds tag references and aggregates only.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ============ FIGURE 2 ============ -->
+  <section>
+    <h2>One entity, three forms: E-101B overhead condenser</h2>
+    <p class="lede">The same condenser from the prototype, written three ways. OWL says what a shell-and-tube exchanger is. The triplestore holds E-101B as subject–predicate–object statements. The property graph holds it as a node with properties, linked to its facts and failures.</p>
+    <figure>
+      <div class="scroll">
+      <svg viewBox="0 0 1160 390" role="img" aria-label="E-101B shown as an OWL class chain, as RDF triples, and as property graph nodes with a fact, a failure and a hypothesis edge.">
+        <defs>
+          <marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah"/></marker>
+          <marker id="bh" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah-hyp"/></marker>
+        </defs>
+        <rect x="20" y="34" width="360" height="340" rx="6" class="panel-bg"/>
+        <rect x="400" y="34" width="360" height="340" rx="6" class="panel-bg"/>
+        <rect x="780" y="34" width="360" height="340" rx="6" class="panel-bg"/>
+        <text x="200" y="24" text-anchor="middle" class="t-hdr">OWL · THE MEANING</text>
+        <text x="580" y="24" text-anchor="middle" class="t-hdr">RDF TRIPLES · TRIPLESTORE</text>
+        <text x="960" y="24" text-anchor="middle" class="t-hdr">PROPERTY GRAPH · RUNTIME</text>
+
+        <!-- OWL chain -->
+        <rect x="90" y="54" width="220" height="32" rx="4" class="b-sem"/><text x="200" y="75" text-anchor="middle" class="t-m">ogkg:Equipment</text>
+        <rect x="90" y="114" width="220" height="32" rx="4" class="b-sem"/><text x="200" y="135" text-anchor="middle" class="t-m">ogkg:StaticEquipment</text>
+        <rect x="90" y="174" width="220" height="32" rx="4" class="b-sem"/><text x="200" y="195" text-anchor="middle" class="t-m">ogkg:HeatExchanger</text>
+        <rect x="90" y="234" width="220" height="32" rx="4" class="b-sem"/><text x="200" y="255" text-anchor="middle" class="t-m">ogkg:ShellAndTubeHX</text>
+        <line x1="200" y1="113" x2="200" y2="88" class="l" marker-end="url(#b)"/><text x="208" y="104" class="t-lab">subClassOf</text>
+        <line x1="200" y1="173" x2="200" y2="148" class="l" marker-end="url(#b)"/><text x="208" y="164" class="t-lab">subClassOf</text>
+        <line x1="200" y1="233" x2="200" y2="208" class="l" marker-end="url(#b)"/><text x="208" y="224" class="t-lab">subClassOf</text>
+        <text x="200" y="310" text-anchor="middle" class="t-m">ogkg:partOf  a owl:TransitiveProperty</text>
+        <text x="200" y="332" text-anchor="middle" class="t-s">Classes and rules only. No E-101B here.</text>
+        <text x="200" y="350" text-anchor="middle" class="t-s">Type DNA comes from this chain.</text>
+
+        <!-- RDF -->
+        <rect x="430" y="60" width="240" height="30" rx="4" class="b-row"/><text x="550" y="80" text-anchor="middle" class="t-m">ogkg:ShellAndTubeHX</text>
+        <rect x="470" y="160" width="160" height="34" rx="17" class="b-tri"/><text x="550" y="182" text-anchor="middle" class="t-m" style="font-weight:500">alpha:E-101B</text>
+        <line x1="550" y1="158" x2="550" y2="92" class="l" marker-end="url(#b)"/><text x="558" y="130" class="t-lab">a</text>
+        <line x1="630" y1="177" x2="700" y2="177" class="l" marker-end="url(#b)"/><text x="664" y="170" text-anchor="middle" class="t-lab">tubes</text>
+        <text x="704" y="181" class="t-m" style="font-size:10.5px">CS</text>
+        <rect x="430" y="240" width="240" height="30" rx="4" class="b-row"/><text x="550" y="260" text-anchor="middle" class="t-m">alpha:CDU-1-OVH</text>
+        <line x1="550" y1="196" x2="550" y2="238" class="l" marker-end="url(#b)"/><text x="558" y="222" class="t-lab">partOf</text>
+        <rect x="430" y="300" width="240" height="30" rx="4" class="b-row"/><text x="550" y="320" text-anchor="middle" class="t-m">alpha:CDU-1</text>
+        <line x1="550" y1="272" x2="550" y2="298" class="l" marker-end="url(#b)"/><text x="558" y="290" class="t-lab">partOf</text>
+        <text x="550" y="352" text-anchor="middle" class="t-s">…partOf alpha:SITE-ALPHA. Global IRIs, one statement per line.</text>
+
+        <!-- LPG -->
+        <rect x="800" y="50" width="140" height="50" rx="6" class="b-hyp"/>
+        <text x="870" y="70" text-anchor="middle" class="t-s">ProblemPattern</text>
+        <text x="870" y="88" text-anchor="middle" class="t" style="font-size:12px">Overhead HCl corrosion</text>
+        <rect x="800" y="140" width="140" height="66" rx="6" class="b-lpg"/>
+        <text x="870" y="158" text-anchor="middle" class="t-s">:Equipment</text>
+        <text x="870" y="178" text-anchor="middle" class="t-b" style="font-size:15px">E-101B</text>
+        <text x="870" y="196" text-anchor="middle" class="t-m" style="font-size:10.5px">level: 6 · iri</text>
+        <line x1="870" y1="138" x2="870" y2="102" class="l-hyp" marker-end="url(#bh)"/>
+        <text x="862" y="118" text-anchor="end" class="t-hyp">AT_RISK_OF</text><text x="862" y="132" text-anchor="end" class="t-hyp">0.8 · proposed</text>
+        <rect x="1000" y="50" width="125" height="36" rx="6" class="b-row"/><text x="1062" y="73" text-anchor="middle" class="t-m">CDU-1-OVH</text>
+        <path d="M940,148 L998,72" class="l" marker-end="url(#b)"/><text x="976" y="126" class="t-lab">PART_OF</text>
+        <rect x="1000" y="146" width="125" height="62" rx="6" class="b-row"/>
+        <text x="1062" y="163" text-anchor="middle" class="t-s">:Fact</text>
+        <text x="1062" y="182" text-anchor="middle" class="t-b" style="font-size:13.5px">0.30 mm/y</text>
+        <text x="1062" y="199" text-anchor="middle" class="t-s" style="font-size:10.5px">RBI DB · 2026-09-28</text>
+        <line x1="940" y1="177" x2="998" y2="177" class="l" marker-end="url(#b)"/><text x="969" y="170" text-anchor="middle" class="t-lab" style="font-size:10px">HAS_FACT</text>
+        <rect x="800" y="266" width="140" height="36" rx="6" class="b-row"/><text x="870" y="289" text-anchor="middle" class="t-m">E-101B-TU · L8</text>
+        <line x1="870" y1="264" x2="870" y2="208" class="l" marker-end="url(#b)"/><text x="878" y="240" class="t-lab">PART_OF</text>
+        <rect x="1000" y="262" width="125" height="46" rx="6" class="b-bad"/>
+        <text x="1062" y="281" text-anchor="middle" class="t" style="font-size:12px">Failure FL-002</text>
+        <text x="1062" y="298" text-anchor="middle" class="t-s">2026-03-05</text>
+        <line x1="998" y1="284" x2="942" y2="284" class="l" marker-end="url(#b)"/><text x="969" y="275" text-anchor="middle" class="t-lab" style="font-size:9.5px">FAILURE_OF</text>
+        <text x="960" y="340" text-anchor="middle" class="t-s">Properties live on nodes and edges,</text>
+        <text x="960" y="358" text-anchor="middle" class="t-s">so confidence sits on the hypothesis edge itself.</text>
+      </svg>
+      </div>
+      <figcaption>The link between the three is the IRI. E-101B carries <code>iri: ogkg-alpha:E-101B</code> in the property graph, and that is the subject of every triple about it in the triplestore.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ============ EXAMPLES ============ -->
+  <section>
+    <h2>Four jobs the triplestore does, on our prototype data</h2>
+    <p class="lede">Each example shows the question, the mechanism and the query, plus what it returns on the Refinery Alpha and Beta demo data.</p>
+    <div>
+      <div class="tabs" role="tablist" aria-label="Triplestore examples">
+        <button class="tab" role="tab" id="t1" aria-selected="true" aria-controls="p1">Inference</button>
+        <button class="tab" role="tab" id="t2" aria-selected="false" aria-controls="p2">Rules → hypotheses</button>
+        <button class="tab" role="tab" id="t3" aria-selected="false" aria-controls="p3">SHACL validation</button>
+        <button class="tab" role="tab" id="t4" aria-selected="false" aria-controls="p4">Exchange &amp; federation</button>
+      </div>
+
+      <!-- Ex 1 -->
+      <div class="ex" role="tabpanel" id="p1" aria-labelledby="t1">
+        <div class="ex-left">
+          <div class="q">“List every heat exchanger at Refinery Alpha.”</div>
+          <p class="muted">No statement says E-101B <em>is a</em> heat exchanger, or that it's <em>part of</em> the site. The ontology supplies both: the class chain gives Type DNA and the part-of chain gives Lineage DNA.</p>
+          <svg viewBox="0 0 600 260" role="img" aria-label="Asserted links in solid lines, inferred links dashed: E-101B is inferred to be a HeatExchanger and part of SITE-ALPHA.">
+            <defs>
+              <marker id="c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah"/></marker>
+              <marker id="ch" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah-hyp"/></marker>
+            </defs>
+            <rect x="30" y="20" width="170" height="32" rx="4" class="b-sem"/><text x="115" y="41" text-anchor="middle" class="t-m">HeatExchanger</text>
+            <rect x="30" y="100" width="170" height="32" rx="4" class="b-sem"/><text x="115" y="121" text-anchor="middle" class="t-m">ShellAndTubeHX</text>
+            <line x1="115" y1="98" x2="115" y2="54" class="l" marker-end="url(#c)"/><text x="123" y="80" class="t-lab">subClassOf</text>
+            <rect x="340" y="20" width="170" height="32" rx="4" class="b-row"/><text x="425" y="41" text-anchor="middle" class="t-m">SITE-ALPHA</text>
+            <rect x="340" y="80" width="170" height="32" rx="4" class="b-row"/><text x="425" y="101" text-anchor="middle" class="t-m">CDU-1</text>
+            <rect x="340" y="140" width="170" height="32" rx="4" class="b-row"/><text x="425" y="161" text-anchor="middle" class="t-m">CDU-1-OVH</text>
+            <line x1="425" y1="138" x2="425" y2="114" class="l" marker-end="url(#c)"/>
+            <line x1="425" y1="78" x2="425" y2="54" class="l" marker-end="url(#c)"/>
+            <text x="433" y="130" class="t-lab">partOf</text><text x="433" y="70" class="t-lab">partOf</text>
+            <rect x="205" y="200" width="150" height="34" rx="17" class="b-tri"/><text x="280" y="222" text-anchor="middle" class="t-m" style="font-weight:500">E-101B</text>
+            <line x1="240" y1="199" x2="150" y2="134" class="l" marker-end="url(#c)"/><text x="176" y="176" class="t-lab">a</text>
+            <line x1="320" y1="199" x2="385" y2="174" class="l" marker-end="url(#c)"/><text x="360" y="200" class="t-lab">partOf</text>
+            <path d="M205,217 C8,217 8,36 28,36" class="l-hyp" marker-end="url(#ch)"/>
+            <text x="200" y="252" text-anchor="end" class="t-hyp">a HeatExchanger (inferred)</text>
+            <path d="M355,217 C585,217 585,36 512,36" class="l-hyp" marker-end="url(#ch)"/>
+            <text x="366" y="252" class="t-hyp">partOf SITE-ALPHA (inferred)</text>
+          </svg>
+          <div class="result"><strong>Returns:</strong> <span class="chips"><span class="chip">E-101A</span><span class="chip">E-101B</span><span class="chip">E-301</span></span><span class="muted" style="font-size:12.5px">E-401A and E-601 are heat exchangers too, but at Beta, so they're excluded.</span></div>
+        </div>
+        <div class="ex-right">
+          <div class="codehead"><span class="eyebrow">SPARQL · runs on any SPARQL 1.1 store</span><button class="copy" type="button" data-copy="c1">Copy</button></div>
+<pre id="c1">SELECT ?eq WHERE {
+  ?eq a/rdfs:subClassOf* ogkg:HeatExchanger ;
+      ogkg:partOf+ alpha:SITE-ALPHA .
+}</pre>
+          <div class="codehead"><span class="eyebrow">With an OWL-RL reasoner switched on</span></div>
+<pre>SELECT ?eq WHERE {
+  ?eq a ogkg:HeatExchanger ;
+      ogkg:partOf alpha:SITE-ALPHA .
+}</pre>
+          <p class="muted" style="font-size:13px">The property graph can answer this too, but the query has to spell out the paths (<code>[:IS_A*]</code>, <code>[:PART_OF*]</code>). In the triplestore the meaning is built into the ontology.</p>
+        </div>
+      </div>
+
+      <!-- Ex 2 -->
+      <div class="ex" role="tabpanel" id="p2" aria-labelledby="t2" hidden>
+        <div class="ex-left">
+          <div class="q">“Which equipment is at risk when we run high-salt crude?”</div>
+          <p class="muted">Rule R-07 joins crude chemistry, unit topology and tube metallurgy. What it produces is a hypothesis, not a fact.</p>
+          <svg viewBox="0 0 600 270" role="img" aria-label="High-salt HSOB crude processed in CDU-1 flags carbon-steel E-101A and E-101B in the overhead system as at risk; titanium E-401A at Beta is not flagged.">
+            <defs>
+              <marker id="d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah"/></marker>
+              <marker id="dh" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah-hyp"/></marker>
+            </defs>
+            <rect x="20" y="20" width="170" height="44" rx="4" class="b-row"/>
+            <text x="105" y="39" text-anchor="middle" class="t-m">HSOB crude</text><text x="105" y="56" text-anchor="middle" class="t-s">salt 25 PTB  (&gt; 20)</text>
+            <rect x="290" y="20" width="130" height="44" rx="4" class="b-row"/><text x="355" y="47" text-anchor="middle" class="t-m">CDU-1</text>
+            <line x1="192" y1="42" x2="288" y2="42" class="l" marker-end="url(#d)"/><text x="240" y="34" text-anchor="middle" class="t-lab">processedIn</text>
+            <rect x="290" y="100" width="130" height="34" rx="4" class="b-row"/><text x="355" y="122" text-anchor="middle" class="t-m">Overhead system</text>
+            <line x1="355" y1="98" x2="355" y2="66" class="l" marker-end="url(#d)"/><text x="363" y="86" class="t-lab">partOf</text>
+            <rect x="215" y="180" width="115" height="42" rx="4" class="b-row"/><text x="272" y="198" text-anchor="middle" class="t-m">E-101A</text><text x="272" y="214" text-anchor="middle" class="t-s">carbon steel</text>
+            <rect x="345" y="180" width="115" height="42" rx="4" class="b-row"/><text x="402" y="198" text-anchor="middle" class="t-m">E-101B</text><text x="402" y="214" text-anchor="middle" class="t-s">carbon steel</text>
+            <line x1="285" y1="178" x2="330" y2="136" class="l" marker-end="url(#d)"/>
+            <line x1="395" y1="178" x2="375" y2="136" class="l" marker-end="url(#d)"/>
+            <text x="235" y="160" class="t-lab">partOf</text>
+            <rect x="480" y="92" width="110" height="60" rx="6" class="b-hyp"/>
+            <text x="535" y="112" text-anchor="middle" class="t" style="font-size:12px">Overhead</text><text x="535" y="128" text-anchor="middle" class="t" style="font-size:12px">chloride</text><text x="535" y="144" text-anchor="middle" class="t" style="font-size:12px">corrosion</text>
+            <path d="M460,196 C500,196 520,180 528,155" class="l-hyp" marker-end="url(#dh)"/>
+            <path d="M330,214 C420,250 520,240 540,155" class="l-hyp" marker-end="url(#dh)"/>
+            <text x="470" y="258" class="t-hyp">AT_RISK_OF ×2</text>
+            <rect x="20" y="180" width="170" height="42" rx="4" class="b-row"/><text x="105" y="198" text-anchor="middle" class="t-m">E-401A (Beta)</text><text x="105" y="214" text-anchor="middle" class="t-s">titanium tubes</text>
+            <text x="105" y="244" text-anchor="middle" class="t-bad">✕ no match: metallurgy</text>
+          </svg>
+          <div class="result hyp"><strong>Hypothesis lifecycle</strong>
+            <div class="flow" style="margin-top:6px"><span class="chip hyp">proposed · 0.8</span>→<span class="muted">corrosion engineer reviews</span>→<span class="chip ok">validated</span><span class="muted">or</span><span class="chip bad">rejected</span></div>
+            <p class="muted" style="font-size:12.5px;margin-top:6px">Once validated, the turnaround-scope insight picks it up automatically. Salt threshold and rule are illustrative.</p>
+          </div>
+        </div>
+        <div class="ex-right">
+          <div class="codehead"><span class="eyebrow">SPARQL CONSTRUCT · rule R-07</span><button class="copy" type="button" data-copy="c2">Copy</button></div>
+<pre id="c2">CONSTRUCT { ?eq ogkg:atRiskOf pattern:OverheadChlorideCorrosion . }
+WHERE {
+  ?camp ogkg:ofGrade ?g ; ogkg:processedIn ?unit .
+  ?g    ogkg:saltContent ?salt .  FILTER(?salt &gt; 20)
+  ?sec  ogkg:partOf ?unit ; a ogkg:OverheadSystem .
+  ?eq   ogkg:partOf ?sec ;
+        ogkg:tubeMetallurgy vocab:CarbonSteel .
+}</pre>
+          <div class="codehead"><span class="eyebrow">Written back to the property graph as a hypothesis edge</span></div>
+<pre>MATCH (e:Equipment {id:'E-101B'}),
+      (p:ProblemPattern {id:'OverheadChlorideCorrosion'})
+MERGE (e)-[h:AT_RISK_OF]-&gt;(p)
+SET h.status = 'proposed', h.confidence = 0.8,
+    h.inferred_by = 'R-07 (triplestore)',
+    h.run_id = '2026-09-30T02:00',
+    h.evidence = ['FL-002','IOW-002']</pre>
+        </div>
+      </div>
+
+      <!-- Ex 3 -->
+      <div class="ex" role="tabpanel" id="p3" aria-labelledby="t3" hidden>
+        <div class="ex-left">
+          <div class="q">“Is every pump complete enough for AI to reason about?”</div>
+          <p class="muted">A SHACL shape states what a complete pump record must contain. Run against the prototype, it finds a gap that was already there.</p>
+          <div class="tbl"><table>
+            <thead><tr><th>Pump</th><th>Model</th><th>Seal plan</th><th>Service temp</th><th>Result</th></tr></thead>
+            <tbody>
+              <tr><td>P-201A</td><td class="c yes">✓</td><td class="c yes">✓</td><td class="c yes">✓</td><td><span class="chip ok">conforms</span></td></tr>
+              <tr><td>P-201B</td><td class="c yes">✓</td><td class="c yes">✓</td><td class="c yes">✓</td><td><span class="chip ok">conforms</span></td></tr>
+              <tr><td>P-501</td><td class="c yes">✓</td><td class="c yes">✓</td><td class="c yes">✓</td><td><span class="chip ok">conforms</span></td></tr>
+              <tr><td>P-401A / P-401B / P-306</td><td class="c yes">✓</td><td class="c yes">✓</td><td class="c yes">✓</td><td><span class="chip ok">conforms</span></td></tr>
+              <tr><td><strong>P-103</strong> reflux pump</td><td class="c no">✕</td><td class="c no">✕</td><td class="c no">✕</td><td><span class="chip bad">3 violations</span></td></tr>
+            </tbody>
+          </table></div>
+          <div class="result"><strong>Why it matters:</strong> P-103 silently drops out of the bad-actor analysis. Without SHACL, an AI would give an incomplete fleet answer and nothing would flag it.</div>
+        </div>
+        <div class="ex-right">
+          <div class="codehead"><span class="eyebrow">SHACL shape</span><button class="copy" type="button" data-copy="c3">Copy</button></div>
+<pre id="c3">ogkg:PumpShape a sh:NodeShape ;
+  sh:targetClass ogkg:Pump ;
+  sh:property [ sh:path ogkg:model ;    sh:minCount 1 ] ;
+  sh:property [ sh:path ogkg:sealPlan ; sh:minCount 1 ] ;
+  sh:property [ sh:path ogkg:serviceTemperature ;
+                sh:minCount 1 ; sh:datatype xsd:decimal ] .</pre>
+          <div class="codehead"><span class="eyebrow">Validation report (excerpt)</span></div>
+<pre>[ a sh:ValidationResult ;
+  sh:focusNode    alpha:P-103 ;
+  sh:resultPath   ogkg:model ;
+  sh:resultSeverity sh:Violation ;
+  sh:resultMessage "Less than 1 value" ] .</pre>
+          <p class="muted" style="font-size:13px">The same shapes also gate incoming data. Nothing is promoted to the property graph until it conforms.</p>
+        </div>
+      </div>
+
+      <!-- Ex 4 -->
+      <div class="ex" role="tabpanel" id="p4" aria-labelledby="t4" hidden>
+        <div class="ex-left">
+          <div class="q">“Take in contractor data safely, and query a partner without copying their data.”</div>
+          <svg viewBox="0 0 600 220" role="img" aria-label="EPC CFIHOS data enters a staging graph, passes a SHACL gate and is promoted to the property graph; a partner's assay data is queried in place with a federated SPARQL SERVICE call.">
+            <defs>
+              <marker id="e" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah"/></marker>
+            </defs>
+            <rect x="10" y="26" width="120" height="50" rx="4" class="b-row"/><text x="70" y="46" text-anchor="middle" class="t-m">EPC contractor</text><text x="70" y="63" text-anchor="middle" class="t-s">CFIHOS as RDF</text>
+            <rect x="170" y="26" width="130" height="50" rx="4" class="b-tri"/><text x="235" y="46" text-anchor="middle" class="t-m">staging graph</text><text x="235" y="63" text-anchor="middle" class="t-s">epc-hu2</text>
+            <line x1="132" y1="51" x2="168" y2="51" class="l" marker-end="url(#e)"/>
+            <polygon points="365,21 395,51 365,81 335,51" class="b-sem"/><text x="365" y="55" text-anchor="middle" class="t-m" style="font-size:10.5px">SHACL</text>
+            <line x1="302" y1="51" x2="333" y2="51" class="l" marker-end="url(#e)"/>
+            <rect x="440" y="26" width="150" height="50" rx="4" class="b-lpg"/><text x="515" y="46" text-anchor="middle" class="t-m">property graph</text><text x="515" y="63" text-anchor="middle" class="t-s">promoted when valid</text>
+            <line x1="397" y1="51" x2="438" y2="51" class="l" marker-end="url(#e)"/><text x="418" y="43" text-anchor="middle" class="t-lab">pass</text>
+            <line x1="365" y1="83" x2="365" y2="112" class="l" marker-end="url(#e)"/><text x="373" y="104" class="t-bad">fail → report to EPC</text>
+            <rect x="10" y="150" width="170" height="50" rx="4" class="b-row"/><text x="95" y="170" text-anchor="middle" class="t-m">JV partner endpoint</text><text x="95" y="187" text-anchor="middle" class="t-s">assays stay with partner</text>
+            <rect x="260" y="150" width="190" height="50" rx="4" class="b-tri"/><text x="355" y="170" text-anchor="middle" class="t-m">our triplestore</text><text x="355" y="187" text-anchor="middle" class="t-s">SERVICE &lt;partner&gt;</text>
+            <line x1="258" y1="175" x2="182" y2="175" class="l" marker-start="url(#e)" marker-end="url(#e)"/><text x="220" y="167" text-anchor="middle" class="t-lab">federated</text>
+          </svg>
+          <div class="tbl"><table>
+            <thead><tr><th>Named graph</th><th>Holds</th><th>Lifecycle</th></tr></thead>
+            <tbody>
+              <tr><td><code>urn:ogkg:ontology:v0.2</code></td><td>OWL, SHACL, SKOS</td><td>Replaced on each release</td></tr>
+              <tr><td><code>urn:ogkg:data:alpha</code></td><td>Alpha instance data mirrored from the property graph</td><td>Synced on change</td></tr>
+              <tr><td><code>urn:ogkg:inferred:2026-09-30</code></td><td>Rule output</td><td>Dropped and recomputed each run</td></tr>
+              <tr><td><code>urn:ogkg:staging:epc-hu2</code></td><td>Contractor handover</td><td>Deleted once promoted</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+        <div class="ex-right">
+          <div class="codehead"><span class="eyebrow">Federated SPARQL: the data stays with the partner</span><button class="copy" type="button" data-copy="c4">Copy</button></div>
+<pre id="c4">SELECT ?grade ?tan WHERE {
+  SERVICE &lt;https://partner.example/sparql&gt; {
+    ?grade ogkg:tan ?tan .
+  }
+}</pre>
+          <div class="codehead"><span class="eyebrow">Recompute inferences safely</span></div>
+<pre>DROP GRAPH &lt;urn:ogkg:inferred:2026-09-29&gt; ;
+# rerun rules R-01 … R-nn into
+#   &lt;urn:ogkg:inferred:2026-09-30&gt;</pre>
+          <p class="muted" style="font-size:13px">Global IRIs let two companies refer to the same crude grade or equipment class. A property graph's local IDs can't do that across organisations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ROUTING ============ -->
+  <section>
+    <h2>Which store answers which question</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Question</th><th>Answered in</th><th>Why there</th></tr></thead>
+      <tbody>
+        <tr><td>All rotating equipment at Alpha without a seal plan</td><td><span class="store s-tri">triplestore</span></td><td>Class inference + SHACL</td></tr>
+        <tr><td>Is E-401A at risk if Beta runs HSOB?</td><td><span class="store s-both">triplestore → property graph</span></td><td>Rule over the ontology, result stored as a hypothesis</td></tr>
+        <tr><td>Send partner X our export crude assays in standard form</td><td><span class="store s-tri">triplestore</span></td><td>Global IRIs, SPARQL endpoint, open standard</td></tr>
+        <tr><td>Did the opportunity crudes make money after asset consequences?</td><td><span class="store s-lpg">property graph</span></td><td>Multi-hop traversal over events at scale</td></tr>
+        <tr><td>Context pack for P-201A for the copilot</td><td><span class="store s-lpg">property graph</span> + vector index</td><td>Fast neighbourhood + document chunks</td></tr>
+        <tr><td>Which pumps share the failed pump's DNA?</td><td><span class="store s-lpg">property graph</span></td><td>Similarity and community algorithms</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <h2>Three rules that keep the stores in step</h2>
+    <div class="rules">
+      <div class="rule"><span class="n">RULE 1</span><h3>One writer per kind of data</h3><p class="muted">Source systems write to the property graph. The ontology is written only in git. Rules write only hypothesis edges.</p></div>
+      <div class="rule"><span class="n">RULE 2</span><h3>Mirror selectively</h3><p class="muted">Entities, relations and facts go to the triplestore. Time series, raw logs and document text do not.</p></div>
+      <div class="rule"><span class="n">RULE 3</span><h3>Recompute inferences, never edit them</h3><p class="muted">Drop the inferred graph and rerun the rules. Stable IRIs make that safe, and every hypothesis edge records the run that made it.</p></div>
+    </div>
+  </section>
+</div>
+
+<script>
+(function(){
+  const tabs=[...document.querySelectorAll('.tab')];
+  function select(t){
+    tabs.forEach(x=>{const on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;document.getElementById(x.getAttribute('aria-controls')).hidden=!on;});
+    try{localStorage.setItem('ogkg-sb-tab',t.id);}catch(e){}
+  }
+  tabs.forEach((t,i)=>{
+    t.addEventListener('click',()=>select(t));
+    t.addEventListener('keydown',e=>{ if(e.key==='ArrowRight'||e.key==='ArrowLeft'){ const n=tabs[(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length]; select(n); n.focus(); }});
+  });
+  try{const saved=localStorage.getItem('ogkg-sb-tab'); const t=saved&&document.getElementById(saved); if(t) select(t);}catch(e){}
+  document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',async()=>{
+    const el=document.getElementById(b.dataset.copy);
+    try{await navigator.clipboard.writeText(el.textContent);b.textContent='Copied';}
+    catch(e){const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected';}
+    setTimeout(()=>b.textContent='Copy',1600);
+  }));
+})();
+</script>

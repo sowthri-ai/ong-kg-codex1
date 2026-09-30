@@ -1,0 +1,5 @@
+# Prototype runtime
+mcp>=1.2
+# Phase 1 (ontology compiler, SHACL validation) — install when that work starts
+# rdflib>=7.0
+# pyshacl>=0.26

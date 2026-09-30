@@ -1,0 +1,105 @@
+@prefix vocab: <https://example.org/ogkg/vocab#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+
+# =============================================================================
+#  OGKG controlled vocabularies (SKOS). Classification tags are never free text.
+# =============================================================================
+
+<https://example.org/ogkg/vocab> a owl:Ontology ; rdfs:label "OGKG vocabularies" ; owl:versionInfo "0.2.0" .
+
+# --- Facets (B2)
+vocab:FacetScheme a skos:ConceptScheme ; skos:prefLabel "Facets"@en .
+vocab:IdentityFacet    a skos:Concept ; skos:inScheme vocab:FacetScheme ; skos:prefLabel "Identity"@en ; skos:definition "Names, tags, aliases and external IDs."@en .
+vocab:LineageFacet     a skos:Concept ; skos:inScheme vocab:FacetScheme ; skos:prefLabel "Lineage"@en ; skos:definition "Path from L0 along PART_OF."@en .
+vocab:DesignFacet      a skos:Concept ; skos:inScheme vocab:FacetScheme ; skos:prefLabel "Type & design"@en .
+vocab:LocationFacet    a skos:Concept ; skos:inScheme vocab:FacetScheme ; skos:prefLabel "Location"@en .
+vocab:EnterpriseFacet  a skos:Concept ; skos:inScheme vocab:FacetScheme ; skos:prefLabel "Enterprise"@en .
+vocab:ProcessFacet     a skos:Concept ; skos:inScheme vocab:FacetScheme ; skos:prefLabel "Process & decisions"@en .
+vocab:ApplicationFacet a skos:Concept ; skos:inScheme vocab:FacetScheme ; skos:prefLabel "Application"@en .
+vocab:PerformanceFacet a skos:Concept ; skos:inScheme vocab:FacetScheme ; skos:prefLabel "Performance (KPI / KPF)"@en .
+vocab:FlowFacet        a skos:Concept ; skos:inScheme vocab:FacetScheme ; skos:prefLabel "Material & flow"@en .
+vocab:PhysicsFacet     a skos:Concept ; skos:inScheme vocab:FacetScheme ; skos:prefLabel "Physics"@en .
+vocab:EconomicsFacet   a skos:Concept ; skos:inScheme vocab:FacetScheme ; skos:prefLabel "Economics"@en .
+vocab:ProblemsFacet    a skos:Concept ; skos:inScheme vocab:FacetScheme ; skos:prefLabel "Problems & events"@en .
+vocab:KnowledgeFacet   a skos:Concept ; skos:inScheme vocab:FacetScheme ; skos:prefLabel "Knowledge"@en .
+
+# --- DNA channels (B4)
+vocab:DnaChannelScheme a skos:ConceptScheme ; skos:prefLabel "DNA channels"@en .
+vocab:LineageChannel  a skos:Concept ; skos:inScheme vocab:DnaChannelScheme ; skos:prefLabel "Lineage"@en ; skos:definition "Inherited along PART_OF."@en .
+vocab:TypeChannel     a skos:Concept ; skos:inScheme vocab:DnaChannelScheme ; skos:prefLabel "Type"@en ; skos:definition "Inherited along IS_A and OF_MODEL."@en .
+vocab:ExposureChannel a skos:Concept ; skos:inScheme vocab:DnaChannelScheme ; skos:prefLabel "Exposure"@en ; skos:definition "Inherited along material flow, time-bound."@en .
+
+# --- Value status returned by the resolver (B2.6 F4)
+vocab:ValueStatusScheme a skos:ConceptScheme ; skos:prefLabel "Value status"@en .
+vocab:Own        a skos:Concept ; skos:inScheme vocab:ValueStatusScheme ; skos:prefLabel "own"@en .
+vocab:Inherited  a skos:Concept ; skos:inScheme vocab:ValueStatusScheme ; skos:prefLabel "inherited"@en .
+vocab:Derived    a skos:Concept ; skos:inScheme vocab:ValueStatusScheme ; skos:prefLabel "derived"@en .
+vocab:Hypothesis a skos:Concept ; skos:inScheme vocab:ValueStatusScheme ; skos:prefLabel "hypothesis"@en .
+
+# --- Fact confidence and method (B5.3)
+vocab:ConfidenceScheme a skos:ConceptScheme ; skos:prefLabel "Confidence"@en .
+vocab:High   a skos:Concept ; skos:inScheme vocab:ConfidenceScheme ; skos:prefLabel "high"@en .
+vocab:Medium a skos:Concept ; skos:inScheme vocab:ConfidenceScheme ; skos:prefLabel "medium"@en .
+vocab:Low    a skos:Concept ; skos:inScheme vocab:ConfidenceScheme ; skos:prefLabel "low"@en .
+
+vocab:MethodScheme a skos:ConceptScheme ; skos:prefLabel "Fact method"@en .
+vocab:Measured   a skos:Concept ; skos:inScheme vocab:MethodScheme ; skos:prefLabel "measured"@en .
+vocab:Recorded   a skos:Concept ; skos:inScheme vocab:MethodScheme ; skos:prefLabel "recorded"@en .
+vocab:Calculated a skos:Concept ; skos:inScheme vocab:MethodScheme ; skos:prefLabel "calculated"@en .
+vocab:Declared   a skos:Concept ; skos:inScheme vocab:MethodScheme ; skos:prefLabel "declared"@en .
+vocab:Indicative a skos:Concept ; skos:inScheme vocab:MethodScheme ; skos:prefLabel "indicative"@en ; skos:scopeNote "Public typical values; not contract-grade."@en .
+vocab:Assumption a skos:Concept ; skos:inScheme vocab:MethodScheme ; skos:prefLabel "assumption"@en ; skos:scopeNote "Replace with a site value before decisions."@en .
+
+# --- Hypothesis status (B6.4)
+vocab:HypothesisStatusScheme a skos:ConceptScheme ; skos:prefLabel "Hypothesis status"@en .
+vocab:Proposed  a skos:Concept ; skos:inScheme vocab:HypothesisStatusScheme ; skos:prefLabel "proposed"@en .
+vocab:Validated a skos:Concept ; skos:inScheme vocab:HypothesisStatusScheme ; skos:prefLabel "validated"@en .
+vocab:Rejected  a skos:Concept ; skos:inScheme vocab:HypothesisStatusScheme ; skos:prefLabel "rejected"@en .
+
+# --- Service classification tags (B5.5)
+vocab:ServiceClassScheme a skos:ConceptScheme ; skos:prefLabel "Service classification"@en .
+vocab:HotService     a skos:Concept ; skos:inScheme vocab:ServiceClassScheme ; skos:prefLabel "hot service"@en ; skos:scopeNote "Band threshold set per client; demo uses 340 degC."@en .
+vocab:SourService    a skos:Concept ; skos:inScheme vocab:ServiceClassScheme ; skos:prefLabel "sour service"@en .
+vocab:SafetyCritical a skos:Concept ; skos:inScheme vocab:ServiceClassScheme ; skos:prefLabel "safety-critical"@en .
+vocab:CriticalityA   a skos:Concept ; skos:inScheme vocab:ServiceClassScheme ; skos:prefLabel "criticality A"@en .
+vocab:CriticalityB   a skos:Concept ; skos:inScheme vocab:ServiceClassScheme ; skos:prefLabel "criticality B"@en .
+vocab:CriticalityC   a skos:Concept ; skos:inScheme vocab:ServiceClassScheme ; skos:prefLabel "criticality C"@en .
+
+# --- Metallurgy and seal plans (design facet)
+vocab:MetallurgyScheme a skos:ConceptScheme ; skos:prefLabel "Metallurgy"@en .
+vocab:CarbonSteel a skos:Concept ; skos:inScheme vocab:MetallurgyScheme ; skos:prefLabel "carbon steel"@en .
+vocab:Cr5         a skos:Concept ; skos:inScheme vocab:MetallurgyScheme ; skos:prefLabel "5Cr-0.5Mo"@en .
+vocab:SS316       a skos:Concept ; skos:inScheme vocab:MetallurgyScheme ; skos:prefLabel "316 stainless steel"@en .
+vocab:Titanium    a skos:Concept ; skos:inScheme vocab:MetallurgyScheme ; skos:prefLabel "titanium"@en .
+
+vocab:SealPlanScheme a skos:ConceptScheme ; skos:prefLabel "API 682 seal plans"@en .
+vocab:Plan32  a skos:Concept ; skos:inScheme vocab:SealPlanScheme ; skos:prefLabel "Plan 32 (single seal, external flush)"@en .
+vocab:Plan53B a skos:Concept ; skos:inScheme vocab:SealPlanScheme ; skos:prefLabel "Plan 53B (dual pressurised, bladder accumulator)"@en .
+
+# --- KPI tier and aggregation (B2.4)
+vocab:KpiTierScheme a skos:ConceptScheme ; skos:prefLabel "KPI tier"@en .
+vocab:Strategic   a skos:Concept ; skos:inScheme vocab:KpiTierScheme ; skos:prefLabel "strategic"@en .
+vocab:Tactical    a skos:Concept ; skos:inScheme vocab:KpiTierScheme ; skos:prefLabel "tactical"@en .
+vocab:Operational a skos:Concept ; skos:inScheme vocab:KpiTierScheme ; skos:prefLabel "operational"@en .
+
+vocab:AggregationScheme a skos:ConceptScheme ; skos:prefLabel "Aggregation rule"@en .
+vocab:Sum              a skos:Concept ; skos:inScheme vocab:AggregationScheme ; skos:prefLabel "sum"@en .
+vocab:CapacityWeighted a skos:Concept ; skos:inScheme vocab:AggregationScheme ; skos:prefLabel "capacity-weighted mean"@en .
+vocab:TimeWeighted     a skos:Concept ; skos:inScheme vocab:AggregationScheme ; skos:prefLabel "time-weighted mean"@en .
+vocab:PooledRate       a skos:Concept ; skos:inScheme vocab:AggregationScheme ; skos:prefLabel "pooled rate (e.g. MTBF = unit-days / failures)"@en .
+vocab:Minimum          a skos:Concept ; skos:inScheme vocab:AggregationScheme ; skos:prefLabel "minimum"@en .
+
+# --- Inheritance rules for bindings (B4)
+vocab:InheritanceScheme a skos:ConceptScheme ; skos:prefLabel "Inheritance rule"@en .
+vocab:InheritDown a skos:Concept ; skos:inScheme vocab:InheritanceScheme ; skos:prefLabel "inherit down"@en .
+vocab:NoInherit   a skos:Concept ; skos:inScheme vocab:InheritanceScheme ; skos:prefLabel "no inheritance"@en .
+vocab:RollUp      a skos:Concept ; skos:inScheme vocab:InheritanceScheme ; skos:prefLabel "roll up"@en .
+
+# --- Sensitivity (C6)
+vocab:SensitivityScheme a skos:ConceptScheme ; skos:prefLabel "Sensitivity"@en .
+vocab:Public     a skos:Concept ; skos:inScheme vocab:SensitivityScheme ; skos:prefLabel "public"@en .
+vocab:Internal   a skos:Concept ; skos:inScheme vocab:SensitivityScheme ; skos:prefLabel "internal"@en .
+vocab:Restricted a skos:Concept ; skos:inScheme vocab:SensitivityScheme ; skos:prefLabel "restricted"@en ; skos:scopeNote "Filtered from context packs unless the caller is entitled."@en .
+vocab:Licensed   a skos:Concept ; skos:inScheme vocab:SensitivityScheme ; skos:prefLabel "licensed third-party"@en .

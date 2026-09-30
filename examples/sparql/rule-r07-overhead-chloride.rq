@@ -1,0 +1,18 @@
+# Handbook C4.3 / B6 — Rule R-07 (thresholds illustrative)
+# High-salt crude processed in a unit + carbon-steel equipment in that unit's overhead system
+#   => equipment AT RISK of overhead chloride corrosion.
+# Output goes to named graph urn:ogkg:inferred:<run>, then to the property graph as
+# AT_RISK_OF edges with status 'proposed' (see examples/cypher/hypothesis-writeback.cypher).
+# Expected on demo data: E-101A, E-101B. E-401A (titanium) is not flagged.
+PREFIX ogkg:    <https://example.org/ogkg/core#>
+PREFIX vocab:   <https://example.org/ogkg/vocab#>
+PREFIX pattern: <https://example.org/ogkg/ref/pattern#>
+
+CONSTRUCT { ?eq ogkg:atRiskOf pattern:OverheadChlorideCorrosion . }
+WHERE {
+  ?camp ogkg:ofGrade ?g ; ogkg:processedIn ?unit .
+  ?g    ogkg:saltContent ?salt .  FILTER(?salt > 20)
+  ?sec  ogkg:partOf ?unit ; a ogkg:OverheadSystem .
+  ?eq   ogkg:partOf ?sec ;
+        ogkg:tubeMetallurgy vocab:CarbonSteel .
+}

@@ -1,0 +1,83 @@
+@prefix ogkg: <https://example.org/og-vckg#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+
+ogkg: a owl:Ontology ; rdfs:label "O&G Value Chain Knowledge Graph ontology" .
+
+ogkg:Level a owl:Class .
+ogkg:Fact a owl:Class ; rdfs:subClassOf prov:Entity .
+ogkg:level a owl:DatatypeProperty .
+ogkg:spine a owl:DatatypeProperty .
+
+ogkg:AssetSpineNode a owl:Class .
+ogkg:Industry a owl:Class ; rdfs:subClassOf ogkg:AssetSpineNode ; rdfs:comment "Oil & Gas" ; ogkg:level 0 ; ogkg:alignedTo "ISO 14224 L1" .
+ogkg:Segment a owl:Class ; rdfs:subClassOf ogkg:AssetSpineNode ; rdfs:comment "Upstream / Midstream / Downstream" ; ogkg:level 1 ; ogkg:alignedTo "ISO 14224 L2" .
+ogkg:BusinessCategory a owl:Class ; rdfs:subClassOf ogkg:AssetSpineNode ; rdfs:comment "Refining, Petrochemicals, E&P, Pipelines & Terminals" ; ogkg:level 2 ; ogkg:alignedTo "ISO 14224 L2/L3" .
+ogkg:Installation a owl:Class ; rdfs:subClassOf ogkg:AssetSpineNode ; rdfs:comment "Refinery, field, terminal (site)" ; ogkg:level 3 ; ogkg:alignedTo "ISO 14224 L3" .
+ogkg:PlantUnit a owl:Class ; rdfs:subClassOf ogkg:AssetSpineNode ; rdfs:comment "Process unit: CDU, VDU, FCC, Reformer, Blender" ; ogkg:level 4 ; ogkg:alignedTo "ISO 14224 L4" .
+ogkg:SectionSystem a owl:Class ; rdfs:subClassOf ogkg:AssetSpineNode ; rdfs:comment "Section / system: overhead, preheat, resid system" ; ogkg:level 5 ; ogkg:alignedTo "ISO 14224 L5" .
+ogkg:EquipmentUnit a owl:Class ; rdfs:subClassOf ogkg:AssetSpineNode ; rdfs:comment "Equipment: pump, exchanger, vessel, piping circuit" ; ogkg:level 6 ; ogkg:alignedTo "ISO 14224 L6" .
+ogkg:Subunit a owl:Class ; rdfs:subClassOf ogkg:AssetSpineNode ; rdfs:comment "Subunit: seal system, tube bundle, bearing housing" ; ogkg:level 7 ; ogkg:alignedTo "ISO 14224 L7" .
+ogkg:MaintainableItem a owl:Class ; rdfs:subClassOf ogkg:AssetSpineNode ; rdfs:comment "Maintainable item: mechanical seal, tubes, bearing" ; ogkg:level 8 ; ogkg:alignedTo "ISO 14224 L8" .
+ogkg:Part a owl:Class ; rdfs:subClassOf ogkg:AssetSpineNode ; rdfs:comment "Part: seal face, O-ring" ; ogkg:level 9 ; ogkg:alignedTo "ISO 14224 L9" .
+ogkg:DataPoint a owl:Class ; rdfs:subClassOf ogkg:AssetSpineNode ; rdfs:comment "Sensor tag, LIMS result, calculated KPI (time series)" ; ogkg:level 10 ; ogkg:alignedTo "Extension (ISA-95 L1/L2)" .
+ogkg:ProcessSpineNode a owl:Class .
+ogkg:Industry a owl:Class ; rdfs:subClassOf ogkg:ProcessSpineNode ; rdfs:comment "Oil & Gas" ; ogkg:level 0 ; ogkg:alignedTo "Shared trunk" .
+ogkg:Segment a owl:Class ; rdfs:subClassOf ogkg:ProcessSpineNode ; rdfs:comment "Upstream / Midstream / Downstream" ; ogkg:level 1 ; ogkg:alignedTo "Shared trunk" .
+ogkg:ValueStream a owl:Class ; rdfs:subClassOf ogkg:ProcessSpineNode ; rdfs:comment "Crude-to-Product, Plan-to-Maintain" ; ogkg:level 2 ; ogkg:alignedTo "APQC-style L1" .
+ogkg:ProcessGroup a owl:Class ; rdfs:subClassOf ogkg:ProcessSpineNode ; rdfs:comment "Crude supply, planning, operations, integrity" ; ogkg:level 3 ; ogkg:alignedTo "APQC-style L2" .
+ogkg:Process a owl:Class ; rdfs:subClassOf ogkg:ProcessSpineNode ; rdfs:comment "Crude selection, LP planning, blending, IOW management" ; ogkg:level 4 ; ogkg:alignedTo "APQC-style L3" .
+ogkg:SubProcess a owl:Class ; rdfs:subClassOf ogkg:ProcessSpineNode ; rdfs:comment "Assay evaluation, recipe optimisation" ; ogkg:level 5 ; ogkg:alignedTo "APQC-style L4" .
+ogkg:Activity a owl:Class ; rdfs:subClassOf ogkg:ProcessSpineNode ; rdfs:comment "Screen contaminants, optimise recipe" ; ogkg:level 6 ; ogkg:alignedTo "APQC-style L5" .
+ogkg:Task a owl:Class ; rdfs:subClassOf ogkg:ProcessSpineNode ; rdfs:comment "Check TAN/salt vs limits, update component qualities" ; ogkg:level 7 ; ogkg:alignedTo "Task" .
+ogkg:DecisionPoint a owl:Class ; rdfs:subClassOf ogkg:ProcessSpineNode ; rdfs:comment "Accept crude, release recipe, freeze TA scope" ; ogkg:level 8 ; ogkg:alignedTo "Decision / control point" .
+ogkg:DataObject a owl:Class ; rdfs:subClassOf ogkg:ProcessSpineNode ; rdfs:comment "Assay, LP case, blend recipe, IOW register" ; ogkg:level 9 ; ogkg:alignedTo "Business object" .
+ogkg:DataElement a owl:Class ; rdfs:subClassOf ogkg:ProcessSpineNode ; rdfs:comment "TAN, chloride ppm, reformate RON" ; ogkg:level 10 ; ogkg:alignedTo "Data element / fact" .
+ogkg:CrudeGrade a owl:Class ; ogkg:contextGroup "material" .
+ogkg:CrudeCampaign a owl:Class ; ogkg:contextGroup "material" .
+ogkg:Stream a owl:Class ; ogkg:contextGroup "material" .
+ogkg:Product a owl:Class ; ogkg:contextGroup "material" .
+ogkg:Market a owl:Class ; ogkg:contextGroup "material" .
+ogkg:IOWExceedance a owl:Class ; ogkg:contextGroup "event" .
+ogkg:Failure a owl:Class ; ogkg:contextGroup "event" .
+ogkg:WorkOrder a owl:Class ; ogkg:contextGroup "event" .
+ogkg:Turnaround a owl:Class ; ogkg:contextGroup "event" .
+ogkg:ScopeItem a owl:Class ; ogkg:contextGroup "event" .
+ogkg:Role a owl:Class ; ogkg:contextGroup "org" .
+ogkg:PART_OF a owl:ObjectProperty ; rdfs:comment "child -> parent within a spine (level strictly decreasing)" .
+ogkg:ACTS_ON a owl:ObjectProperty ; rdfs:comment "process-spine node -> asset-spine node it operates on" .
+ogkg:GOVERNS a owl:ObjectProperty ; rdfs:comment "decision point (L8) -> asset it controls" .
+ogkg:INSTANTIATED_BY a owl:ObjectProperty ; rdfs:comment "process data element (L10) -> asset data point (L10) that measures it" .
+ogkg:CONSUMES a owl:ObjectProperty ; rdfs:comment "decision point (L8) -> data element it uses as input" .
+ogkg:OWNED_BY a owl:ObjectProperty ; rdfs:comment "process / data element -> accountable role" .
+ogkg:OF_GRADE a owl:ObjectProperty ; rdfs:comment "campaign -> crude grade" .
+ogkg:DELIVERED_VIA a owl:ObjectProperty ; rdfs:comment "campaign -> terminal / installation" .
+ogkg:PRODUCED_AT a owl:ObjectProperty ; rdfs:comment "crude grade -> producing installation" .
+ogkg:PROCESSED_IN a owl:ObjectProperty ; rdfs:comment "campaign -> plant unit" .
+ogkg:PRODUCES a owl:ObjectProperty ; rdfs:comment "plant unit -> stream" .
+ogkg:FEEDS a owl:ObjectProperty ; rdfs:comment "stream -> plant unit" .
+ogkg:COMPONENT_OF a owl:ObjectProperty ; rdfs:comment "stream -> product" .
+ogkg:SOLD_TO a owl:ObjectProperty ; rdfs:comment "product -> market" .
+ogkg:BLENDED_AT a owl:ObjectProperty ; rdfs:comment "product -> blending unit" .
+ogkg:SUPPLIES a owl:ObjectProperty ; rdfs:comment "installation -> installation (e.g. field/terminal -> refinery)" .
+ogkg:ON_DATAPOINT a owl:ObjectProperty ; rdfs:comment "IOW exceedance -> data point" .
+ogkg:FAILURE_OF a owl:ObjectProperty ; rdfs:comment "failure -> equipment / item" .
+ogkg:REMEDIATES a owl:ObjectProperty ; rdfs:comment "work order -> failure" .
+ogkg:AT_SITE a owl:ObjectProperty ; rdfs:comment "turnaround -> installation" .
+ogkg:IN_SCOPE_OF a owl:ObjectProperty ; rdfs:comment "scope item -> turnaround" .
+ogkg:TARGETS a owl:ObjectProperty ; rdfs:comment "scope item -> equipment" .
+ogkg:PART_OF a owl:TransitiveProperty .
+ogkg:subject a owl:DatatypeProperty ; rdfs:domain ogkg:Fact .
+ogkg:predicate a owl:DatatypeProperty ; rdfs:domain ogkg:Fact .
+ogkg:value a owl:DatatypeProperty ; rdfs:domain ogkg:Fact .
+ogkg:unit a owl:DatatypeProperty ; rdfs:domain ogkg:Fact .
+ogkg:asOf a owl:DatatypeProperty ; rdfs:domain ogkg:Fact .
+ogkg:sourceSystem a owl:DatatypeProperty ; rdfs:domain ogkg:Fact .
+ogkg:sourceRef a owl:DatatypeProperty ; rdfs:domain ogkg:Fact .
+ogkg:owner a owl:DatatypeProperty ; rdfs:domain ogkg:Fact .
+ogkg:confidence a owl:DatatypeProperty ; rdfs:domain ogkg:Fact .
+ogkg:method a owl:DatatypeProperty ; rdfs:domain ogkg:Fact .
+ogkg:derivedFrom rdfs:subPropertyOf prov:wasDerivedFrom .

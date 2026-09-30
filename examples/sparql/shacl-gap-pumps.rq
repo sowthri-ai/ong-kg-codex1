@@ -1,0 +1,11 @@
+# Handbook C4.5 — the PumpShape check as a plain query (for stores without a SHACL engine)
+# Expected on demo data: P-103 (missing model, seal plan and service temperature)
+PREFIX ogkg: <https://example.org/ogkg/core#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT ?pump ?missing WHERE {
+  ?pump a/rdfs:subClassOf* ogkg:Pump .
+  VALUES (?p ?missing) { (ogkg:ofModel "model") (ogkg:sealPlan "seal plan") (ogkg:serviceTemperature "service temperature") }
+  FILTER NOT EXISTS { ?pump ?p ?any }
+}
+ORDER BY ?pump

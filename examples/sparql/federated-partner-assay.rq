@@ -1,0 +1,8 @@
+# Handbook C3.4 — query a JV partner's assay data in place (no copy)
+PREFIX ogkg: <https://example.org/ogkg/core#>
+
+SELECT ?grade ?tan WHERE {
+  SERVICE <https://partner.example/sparql> {
+    ?grade a ogkg:CrudeGrade ; ogkg:tan ?tan .
+  }
+}

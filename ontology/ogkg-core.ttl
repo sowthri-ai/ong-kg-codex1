@@ -1,0 +1,376 @@
+@prefix ogkg:    <https://example.org/ogkg/core#> .
+@prefix vocab:   <https://example.org/ogkg/vocab#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix qudt:    <http://qudt.org/schema/qudt/> .
+
+# =============================================================================
+#  OGKG core ontology — Oil & Gas Value Chain Knowledge Graph
+#  Namespace https://example.org/ogkg/ is a placeholder until the production
+#  namespace is decided (handbook E4, decision 5).
+#  Profile: kept within OWL 2 RL constructs (handbook C4.1).
+# =============================================================================
+
+<https://example.org/ogkg/core>
+    a owl:Ontology ;
+    rdfs:label "OGKG core ontology" ;
+    owl:versionInfo "0.2.0" ;
+    dcterms:created "2026-09-30"^^xsd:date ;
+    dcterms:description "Dual-spine L0-L10 model of the O&G value chain with backbones, facets, DNA inheritance, facts with provenance, problems and governed hypotheses." ;
+    rdfs:comment "Proprietary. Synthetic reference only. See LICENSE." .
+
+# -----------------------------------------------------------------------------
+#  Annotation properties used by the compiler and the DNA resolver (C2, B4)
+# -----------------------------------------------------------------------------
+ogkg:levelNumber   a owl:AnnotationProperty ; rdfs:comment "L-level (0-10) of a spine class." .
+ogkg:alignedTo     a owl:AnnotationProperty ; rdfs:comment "External standard the class or property aligns to." .
+ogkg:facet         a owl:AnnotationProperty ; rdfs:comment "Facet (vocab:FacetScheme concept) a property belongs to." .
+ogkg:dnaChannel    a owl:AnnotationProperty ; rdfs:comment "DNA channel along which the property inherits (vocab:DnaChannelScheme)." .
+ogkg:inheritable   a owl:AnnotationProperty ; rdfs:comment "true if descendants on the channel inherit the value." .
+ogkg:overridable   a owl:AnnotationProperty ; rdfs:comment "true if a descendant's own value overrides the inherited one." .
+ogkg:lpgType       a owl:AnnotationProperty ; rdfs:comment "Relationship type name in the property graph (C2)." .
+
+# -----------------------------------------------------------------------------
+#  Upper partition (aligned to BFO / IOF Core)
+# -----------------------------------------------------------------------------
+ogkg:Entity            a owl:Class ; rdfs:label "Entity" .
+ogkg:PhysicalAsset     a owl:Class ; rdfs:subClassOf ogkg:Entity ; ogkg:alignedTo "BFO material entity" .
+ogkg:ProcessElement    a owl:Class ; rdfs:subClassOf ogkg:Entity ; ogkg:alignedTo "IOF business process / plan specification" .
+ogkg:MaterialItem      a owl:Class ; rdfs:subClassOf ogkg:Entity ; rdfs:comment "Crude grades, campaigns, streams, products, markets." .
+ogkg:Event             a owl:Class ; rdfs:subClassOf ogkg:Entity ; ogkg:alignedTo "BFO occurrent" .
+ogkg:InformationObject a owl:Class ; rdfs:subClassOf ogkg:Entity ; ogkg:alignedTo "IAO information content entity" .
+ogkg:Agent             a owl:Class ; rdfs:subClassOf ogkg:Entity ; ogkg:alignedTo "W3C ORG / PROV agent" .
+ogkg:Location          a owl:Class ; rdfs:subClassOf ogkg:Entity ; ogkg:alignedTo "GeoSPARQL feature" .
+ogkg:Grouping          a owl:Class ; rdfs:subClassOf ogkg:Entity ; rdfs:comment "Target of dotted-branch MEMBER_OF links (B3)." .
+ogkg:PhysicsElement    a owl:Class ; rdfs:subClassOf ogkg:InformationObject .
+ogkg:EconomicElement   a owl:Class ; rdfs:subClassOf ogkg:InformationObject .
+ogkg:ProblemElement    a owl:Class ; rdfs:subClassOf ogkg:InformationObject .
+
+# -----------------------------------------------------------------------------
+#  Levels
+# -----------------------------------------------------------------------------
+ogkg:Level a owl:Class ; rdfs:label "Hierarchy level" .
+ogkg:L0  a ogkg:Level ; rdfs:label "L0 Domain" .
+ogkg:L1  a ogkg:Level ; rdfs:label "L1 Segment" .
+ogkg:L2  a ogkg:Level ; rdfs:label "L2 Line of business" .
+ogkg:L3  a ogkg:Level ; rdfs:label "L3 Operating entity / capability" .
+ogkg:L4  a ogkg:Level ; rdfs:label "L4 Production unit / process" .
+ogkg:L5  a ogkg:Level ; rdfs:label "L5 Functional block" .
+ogkg:L6  a ogkg:Level ; rdfs:label "L6 Equipment / activity" .
+ogkg:L7  a ogkg:Level ; rdfs:label "L7 Component / task" .
+ogkg:L8  a ogkg:Level ; rdfs:label "L8 Maintainable item / decision" .
+ogkg:L9  a ogkg:Level ; rdfs:label "L9 Part / information object" .
+ogkg:L10 a ogkg:Level ; rdfs:label "L10 Data point / data element" .
+
+# -----------------------------------------------------------------------------
+#  Spines (B1)
+# -----------------------------------------------------------------------------
+ogkg:SpineNode        a owl:Class ; rdfs:subClassOf ogkg:Entity .
+ogkg:TrunkNode        a owl:Class ; rdfs:subClassOf ogkg:SpineNode .
+ogkg:AssetSpineNode   a owl:Class ; rdfs:subClassOf ogkg:SpineNode .
+ogkg:ProcessSpineNode a owl:Class ; rdfs:subClassOf ogkg:SpineNode , ogkg:ProcessElement .
+
+ogkg:Industry a owl:Class ; rdfs:subClassOf ogkg:TrunkNode ; ogkg:levelNumber 0 ; ogkg:alignedTo "ISO 14224 level 1" .
+ogkg:Segment  a owl:Class ; rdfs:subClassOf ogkg:TrunkNode ; ogkg:levelNumber 1 ; ogkg:alignedTo "ISO 14224 level 2" .
+
+ogkg:BusinessCategory a owl:Class ; rdfs:subClassOf ogkg:AssetSpineNode ; ogkg:levelNumber 2 ; ogkg:alignedTo "ISO 14224 level 2" .
+ogkg:Installation     a owl:Class ; rdfs:subClassOf ogkg:AssetSpineNode , ogkg:PhysicalAsset ; ogkg:levelNumber 3 ; ogkg:alignedTo "ISO 14224 level 3" .
+ogkg:PlantUnit        a owl:Class ; rdfs:subClassOf ogkg:AssetSpineNode , ogkg:PhysicalAsset ; ogkg:levelNumber 4 ; ogkg:alignedTo "ISO 14224 level 4" .
+ogkg:SectionSystem    a owl:Class ; rdfs:subClassOf ogkg:AssetSpineNode , ogkg:PhysicalAsset ; ogkg:levelNumber 5 ; ogkg:alignedTo "ISO 14224 level 5" .
+ogkg:EquipmentUnit    a owl:Class ; rdfs:subClassOf ogkg:AssetSpineNode , ogkg:PhysicalAsset ; ogkg:levelNumber 6 ; ogkg:alignedTo "ISO 14224 level 6" ;
+    rdfs:comment "The functional location (position) of an equipment item; the physical serial unit is ogkg:SerialItem." .
+ogkg:Subunit          a owl:Class ; rdfs:subClassOf ogkg:AssetSpineNode , ogkg:PhysicalAsset ; ogkg:levelNumber 7 ; ogkg:alignedTo "ISO 14224 level 7" .
+ogkg:MaintainableItem a owl:Class ; rdfs:subClassOf ogkg:AssetSpineNode , ogkg:PhysicalAsset ; ogkg:levelNumber 8 ; ogkg:alignedTo "ISO 14224 level 8" .
+ogkg:Part             a owl:Class ; rdfs:subClassOf ogkg:AssetSpineNode , ogkg:PhysicalAsset ; ogkg:levelNumber 9 ; ogkg:alignedTo "ISO 14224 level 9" .
+ogkg:DataPoint        a owl:Class ; rdfs:subClassOf ogkg:AssetSpineNode , ogkg:InformationObject ; ogkg:levelNumber 10 ; ogkg:alignedTo "OGKG extension (ISA-95 levels 1-2 data)" .
+
+ogkg:ValueStream   a owl:Class ; rdfs:subClassOf ogkg:ProcessSpineNode ; ogkg:levelNumber 2 .
+ogkg:ProcessGroup  a owl:Class ; rdfs:subClassOf ogkg:ProcessSpineNode ; ogkg:levelNumber 3 .
+ogkg:Process       a owl:Class ; rdfs:subClassOf ogkg:ProcessSpineNode ; ogkg:levelNumber 4 .
+ogkg:SubProcess    a owl:Class ; rdfs:subClassOf ogkg:ProcessSpineNode ; ogkg:levelNumber 5 .
+ogkg:Activity      a owl:Class ; rdfs:subClassOf ogkg:ProcessSpineNode ; ogkg:levelNumber 6 .
+ogkg:Task          a owl:Class ; rdfs:subClassOf ogkg:ProcessSpineNode ; ogkg:levelNumber 7 .
+ogkg:DecisionPoint a owl:Class ; rdfs:subClassOf ogkg:ProcessSpineNode ; ogkg:levelNumber 8 .
+ogkg:DataObject    a owl:Class ; rdfs:subClassOf ogkg:ProcessSpineNode , ogkg:InformationObject ; ogkg:levelNumber 9 .
+ogkg:DataElement   a owl:Class ; rdfs:subClassOf ogkg:ProcessSpineNode , ogkg:InformationObject ; ogkg:levelNumber 10 .
+
+# --- Type DNA: sample equipment, section and unit class tree (extend from ISO 14224 / CFIHOS)
+ogkg:RotatingEquipment a owl:Class ; rdfs:subClassOf ogkg:EquipmentUnit .
+ogkg:Pump              a owl:Class ; rdfs:subClassOf ogkg:RotatingEquipment ; ogkg:alignedTo "ISO 14224 equipment class: Pumps" .
+ogkg:CentrifugalPump   a owl:Class ; rdfs:subClassOf ogkg:Pump ; ogkg:alignedTo "API 610" .
+ogkg:Compressor        a owl:Class ; rdfs:subClassOf ogkg:RotatingEquipment .
+ogkg:StaticEquipment   a owl:Class ; rdfs:subClassOf ogkg:EquipmentUnit .
+ogkg:HeatExchanger     a owl:Class ; rdfs:subClassOf ogkg:StaticEquipment .
+ogkg:ShellAndTubeHX    a owl:Class ; rdfs:subClassOf ogkg:HeatExchanger ; ogkg:alignedTo "TEMA" .
+ogkg:AirCooledHX       a owl:Class ; rdfs:subClassOf ogkg:HeatExchanger .
+ogkg:Vessel            a owl:Class ; rdfs:subClassOf ogkg:StaticEquipment .
+ogkg:Column            a owl:Class ; rdfs:subClassOf ogkg:Vessel .
+ogkg:FiredHeater       a owl:Class ; rdfs:subClassOf ogkg:StaticEquipment .
+ogkg:StorageTank       a owl:Class ; rdfs:subClassOf ogkg:StaticEquipment .
+ogkg:PipingCircuit     a owl:Class ; rdfs:subClassOf ogkg:StaticEquipment ; ogkg:alignedTo "API 570 circuit" .
+
+ogkg:MechanicalSeal    a owl:Class ; rdfs:subClassOf ogkg:MaintainableItem ; ogkg:alignedTo "API 682" .
+ogkg:Bearing           a owl:Class ; rdfs:subClassOf ogkg:MaintainableItem .
+ogkg:TubeSet           a owl:Class ; rdfs:subClassOf ogkg:MaintainableItem .
+
+ogkg:OverheadSystem    a owl:Class ; rdfs:subClassOf ogkg:SectionSystem .
+ogkg:DesalterSystem    a owl:Class ; rdfs:subClassOf ogkg:SectionSystem .
+ogkg:PreheatTrain      a owl:Class ; rdfs:subClassOf ogkg:SectionSystem .
+ogkg:ResidSystem       a owl:Class ; rdfs:subClassOf ogkg:SectionSystem .
+
+ogkg:CrudeDistillationUnit  a owl:Class ; rdfs:subClassOf ogkg:PlantUnit .
+ogkg:VacuumDistillationUnit a owl:Class ; rdfs:subClassOf ogkg:PlantUnit .
+ogkg:FluidCatalyticCracker  a owl:Class ; rdfs:subClassOf ogkg:PlantUnit .
+ogkg:CatalyticReformer      a owl:Class ; rdfs:subClassOf ogkg:PlantUnit .
+ogkg:BlendingUnit           a owl:Class ; rdfs:subClassOf ogkg:PlantUnit .
+
+# -----------------------------------------------------------------------------
+#  Spine relations (B1, B3)
+# -----------------------------------------------------------------------------
+ogkg:partOf a owl:ObjectProperty , owl:TransitiveProperty ;
+    rdfs:domain ogkg:SpineNode ; rdfs:range ogkg:SpineNode ; ogkg:lpgType "PART_OF" ;
+    rdfs:comment "Solid home hierarchy. SHACL enforces exactly one direct parent (asserted); the transitive closure is inferred." .
+ogkg:hasLevel a owl:ObjectProperty , owl:FunctionalProperty ; rdfs:domain ogkg:SpineNode ; rdfs:range ogkg:Level ; ogkg:lpgType "HAS_LEVEL" .
+ogkg:memberOf a owl:ObjectProperty ; rdfs:domain ogkg:Entity ; rdfs:range ogkg:Grouping ; ogkg:lpgType "MEMBER_OF" ;
+    rdfs:comment "Dotted branch. Not used for default roll-ups." .
+ogkg:actsOn   a owl:ObjectProperty ; rdfs:domain ogkg:ProcessSpineNode ; rdfs:range ogkg:AssetSpineNode ; ogkg:lpgType "ACTS_ON" .
+ogkg:governs  a owl:ObjectProperty ; rdfs:domain ogkg:DecisionPoint ; rdfs:range ogkg:AssetSpineNode ; ogkg:lpgType "GOVERNS" .
+ogkg:consumes a owl:ObjectProperty ; rdfs:domain ogkg:DecisionPoint ; rdfs:range ogkg:DataElement ; ogkg:lpgType "CONSUMES" .
+ogkg:instantiatedBy a owl:ObjectProperty ; rdfs:domain ogkg:DataElement ; rdfs:range ogkg:DataPoint ; ogkg:lpgType "INSTANTIATED_BY" .
+ogkg:mapsToPredicate a owl:DatatypeProperty ; rdfs:domain ogkg:DataElement ; rdfs:range xsd:string ;
+    rdfs:comment "Fact predicate key that instantiates this data element when no tag does (e.g. 'tan')." .
+
+# --- Groupings (dotted branches)
+ogkg:CorrosionLoop               a owl:Class ; rdfs:subClassOf ogkg:Grouping ; ogkg:alignedTo "API 580/581 corrosion loop" .
+ogkg:Fleet                       a owl:Class ; rdfs:subClassOf ogkg:Grouping ; rdfs:comment "Equipment of the same model and service band across sites." .
+ogkg:Utility                     a owl:Class ; rdfs:subClassOf ogkg:Grouping .
+ogkg:SafetyInstrumentedFunction  a owl:Class ; rdfs:subClassOf ogkg:Grouping ; ogkg:alignedTo "IEC 61511" .
+ogkg:CostCentre                  a owl:Class ; rdfs:subClassOf ogkg:Grouping .
+
+# -----------------------------------------------------------------------------
+#  Identity (B5)
+# -----------------------------------------------------------------------------
+ogkg:alias      a owl:DatatypeProperty ; rdfs:domain ogkg:Entity ; rdfs:range xsd:string ; ogkg:facet vocab:IdentityFacet ; ogkg:inheritable false .
+ogkg:externalId a owl:DatatypeProperty ; rdfs:domain ogkg:Entity ; rdfs:range xsd:string ; ogkg:facet vocab:IdentityFacet ; ogkg:inheritable false ;
+    rdfs:comment "Identifier in a source system; pair with ogkg:externalIdSystem on a crosswalk node in production." .
+ogkg:hasTag     a owl:ObjectProperty ; rdfs:domain ogkg:Entity ; rdfs:range skos:Concept ; ogkg:lpgType "HAS_TAG" ; ogkg:facet vocab:IdentityFacet .
+ogkg:sensitivity a owl:ObjectProperty ; rdfs:domain ogkg:Entity ; rdfs:range skos:Concept ; ogkg:lpgType "HAS_SENSITIVITY" .
+
+# -----------------------------------------------------------------------------
+#  Type & design backbone (B2, B5.6)
+# -----------------------------------------------------------------------------
+ogkg:EquipmentModel a owl:Class ; rdfs:subClassOf ogkg:InformationObject ; rdfs:comment "A maker's design, e.g. OEM-A HX-300." .
+ogkg:SerialItem     a owl:Class ; rdfs:subClassOf ogkg:PhysicalAsset ; rdfs:comment "A physical unit with a serial number, installed at a functional location." .
+ogkg:ofModel        a owl:ObjectProperty ; rdfs:domain ogkg:Entity ; rdfs:range ogkg:EquipmentModel ; ogkg:lpgType "OF_MODEL" ;
+    ogkg:facet vocab:DesignFacet ; ogkg:dnaChannel vocab:TypeChannel ; ogkg:inheritable true .
+ogkg:installedAt    a owl:ObjectProperty ; rdfs:domain ogkg:SerialItem ; rdfs:range ogkg:EquipmentUnit ; ogkg:lpgType "INSTALLED_AT" ; ogkg:facet vocab:DesignFacet .
+ogkg:manufacturedBy a owl:ObjectProperty ; rdfs:domain ogkg:EquipmentModel ; rdfs:range ogkg:Enterprise ; ogkg:lpgType "MANUFACTURED_BY" ; ogkg:facet vocab:DesignFacet .
+ogkg:sealPlan       a owl:ObjectProperty ; rdfs:range skos:Concept ; ogkg:lpgType "HAS_SEAL_PLAN" ;
+    ogkg:facet vocab:DesignFacet ; ogkg:dnaChannel vocab:TypeChannel ; ogkg:inheritable true ; ogkg:overridable true .
+ogkg:tubeMetallurgy a owl:ObjectProperty ; rdfs:range skos:Concept ; ogkg:lpgType "HAS_TUBE_METALLURGY" ;
+    ogkg:facet vocab:DesignFacet ; ogkg:dnaChannel vocab:TypeChannel ; ogkg:inheritable true ; ogkg:overridable true .
+ogkg:designTemperature  a owl:DatatypeProperty ; rdfs:range xsd:decimal ; ogkg:facet vocab:DesignFacet ; ogkg:dnaChannel vocab:TypeChannel ; ogkg:inheritable true ; ogkg:overridable true .
+ogkg:designPressure     a owl:DatatypeProperty ; rdfs:range xsd:decimal ; ogkg:facet vocab:DesignFacet ; ogkg:dnaChannel vocab:TypeChannel ; ogkg:inheritable true ; ogkg:overridable true .
+ogkg:serviceTemperature a owl:DatatypeProperty ; rdfs:range xsd:decimal ; ogkg:facet vocab:FlowFacet ; ogkg:dnaChannel vocab:LineageChannel ; ogkg:inheritable true ; ogkg:overridable true .
+ogkg:servicePressure    a owl:DatatypeProperty ; rdfs:range xsd:decimal ; ogkg:facet vocab:FlowFacet ; ogkg:dnaChannel vocab:LineageChannel ; ogkg:inheritable true ; ogkg:overridable true .
+ogkg:eqClass            a owl:DatatypeProperty ; rdfs:domain ogkg:EquipmentUnit ; rdfs:range xsd:string ; ogkg:facet vocab:DesignFacet .
+
+# -----------------------------------------------------------------------------
+#  Location & enterprise backbones
+# -----------------------------------------------------------------------------
+ogkg:Country a owl:Class ; rdfs:subClassOf ogkg:Location ; ogkg:alignedTo "ISO 3166" .
+ogkg:Region  a owl:Class ; rdfs:subClassOf ogkg:Location .
+ogkg:Area    a owl:Class ; rdfs:subClassOf ogkg:Location .
+ogkg:Plot    a owl:Class ; rdfs:subClassOf ogkg:Location .
+ogkg:withinLocation a owl:ObjectProperty , owl:TransitiveProperty ; rdfs:domain ogkg:Location ; rdfs:range ogkg:Location ; ogkg:lpgType "WITHIN" .
+ogkg:locatedAt a owl:ObjectProperty ; rdfs:domain ogkg:Entity ; rdfs:range ogkg:Location ; ogkg:lpgType "LOCATED_AT" ;
+    ogkg:facet vocab:LocationFacet ; ogkg:dnaChannel vocab:LineageChannel ; ogkg:inheritable true ; ogkg:overridable true .
+
+ogkg:Enterprise   a owl:Class ; rdfs:subClassOf ogkg:Agent ; ogkg:alignedTo "W3C ORG FormalOrganization; LEI" .
+ogkg:BusinessUnit a owl:Class ; rdfs:subClassOf ogkg:Agent .
+ogkg:Role         a owl:Class ; rdfs:subClassOf ogkg:Agent ; ogkg:alignedTo "W3C ORG Role" .
+ogkg:operatedBy a owl:ObjectProperty ; rdfs:range ogkg:Enterprise ; ogkg:lpgType "OPERATED_BY" ;
+    ogkg:facet vocab:EnterpriseFacet ; ogkg:dnaChannel vocab:LineageChannel ; ogkg:inheritable true .
+ogkg:ownedByEnterprise a owl:ObjectProperty ; rdfs:range ogkg:Enterprise ; ogkg:lpgType "OWNED_BY_ENTERPRISE" ; ogkg:facet vocab:EnterpriseFacet ;
+    rdfs:comment "Equity share is held as a Fact on the ownership, never as a bare property." .
+ogkg:ownedBy a owl:ObjectProperty ; rdfs:range ogkg:Role ; ogkg:lpgType "OWNED_BY" ; ogkg:facet vocab:EnterpriseFacet ;
+    rdfs:comment "Accountable role for a process, data element, backbone or rule." .
+
+# -----------------------------------------------------------------------------
+#  Application backbone (B2.5)
+# -----------------------------------------------------------------------------
+ogkg:Application         a owl:Class ; rdfs:subClassOf ogkg:InformationObject ; rdfs:comment "A software product or category, e.g. LIMS." .
+ogkg:ApplicationInstance a owl:Class ; rdfs:subClassOf ogkg:InformationObject ; rdfs:comment "A deployed instance, e.g. LIMS-Alpha." .
+ogkg:ApplicationModule   a owl:Class ; rdfs:subClassOf ogkg:InformationObject .
+ogkg:Interface           a owl:Class ; rdfs:subClassOf ogkg:InformationObject .
+ogkg:instanceOf  a owl:ObjectProperty ; rdfs:domain ogkg:ApplicationInstance ; rdfs:range ogkg:Application ; ogkg:lpgType "INSTANCE_OF" .
+ogkg:moduleOf    a owl:ObjectProperty ; rdfs:domain ogkg:ApplicationModule ; rdfs:range ogkg:Application ; ogkg:lpgType "MODULE_OF" .
+ogkg:scopedTo    a owl:ObjectProperty ; rdfs:domain ogkg:ApplicationInstance ; rdfs:range ogkg:SpineNode ; ogkg:lpgType "SCOPED_TO" ;
+    ogkg:facet vocab:ApplicationFacet ; ogkg:dnaChannel vocab:LineageChannel ; ogkg:inheritable true ;
+    rdfs:comment "Binding at L3 covers every descendant of the site." .
+ogkg:supports    a owl:ObjectProperty ; rdfs:domain ogkg:ApplicationInstance ; rdfs:range ogkg:ProcessSpineNode ; ogkg:lpgType "SUPPORTS" ; ogkg:facet vocab:ApplicationFacet .
+ogkg:systemOfRecordFor a owl:ObjectProperty ; rdfs:domain ogkg:ApplicationInstance ; rdfs:range ogkg:InformationObject ; ogkg:lpgType "SYSTEM_OF_RECORD_FOR" ; ogkg:facet vocab:ApplicationFacet .
+ogkg:hostsDataPoint a owl:ObjectProperty ; rdfs:domain ogkg:ApplicationInstance ; rdfs:range ogkg:DataPoint ; ogkg:lpgType "HOSTS" ; ogkg:facet vocab:ApplicationFacet .
+ogkg:integratesWith a owl:ObjectProperty , owl:SymmetricProperty ; rdfs:domain ogkg:ApplicationInstance ; rdfs:range ogkg:ApplicationInstance ; ogkg:lpgType "INTEGRATES_WITH" .
+ogkg:isa95Layer a owl:DatatypeProperty ; rdfs:domain ogkg:Application ; rdfs:range xsd:integer ; rdfs:comment "ISA-95 layer 0-4. Not the same numbering as OGKG L-levels." .
+
+# -----------------------------------------------------------------------------
+#  Performance backbone (B2.4)
+# -----------------------------------------------------------------------------
+ogkg:PerformanceMeasure a owl:Class ; rdfs:subClassOf ogkg:InformationObject ; ogkg:alignedTo "ISO 22400" .
+ogkg:KPI    a owl:Class ; rdfs:subClassOf ogkg:PerformanceMeasure .
+ogkg:KPF    a owl:Class ; rdfs:subClassOf ogkg:PerformanceMeasure ; rdfs:comment "Key performance factor: a controllable lever." .
+ogkg:Metric a owl:Class ; rdfs:subClassOf ogkg:PerformanceMeasure .
+ogkg:kpiTier         a owl:ObjectProperty ; rdfs:domain ogkg:KPI ; rdfs:range skos:Concept ; ogkg:lpgType "HAS_TIER" .
+ogkg:formula         a owl:DatatypeProperty ; rdfs:domain ogkg:PerformanceMeasure ; rdfs:range xsd:string .
+ogkg:aggregationRule a owl:ObjectProperty ; rdfs:domain ogkg:PerformanceMeasure ; rdfs:range skos:Concept ; ogkg:lpgType "AGGREGATES_BY" .
+ogkg:applicableLevel a owl:ObjectProperty ; rdfs:domain ogkg:PerformanceMeasure ; rdfs:range ogkg:Level ; ogkg:lpgType "APPLIES_AT" .
+ogkg:drives          a owl:ObjectProperty ; rdfs:domain ogkg:KPF ; rdfs:range ogkg:KPI ; ogkg:lpgType "DRIVES" ; ogkg:facet vocab:PerformanceFacet .
+ogkg:controlledBy    a owl:ObjectProperty ; rdfs:domain ogkg:KPF ; rdfs:range ogkg:DecisionPoint ; ogkg:lpgType "CONTROLLED_BY" ; ogkg:facet vocab:PerformanceFacet .
+ogkg:measuredBy      a owl:ObjectProperty ; rdfs:domain ogkg:PerformanceMeasure ; rdfs:range ogkg:DataPoint ; ogkg:lpgType "MEASURED_BY" ; ogkg:facet vocab:PerformanceFacet .
+ogkg:computedFrom    a owl:ObjectProperty ; rdfs:domain ogkg:PerformanceMeasure ; rdfs:range ogkg:PerformanceMeasure ; ogkg:lpgType "COMPUTED_FROM" .
+ogkg:measures        a owl:ObjectProperty ; rdfs:domain ogkg:PerformanceMeasure ; rdfs:range ogkg:Entity ; ogkg:lpgType "MEASURES" ; ogkg:facet vocab:PerformanceFacet .
+
+# -----------------------------------------------------------------------------
+#  Material backbone and flows
+# -----------------------------------------------------------------------------
+ogkg:CrudeGrade    a owl:Class ; rdfs:subClassOf ogkg:MaterialItem .
+ogkg:CrudeCampaign a owl:Class ; rdfs:subClassOf ogkg:MaterialItem ; rdfs:comment "Crude processed in a unit over a time window (one or more cargoes)." .
+ogkg:Stream        a owl:Class ; rdfs:subClassOf ogkg:MaterialItem .
+ogkg:Product       a owl:Class ; rdfs:subClassOf ogkg:MaterialItem .
+ogkg:Market        a owl:Class ; rdfs:subClassOf ogkg:MaterialItem .
+ogkg:ofGrade      a owl:ObjectProperty ; rdfs:domain ogkg:CrudeCampaign ; rdfs:range ogkg:CrudeGrade ; ogkg:lpgType "OF_GRADE" .
+ogkg:processedIn  a owl:ObjectProperty ; rdfs:domain ogkg:CrudeCampaign ; rdfs:range ogkg:PlantUnit ; ogkg:lpgType "PROCESSED_IN" ; ogkg:dnaChannel vocab:ExposureChannel .
+ogkg:deliveredVia a owl:ObjectProperty ; rdfs:domain ogkg:CrudeCampaign ; rdfs:range ogkg:Installation ; ogkg:lpgType "DELIVERED_VIA" .
+ogkg:producedAt   a owl:ObjectProperty ; rdfs:domain ogkg:CrudeGrade ; rdfs:range ogkg:Installation ; ogkg:lpgType "PRODUCED_AT" .
+ogkg:produces     a owl:ObjectProperty ; rdfs:domain ogkg:PlantUnit ; rdfs:range ogkg:Stream ; ogkg:lpgType "PRODUCES" ; ogkg:dnaChannel vocab:ExposureChannel .
+ogkg:feeds        a owl:ObjectProperty ; rdfs:domain ogkg:Stream ; rdfs:range ogkg:PlantUnit ; ogkg:lpgType "FEEDS" ; ogkg:dnaChannel vocab:ExposureChannel .
+ogkg:componentOf  a owl:ObjectProperty ; rdfs:domain ogkg:Stream ; rdfs:range ogkg:Product ; ogkg:lpgType "COMPONENT_OF" .
+ogkg:blendedAt    a owl:ObjectProperty ; rdfs:domain ogkg:Product ; rdfs:range ogkg:PlantUnit ; ogkg:lpgType "BLENDED_AT" .
+ogkg:soldTo       a owl:ObjectProperty ; rdfs:domain ogkg:Product ; rdfs:range ogkg:Market ; ogkg:lpgType "SOLD_TO" .
+ogkg:supplies     a owl:ObjectProperty ; rdfs:domain ogkg:Installation ; rdfs:range ogkg:Installation ; ogkg:lpgType "SUPPLIES" .
+ogkg:apiGravity   a owl:DatatypeProperty ; rdfs:domain ogkg:CrudeGrade ; rdfs:range xsd:decimal ; ogkg:facet vocab:FlowFacet .
+ogkg:sulfurContent a owl:DatatypeProperty ; rdfs:domain ogkg:CrudeGrade ; rdfs:range xsd:decimal ; ogkg:facet vocab:FlowFacet .
+ogkg:tan          a owl:DatatypeProperty ; rdfs:domain ogkg:CrudeGrade ; rdfs:range xsd:decimal ; ogkg:facet vocab:FlowFacet ; rdfs:comment "Total acid number, mgKOH/g." .
+ogkg:saltContent  a owl:DatatypeProperty ; rdfs:domain ogkg:CrudeGrade ; rdfs:range xsd:decimal ; ogkg:facet vocab:FlowFacet ; rdfs:comment "Salt content, lb per 1000 bbl (PTB)." .
+ogkg:windowStart  a owl:DatatypeProperty ; rdfs:domain ogkg:CrudeCampaign ; rdfs:range xsd:date .
+ogkg:windowEnd    a owl:DatatypeProperty ; rdfs:domain ogkg:CrudeCampaign ; rdfs:range xsd:date .
+
+# -----------------------------------------------------------------------------
+#  Physics backbone
+# -----------------------------------------------------------------------------
+ogkg:Discipline      a owl:Class ; rdfs:subClassOf ogkg:PhysicsElement .
+ogkg:Phenomenon      a owl:Class ; rdfs:subClassOf ogkg:PhysicsElement .
+ogkg:DamageMechanism a owl:Class ; rdfs:subClassOf ogkg:Phenomenon ; ogkg:alignedTo "API 571" .
+ogkg:Equation        a owl:Class ; rdfs:subClassOf ogkg:PhysicsElement .
+ogkg:Parameter       a owl:Class ; rdfs:subClassOf ogkg:PhysicsElement .
+ogkg:susceptibleTo   a owl:ObjectProperty ; rdfs:domain ogkg:AssetSpineNode ; rdfs:range ogkg:DamageMechanism ; ogkg:lpgType "SUSCEPTIBLE_TO" ;
+    ogkg:facet vocab:PhysicsFacet ; ogkg:dnaChannel vocab:TypeChannel ; ogkg:inheritable true .
+ogkg:governedBy      a owl:ObjectProperty ; rdfs:domain ogkg:AssetSpineNode ; rdfs:range ogkg:Equation ; ogkg:lpgType "GOVERNED_BY" ;
+    ogkg:facet vocab:PhysicsFacet ; ogkg:dnaChannel vocab:TypeChannel ; ogkg:inheritable true .
+ogkg:hasVariable     a owl:ObjectProperty ; rdfs:domain ogkg:Equation ; rdfs:range ogkg:Parameter ; ogkg:lpgType "HAS_VARIABLE" .
+ogkg:parameterMeasuredAs a owl:ObjectProperty ; rdfs:domain ogkg:Parameter ; rdfs:range ogkg:DataElement ; ogkg:lpgType "MEASURED_AS" .
+ogkg:mitigatedBy     a owl:ObjectProperty ; rdfs:domain ogkg:DamageMechanism ; rdfs:range ogkg:DecisionPoint ; ogkg:lpgType "MITIGATED_BY" .
+ogkg:expression      a owl:DatatypeProperty ; rdfs:domain ogkg:Equation ; rdfs:range xsd:string ; rdfs:comment "e.g. 'Q = U * A * dT_lm'" .
+ogkg:validityRange   a owl:DatatypeProperty ; rdfs:domain ogkg:Equation ; rdfs:range xsd:string .
+
+# -----------------------------------------------------------------------------
+#  Economics backbone
+# -----------------------------------------------------------------------------
+ogkg:ValueDriver      a owl:Class ; rdfs:subClassOf ogkg:EconomicElement .
+ogkg:CostElement      a owl:Class ; rdfs:subClassOf ogkg:EconomicElement .
+ogkg:PriceSeries      a owl:Class ; rdfs:subClassOf ogkg:EconomicElement ; rdfs:comment "Licensed data: client tenancy only (D3)." .
+ogkg:ValueCoefficient a owl:Class ; rdfs:subClassOf ogkg:EconomicElement ; rdfs:comment "Dollar value of moving a KPF, e.g. USD per RON-bbl." .
+ogkg:valuedAt    a owl:ObjectProperty ; rdfs:domain ogkg:KPF ; rdfs:range ogkg:ValueCoefficient ; ogkg:lpgType "VALUED_AT" ; ogkg:facet vocab:EconomicsFacet .
+ogkg:priceOf     a owl:ObjectProperty ; rdfs:domain ogkg:PriceSeries ; rdfs:range ogkg:MaterialItem ; ogkg:lpgType "PRICE_OF" ; ogkg:facet vocab:EconomicsFacet .
+ogkg:costBooksTo a owl:ObjectProperty ; rdfs:domain ogkg:Event ; rdfs:range ogkg:CostElement ; ogkg:lpgType "BOOKS_TO" ; ogkg:facet vocab:EconomicsFacet .
+
+# -----------------------------------------------------------------------------
+#  Events and problems (B6)
+# -----------------------------------------------------------------------------
+ogkg:Failure       a owl:Class ; rdfs:subClassOf ogkg:Event ; ogkg:alignedTo "ISO 14224 failure event" .
+ogkg:IOWExceedance a owl:Class ; rdfs:subClassOf ogkg:Event ; ogkg:alignedTo "API 584" .
+ogkg:WorkOrder     a owl:Class ; rdfs:subClassOf ogkg:Event .
+ogkg:Turnaround    a owl:Class ; rdfs:subClassOf ogkg:Event .
+ogkg:ScopeItem     a owl:Class ; rdfs:subClassOf ogkg:Event .
+ogkg:ProblemPattern a owl:Class ; rdfs:subClassOf ogkg:ProblemElement ; rdfs:comment "Class-level problem signature (B6.2)." .
+ogkg:FailureMode    a owl:Class ; rdfs:subClassOf ogkg:ProblemElement ; ogkg:alignedTo "ISO 14224 failure mode" .
+ogkg:RootCause      a owl:Class ; rdfs:subClassOf ogkg:ProblemElement .
+ogkg:eventDate      a owl:DatatypeProperty ; rdfs:domain ogkg:Event ; rdfs:range xsd:date .
+ogkg:failureOf      a owl:ObjectProperty ; rdfs:domain ogkg:Failure ; rdfs:range ogkg:AssetSpineNode ; ogkg:lpgType "FAILURE_OF" ; ogkg:facet vocab:ProblemsFacet .
+ogkg:onDataPoint    a owl:ObjectProperty ; rdfs:domain ogkg:IOWExceedance ; rdfs:range ogkg:DataPoint ; ogkg:lpgType "ON_DATAPOINT" .
+ogkg:remediates     a owl:ObjectProperty ; rdfs:domain ogkg:WorkOrder ; rdfs:range ogkg:Failure ; ogkg:lpgType "REMEDIATES" .
+ogkg:atSite         a owl:ObjectProperty ; rdfs:domain ogkg:Turnaround ; rdfs:range ogkg:Installation ; ogkg:lpgType "AT_SITE" .
+ogkg:inScopeOf      a owl:ObjectProperty ; rdfs:domain ogkg:ScopeItem ; rdfs:range ogkg:Turnaround ; ogkg:lpgType "IN_SCOPE_OF" .
+ogkg:targets        a owl:ObjectProperty ; rdfs:domain ogkg:ScopeItem ; rdfs:range ogkg:AssetSpineNode ; ogkg:lpgType "TARGETS" .
+ogkg:hasFailureMode a owl:ObjectProperty ; rdfs:domain ogkg:Failure ; rdfs:range ogkg:FailureMode ; ogkg:lpgType "HAS_FAILURE_MODE" .
+ogkg:causedBy       a owl:ObjectProperty ; rdfs:domain ogkg:Event ; rdfs:range ogkg:Entity ; ogkg:lpgType "CAUSED_BY" ; rdfs:comment "Mechanism or root cause." .
+ogkg:affectsKPI     a owl:ObjectProperty ; rdfs:domain ogkg:Event ; rdfs:range ogkg:KPI ; ogkg:lpgType "AFFECTS_KPI" .
+ogkg:decidedBy      a owl:ObjectProperty ; rdfs:domain ogkg:Event ; rdfs:range ogkg:DecisionPoint ; ogkg:lpgType "DECIDED_BY" .
+ogkg:resolvedBy     a owl:ObjectProperty ; rdfs:domain ogkg:Event ; rdfs:range ogkg:WorkOrder ; ogkg:lpgType "RESOLVED_BY" .
+ogkg:similarTo      a owl:ObjectProperty , owl:SymmetricProperty ; rdfs:domain ogkg:Event ; rdfs:range ogkg:Event ; ogkg:lpgType "SIMILAR_TO" .
+ogkg:matchesPattern a owl:ObjectProperty ; rdfs:domain ogkg:Event ; rdfs:range ogkg:ProblemPattern ; ogkg:lpgType "MATCHES_PATTERN" .
+ogkg:atRiskOf       a owl:ObjectProperty ; rdfs:domain ogkg:AssetSpineNode ; rdfs:range ogkg:ProblemPattern ; ogkg:lpgType "AT_RISK_OF" ;
+    rdfs:comment "Always a hypothesis edge: carries status, confidence, inferredBy and runId (B6.4)." .
+ogkg:staleInputTo   a owl:ObjectProperty ; rdfs:domain ogkg:DataElement ; rdfs:range ogkg:DecisionPoint ; ogkg:lpgType "STALE_INPUT_TO" .
+
+# -----------------------------------------------------------------------------
+#  Knowledge backbone
+# -----------------------------------------------------------------------------
+ogkg:Document      a owl:Class ; rdfs:subClassOf ogkg:InformationObject .
+ogkg:DocumentChunk a owl:Class ; rdfs:subClassOf ogkg:InformationObject .
+ogkg:chunkOf   a owl:ObjectProperty ; rdfs:domain ogkg:DocumentChunk ; rdfs:range ogkg:Document ; ogkg:lpgType "CHUNK_OF" .
+ogkg:describes a owl:ObjectProperty ; rdfs:domain ogkg:InformationObject ; rdfs:range ogkg:Entity ; ogkg:lpgType "DESCRIBES" ; ogkg:facet vocab:KnowledgeFacet .
+
+# -----------------------------------------------------------------------------
+#  Facts and provenance (B5)
+# -----------------------------------------------------------------------------
+ogkg:Fact a owl:Class ; rdfs:subClassOf prov:Entity ; rdfs:comment "A cited value. All fields in FactShape are mandatory." .
+ogkg:subject      a owl:ObjectProperty , owl:FunctionalProperty ; rdfs:domain ogkg:Fact ; rdfs:range ogkg:Entity .
+ogkg:hasFact      a owl:ObjectProperty ; owl:inverseOf ogkg:subject ; ogkg:lpgType "HAS_FACT" .
+ogkg:predicateKey a owl:DatatypeProperty ; rdfs:domain ogkg:Fact ; rdfs:range xsd:string .
+ogkg:value        a owl:DatatypeProperty ; rdfs:domain ogkg:Fact .
+ogkg:unit         a owl:ObjectProperty ; rdfs:domain ogkg:Fact ; rdfs:range qudt:Unit .
+ogkg:asOf         a owl:DatatypeProperty ; rdfs:domain ogkg:Fact ; rdfs:range xsd:date .
+ogkg:sourceSystem a owl:ObjectProperty ; rdfs:domain ogkg:Fact ; rdfs:range ogkg:ApplicationInstance .
+ogkg:sourceSystemName a owl:DatatypeProperty ; rdfs:domain ogkg:Fact ; rdfs:range xsd:string ; rdfs:comment "Used until the source is modelled as an ApplicationInstance." .
+ogkg:sourceRef    a owl:DatatypeProperty ; rdfs:domain ogkg:Fact ; rdfs:range xsd:string .
+ogkg:factOwner    a owl:ObjectProperty ; rdfs:domain ogkg:Fact ; rdfs:range ogkg:Role .
+ogkg:confidence   a owl:ObjectProperty ; rdfs:domain ogkg:Fact ; rdfs:range skos:Concept .
+ogkg:method       a owl:ObjectProperty ; rdfs:domain ogkg:Fact ; rdfs:range skos:Concept .
+ogkg:derivedFrom  a owl:ObjectProperty ; rdfs:subPropertyOf prov:wasDerivedFrom ; rdfs:domain ogkg:Fact ; rdfs:range ogkg:Fact ; ogkg:lpgType "DERIVED_FROM" .
+ogkg:valueStatus  a owl:ObjectProperty ; rdfs:range skos:Concept ; rdfs:comment "own / inherited / derived / hypothesis, set by the resolver on returned values." .
+
+# -----------------------------------------------------------------------------
+#  Hypotheses (B6.4) — portable reified form; LPG uses edge properties, RDF-star optional
+# -----------------------------------------------------------------------------
+ogkg:HypothesisAssertion a owl:Class ; rdfs:subClassOf prov:Entity .
+ogkg:hypSubject   a owl:ObjectProperty ; rdfs:domain ogkg:HypothesisAssertion ; rdfs:range ogkg:Entity .
+ogkg:hypPredicate a owl:ObjectProperty ; rdfs:domain ogkg:HypothesisAssertion ; rdfs:range rdf:Property .
+ogkg:hypObject    a owl:ObjectProperty ; rdfs:domain ogkg:HypothesisAssertion ; rdfs:range ogkg:Entity .
+ogkg:status       a owl:ObjectProperty ; rdfs:domain ogkg:HypothesisAssertion ; rdfs:range skos:Concept .
+ogkg:confidenceScore a owl:DatatypeProperty ; rdfs:domain ogkg:HypothesisAssertion ; rdfs:range xsd:decimal .
+ogkg:inferredBy   a owl:DatatypeProperty ; rdfs:domain ogkg:HypothesisAssertion ; rdfs:range xsd:string ; rdfs:comment "Rule or model ID, e.g. R-07." .
+ogkg:runId        a owl:DatatypeProperty ; rdfs:domain ogkg:HypothesisAssertion ; rdfs:range xsd:string .
+ogkg:evidence     a owl:ObjectProperty ; rdfs:domain ogkg:HypothesisAssertion ; rdfs:range ogkg:Entity .
+ogkg:reviewedBy   a owl:ObjectProperty ; rdfs:domain ogkg:HypothesisAssertion ; rdfs:range ogkg:Role .
+ogkg:reviewedOn   a owl:DatatypeProperty ; rdfs:domain ogkg:HypothesisAssertion ; rdfs:range xsd:date .
+
+# -----------------------------------------------------------------------------
+#  Facet bindings (B2.6)
+# -----------------------------------------------------------------------------
+ogkg:FacetBinding a owl:Class ; rdfs:comment "Reified binding between an entity and a backbone node, with level, scope and validity." .
+ogkg:bindsEntity     a owl:ObjectProperty ; rdfs:domain ogkg:FacetBinding ; rdfs:range ogkg:Entity .
+ogkg:bindsTo         a owl:ObjectProperty ; rdfs:domain ogkg:FacetBinding ; rdfs:range ogkg:Entity .
+ogkg:bindingFacet    a owl:ObjectProperty ; rdfs:domain ogkg:FacetBinding ; rdfs:range skos:Concept .
+ogkg:bindingLevel    a owl:ObjectProperty ; rdfs:domain ogkg:FacetBinding ; rdfs:range ogkg:Level .
+ogkg:inheritanceRule a owl:ObjectProperty ; rdfs:domain ogkg:FacetBinding ; rdfs:range skos:Concept .
+ogkg:validFrom       a owl:DatatypeProperty ; rdfs:range xsd:date .
+ogkg:validTo         a owl:DatatypeProperty ; rdfs:range xsd:date .
+ogkg:freshnessSlaHours a owl:DatatypeProperty ; rdfs:domain ogkg:DataElement ; rdfs:range xsd:decimal .
+ogkg:samplingIntervalHours a owl:DatatypeProperty ; rdfs:domain ogkg:DataPoint ; rdfs:range xsd:decimal .

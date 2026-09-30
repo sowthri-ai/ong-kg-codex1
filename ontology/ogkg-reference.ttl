@@ -1,0 +1,90 @@
+@prefix ogkg:    <https://example.org/ogkg/core#> .
+@prefix vocab:   <https://example.org/ogkg/vocab#> .
+@prefix ref:     <https://example.org/ogkg/ref#> .
+@prefix pattern: <https://example.org/ogkg/ref/pattern#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+# =============================================================================
+#  OGKG reference layer (handbook C1.4): reusable, client-independent content.
+#  Thresholds are illustrative until confirmed by client SMEs.
+# =============================================================================
+
+<https://example.org/ogkg/ref> a owl:Ontology ; rdfs:label "OGKG reference data" ; owl:versionInfo "0.2.0" ;
+    owl:imports <https://example.org/ogkg/core> , <https://example.org/ogkg/vocab> .
+
+# --- Accountable roles (generic)
+ref:CorrosionEngineer   a ogkg:Role ; rdfs:label "Corrosion / Integrity Engineer" .
+ref:ReliabilityEngineer a ogkg:Role ; rdfs:label "Reliability Engineer" .
+ref:CrudePlanningManager a ogkg:Role ; rdfs:label "Crude & Planning Manager" .
+ref:SiteEconomist       a ogkg:Role ; rdfs:label "Site Economist" .
+ref:BlendingPlanner     a ogkg:Role ; rdfs:label "Blending Planner" .
+
+# --- Damage mechanisms (physics backbone, API 571 names)
+ref:HClCorrosion             a ogkg:DamageMechanism ; rdfs:label "Hydrochloric acid corrosion" ; ogkg:alignedTo "API 571" .
+ref:AmmoniumChlorideCorrosion a ogkg:DamageMechanism ; rdfs:label "Ammonium chloride corrosion" ; ogkg:alignedTo "API 571" .
+ref:NaphthenicAcidCorrosion  a ogkg:DamageMechanism ; rdfs:label "Naphthenic acid corrosion" ; ogkg:alignedTo "API 571" .
+ref:Fouling                  a ogkg:Phenomenon ; rdfs:label "Heat-exchanger fouling" .
+
+# --- Equations (first principles; no licensed tables)
+ref:HeatDuty a ogkg:Equation ; rdfs:label "Heat duty" ; ogkg:expression "Q = U * A * dT_lm" .
+ref:FoulingResistance a ogkg:Equation ; rdfs:label "Fouling resistance" ; ogkg:expression "R_f = 1/U_dirty - 1/U_clean" .
+ref:ApiGravity a ogkg:Equation ; rdfs:label "API gravity" ; ogkg:expression "API = 141.5/SG - 131.5" ; ogkg:validityRange "SG at 60 degF" .
+ref:PumpAffinity a ogkg:Equation ; rdfs:label "Pump affinity (flow)" ; ogkg:expression "Q2/Q1 = N2/N1" ; ogkg:validityRange "Same impeller, similar efficiency" .
+
+# --- Problem patterns (B6.2)
+pattern:OverheadChlorideCorrosion a ogkg:ProblemPattern ;
+    rdfs:label "Overhead chloride corrosion" ;
+    rdfs:comment "Signature: crude salt > 20 PTB processed in a unit whose overhead equipment is carbon steel. Rule R-07." ;
+    ogkg:causedBy ref:HClCorrosion , ref:AmmoniumChlorideCorrosion ;
+    ogkg:ownedBy ref:CorrosionEngineer .
+
+pattern:NaphthenicAcidHotCircuit a ogkg:ProblemPattern ;
+    rdfs:label "Naphthenic acid corrosion in hot circuits" ;
+    rdfs:comment "Signature: TAN > 0.5 crude reaching a circuit above 220 degC without upgraded metallurgy. Rule R-08." ;
+    ogkg:causedBy ref:NaphthenicAcidCorrosion ;
+    ogkg:ownedBy ref:CorrosionEngineer .
+
+pattern:HX300HotServiceSealFailure a ogkg:ProblemPattern ;
+    rdfs:label "HX-300 seal failure in hot service" ;
+    rdfs:comment "Signature: model HX-300, service >= 340 degC, API 682 Plan 32 single seal. Rule R-12." ;
+    ogkg:ownedBy ref:ReliabilityEngineer .
+
+pattern:StaleQualityInput a ogkg:ProblemPattern ;
+    rdfs:label "Stale quality input to a blend decision" ;
+    rdfs:comment "Signature: data element sampling interval exceeds its freshness SLA. Rule R-20." ;
+    ogkg:ownedBy ref:BlendingPlanner .
+
+# --- Performance definitions (ISO 22400-style)
+ref:GRM a ogkg:KPI ; rdfs:label "Gross refining margin" ;
+    ogkg:formula "(product revenue - crude cost - variable opex) / crude processed" ;
+    ogkg:aggregationRule vocab:CapacityWeighted ; ogkg:applicableLevel ogkg:L2 , ogkg:L3 ;
+    ogkg:kpiTier vocab:Strategic ; ogkg:ownedBy ref:SiteEconomist .
+
+ref:MTBF a ogkg:KPI ; rdfs:label "Mean time between failures" ;
+    ogkg:formula "observed unit-days / number of failures" ;
+    ogkg:aggregationRule vocab:PooledRate ; ogkg:applicableLevel ogkg:L4 , ogkg:L5 , ogkg:L6 , ogkg:L7 , ogkg:L8 ;
+    ogkg:kpiTier vocab:Operational ; ogkg:ownedBy ref:ReliabilityEngineer .
+
+ref:CorrosionRate a ogkg:KPI ; rdfs:label "Measured corrosion rate" ;
+    ogkg:formula "wall loss / time between inspections (mm/y)" ;
+    ogkg:aggregationRule vocab:Minimum ; ogkg:applicableLevel ogkg:L6 ;
+    ogkg:kpiTier vocab:Operational ; ogkg:ownedBy ref:CorrosionEngineer .
+
+ref:OverheadChlorideKPF a ogkg:KPF ; rdfs:label "Overhead water chloride" ;
+    ogkg:formula "analyser reading (ppm)" ;
+    ogkg:drives ref:CorrosionRate ;
+    ogkg:controlledBy ref:DecisionAdjustNeutraliser .
+
+# Template decision used by the KPF definition. Client instances bind to their own L8 decision node;
+# instance-level shapes (SpineNodeShape) run on instance graphs, not on this reference graph.
+ref:DecisionAdjustNeutraliser a ogkg:DecisionPoint ; rdfs:label "Adjust neutraliser / wash-water rate (template)" .
+
+# --- Application categories (application backbone; vendor-neutral)
+ref:Historian   a ogkg:Application ; rdfs:label "Process historian" ; ogkg:isa95Layer 2 .
+ref:CMMS        a ogkg:Application ; rdfs:label "CMMS / EAM" ; ogkg:isa95Layer 4 .
+ref:LIMS        a ogkg:Application ; rdfs:label "Laboratory information management" ; ogkg:isa95Layer 3 .
+ref:LPPlanning  a ogkg:Application ; rdfs:label "LP planning model" ; ogkg:isa95Layer 4 .
+ref:CTRM        a ogkg:Application ; rdfs:label "Commodity trading and risk management" ; ogkg:isa95Layer 4 .
+ref:RBIDatabase a ogkg:Application ; rdfs:label "Inspection / RBI database" ; ogkg:isa95Layer 3 .

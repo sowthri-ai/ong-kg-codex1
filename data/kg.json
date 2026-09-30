@@ -1,0 +1,8525 @@
+{
+ "meta": {
+  "name": "O&G Value Chain Knowledge Graph \u2014 demonstration dataset",
+  "as_of": "2026-09-28",
+  "disclaimer": "Synthetic sites, equipment, events and costs. Named crude grades carry indicative typical assay values only (method=indicative). Not for commercial decisions."
+ },
+ "nodes": [
+  {
+   "id": "ROLE-CRPLAN",
+   "cls": "Role",
+   "name": "Crude & Planning Manager",
+   "spine": "org",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "ROLE-CORR",
+   "cls": "Role",
+   "name": "Corrosion / Integrity Engineer",
+   "spine": "org",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "ROLE-REL",
+   "cls": "Role",
+   "name": "Reliability Engineer",
+   "spine": "org",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "ROLE-BLEND",
+   "cls": "Role",
+   "name": "Blending Planner",
+   "spine": "org",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "ROLE-TA",
+   "cls": "Role",
+   "name": "Turnaround Manager",
+   "spine": "org",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "ROLE-PROC",
+   "cls": "Role",
+   "name": "Process Engineer",
+   "spine": "org",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "ROLE-LAB",
+   "cls": "Role",
+   "name": "Laboratory Manager",
+   "spine": "org",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "ROLE-ECON",
+   "cls": "Role",
+   "name": "Site Economist",
+   "spine": "org",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "ROLE-OPS",
+   "cls": "Role",
+   "name": "Operations Superintendent",
+   "spine": "org",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "ROLE-MAINT",
+   "cls": "Role",
+   "name": "Maintenance Manager",
+   "spine": "org",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "OG",
+   "cls": "Industry",
+   "name": "Oil & Gas",
+   "spine": "trunk",
+   "level": 0,
+   "desc": "Root of the value-chain knowledge graph",
+   "props": {}
+  },
+  {
+   "id": "SEG-UPSTREAM",
+   "cls": "Segment",
+   "name": "Upstream",
+   "spine": "trunk",
+   "level": 1,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "SEG-MIDSTREAM",
+   "cls": "Segment",
+   "name": "Midstream",
+   "spine": "trunk",
+   "level": 1,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "SEG-DOWNSTREAM",
+   "cls": "Segment",
+   "name": "Downstream",
+   "spine": "trunk",
+   "level": 1,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "BC-REF",
+   "cls": "BusinessCategory",
+   "name": "Refining",
+   "spine": "asset",
+   "level": 2,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "BC-EP",
+   "cls": "BusinessCategory",
+   "name": "Exploration & Production",
+   "spine": "asset",
+   "level": 2,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "BC-PT",
+   "cls": "BusinessCategory",
+   "name": "Pipelines & Terminals",
+   "spine": "asset",
+   "level": 2,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "FIELD-F1",
+   "cls": "Installation",
+   "name": "Field F1",
+   "spine": "asset",
+   "level": 3,
+   "desc": "Onshore oil field (synthetic)",
+   "props": {}
+  },
+  {
+   "id": "CPF-1",
+   "cls": "PlantUnit",
+   "name": "Central Processing Facility 1",
+   "spine": "asset",
+   "level": 4,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "CPF-1-SEP",
+   "cls": "SectionSystem",
+   "name": "Separation train",
+   "spine": "asset",
+   "level": 5,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "V-1001",
+   "cls": "EquipmentUnit",
+   "name": "V-1001 HP separator",
+   "spine": "asset",
+   "level": 6,
+   "desc": "",
+   "props": {
+    "eq_class": "Vessel"
+   }
+  },
+  {
+   "id": "T-F1-OIL",
+   "cls": "DataPoint",
+   "name": "FI-9001 Export oil rate",
+   "spine": "asset",
+   "level": 10,
+   "desc": "",
+   "props": {
+    "kind": "sensor"
+   }
+  },
+  {
+   "id": "TERM-T1",
+   "cls": "Installation",
+   "name": "Crude Terminal T1",
+   "spine": "asset",
+   "level": 3,
+   "desc": "Coastal import terminal (synthetic)",
+   "props": {}
+  },
+  {
+   "id": "TFARM-1",
+   "cls": "PlantUnit",
+   "name": "Crude tank farm",
+   "spine": "asset",
+   "level": 4,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "TFARM-1-S",
+   "cls": "SectionSystem",
+   "name": "Crude storage",
+   "spine": "asset",
+   "level": 5,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "TK-01",
+   "cls": "EquipmentUnit",
+   "name": "TK-01 Crude tank",
+   "spine": "asset",
+   "level": 6,
+   "desc": "",
+   "props": {
+    "eq_class": "Storage tank"
+   }
+  },
+  {
+   "id": "T-TK01-LVL",
+   "cls": "DataPoint",
+   "name": "LI-7001 Tank level",
+   "spine": "asset",
+   "level": 10,
+   "desc": "",
+   "props": {
+    "kind": "sensor"
+   }
+  },
+  {
+   "id": "SITE-ALPHA",
+   "cls": "Installation",
+   "name": "Refinery Alpha",
+   "spine": "asset",
+   "level": 3,
+   "desc": "Coastal complex refinery (synthetic)",
+   "props": {}
+  },
+  {
+   "id": "SITE-BETA",
+   "cls": "Installation",
+   "name": "Refinery Beta",
+   "spine": "asset",
+   "level": 3,
+   "desc": "Inland cracking refinery (synthetic)",
+   "props": {}
+  },
+  {
+   "id": "CDU-1",
+   "cls": "PlantUnit",
+   "name": "CDU-1 Crude distillation",
+   "spine": "asset",
+   "level": 4,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "VDU-1",
+   "cls": "PlantUnit",
+   "name": "VDU-1 Vacuum distillation",
+   "spine": "asset",
+   "level": 4,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "FCC-1",
+   "cls": "PlantUnit",
+   "name": "FCC-1 Fluid catalytic cracker",
+   "spine": "asset",
+   "level": 4,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "REF-1",
+   "cls": "PlantUnit",
+   "name": "REF-1 Catalytic reformer",
+   "spine": "asset",
+   "level": 4,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "GBL-1",
+   "cls": "PlantUnit",
+   "name": "GBL-1 Gasoline blender",
+   "spine": "asset",
+   "level": 4,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "CDU-2",
+   "cls": "PlantUnit",
+   "name": "CDU-2 Crude distillation",
+   "spine": "asset",
+   "level": 4,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "VDU-2",
+   "cls": "PlantUnit",
+   "name": "VDU-2 Vacuum distillation",
+   "spine": "asset",
+   "level": 4,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "FCC-2",
+   "cls": "PlantUnit",
+   "name": "FCC-2 Fluid catalytic cracker",
+   "spine": "asset",
+   "level": 4,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "REF-2",
+   "cls": "PlantUnit",
+   "name": "REF-2 Catalytic reformer",
+   "spine": "asset",
+   "level": 4,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "GBL-2",
+   "cls": "PlantUnit",
+   "name": "GBL-2 Gasoline blender",
+   "spine": "asset",
+   "level": 4,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "CDU-1-DS",
+   "cls": "SectionSystem",
+   "name": "Desalter system",
+   "spine": "asset",
+   "level": 5,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "CDU-1-PH",
+   "cls": "SectionSystem",
+   "name": "Preheat train",
+   "spine": "asset",
+   "level": 5,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "CDU-1-FR",
+   "cls": "SectionSystem",
+   "name": "Atmospheric fractionation",
+   "spine": "asset",
+   "level": 5,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "CDU-1-OVH",
+   "cls": "SectionSystem",
+   "name": "Overhead system",
+   "spine": "asset",
+   "level": 5,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "VDU-1-VR",
+   "cls": "SectionSystem",
+   "name": "Vacuum resid system",
+   "spine": "asset",
+   "level": 5,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "VDU-1-TL",
+   "cls": "SectionSystem",
+   "name": "Transfer line & flash zone",
+   "spine": "asset",
+   "level": 5,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "FCC-1-FR",
+   "cls": "SectionSystem",
+   "name": "Main fractionator & slurry",
+   "spine": "asset",
+   "level": 5,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "REF-1-RX",
+   "cls": "SectionSystem",
+   "name": "Reactor & feed/effluent",
+   "spine": "asset",
+   "level": 5,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "REF-1-STB",
+   "cls": "SectionSystem",
+   "name": "Stabiliser",
+   "spine": "asset",
+   "level": 5,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "GBL-1-HDR",
+   "cls": "SectionSystem",
+   "name": "Blend header & analysers",
+   "spine": "asset",
+   "level": 5,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "CDU-2-DS",
+   "cls": "SectionSystem",
+   "name": "Desalter system",
+   "spine": "asset",
+   "level": 5,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "CDU-2-PH",
+   "cls": "SectionSystem",
+   "name": "Preheat train",
+   "spine": "asset",
+   "level": 5,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "CDU-2-FR",
+   "cls": "SectionSystem",
+   "name": "Atmospheric fractionation",
+   "spine": "asset",
+   "level": 5,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "CDU-2-OVH",
+   "cls": "SectionSystem",
+   "name": "Overhead system",
+   "spine": "asset",
+   "level": 5,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "VDU-2-VR",
+   "cls": "SectionSystem",
+   "name": "Vacuum resid system",
+   "spine": "asset",
+   "level": 5,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "VDU-2-TL",
+   "cls": "SectionSystem",
+   "name": "Transfer line & flash zone",
+   "spine": "asset",
+   "level": 5,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "FCC-2-FR",
+   "cls": "SectionSystem",
+   "name": "Main fractionator & slurry",
+   "spine": "asset",
+   "level": 5,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "REF-2-RX",
+   "cls": "SectionSystem",
+   "name": "Reactor & feed/effluent",
+   "spine": "asset",
+   "level": 5,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "REF-2-STB",
+   "cls": "SectionSystem",
+   "name": "Stabiliser",
+   "spine": "asset",
+   "level": 5,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "GBL-2-HDR",
+   "cls": "SectionSystem",
+   "name": "Blend header & analysers",
+   "spine": "asset",
+   "level": 5,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "E-101A",
+   "cls": "EquipmentUnit",
+   "name": "E-101A Overhead condenser A",
+   "spine": "asset",
+   "level": 6,
+   "desc": "",
+   "props": {
+    "eq_class": "Heat exchanger",
+    "metallurgy": "Carbon steel tubes"
+   }
+  },
+  {
+   "id": "E-101B",
+   "cls": "EquipmentUnit",
+   "name": "E-101B Overhead condenser B",
+   "spine": "asset",
+   "level": 6,
+   "desc": "",
+   "props": {
+    "eq_class": "Heat exchanger",
+    "metallurgy": "Carbon steel tubes"
+   }
+  },
+  {
+   "id": "V-102",
+   "cls": "EquipmentUnit",
+   "name": "V-102 Overhead accumulator",
+   "spine": "asset",
+   "level": 6,
+   "desc": "",
+   "props": {
+    "eq_class": "Vessel"
+   }
+  },
+  {
+   "id": "P-103",
+   "cls": "EquipmentUnit",
+   "name": "P-103 Reflux pump",
+   "spine": "asset",
+   "level": 6,
+   "desc": "",
+   "props": {
+    "eq_class": "Pump"
+   }
+  },
+  {
+   "id": "PC-101",
+   "cls": "EquipmentUnit",
+   "name": "PC-101 Overhead piping circuit",
+   "spine": "asset",
+   "level": 6,
+   "desc": "",
+   "props": {
+    "eq_class": "Piping circuit"
+   }
+  },
+  {
+   "id": "V-110",
+   "cls": "EquipmentUnit",
+   "name": "V-110 Desalter",
+   "spine": "asset",
+   "level": 6,
+   "desc": "",
+   "props": {
+    "eq_class": "Vessel"
+   }
+  },
+  {
+   "id": "C-101",
+   "cls": "EquipmentUnit",
+   "name": "C-101 Atmospheric column",
+   "spine": "asset",
+   "level": 6,
+   "desc": "",
+   "props": {
+    "eq_class": "Column"
+   }
+  },
+  {
+   "id": "H-101",
+   "cls": "EquipmentUnit",
+   "name": "H-101 Crude heater",
+   "spine": "asset",
+   "level": 6,
+   "desc": "",
+   "props": {
+    "eq_class": "Fired heater"
+   }
+  },
+  {
+   "id": "PC-201",
+   "cls": "EquipmentUnit",
+   "name": "PC-201 VDU transfer line circuit",
+   "spine": "asset",
+   "level": 6,
+   "desc": "",
+   "props": {
+    "eq_class": "Piping circuit",
+    "metallurgy": "5Cr"
+   }
+  },
+  {
+   "id": "E-301",
+   "cls": "EquipmentUnit",
+   "name": "E-301 Combined feed/effluent exchanger",
+   "spine": "asset",
+   "level": 6,
+   "desc": "",
+   "props": {
+    "eq_class": "Heat exchanger"
+   }
+  },
+  {
+   "id": "E-401A",
+   "cls": "EquipmentUnit",
+   "name": "E-401A Overhead condenser",
+   "spine": "asset",
+   "level": 6,
+   "desc": "",
+   "props": {
+    "eq_class": "Heat exchanger",
+    "metallurgy": "Titanium tubes"
+   }
+  },
+  {
+   "id": "V-402",
+   "cls": "EquipmentUnit",
+   "name": "V-402 Overhead accumulator",
+   "spine": "asset",
+   "level": 6,
+   "desc": "",
+   "props": {
+    "eq_class": "Vessel"
+   }
+  },
+  {
+   "id": "E-601",
+   "cls": "EquipmentUnit",
+   "name": "E-601 Combined feed/effluent exchanger",
+   "spine": "asset",
+   "level": 6,
+   "desc": "",
+   "props": {
+    "eq_class": "Heat exchanger"
+   }
+  },
+  {
+   "id": "P-201A",
+   "cls": "EquipmentUnit",
+   "name": "P-201A Vacuum resid pump A",
+   "spine": "asset",
+   "level": 6,
+   "desc": "",
+   "props": {
+    "eq_class": "Pump"
+   }
+  },
+  {
+   "id": "P-201A-SS",
+   "cls": "Subunit",
+   "name": "Seal system",
+   "spine": "asset",
+   "level": 7,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-201A-MS",
+   "cls": "MaintainableItem",
+   "name": "Mechanical seal",
+   "spine": "asset",
+   "level": 8,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-201A-SF",
+   "cls": "Part",
+   "name": "Seal faces",
+   "spine": "asset",
+   "level": 9,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-201A-OR",
+   "cls": "Part",
+   "name": "O-rings",
+   "spine": "asset",
+   "level": 9,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-201A-BH",
+   "cls": "Subunit",
+   "name": "Bearing housing",
+   "spine": "asset",
+   "level": 7,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-201A-BRG",
+   "cls": "MaintainableItem",
+   "name": "Bearings",
+   "spine": "asset",
+   "level": 8,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-201B",
+   "cls": "EquipmentUnit",
+   "name": "P-201B Vacuum resid pump B",
+   "spine": "asset",
+   "level": 6,
+   "desc": "",
+   "props": {
+    "eq_class": "Pump"
+   }
+  },
+  {
+   "id": "P-201B-SS",
+   "cls": "Subunit",
+   "name": "Seal system",
+   "spine": "asset",
+   "level": 7,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-201B-MS",
+   "cls": "MaintainableItem",
+   "name": "Mechanical seal",
+   "spine": "asset",
+   "level": 8,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-201B-SF",
+   "cls": "Part",
+   "name": "Seal faces",
+   "spine": "asset",
+   "level": 9,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-201B-OR",
+   "cls": "Part",
+   "name": "O-rings",
+   "spine": "asset",
+   "level": 9,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-201B-BH",
+   "cls": "Subunit",
+   "name": "Bearing housing",
+   "spine": "asset",
+   "level": 7,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-201B-BRG",
+   "cls": "MaintainableItem",
+   "name": "Bearings",
+   "spine": "asset",
+   "level": 8,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-501",
+   "cls": "EquipmentUnit",
+   "name": "P-501 FCC slurry pump",
+   "spine": "asset",
+   "level": 6,
+   "desc": "",
+   "props": {
+    "eq_class": "Pump"
+   }
+  },
+  {
+   "id": "P-501-SS",
+   "cls": "Subunit",
+   "name": "Seal system",
+   "spine": "asset",
+   "level": 7,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-501-MS",
+   "cls": "MaintainableItem",
+   "name": "Mechanical seal",
+   "spine": "asset",
+   "level": 8,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-501-SF",
+   "cls": "Part",
+   "name": "Seal faces",
+   "spine": "asset",
+   "level": 9,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-501-OR",
+   "cls": "Part",
+   "name": "O-rings",
+   "spine": "asset",
+   "level": 9,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-501-BH",
+   "cls": "Subunit",
+   "name": "Bearing housing",
+   "spine": "asset",
+   "level": 7,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-501-BRG",
+   "cls": "MaintainableItem",
+   "name": "Bearings",
+   "spine": "asset",
+   "level": 8,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-401A",
+   "cls": "EquipmentUnit",
+   "name": "P-401A Vacuum resid pump A",
+   "spine": "asset",
+   "level": 6,
+   "desc": "",
+   "props": {
+    "eq_class": "Pump"
+   }
+  },
+  {
+   "id": "P-401A-SS",
+   "cls": "Subunit",
+   "name": "Seal system",
+   "spine": "asset",
+   "level": 7,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-401A-MS",
+   "cls": "MaintainableItem",
+   "name": "Mechanical seal",
+   "spine": "asset",
+   "level": 8,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-401A-SF",
+   "cls": "Part",
+   "name": "Seal faces",
+   "spine": "asset",
+   "level": 9,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-401A-OR",
+   "cls": "Part",
+   "name": "O-rings",
+   "spine": "asset",
+   "level": 9,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-401A-BH",
+   "cls": "Subunit",
+   "name": "Bearing housing",
+   "spine": "asset",
+   "level": 7,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-401A-BRG",
+   "cls": "MaintainableItem",
+   "name": "Bearings",
+   "spine": "asset",
+   "level": 8,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-401B",
+   "cls": "EquipmentUnit",
+   "name": "P-401B Vacuum resid pump B",
+   "spine": "asset",
+   "level": 6,
+   "desc": "",
+   "props": {
+    "eq_class": "Pump"
+   }
+  },
+  {
+   "id": "P-401B-SS",
+   "cls": "Subunit",
+   "name": "Seal system",
+   "spine": "asset",
+   "level": 7,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-401B-MS",
+   "cls": "MaintainableItem",
+   "name": "Mechanical seal",
+   "spine": "asset",
+   "level": 8,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-401B-SF",
+   "cls": "Part",
+   "name": "Seal faces",
+   "spine": "asset",
+   "level": 9,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-401B-OR",
+   "cls": "Part",
+   "name": "O-rings",
+   "spine": "asset",
+   "level": 9,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-401B-BH",
+   "cls": "Subunit",
+   "name": "Bearing housing",
+   "spine": "asset",
+   "level": 7,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-401B-BRG",
+   "cls": "MaintainableItem",
+   "name": "Bearings",
+   "spine": "asset",
+   "level": 8,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-306",
+   "cls": "EquipmentUnit",
+   "name": "P-306 AGO pumparound pump",
+   "spine": "asset",
+   "level": 6,
+   "desc": "",
+   "props": {
+    "eq_class": "Pump"
+   }
+  },
+  {
+   "id": "P-306-SS",
+   "cls": "Subunit",
+   "name": "Seal system",
+   "spine": "asset",
+   "level": 7,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-306-MS",
+   "cls": "MaintainableItem",
+   "name": "Mechanical seal",
+   "spine": "asset",
+   "level": 8,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-306-SF",
+   "cls": "Part",
+   "name": "Seal faces",
+   "spine": "asset",
+   "level": 9,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-306-OR",
+   "cls": "Part",
+   "name": "O-rings",
+   "spine": "asset",
+   "level": 9,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-306-BH",
+   "cls": "Subunit",
+   "name": "Bearing housing",
+   "spine": "asset",
+   "level": 7,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-306-BRG",
+   "cls": "MaintainableItem",
+   "name": "Bearings",
+   "spine": "asset",
+   "level": 8,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "E-101A-TB",
+   "cls": "Subunit",
+   "name": "Tube bundle",
+   "spine": "asset",
+   "level": 7,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "E-101A-TU",
+   "cls": "MaintainableItem",
+   "name": "Tubes",
+   "spine": "asset",
+   "level": 8,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "E-101B-TB",
+   "cls": "Subunit",
+   "name": "Tube bundle",
+   "spine": "asset",
+   "level": 7,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "E-101B-TU",
+   "cls": "MaintainableItem",
+   "name": "Tubes",
+   "spine": "asset",
+   "level": 8,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "E-401A-TB",
+   "cls": "Subunit",
+   "name": "Tube bundle",
+   "spine": "asset",
+   "level": 7,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "E-401A-TU",
+   "cls": "MaintainableItem",
+   "name": "Tubes",
+   "spine": "asset",
+   "level": 8,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "T-CDU1-CL",
+   "cls": "DataPoint",
+   "name": "AI-1021 Overhead water chloride",
+   "spine": "asset",
+   "level": 10,
+   "desc": "",
+   "props": {
+    "kind": "lab/online analyser"
+   }
+  },
+  {
+   "id": "T-CDU1-PH",
+   "cls": "DataPoint",
+   "name": "AI-1022 Overhead water pH",
+   "spine": "asset",
+   "level": 10,
+   "desc": "",
+   "props": {
+    "kind": "online analyser"
+   }
+  },
+  {
+   "id": "T-CDU1-FI",
+   "cls": "DataPoint",
+   "name": "FI-1001 Crude charge rate",
+   "spine": "asset",
+   "level": 10,
+   "desc": "",
+   "props": {
+    "kind": "sensor"
+   }
+  },
+  {
+   "id": "T-CDU1-DSS",
+   "cls": "DataPoint",
+   "name": "AI-1010 Desalted crude salt",
+   "spine": "asset",
+   "level": 10,
+   "desc": "",
+   "props": {
+    "kind": "lab"
+   }
+  },
+  {
+   "id": "T-REF1-RON",
+   "cls": "DataPoint",
+   "name": "LIMS Reformate RON",
+   "spine": "asset",
+   "level": 10,
+   "desc": "",
+   "props": {
+    "kind": "lab"
+   }
+  },
+  {
+   "id": "T-REF1-TI",
+   "cls": "DataPoint",
+   "name": "TI-1310 Reactor inlet temperature",
+   "spine": "asset",
+   "level": 10,
+   "desc": "",
+   "props": {
+    "kind": "sensor"
+   }
+  },
+  {
+   "id": "T-GBL1-RON",
+   "cls": "DataPoint",
+   "name": "LIMS Gasoline product RON",
+   "spine": "asset",
+   "level": 10,
+   "desc": "",
+   "props": {
+    "kind": "lab"
+   }
+  },
+  {
+   "id": "T-CDU2-CL",
+   "cls": "DataPoint",
+   "name": "AI-2021 Overhead water chloride",
+   "spine": "asset",
+   "level": 10,
+   "desc": "",
+   "props": {
+    "kind": "lab/online analyser"
+   }
+  },
+  {
+   "id": "T-CDU2-PH",
+   "cls": "DataPoint",
+   "name": "AI-2022 Overhead water pH",
+   "spine": "asset",
+   "level": 10,
+   "desc": "",
+   "props": {
+    "kind": "online analyser"
+   }
+  },
+  {
+   "id": "T-CDU2-FI",
+   "cls": "DataPoint",
+   "name": "FI-2001 Crude charge rate",
+   "spine": "asset",
+   "level": 10,
+   "desc": "",
+   "props": {
+    "kind": "sensor"
+   }
+  },
+  {
+   "id": "T-CDU2-DSS",
+   "cls": "DataPoint",
+   "name": "AI-2010 Desalted crude salt",
+   "spine": "asset",
+   "level": 10,
+   "desc": "",
+   "props": {
+    "kind": "lab"
+   }
+  },
+  {
+   "id": "T-REF2-RON",
+   "cls": "DataPoint",
+   "name": "LIMS Reformate RON",
+   "spine": "asset",
+   "level": 10,
+   "desc": "",
+   "props": {
+    "kind": "lab"
+   }
+  },
+  {
+   "id": "T-REF2-TI",
+   "cls": "DataPoint",
+   "name": "TI-2310 Reactor inlet temperature",
+   "spine": "asset",
+   "level": 10,
+   "desc": "",
+   "props": {
+    "kind": "sensor"
+   }
+  },
+  {
+   "id": "T-GBL2-RON",
+   "cls": "DataPoint",
+   "name": "LIMS Gasoline product RON",
+   "spine": "asset",
+   "level": 10,
+   "desc": "",
+   "props": {
+    "kind": "lab"
+   }
+  },
+  {
+   "id": "T-VDU1-CR",
+   "cls": "DataPoint",
+   "name": "CR-2011 Transfer line corrosion probe",
+   "spine": "asset",
+   "level": 10,
+   "desc": "",
+   "props": {
+    "kind": "corrosion probe"
+   }
+  },
+  {
+   "id": "T-E301-RF",
+   "cls": "DataPoint",
+   "name": "E-301 Fouling resistance (calc)",
+   "spine": "asset",
+   "level": 10,
+   "desc": "",
+   "props": {
+    "kind": "calculated"
+   }
+  },
+  {
+   "id": "T-E601-RF",
+   "cls": "DataPoint",
+   "name": "E-601 Fouling resistance (calc)",
+   "spine": "asset",
+   "level": 10,
+   "desc": "",
+   "props": {
+    "kind": "calculated"
+   }
+  },
+  {
+   "id": "CR-AL",
+   "cls": "CrudeGrade",
+   "name": "Arab Light",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "CR-BM",
+   "cls": "CrudeGrade",
+   "name": "Basrah Medium",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "CR-MUR",
+   "cls": "CrudeGrade",
+   "name": "Murban",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "CR-QM",
+   "cls": "CrudeGrade",
+   "name": "Qatar Marine",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "CR-DOBA",
+   "cls": "CrudeGrade",
+   "name": "Doba",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "CR-HSOB",
+   "cls": "CrudeGrade",
+   "name": "Heavy Sour Opportunity Blend",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "CR-F1",
+   "cls": "CrudeGrade",
+   "name": "F1 Blend",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "CMP-A1",
+   "cls": "CrudeCampaign",
+   "name": "CMP-A1 Heavy Sour Opportunity Blend campaign",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {
+    "start": "2025-11-10",
+    "end": "2025-11-24",
+    "opportunity": true
+   }
+  },
+  {
+   "id": "CMP-A2H",
+   "cls": "CrudeCampaign",
+   "name": "CMP-A2H Heavy Sour Opportunity Blend campaign",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {
+    "start": "2026-02-05",
+    "end": "2026-02-20",
+    "opportunity": true
+   }
+  },
+  {
+   "id": "CMP-A2D",
+   "cls": "CrudeCampaign",
+   "name": "CMP-A2D Doba campaign",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {
+    "start": "2026-02-05",
+    "end": "2026-02-20",
+    "opportunity": true
+   }
+  },
+  {
+   "id": "CMP-A3",
+   "cls": "CrudeCampaign",
+   "name": "CMP-A3 Heavy Sour Opportunity Blend campaign",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {
+    "start": "2026-06-01",
+    "end": "2026-06-18",
+    "opportunity": true
+   }
+  },
+  {
+   "id": "CMP-AB-AL",
+   "cls": "CrudeCampaign",
+   "name": "Alpha base slate \u2014 Arab Light",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {
+    "start": "2025-10-01",
+    "end": "2026-09-30",
+    "opportunity": false
+   }
+  },
+  {
+   "id": "CMP-AB-BM",
+   "cls": "CrudeCampaign",
+   "name": "Alpha base slate \u2014 Basrah Medium",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {
+    "start": "2025-10-01",
+    "end": "2026-09-30",
+    "opportunity": false
+   }
+  },
+  {
+   "id": "CMP-AB-MUR",
+   "cls": "CrudeCampaign",
+   "name": "Alpha base slate \u2014 Murban",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {
+    "start": "2025-10-01",
+    "end": "2026-09-30",
+    "opportunity": false
+   }
+  },
+  {
+   "id": "CMP-AB-QM",
+   "cls": "CrudeCampaign",
+   "name": "Alpha base slate \u2014 Qatar Marine",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {
+    "start": "2025-10-01",
+    "end": "2026-09-30",
+    "opportunity": false
+   }
+  },
+  {
+   "id": "CMP-BB-AL",
+   "cls": "CrudeCampaign",
+   "name": "Beta base slate \u2014 Arab Light",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {
+    "start": "2025-10-01",
+    "end": "2026-09-30",
+    "opportunity": false
+   }
+  },
+  {
+   "id": "CMP-BB-MUR",
+   "cls": "CrudeCampaign",
+   "name": "Beta base slate \u2014 Murban",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {
+    "start": "2025-10-01",
+    "end": "2026-09-30",
+    "opportunity": false
+   }
+  },
+  {
+   "id": "CMP-BB-F1",
+   "cls": "CrudeCampaign",
+   "name": "Beta base slate \u2014 F1 Blend",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {
+    "start": "2025-10-01",
+    "end": "2026-09-30",
+    "opportunity": false
+   }
+  },
+  {
+   "id": "STR-SRN-1",
+   "cls": "Stream",
+   "name": "Straight-run naphtha (Alpha)",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "STR-AR-1",
+   "cls": "Stream",
+   "name": "Atmospheric residue (Alpha)",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "STR-AGO-1",
+   "cls": "Stream",
+   "name": "Atmospheric gasoil (Alpha)",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "STR-VGO-1",
+   "cls": "Stream",
+   "name": "Vacuum gasoil (Alpha)",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "STR-VR-1",
+   "cls": "Stream",
+   "name": "Vacuum residue (Alpha)",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "STR-FCCG-1",
+   "cls": "Stream",
+   "name": "FCC gasoline (Alpha)",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "STR-REFM-1",
+   "cls": "Stream",
+   "name": "Reformate (Alpha)",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "PRD-GAS-1",
+   "cls": "Product",
+   "name": "Gasoline RON95 (Alpha)",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "PRD-DSL-1",
+   "cls": "Product",
+   "name": "Diesel (Alpha)",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "PRD-FO-1",
+   "cls": "Product",
+   "name": "Fuel oil (Alpha)",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "STR-SRN-2",
+   "cls": "Stream",
+   "name": "Straight-run naphtha (Beta)",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "STR-AR-2",
+   "cls": "Stream",
+   "name": "Atmospheric residue (Beta)",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "STR-AGO-2",
+   "cls": "Stream",
+   "name": "Atmospheric gasoil (Beta)",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "STR-VGO-2",
+   "cls": "Stream",
+   "name": "Vacuum gasoil (Beta)",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "STR-VR-2",
+   "cls": "Stream",
+   "name": "Vacuum residue (Beta)",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "STR-FCCG-2",
+   "cls": "Stream",
+   "name": "FCC gasoline (Beta)",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "STR-REFM-2",
+   "cls": "Stream",
+   "name": "Reformate (Beta)",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "PRD-GAS-2",
+   "cls": "Product",
+   "name": "Gasoline RON95 (Beta)",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "PRD-DSL-2",
+   "cls": "Product",
+   "name": "Diesel (Beta)",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "PRD-FO-2",
+   "cls": "Product",
+   "name": "Fuel oil (Beta)",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "MKT-DOM",
+   "cls": "Market",
+   "name": "Domestic retail fuels",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "MKT-EXP",
+   "cls": "Market",
+   "name": "Export \u2014 Asia",
+   "spine": "material",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "IOW-001",
+   "cls": "IOWExceedance",
+   "name": "IOW-001 on AI-1021 Overhead water chloride",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2025-11-13"
+   }
+  },
+  {
+   "id": "IOW-002",
+   "cls": "IOWExceedance",
+   "name": "IOW-002 on AI-1021 Overhead water chloride",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2026-02-08"
+   }
+  },
+  {
+   "id": "IOW-003",
+   "cls": "IOWExceedance",
+   "name": "IOW-003 on AI-1021 Overhead water chloride",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2026-06-04"
+   }
+  },
+  {
+   "id": "IOW-004",
+   "cls": "IOWExceedance",
+   "name": "IOW-004 on AI-1022 Overhead water pH",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2026-02-10"
+   }
+  },
+  {
+   "id": "IOW-005",
+   "cls": "IOWExceedance",
+   "name": "IOW-005 on CR-2011 Transfer line corrosion probe",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2026-02-12"
+   }
+  },
+  {
+   "id": "IOW-006",
+   "cls": "IOWExceedance",
+   "name": "IOW-006 on AI-2021 Overhead water chloride",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2026-04-02"
+   }
+  },
+  {
+   "id": "FL-001",
+   "cls": "Failure",
+   "name": "FL-001 E-101A tubes",
+   "spine": "event",
+   "level": null,
+   "desc": "Tube leak; unit rate cut while isolating",
+   "props": {
+    "date": "2025-12-02"
+   }
+  },
+  {
+   "id": "WO-001",
+   "cls": "WorkOrder",
+   "name": "WO-001 repair",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2025-12-02"
+   }
+  },
+  {
+   "id": "FL-002",
+   "cls": "Failure",
+   "name": "FL-002 E-101B tubes",
+   "spine": "event",
+   "level": null,
+   "desc": "Tube leak; temporary tube plugging",
+   "props": {
+    "date": "2026-03-05"
+   }
+  },
+  {
+   "id": "WO-002",
+   "cls": "WorkOrder",
+   "name": "WO-002 repair",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2026-03-05"
+   }
+  },
+  {
+   "id": "FL-003",
+   "cls": "Failure",
+   "name": "FL-003 PC-101 Overhead piping circuit",
+   "spine": "event",
+   "level": null,
+   "desc": "Overhead line pinhole; clamp then spool replacement",
+   "props": {
+    "date": "2026-06-28"
+   }
+  },
+  {
+   "id": "WO-003",
+   "cls": "WorkOrder",
+   "name": "WO-003 repair",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2026-06-28"
+   }
+  },
+  {
+   "id": "FL-004",
+   "cls": "Failure",
+   "name": "FL-004 PC-201 VDU transfer line circuit",
+   "spine": "event",
+   "level": null,
+   "desc": "Wall loss beyond corrosion allowance found by UT",
+   "props": {
+    "date": "2026-03-20"
+   }
+  },
+  {
+   "id": "WO-004",
+   "cls": "WorkOrder",
+   "name": "WO-004 repair",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2026-03-20"
+   }
+  },
+  {
+   "id": "FL-101",
+   "cls": "Failure",
+   "name": "FL-101 P-201A mechanical seal",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2025-10-20"
+   }
+  },
+  {
+   "id": "WO-101",
+   "cls": "WorkOrder",
+   "name": "WO-101 repair",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2025-10-20"
+   }
+  },
+  {
+   "id": "FL-102",
+   "cls": "Failure",
+   "name": "FL-102 P-201A mechanical seal",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2026-01-15"
+   }
+  },
+  {
+   "id": "WO-102",
+   "cls": "WorkOrder",
+   "name": "WO-102 repair",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2026-01-15"
+   }
+  },
+  {
+   "id": "FL-103",
+   "cls": "Failure",
+   "name": "FL-103 P-201A mechanical seal",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2026-04-22"
+   }
+  },
+  {
+   "id": "WO-103",
+   "cls": "WorkOrder",
+   "name": "WO-103 repair",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2026-04-22"
+   }
+  },
+  {
+   "id": "FL-104",
+   "cls": "Failure",
+   "name": "FL-104 P-201A mechanical seal",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2026-08-10"
+   }
+  },
+  {
+   "id": "WO-104",
+   "cls": "WorkOrder",
+   "name": "WO-104 repair",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2026-08-10"
+   }
+  },
+  {
+   "id": "FL-105",
+   "cls": "Failure",
+   "name": "FL-105 P-201B mechanical seal",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2025-12-18"
+   }
+  },
+  {
+   "id": "WO-105",
+   "cls": "WorkOrder",
+   "name": "WO-105 repair",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2025-12-18"
+   }
+  },
+  {
+   "id": "FL-106",
+   "cls": "Failure",
+   "name": "FL-106 P-201B mechanical seal",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2026-04-01"
+   }
+  },
+  {
+   "id": "WO-106",
+   "cls": "WorkOrder",
+   "name": "WO-106 repair",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2026-04-01"
+   }
+  },
+  {
+   "id": "FL-107",
+   "cls": "Failure",
+   "name": "FL-107 P-201B mechanical seal",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2026-07-19"
+   }
+  },
+  {
+   "id": "WO-107",
+   "cls": "WorkOrder",
+   "name": "WO-107 repair",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2026-07-19"
+   }
+  },
+  {
+   "id": "FL-108",
+   "cls": "Failure",
+   "name": "FL-108 P-501 mechanical seal",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2025-11-05"
+   }
+  },
+  {
+   "id": "WO-108",
+   "cls": "WorkOrder",
+   "name": "WO-108 repair",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2025-11-05"
+   }
+  },
+  {
+   "id": "FL-109",
+   "cls": "Failure",
+   "name": "FL-109 P-501 mechanical seal",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2026-03-12"
+   }
+  },
+  {
+   "id": "WO-109",
+   "cls": "WorkOrder",
+   "name": "WO-109 repair",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2026-03-12"
+   }
+  },
+  {
+   "id": "FL-110",
+   "cls": "Failure",
+   "name": "FL-110 P-501 mechanical seal",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2026-07-30"
+   }
+  },
+  {
+   "id": "WO-110",
+   "cls": "WorkOrder",
+   "name": "WO-110 repair",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2026-07-30"
+   }
+  },
+  {
+   "id": "FL-111",
+   "cls": "Failure",
+   "name": "FL-111 P-401A mechanical seal",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2025-10-28"
+   }
+  },
+  {
+   "id": "WO-111",
+   "cls": "WorkOrder",
+   "name": "WO-111 repair",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2025-10-28"
+   }
+  },
+  {
+   "id": "FL-112",
+   "cls": "Failure",
+   "name": "FL-112 P-401A mechanical seal",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2026-02-02"
+   }
+  },
+  {
+   "id": "WO-112",
+   "cls": "WorkOrder",
+   "name": "WO-112 repair",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2026-02-02"
+   }
+  },
+  {
+   "id": "FL-113",
+   "cls": "Failure",
+   "name": "FL-113 P-401A mechanical seal",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2026-05-14"
+   }
+  },
+  {
+   "id": "WO-113",
+   "cls": "WorkOrder",
+   "name": "WO-113 repair",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2026-05-14"
+   }
+  },
+  {
+   "id": "FL-114",
+   "cls": "Failure",
+   "name": "FL-114 P-401A mechanical seal",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2026-08-25"
+   }
+  },
+  {
+   "id": "WO-114",
+   "cls": "WorkOrder",
+   "name": "WO-114 repair",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2026-08-25"
+   }
+  },
+  {
+   "id": "FL-115",
+   "cls": "Failure",
+   "name": "FL-115 P-401B mechanical seal",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2026-06-10"
+   }
+  },
+  {
+   "id": "WO-115",
+   "cls": "WorkOrder",
+   "name": "WO-115 repair",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2026-06-10"
+   }
+  },
+  {
+   "id": "TA-ALPHA-27",
+   "cls": "Turnaround",
+   "name": "Refinery Alpha major turnaround 2027",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {
+    "date": "2027-03-01"
+   }
+  },
+  {
+   "id": "SI-01",
+   "cls": "ScopeItem",
+   "name": "Retube & inspect E-101A",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "SI-02",
+   "cls": "ScopeItem",
+   "name": "Accumulator internal inspection",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "SI-03",
+   "cls": "ScopeItem",
+   "name": "Heater tube inspection",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "SI-04",
+   "cls": "ScopeItem",
+   "name": "Column tray replacement",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "SI-05",
+   "cls": "ScopeItem",
+   "name": "Pump overhaul",
+   "spine": "event",
+   "level": null,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "VS-PTS",
+   "cls": "ValueStream",
+   "name": "Produce-to-Sell",
+   "spine": "process",
+   "level": 2,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "VS-LOG",
+   "cls": "ValueStream",
+   "name": "Crude Logistics",
+   "spine": "process",
+   "level": 2,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "PG-TERM",
+   "cls": "ProcessGroup",
+   "name": "Terminal Operations",
+   "spine": "process",
+   "level": 3,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "VS-C2P",
+   "cls": "ValueStream",
+   "name": "Crude-to-Product (Hydrocarbon Supply Chain)",
+   "spine": "process",
+   "level": 2,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "VS-P2M",
+   "cls": "ValueStream",
+   "name": "Plan-to-Maintain (Asset Reliability & Integrity)",
+   "spine": "process",
+   "level": 2,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "PG-CSV",
+   "cls": "ProcessGroup",
+   "name": "Crude Supply & Valuation",
+   "spine": "process",
+   "level": 3,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "PG-PS",
+   "cls": "ProcessGroup",
+   "name": "Planning & Scheduling",
+   "spine": "process",
+   "level": 3,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "PG-OPS",
+   "cls": "ProcessGroup",
+   "name": "Unit Operations",
+   "spine": "process",
+   "level": 3,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "PG-BLD",
+   "cls": "ProcessGroup",
+   "name": "Blending & Product Quality",
+   "spine": "process",
+   "level": 3,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "PG-REL",
+   "cls": "ProcessGroup",
+   "name": "Reliability Management",
+   "spine": "process",
+   "level": 3,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "PG-INT",
+   "cls": "ProcessGroup",
+   "name": "Integrity Management",
+   "spine": "process",
+   "level": 3,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "PG-TA",
+   "cls": "ProcessGroup",
+   "name": "Turnaround Management",
+   "spine": "process",
+   "level": 3,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "PG-WM",
+   "cls": "ProcessGroup",
+   "name": "Work Management",
+   "spine": "process",
+   "level": 3,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-CRSEL",
+   "cls": "Process",
+   "name": "Crude Selection & Valuation",
+   "spine": "process",
+   "level": 4,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-LP",
+   "cls": "Process",
+   "name": "Monthly LP Planning",
+   "spine": "process",
+   "level": 4,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-OPMON",
+   "cls": "Process",
+   "name": "Unit Operations Monitoring",
+   "spine": "process",
+   "level": 4,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-BLEND",
+   "cls": "Process",
+   "name": "Gasoline Blending",
+   "spine": "process",
+   "level": 4,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-BADACT",
+   "cls": "Process",
+   "name": "Bad Actor Management",
+   "spine": "process",
+   "level": 4,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-IOW",
+   "cls": "Process",
+   "name": "IOW Management",
+   "spine": "process",
+   "level": 4,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-CORR",
+   "cls": "Process",
+   "name": "Corrosion Management",
+   "spine": "process",
+   "level": 4,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-TAS",
+   "cls": "Process",
+   "name": "Turnaround Scope Definition",
+   "spine": "process",
+   "level": 4,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "P-WO",
+   "cls": "Process",
+   "name": "Work Order Execution",
+   "spine": "process",
+   "level": 4,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "SP-ASSAY",
+   "cls": "SubProcess",
+   "name": "Assay Evaluation",
+   "spine": "process",
+   "level": 5,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "ACT-SCREEN",
+   "cls": "Activity",
+   "name": "Screen crude contaminants vs metallurgy limits",
+   "spine": "process",
+   "level": 6,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "TSK-CONTAM",
+   "cls": "Task",
+   "name": "Check TAN / salt / sulfur against unit corrosion envelope",
+   "spine": "process",
+   "level": 7,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "DEC-CRACC",
+   "cls": "DecisionPoint",
+   "name": "Accept crude into slate & set max blend %",
+   "spine": "process",
+   "level": 8,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "DOB-ASSAY",
+   "cls": "DataObject",
+   "name": "Crude Assay",
+   "spine": "process",
+   "level": 9,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "SP-CVAL",
+   "cls": "SubProcess",
+   "name": "Crude Valuation (netback)",
+   "spine": "process",
+   "level": 5,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "ACT-NETB",
+   "cls": "Activity",
+   "name": "Compute crude netback in LP",
+   "spine": "process",
+   "level": 6,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "TSK-LPCASE",
+   "cls": "Task",
+   "name": "Run marginal-crude LP case",
+   "spine": "process",
+   "level": 7,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "DEC-CRBUY",
+   "cls": "DecisionPoint",
+   "name": "Buy / reject opportunity cargo",
+   "spine": "process",
+   "level": 8,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "DOB-LPCASE",
+   "cls": "DataObject",
+   "name": "LP Case",
+   "spine": "process",
+   "level": 9,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "SP-IOWMON",
+   "cls": "SubProcess",
+   "name": "Exceedance Monitoring & Response",
+   "spine": "process",
+   "level": 5,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "ACT-IOWREV",
+   "cls": "Activity",
+   "name": "Review IOW exceedances",
+   "spine": "process",
+   "level": 6,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "TSK-OVHCL",
+   "cls": "Task",
+   "name": "Review overhead water chloride & pH daily",
+   "spine": "process",
+   "level": 7,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "DEC-NEUT",
+   "cls": "DecisionPoint",
+   "name": "Adjust neutraliser / wash-water rate",
+   "spine": "process",
+   "level": 8,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "DOB-IOWREG",
+   "cls": "DataObject",
+   "name": "IOW Register",
+   "spine": "process",
+   "level": 9,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "SP-RECIPE",
+   "cls": "SubProcess",
+   "name": "Blend Recipe Optimisation",
+   "spine": "process",
+   "level": 5,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "ACT-RECIPE",
+   "cls": "Activity",
+   "name": "Optimise blend recipe",
+   "spine": "process",
+   "level": 6,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "TSK-COMPQ",
+   "cls": "Task",
+   "name": "Update component qualities",
+   "spine": "process",
+   "level": 7,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "DEC-RECIPE",
+   "cls": "DecisionPoint",
+   "name": "Release blend recipe",
+   "spine": "process",
+   "level": 8,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "DOB-RECIPE",
+   "cls": "DataObject",
+   "name": "Blend Recipe",
+   "spine": "process",
+   "level": 9,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "SP-SCOPE",
+   "cls": "SubProcess",
+   "name": "Scope Challenge & Freeze",
+   "spine": "process",
+   "level": 5,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "ACT-SCOPECH",
+   "cls": "Activity",
+   "name": "Challenge scope against integrity threats",
+   "spine": "process",
+   "level": 6,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "TSK-RBI",
+   "cls": "Task",
+   "name": "Link inspection items to active damage mechanisms",
+   "spine": "process",
+   "level": 7,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "DEC-SCOPEFRZ",
+   "cls": "DecisionPoint",
+   "name": "Freeze turnaround scope",
+   "spine": "process",
+   "level": 8,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "DOB-TASCOPE",
+   "cls": "DataObject",
+   "name": "TA Scope List",
+   "spine": "process",
+   "level": 9,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "SP-RCA",
+   "cls": "SubProcess",
+   "name": "Failure Analysis (RCA)",
+   "spine": "process",
+   "level": 5,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "ACT-FLEET",
+   "cls": "Activity",
+   "name": "Compare failure patterns across the fleet",
+   "spine": "process",
+   "level": 6,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "TSK-MTBF",
+   "cls": "Task",
+   "name": "Compute MTBF by model & service",
+   "spine": "process",
+   "level": 7,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "DEC-STD",
+   "cls": "DecisionPoint",
+   "name": "Set equipment / seal-plan standard",
+   "spine": "process",
+   "level": 8,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "DOB-FAILREC",
+   "cls": "DataObject",
+   "name": "Failure Record (ISO 14224)",
+   "spine": "process",
+   "level": 9,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "SP-CORRCOST",
+   "cls": "SubProcess",
+   "name": "Corrosion Cost Tracking",
+   "spine": "process",
+   "level": 5,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "ACT-CORRCOST",
+   "cls": "Activity",
+   "name": "Aggregate corrosion repair cost & lost margin",
+   "spine": "process",
+   "level": 6,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "TSK-CORRCOST",
+   "cls": "Task",
+   "name": "Attribute failures to damage mechanism",
+   "spine": "process",
+   "level": 7,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "DEC-CORRBUD",
+   "cls": "DecisionPoint",
+   "name": "Set corrosion-control budget",
+   "spine": "process",
+   "level": 8,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "DOB-CORRLOG",
+   "cls": "DataObject",
+   "name": "Corrosion Cost Log",
+   "spine": "process",
+   "level": 9,
+   "desc": "",
+   "props": {}
+  },
+  {
+   "id": "DE-TAN",
+   "cls": "DataElement",
+   "name": "Total acid number",
+   "spine": "process",
+   "level": 10,
+   "desc": "",
+   "props": {
+    "domain": "crude quality",
+    "maps_to_predicate": "tan"
+   }
+  },
+  {
+   "id": "DE-SALT",
+   "cls": "DataElement",
+   "name": "Salt content",
+   "spine": "process",
+   "level": 10,
+   "desc": "",
+   "props": {
+    "domain": "crude quality",
+    "maps_to_predicate": "salt_content"
+   }
+  },
+  {
+   "id": "DE-SULF",
+   "cls": "DataElement",
+   "name": "Sulfur",
+   "spine": "process",
+   "level": 10,
+   "desc": "",
+   "props": {
+    "domain": "crude quality",
+    "maps_to_predicate": "sulfur"
+   }
+  },
+  {
+   "id": "DE-API",
+   "cls": "DataElement",
+   "name": "API gravity",
+   "spine": "process",
+   "level": 10,
+   "desc": "",
+   "props": {
+    "domain": "crude quality",
+    "maps_to_predicate": "api_gravity"
+   }
+  },
+  {
+   "id": "DE-GRMUP",
+   "cls": "DataElement",
+   "name": "LP GRM uplift",
+   "spine": "process",
+   "level": 10,
+   "desc": "",
+   "props": {
+    "domain": "economics",
+    "maps_to_predicate": "lp_uplift_per_bbl"
+   }
+  },
+  {
+   "id": "DE-CL",
+   "cls": "DataElement",
+   "name": "Overhead water chloride",
+   "spine": "process",
+   "level": 10,
+   "desc": "",
+   "props": {
+    "domain": "integrity",
+    "maps_to_predicate": null
+   }
+  },
+  {
+   "id": "DE-PH",
+   "cls": "DataElement",
+   "name": "Overhead water pH",
+   "spine": "process",
+   "level": 10,
+   "desc": "",
+   "props": {
+    "domain": "integrity",
+    "maps_to_predicate": null
+   }
+  },
+  {
+   "id": "DE-RONREF",
+   "cls": "DataElement",
+   "name": "Reformate RON",
+   "spine": "process",
+   "level": 10,
+   "desc": "",
+   "props": {
+    "domain": "product quality",
+    "maps_to_predicate": null
+   }
+  },
+  {
+   "id": "DE-RONPROD",
+   "cls": "DataElement",
+   "name": "Gasoline product RON",
+   "spine": "process",
+   "level": 10,
+   "desc": "",
+   "props": {
+    "domain": "product quality",
+    "maps_to_predicate": null
+   }
+  },
+  {
+   "id": "DE-SCOPE",
+   "cls": "DataElement",
+   "name": "Scope item inclusion",
+   "spine": "process",
+   "level": 10,
+   "desc": "",
+   "props": {
+    "domain": "integrity",
+    "maps_to_predicate": null
+   }
+  },
+  {
+   "id": "DE-MTBF",
+   "cls": "DataElement",
+   "name": "MTBF by model & service",
+   "spine": "process",
+   "level": 10,
+   "desc": "",
+   "props": {
+    "domain": "reliability",
+    "maps_to_predicate": "mtbf_days"
+   }
+  },
+  {
+   "id": "DE-FMECH",
+   "cls": "DataElement",
+   "name": "Failure mechanism",
+   "spine": "process",
+   "level": 10,
+   "desc": "",
+   "props": {
+    "domain": "reliability",
+    "maps_to_predicate": "failure_mechanism"
+   }
+  },
+  {
+   "id": "DE-CORRCOST",
+   "cls": "DataElement",
+   "name": "Corrosion repair cost & lost margin",
+   "spine": "process",
+   "level": 10,
+   "desc": "",
+   "props": {
+    "domain": "reliability",
+    "maps_to_predicate": "lost_margin"
+   }
+  }
+ ],
+ "edges": [
+  {
+   "source": "SEG-UPSTREAM",
+   "rel": "PART_OF",
+   "target": "OG",
+   "props": {}
+  },
+  {
+   "source": "SEG-MIDSTREAM",
+   "rel": "PART_OF",
+   "target": "OG",
+   "props": {}
+  },
+  {
+   "source": "SEG-DOWNSTREAM",
+   "rel": "PART_OF",
+   "target": "OG",
+   "props": {}
+  },
+  {
+   "source": "BC-REF",
+   "rel": "PART_OF",
+   "target": "SEG-DOWNSTREAM",
+   "props": {}
+  },
+  {
+   "source": "BC-EP",
+   "rel": "PART_OF",
+   "target": "SEG-UPSTREAM",
+   "props": {}
+  },
+  {
+   "source": "BC-PT",
+   "rel": "PART_OF",
+   "target": "SEG-MIDSTREAM",
+   "props": {}
+  },
+  {
+   "source": "FIELD-F1",
+   "rel": "PART_OF",
+   "target": "BC-EP",
+   "props": {}
+  },
+  {
+   "source": "CPF-1",
+   "rel": "PART_OF",
+   "target": "FIELD-F1",
+   "props": {}
+  },
+  {
+   "source": "CPF-1-SEP",
+   "rel": "PART_OF",
+   "target": "CPF-1",
+   "props": {}
+  },
+  {
+   "source": "V-1001",
+   "rel": "PART_OF",
+   "target": "CPF-1-SEP",
+   "props": {}
+  },
+  {
+   "source": "T-F1-OIL",
+   "rel": "PART_OF",
+   "target": "V-1001",
+   "props": {}
+  },
+  {
+   "source": "TERM-T1",
+   "rel": "PART_OF",
+   "target": "BC-PT",
+   "props": {}
+  },
+  {
+   "source": "TFARM-1",
+   "rel": "PART_OF",
+   "target": "TERM-T1",
+   "props": {}
+  },
+  {
+   "source": "TFARM-1-S",
+   "rel": "PART_OF",
+   "target": "TFARM-1",
+   "props": {}
+  },
+  {
+   "source": "TK-01",
+   "rel": "PART_OF",
+   "target": "TFARM-1-S",
+   "props": {}
+  },
+  {
+   "source": "T-TK01-LVL",
+   "rel": "PART_OF",
+   "target": "TK-01",
+   "props": {}
+  },
+  {
+   "source": "FIELD-F1",
+   "rel": "SUPPLIES",
+   "target": "TERM-T1",
+   "props": {}
+  },
+  {
+   "source": "SITE-ALPHA",
+   "rel": "PART_OF",
+   "target": "BC-REF",
+   "props": {}
+  },
+  {
+   "source": "TERM-T1",
+   "rel": "SUPPLIES",
+   "target": "SITE-ALPHA",
+   "props": {}
+  },
+  {
+   "source": "SITE-BETA",
+   "rel": "PART_OF",
+   "target": "BC-REF",
+   "props": {}
+  },
+  {
+   "source": "TERM-T1",
+   "rel": "SUPPLIES",
+   "target": "SITE-BETA",
+   "props": {}
+  },
+  {
+   "source": "CDU-1",
+   "rel": "PART_OF",
+   "target": "SITE-ALPHA",
+   "props": {}
+  },
+  {
+   "source": "VDU-1",
+   "rel": "PART_OF",
+   "target": "SITE-ALPHA",
+   "props": {}
+  },
+  {
+   "source": "FCC-1",
+   "rel": "PART_OF",
+   "target": "SITE-ALPHA",
+   "props": {}
+  },
+  {
+   "source": "REF-1",
+   "rel": "PART_OF",
+   "target": "SITE-ALPHA",
+   "props": {}
+  },
+  {
+   "source": "GBL-1",
+   "rel": "PART_OF",
+   "target": "SITE-ALPHA",
+   "props": {}
+  },
+  {
+   "source": "CDU-2",
+   "rel": "PART_OF",
+   "target": "SITE-BETA",
+   "props": {}
+  },
+  {
+   "source": "VDU-2",
+   "rel": "PART_OF",
+   "target": "SITE-BETA",
+   "props": {}
+  },
+  {
+   "source": "FCC-2",
+   "rel": "PART_OF",
+   "target": "SITE-BETA",
+   "props": {}
+  },
+  {
+   "source": "REF-2",
+   "rel": "PART_OF",
+   "target": "SITE-BETA",
+   "props": {}
+  },
+  {
+   "source": "GBL-2",
+   "rel": "PART_OF",
+   "target": "SITE-BETA",
+   "props": {}
+  },
+  {
+   "source": "CDU-1-DS",
+   "rel": "PART_OF",
+   "target": "CDU-1",
+   "props": {}
+  },
+  {
+   "source": "CDU-1-PH",
+   "rel": "PART_OF",
+   "target": "CDU-1",
+   "props": {}
+  },
+  {
+   "source": "CDU-1-FR",
+   "rel": "PART_OF",
+   "target": "CDU-1",
+   "props": {}
+  },
+  {
+   "source": "CDU-1-OVH",
+   "rel": "PART_OF",
+   "target": "CDU-1",
+   "props": {}
+  },
+  {
+   "source": "VDU-1-VR",
+   "rel": "PART_OF",
+   "target": "VDU-1",
+   "props": {}
+  },
+  {
+   "source": "VDU-1-TL",
+   "rel": "PART_OF",
+   "target": "VDU-1",
+   "props": {}
+  },
+  {
+   "source": "FCC-1-FR",
+   "rel": "PART_OF",
+   "target": "FCC-1",
+   "props": {}
+  },
+  {
+   "source": "REF-1-RX",
+   "rel": "PART_OF",
+   "target": "REF-1",
+   "props": {}
+  },
+  {
+   "source": "REF-1-STB",
+   "rel": "PART_OF",
+   "target": "REF-1",
+   "props": {}
+  },
+  {
+   "source": "GBL-1-HDR",
+   "rel": "PART_OF",
+   "target": "GBL-1",
+   "props": {}
+  },
+  {
+   "source": "CDU-2-DS",
+   "rel": "PART_OF",
+   "target": "CDU-2",
+   "props": {}
+  },
+  {
+   "source": "CDU-2-PH",
+   "rel": "PART_OF",
+   "target": "CDU-2",
+   "props": {}
+  },
+  {
+   "source": "CDU-2-FR",
+   "rel": "PART_OF",
+   "target": "CDU-2",
+   "props": {}
+  },
+  {
+   "source": "CDU-2-OVH",
+   "rel": "PART_OF",
+   "target": "CDU-2",
+   "props": {}
+  },
+  {
+   "source": "VDU-2-VR",
+   "rel": "PART_OF",
+   "target": "VDU-2",
+   "props": {}
+  },
+  {
+   "source": "VDU-2-TL",
+   "rel": "PART_OF",
+   "target": "VDU-2",
+   "props": {}
+  },
+  {
+   "source": "FCC-2-FR",
+   "rel": "PART_OF",
+   "target": "FCC-2",
+   "props": {}
+  },
+  {
+   "source": "REF-2-RX",
+   "rel": "PART_OF",
+   "target": "REF-2",
+   "props": {}
+  },
+  {
+   "source": "REF-2-STB",
+   "rel": "PART_OF",
+   "target": "REF-2",
+   "props": {}
+  },
+  {
+   "source": "GBL-2-HDR",
+   "rel": "PART_OF",
+   "target": "GBL-2",
+   "props": {}
+  },
+  {
+   "source": "E-101A",
+   "rel": "PART_OF",
+   "target": "CDU-1-OVH",
+   "props": {}
+  },
+  {
+   "source": "E-101B",
+   "rel": "PART_OF",
+   "target": "CDU-1-OVH",
+   "props": {}
+  },
+  {
+   "source": "V-102",
+   "rel": "PART_OF",
+   "target": "CDU-1-OVH",
+   "props": {}
+  },
+  {
+   "source": "P-103",
+   "rel": "PART_OF",
+   "target": "CDU-1-OVH",
+   "props": {}
+  },
+  {
+   "source": "PC-101",
+   "rel": "PART_OF",
+   "target": "CDU-1-OVH",
+   "props": {}
+  },
+  {
+   "source": "V-110",
+   "rel": "PART_OF",
+   "target": "CDU-1-DS",
+   "props": {}
+  },
+  {
+   "source": "C-101",
+   "rel": "PART_OF",
+   "target": "CDU-1-FR",
+   "props": {}
+  },
+  {
+   "source": "H-101",
+   "rel": "PART_OF",
+   "target": "CDU-1-PH",
+   "props": {}
+  },
+  {
+   "source": "PC-201",
+   "rel": "PART_OF",
+   "target": "VDU-1-TL",
+   "props": {}
+  },
+  {
+   "source": "E-301",
+   "rel": "PART_OF",
+   "target": "REF-1-RX",
+   "props": {}
+  },
+  {
+   "source": "E-401A",
+   "rel": "PART_OF",
+   "target": "CDU-2-OVH",
+   "props": {}
+  },
+  {
+   "source": "V-402",
+   "rel": "PART_OF",
+   "target": "CDU-2-OVH",
+   "props": {}
+  },
+  {
+   "source": "E-601",
+   "rel": "PART_OF",
+   "target": "REF-2-RX",
+   "props": {}
+  },
+  {
+   "source": "P-201A",
+   "rel": "PART_OF",
+   "target": "VDU-1-VR",
+   "props": {}
+  },
+  {
+   "source": "P-201A-SS",
+   "rel": "PART_OF",
+   "target": "P-201A",
+   "props": {}
+  },
+  {
+   "source": "P-201A-MS",
+   "rel": "PART_OF",
+   "target": "P-201A-SS",
+   "props": {}
+  },
+  {
+   "source": "P-201A-SF",
+   "rel": "PART_OF",
+   "target": "P-201A-MS",
+   "props": {}
+  },
+  {
+   "source": "P-201A-OR",
+   "rel": "PART_OF",
+   "target": "P-201A-MS",
+   "props": {}
+  },
+  {
+   "source": "P-201A-BH",
+   "rel": "PART_OF",
+   "target": "P-201A",
+   "props": {}
+  },
+  {
+   "source": "P-201A-BRG",
+   "rel": "PART_OF",
+   "target": "P-201A-BH",
+   "props": {}
+  },
+  {
+   "source": "P-201B",
+   "rel": "PART_OF",
+   "target": "VDU-1-VR",
+   "props": {}
+  },
+  {
+   "source": "P-201B-SS",
+   "rel": "PART_OF",
+   "target": "P-201B",
+   "props": {}
+  },
+  {
+   "source": "P-201B-MS",
+   "rel": "PART_OF",
+   "target": "P-201B-SS",
+   "props": {}
+  },
+  {
+   "source": "P-201B-SF",
+   "rel": "PART_OF",
+   "target": "P-201B-MS",
+   "props": {}
+  },
+  {
+   "source": "P-201B-OR",
+   "rel": "PART_OF",
+   "target": "P-201B-MS",
+   "props": {}
+  },
+  {
+   "source": "P-201B-BH",
+   "rel": "PART_OF",
+   "target": "P-201B",
+   "props": {}
+  },
+  {
+   "source": "P-201B-BRG",
+   "rel": "PART_OF",
+   "target": "P-201B-BH",
+   "props": {}
+  },
+  {
+   "source": "P-501",
+   "rel": "PART_OF",
+   "target": "FCC-1-FR",
+   "props": {}
+  },
+  {
+   "source": "P-501-SS",
+   "rel": "PART_OF",
+   "target": "P-501",
+   "props": {}
+  },
+  {
+   "source": "P-501-MS",
+   "rel": "PART_OF",
+   "target": "P-501-SS",
+   "props": {}
+  },
+  {
+   "source": "P-501-SF",
+   "rel": "PART_OF",
+   "target": "P-501-MS",
+   "props": {}
+  },
+  {
+   "source": "P-501-OR",
+   "rel": "PART_OF",
+   "target": "P-501-MS",
+   "props": {}
+  },
+  {
+   "source": "P-501-BH",
+   "rel": "PART_OF",
+   "target": "P-501",
+   "props": {}
+  },
+  {
+   "source": "P-501-BRG",
+   "rel": "PART_OF",
+   "target": "P-501-BH",
+   "props": {}
+  },
+  {
+   "source": "P-401A",
+   "rel": "PART_OF",
+   "target": "VDU-2-VR",
+   "props": {}
+  },
+  {
+   "source": "P-401A-SS",
+   "rel": "PART_OF",
+   "target": "P-401A",
+   "props": {}
+  },
+  {
+   "source": "P-401A-MS",
+   "rel": "PART_OF",
+   "target": "P-401A-SS",
+   "props": {}
+  },
+  {
+   "source": "P-401A-SF",
+   "rel": "PART_OF",
+   "target": "P-401A-MS",
+   "props": {}
+  },
+  {
+   "source": "P-401A-OR",
+   "rel": "PART_OF",
+   "target": "P-401A-MS",
+   "props": {}
+  },
+  {
+   "source": "P-401A-BH",
+   "rel": "PART_OF",
+   "target": "P-401A",
+   "props": {}
+  },
+  {
+   "source": "P-401A-BRG",
+   "rel": "PART_OF",
+   "target": "P-401A-BH",
+   "props": {}
+  },
+  {
+   "source": "P-401B",
+   "rel": "PART_OF",
+   "target": "VDU-2-VR",
+   "props": {}
+  },
+  {
+   "source": "P-401B-SS",
+   "rel": "PART_OF",
+   "target": "P-401B",
+   "props": {}
+  },
+  {
+   "source": "P-401B-MS",
+   "rel": "PART_OF",
+   "target": "P-401B-SS",
+   "props": {}
+  },
+  {
+   "source": "P-401B-SF",
+   "rel": "PART_OF",
+   "target": "P-401B-MS",
+   "props": {}
+  },
+  {
+   "source": "P-401B-OR",
+   "rel": "PART_OF",
+   "target": "P-401B-MS",
+   "props": {}
+  },
+  {
+   "source": "P-401B-BH",
+   "rel": "PART_OF",
+   "target": "P-401B",
+   "props": {}
+  },
+  {
+   "source": "P-401B-BRG",
+   "rel": "PART_OF",
+   "target": "P-401B-BH",
+   "props": {}
+  },
+  {
+   "source": "P-306",
+   "rel": "PART_OF",
+   "target": "CDU-2-FR",
+   "props": {}
+  },
+  {
+   "source": "P-306-SS",
+   "rel": "PART_OF",
+   "target": "P-306",
+   "props": {}
+  },
+  {
+   "source": "P-306-MS",
+   "rel": "PART_OF",
+   "target": "P-306-SS",
+   "props": {}
+  },
+  {
+   "source": "P-306-SF",
+   "rel": "PART_OF",
+   "target": "P-306-MS",
+   "props": {}
+  },
+  {
+   "source": "P-306-OR",
+   "rel": "PART_OF",
+   "target": "P-306-MS",
+   "props": {}
+  },
+  {
+   "source": "P-306-BH",
+   "rel": "PART_OF",
+   "target": "P-306",
+   "props": {}
+  },
+  {
+   "source": "P-306-BRG",
+   "rel": "PART_OF",
+   "target": "P-306-BH",
+   "props": {}
+  },
+  {
+   "source": "E-101A-TB",
+   "rel": "PART_OF",
+   "target": "E-101A",
+   "props": {}
+  },
+  {
+   "source": "E-101A-TU",
+   "rel": "PART_OF",
+   "target": "E-101A-TB",
+   "props": {}
+  },
+  {
+   "source": "E-101B-TB",
+   "rel": "PART_OF",
+   "target": "E-101B",
+   "props": {}
+  },
+  {
+   "source": "E-101B-TU",
+   "rel": "PART_OF",
+   "target": "E-101B-TB",
+   "props": {}
+  },
+  {
+   "source": "E-401A-TB",
+   "rel": "PART_OF",
+   "target": "E-401A",
+   "props": {}
+  },
+  {
+   "source": "E-401A-TU",
+   "rel": "PART_OF",
+   "target": "E-401A-TB",
+   "props": {}
+  },
+  {
+   "source": "T-CDU1-CL",
+   "rel": "PART_OF",
+   "target": "CDU-1-OVH",
+   "props": {}
+  },
+  {
+   "source": "T-CDU1-PH",
+   "rel": "PART_OF",
+   "target": "CDU-1-OVH",
+   "props": {}
+  },
+  {
+   "source": "T-CDU1-FI",
+   "rel": "PART_OF",
+   "target": "CDU-1",
+   "props": {}
+  },
+  {
+   "source": "T-CDU1-DSS",
+   "rel": "PART_OF",
+   "target": "CDU-1-DS",
+   "props": {}
+  },
+  {
+   "source": "T-REF1-RON",
+   "rel": "PART_OF",
+   "target": "REF-1-STB",
+   "props": {}
+  },
+  {
+   "source": "T-REF1-TI",
+   "rel": "PART_OF",
+   "target": "REF-1-RX",
+   "props": {}
+  },
+  {
+   "source": "T-GBL1-RON",
+   "rel": "PART_OF",
+   "target": "GBL-1-HDR",
+   "props": {}
+  },
+  {
+   "source": "T-CDU2-CL",
+   "rel": "PART_OF",
+   "target": "CDU-2-OVH",
+   "props": {}
+  },
+  {
+   "source": "T-CDU2-PH",
+   "rel": "PART_OF",
+   "target": "CDU-2-OVH",
+   "props": {}
+  },
+  {
+   "source": "T-CDU2-FI",
+   "rel": "PART_OF",
+   "target": "CDU-2",
+   "props": {}
+  },
+  {
+   "source": "T-CDU2-DSS",
+   "rel": "PART_OF",
+   "target": "CDU-2-DS",
+   "props": {}
+  },
+  {
+   "source": "T-REF2-RON",
+   "rel": "PART_OF",
+   "target": "REF-2-STB",
+   "props": {}
+  },
+  {
+   "source": "T-REF2-TI",
+   "rel": "PART_OF",
+   "target": "REF-2-RX",
+   "props": {}
+  },
+  {
+   "source": "T-GBL2-RON",
+   "rel": "PART_OF",
+   "target": "GBL-2-HDR",
+   "props": {}
+  },
+  {
+   "source": "T-VDU1-CR",
+   "rel": "PART_OF",
+   "target": "PC-201",
+   "props": {}
+  },
+  {
+   "source": "T-E301-RF",
+   "rel": "PART_OF",
+   "target": "E-301",
+   "props": {}
+  },
+  {
+   "source": "T-E601-RF",
+   "rel": "PART_OF",
+   "target": "E-601",
+   "props": {}
+  },
+  {
+   "source": "CR-F1",
+   "rel": "PRODUCED_AT",
+   "target": "FIELD-F1",
+   "props": {}
+  },
+  {
+   "source": "CMP-A1",
+   "rel": "OF_GRADE",
+   "target": "CR-HSOB",
+   "props": {}
+  },
+  {
+   "source": "CMP-A1",
+   "rel": "PROCESSED_IN",
+   "target": "CDU-1",
+   "props": {}
+  },
+  {
+   "source": "CMP-A1",
+   "rel": "DELIVERED_VIA",
+   "target": "TERM-T1",
+   "props": {}
+  },
+  {
+   "source": "CMP-A2H",
+   "rel": "OF_GRADE",
+   "target": "CR-HSOB",
+   "props": {}
+  },
+  {
+   "source": "CMP-A2H",
+   "rel": "PROCESSED_IN",
+   "target": "CDU-1",
+   "props": {}
+  },
+  {
+   "source": "CMP-A2H",
+   "rel": "DELIVERED_VIA",
+   "target": "TERM-T1",
+   "props": {}
+  },
+  {
+   "source": "CMP-A2D",
+   "rel": "OF_GRADE",
+   "target": "CR-DOBA",
+   "props": {}
+  },
+  {
+   "source": "CMP-A2D",
+   "rel": "PROCESSED_IN",
+   "target": "CDU-1",
+   "props": {}
+  },
+  {
+   "source": "CMP-A2D",
+   "rel": "DELIVERED_VIA",
+   "target": "TERM-T1",
+   "props": {}
+  },
+  {
+   "source": "CMP-A3",
+   "rel": "OF_GRADE",
+   "target": "CR-HSOB",
+   "props": {}
+  },
+  {
+   "source": "CMP-A3",
+   "rel": "PROCESSED_IN",
+   "target": "CDU-1",
+   "props": {}
+  },
+  {
+   "source": "CMP-A3",
+   "rel": "DELIVERED_VIA",
+   "target": "TERM-T1",
+   "props": {}
+  },
+  {
+   "source": "CMP-AB-AL",
+   "rel": "OF_GRADE",
+   "target": "CR-AL",
+   "props": {}
+  },
+  {
+   "source": "CMP-AB-AL",
+   "rel": "PROCESSED_IN",
+   "target": "CDU-1",
+   "props": {}
+  },
+  {
+   "source": "CMP-AB-AL",
+   "rel": "DELIVERED_VIA",
+   "target": "TERM-T1",
+   "props": {}
+  },
+  {
+   "source": "CMP-AB-BM",
+   "rel": "OF_GRADE",
+   "target": "CR-BM",
+   "props": {}
+  },
+  {
+   "source": "CMP-AB-BM",
+   "rel": "PROCESSED_IN",
+   "target": "CDU-1",
+   "props": {}
+  },
+  {
+   "source": "CMP-AB-BM",
+   "rel": "DELIVERED_VIA",
+   "target": "TERM-T1",
+   "props": {}
+  },
+  {
+   "source": "CMP-AB-MUR",
+   "rel": "OF_GRADE",
+   "target": "CR-MUR",
+   "props": {}
+  },
+  {
+   "source": "CMP-AB-MUR",
+   "rel": "PROCESSED_IN",
+   "target": "CDU-1",
+   "props": {}
+  },
+  {
+   "source": "CMP-AB-MUR",
+   "rel": "DELIVERED_VIA",
+   "target": "TERM-T1",
+   "props": {}
+  },
+  {
+   "source": "CMP-AB-QM",
+   "rel": "OF_GRADE",
+   "target": "CR-QM",
+   "props": {}
+  },
+  {
+   "source": "CMP-AB-QM",
+   "rel": "PROCESSED_IN",
+   "target": "CDU-1",
+   "props": {}
+  },
+  {
+   "source": "CMP-AB-QM",
+   "rel": "DELIVERED_VIA",
+   "target": "TERM-T1",
+   "props": {}
+  },
+  {
+   "source": "CMP-BB-AL",
+   "rel": "OF_GRADE",
+   "target": "CR-AL",
+   "props": {}
+  },
+  {
+   "source": "CMP-BB-AL",
+   "rel": "PROCESSED_IN",
+   "target": "CDU-2",
+   "props": {}
+  },
+  {
+   "source": "CMP-BB-AL",
+   "rel": "DELIVERED_VIA",
+   "target": "TERM-T1",
+   "props": {}
+  },
+  {
+   "source": "CMP-BB-MUR",
+   "rel": "OF_GRADE",
+   "target": "CR-MUR",
+   "props": {}
+  },
+  {
+   "source": "CMP-BB-MUR",
+   "rel": "PROCESSED_IN",
+   "target": "CDU-2",
+   "props": {}
+  },
+  {
+   "source": "CMP-BB-MUR",
+   "rel": "DELIVERED_VIA",
+   "target": "TERM-T1",
+   "props": {}
+  },
+  {
+   "source": "CMP-BB-F1",
+   "rel": "OF_GRADE",
+   "target": "CR-F1",
+   "props": {}
+  },
+  {
+   "source": "CMP-BB-F1",
+   "rel": "PROCESSED_IN",
+   "target": "CDU-2",
+   "props": {}
+  },
+  {
+   "source": "CMP-BB-F1",
+   "rel": "DELIVERED_VIA",
+   "target": "TERM-T1",
+   "props": {}
+  },
+  {
+   "source": "CDU-1",
+   "rel": "PRODUCES",
+   "target": "STR-SRN-1",
+   "props": {}
+  },
+  {
+   "source": "STR-SRN-1",
+   "rel": "FEEDS",
+   "target": "REF-1",
+   "props": {}
+  },
+  {
+   "source": "CDU-1",
+   "rel": "PRODUCES",
+   "target": "STR-AR-1",
+   "props": {}
+  },
+  {
+   "source": "STR-AR-1",
+   "rel": "FEEDS",
+   "target": "VDU-1",
+   "props": {}
+  },
+  {
+   "source": "CDU-1",
+   "rel": "PRODUCES",
+   "target": "STR-AGO-1",
+   "props": {}
+  },
+  {
+   "source": "VDU-1",
+   "rel": "PRODUCES",
+   "target": "STR-VGO-1",
+   "props": {}
+  },
+  {
+   "source": "STR-VGO-1",
+   "rel": "FEEDS",
+   "target": "FCC-1",
+   "props": {}
+  },
+  {
+   "source": "VDU-1",
+   "rel": "PRODUCES",
+   "target": "STR-VR-1",
+   "props": {}
+  },
+  {
+   "source": "FCC-1",
+   "rel": "PRODUCES",
+   "target": "STR-FCCG-1",
+   "props": {}
+  },
+  {
+   "source": "STR-FCCG-1",
+   "rel": "FEEDS",
+   "target": "GBL-1",
+   "props": {}
+  },
+  {
+   "source": "REF-1",
+   "rel": "PRODUCES",
+   "target": "STR-REFM-1",
+   "props": {}
+  },
+  {
+   "source": "STR-REFM-1",
+   "rel": "FEEDS",
+   "target": "GBL-1",
+   "props": {}
+  },
+  {
+   "source": "STR-FCCG-1",
+   "rel": "COMPONENT_OF",
+   "target": "PRD-GAS-1",
+   "props": {}
+  },
+  {
+   "source": "STR-REFM-1",
+   "rel": "COMPONENT_OF",
+   "target": "PRD-GAS-1",
+   "props": {}
+  },
+  {
+   "source": "STR-AGO-1",
+   "rel": "COMPONENT_OF",
+   "target": "PRD-DSL-1",
+   "props": {}
+  },
+  {
+   "source": "STR-VR-1",
+   "rel": "COMPONENT_OF",
+   "target": "PRD-FO-1",
+   "props": {}
+  },
+  {
+   "source": "PRD-GAS-1",
+   "rel": "BLENDED_AT",
+   "target": "GBL-1",
+   "props": {}
+  },
+  {
+   "source": "CDU-2",
+   "rel": "PRODUCES",
+   "target": "STR-SRN-2",
+   "props": {}
+  },
+  {
+   "source": "STR-SRN-2",
+   "rel": "FEEDS",
+   "target": "REF-2",
+   "props": {}
+  },
+  {
+   "source": "CDU-2",
+   "rel": "PRODUCES",
+   "target": "STR-AR-2",
+   "props": {}
+  },
+  {
+   "source": "STR-AR-2",
+   "rel": "FEEDS",
+   "target": "VDU-2",
+   "props": {}
+  },
+  {
+   "source": "CDU-2",
+   "rel": "PRODUCES",
+   "target": "STR-AGO-2",
+   "props": {}
+  },
+  {
+   "source": "VDU-2",
+   "rel": "PRODUCES",
+   "target": "STR-VGO-2",
+   "props": {}
+  },
+  {
+   "source": "STR-VGO-2",
+   "rel": "FEEDS",
+   "target": "FCC-2",
+   "props": {}
+  },
+  {
+   "source": "VDU-2",
+   "rel": "PRODUCES",
+   "target": "STR-VR-2",
+   "props": {}
+  },
+  {
+   "source": "FCC-2",
+   "rel": "PRODUCES",
+   "target": "STR-FCCG-2",
+   "props": {}
+  },
+  {
+   "source": "STR-FCCG-2",
+   "rel": "FEEDS",
+   "target": "GBL-2",
+   "props": {}
+  },
+  {
+   "source": "REF-2",
+   "rel": "PRODUCES",
+   "target": "STR-REFM-2",
+   "props": {}
+  },
+  {
+   "source": "STR-REFM-2",
+   "rel": "FEEDS",
+   "target": "GBL-2",
+   "props": {}
+  },
+  {
+   "source": "STR-FCCG-2",
+   "rel": "COMPONENT_OF",
+   "target": "PRD-GAS-2",
+   "props": {}
+  },
+  {
+   "source": "STR-REFM-2",
+   "rel": "COMPONENT_OF",
+   "target": "PRD-GAS-2",
+   "props": {}
+  },
+  {
+   "source": "STR-AGO-2",
+   "rel": "COMPONENT_OF",
+   "target": "PRD-DSL-2",
+   "props": {}
+  },
+  {
+   "source": "STR-VR-2",
+   "rel": "COMPONENT_OF",
+   "target": "PRD-FO-2",
+   "props": {}
+  },
+  {
+   "source": "PRD-GAS-2",
+   "rel": "BLENDED_AT",
+   "target": "GBL-2",
+   "props": {}
+  },
+  {
+   "source": "PRD-GAS-1",
+   "rel": "SOLD_TO",
+   "target": "MKT-DOM",
+   "props": {}
+  },
+  {
+   "source": "PRD-DSL-1",
+   "rel": "SOLD_TO",
+   "target": "MKT-DOM",
+   "props": {}
+  },
+  {
+   "source": "PRD-FO-1",
+   "rel": "SOLD_TO",
+   "target": "MKT-EXP",
+   "props": {}
+  },
+  {
+   "source": "PRD-GAS-2",
+   "rel": "SOLD_TO",
+   "target": "MKT-DOM",
+   "props": {}
+  },
+  {
+   "source": "PRD-DSL-2",
+   "rel": "SOLD_TO",
+   "target": "MKT-DOM",
+   "props": {}
+  },
+  {
+   "source": "PRD-FO-2",
+   "rel": "SOLD_TO",
+   "target": "MKT-EXP",
+   "props": {}
+  },
+  {
+   "source": "IOW-001",
+   "rel": "ON_DATAPOINT",
+   "target": "T-CDU1-CL",
+   "props": {}
+  },
+  {
+   "source": "IOW-002",
+   "rel": "ON_DATAPOINT",
+   "target": "T-CDU1-CL",
+   "props": {}
+  },
+  {
+   "source": "IOW-003",
+   "rel": "ON_DATAPOINT",
+   "target": "T-CDU1-CL",
+   "props": {}
+  },
+  {
+   "source": "IOW-004",
+   "rel": "ON_DATAPOINT",
+   "target": "T-CDU1-PH",
+   "props": {}
+  },
+  {
+   "source": "IOW-005",
+   "rel": "ON_DATAPOINT",
+   "target": "T-VDU1-CR",
+   "props": {}
+  },
+  {
+   "source": "IOW-006",
+   "rel": "ON_DATAPOINT",
+   "target": "T-CDU2-CL",
+   "props": {}
+  },
+  {
+   "source": "FL-001",
+   "rel": "FAILURE_OF",
+   "target": "E-101A-TU",
+   "props": {}
+  },
+  {
+   "source": "WO-001",
+   "rel": "REMEDIATES",
+   "target": "FL-001",
+   "props": {}
+  },
+  {
+   "source": "FL-002",
+   "rel": "FAILURE_OF",
+   "target": "E-101B-TU",
+   "props": {}
+  },
+  {
+   "source": "WO-002",
+   "rel": "REMEDIATES",
+   "target": "FL-002",
+   "props": {}
+  },
+  {
+   "source": "FL-003",
+   "rel": "FAILURE_OF",
+   "target": "PC-101",
+   "props": {}
+  },
+  {
+   "source": "WO-003",
+   "rel": "REMEDIATES",
+   "target": "FL-003",
+   "props": {}
+  },
+  {
+   "source": "FL-004",
+   "rel": "FAILURE_OF",
+   "target": "PC-201",
+   "props": {}
+  },
+  {
+   "source": "WO-004",
+   "rel": "REMEDIATES",
+   "target": "FL-004",
+   "props": {}
+  },
+  {
+   "source": "FL-101",
+   "rel": "FAILURE_OF",
+   "target": "P-201A-MS",
+   "props": {}
+  },
+  {
+   "source": "WO-101",
+   "rel": "REMEDIATES",
+   "target": "FL-101",
+   "props": {}
+  },
+  {
+   "source": "FL-102",
+   "rel": "FAILURE_OF",
+   "target": "P-201A-MS",
+   "props": {}
+  },
+  {
+   "source": "WO-102",
+   "rel": "REMEDIATES",
+   "target": "FL-102",
+   "props": {}
+  },
+  {
+   "source": "FL-103",
+   "rel": "FAILURE_OF",
+   "target": "P-201A-MS",
+   "props": {}
+  },
+  {
+   "source": "WO-103",
+   "rel": "REMEDIATES",
+   "target": "FL-103",
+   "props": {}
+  },
+  {
+   "source": "FL-104",
+   "rel": "FAILURE_OF",
+   "target": "P-201A-MS",
+   "props": {}
+  },
+  {
+   "source": "WO-104",
+   "rel": "REMEDIATES",
+   "target": "FL-104",
+   "props": {}
+  },
+  {
+   "source": "FL-105",
+   "rel": "FAILURE_OF",
+   "target": "P-201B-MS",
+   "props": {}
+  },
+  {
+   "source": "WO-105",
+   "rel": "REMEDIATES",
+   "target": "FL-105",
+   "props": {}
+  },
+  {
+   "source": "FL-106",
+   "rel": "FAILURE_OF",
+   "target": "P-201B-MS",
+   "props": {}
+  },
+  {
+   "source": "WO-106",
+   "rel": "REMEDIATES",
+   "target": "FL-106",
+   "props": {}
+  },
+  {
+   "source": "FL-107",
+   "rel": "FAILURE_OF",
+   "target": "P-201B-MS",
+   "props": {}
+  },
+  {
+   "source": "WO-107",
+   "rel": "REMEDIATES",
+   "target": "FL-107",
+   "props": {}
+  },
+  {
+   "source": "FL-108",
+   "rel": "FAILURE_OF",
+   "target": "P-501-MS",
+   "props": {}
+  },
+  {
+   "source": "WO-108",
+   "rel": "REMEDIATES",
+   "target": "FL-108",
+   "props": {}
+  },
+  {
+   "source": "FL-109",
+   "rel": "FAILURE_OF",
+   "target": "P-501-MS",
+   "props": {}
+  },
+  {
+   "source": "WO-109",
+   "rel": "REMEDIATES",
+   "target": "FL-109",
+   "props": {}
+  },
+  {
+   "source": "FL-110",
+   "rel": "FAILURE_OF",
+   "target": "P-501-MS",
+   "props": {}
+  },
+  {
+   "source": "WO-110",
+   "rel": "REMEDIATES",
+   "target": "FL-110",
+   "props": {}
+  },
+  {
+   "source": "FL-111",
+   "rel": "FAILURE_OF",
+   "target": "P-401A-MS",
+   "props": {}
+  },
+  {
+   "source": "WO-111",
+   "rel": "REMEDIATES",
+   "target": "FL-111",
+   "props": {}
+  },
+  {
+   "source": "FL-112",
+   "rel": "FAILURE_OF",
+   "target": "P-401A-MS",
+   "props": {}
+  },
+  {
+   "source": "WO-112",
+   "rel": "REMEDIATES",
+   "target": "FL-112",
+   "props": {}
+  },
+  {
+   "source": "FL-113",
+   "rel": "FAILURE_OF",
+   "target": "P-401A-MS",
+   "props": {}
+  },
+  {
+   "source": "WO-113",
+   "rel": "REMEDIATES",
+   "target": "FL-113",
+   "props": {}
+  },
+  {
+   "source": "FL-114",
+   "rel": "FAILURE_OF",
+   "target": "P-401A-MS",
+   "props": {}
+  },
+  {
+   "source": "WO-114",
+   "rel": "REMEDIATES",
+   "target": "FL-114",
+   "props": {}
+  },
+  {
+   "source": "FL-115",
+   "rel": "FAILURE_OF",
+   "target": "P-401B-MS",
+   "props": {}
+  },
+  {
+   "source": "WO-115",
+   "rel": "REMEDIATES",
+   "target": "FL-115",
+   "props": {}
+  },
+  {
+   "source": "TA-ALPHA-27",
+   "rel": "AT_SITE",
+   "target": "SITE-ALPHA",
+   "props": {}
+  },
+  {
+   "source": "SI-01",
+   "rel": "IN_SCOPE_OF",
+   "target": "TA-ALPHA-27",
+   "props": {}
+  },
+  {
+   "source": "SI-01",
+   "rel": "TARGETS",
+   "target": "E-101A",
+   "props": {}
+  },
+  {
+   "source": "SI-02",
+   "rel": "IN_SCOPE_OF",
+   "target": "TA-ALPHA-27",
+   "props": {}
+  },
+  {
+   "source": "SI-02",
+   "rel": "TARGETS",
+   "target": "V-102",
+   "props": {}
+  },
+  {
+   "source": "SI-03",
+   "rel": "IN_SCOPE_OF",
+   "target": "TA-ALPHA-27",
+   "props": {}
+  },
+  {
+   "source": "SI-03",
+   "rel": "TARGETS",
+   "target": "H-101",
+   "props": {}
+  },
+  {
+   "source": "SI-04",
+   "rel": "IN_SCOPE_OF",
+   "target": "TA-ALPHA-27",
+   "props": {}
+  },
+  {
+   "source": "SI-04",
+   "rel": "TARGETS",
+   "target": "C-101",
+   "props": {}
+  },
+  {
+   "source": "SI-05",
+   "rel": "IN_SCOPE_OF",
+   "target": "TA-ALPHA-27",
+   "props": {}
+  },
+  {
+   "source": "SI-05",
+   "rel": "TARGETS",
+   "target": "P-201A",
+   "props": {}
+  },
+  {
+   "source": "VS-PTS",
+   "rel": "PART_OF",
+   "target": "SEG-UPSTREAM",
+   "props": {}
+  },
+  {
+   "source": "VS-LOG",
+   "rel": "PART_OF",
+   "target": "SEG-MIDSTREAM",
+   "props": {}
+  },
+  {
+   "source": "PG-TERM",
+   "rel": "PART_OF",
+   "target": "VS-LOG",
+   "props": {}
+  },
+  {
+   "source": "PG-TERM",
+   "rel": "OWNED_BY",
+   "target": "ROLE-OPS",
+   "props": {}
+  },
+  {
+   "source": "PG-TERM",
+   "rel": "ACTS_ON",
+   "target": "TERM-T1",
+   "props": {}
+  },
+  {
+   "source": "VS-PTS",
+   "rel": "ACTS_ON",
+   "target": "FIELD-F1",
+   "props": {}
+  },
+  {
+   "source": "VS-C2P",
+   "rel": "PART_OF",
+   "target": "SEG-DOWNSTREAM",
+   "props": {}
+  },
+  {
+   "source": "VS-P2M",
+   "rel": "PART_OF",
+   "target": "SEG-DOWNSTREAM",
+   "props": {}
+  },
+  {
+   "source": "PG-CSV",
+   "rel": "PART_OF",
+   "target": "VS-C2P",
+   "props": {}
+  },
+  {
+   "source": "PG-CSV",
+   "rel": "OWNED_BY",
+   "target": "ROLE-CRPLAN",
+   "props": {}
+  },
+  {
+   "source": "PG-PS",
+   "rel": "PART_OF",
+   "target": "VS-C2P",
+   "props": {}
+  },
+  {
+   "source": "PG-PS",
+   "rel": "OWNED_BY",
+   "target": "ROLE-CRPLAN",
+   "props": {}
+  },
+  {
+   "source": "PG-OPS",
+   "rel": "PART_OF",
+   "target": "VS-C2P",
+   "props": {}
+  },
+  {
+   "source": "PG-OPS",
+   "rel": "OWNED_BY",
+   "target": "ROLE-OPS",
+   "props": {}
+  },
+  {
+   "source": "PG-BLD",
+   "rel": "PART_OF",
+   "target": "VS-C2P",
+   "props": {}
+  },
+  {
+   "source": "PG-BLD",
+   "rel": "OWNED_BY",
+   "target": "ROLE-BLEND",
+   "props": {}
+  },
+  {
+   "source": "PG-REL",
+   "rel": "PART_OF",
+   "target": "VS-P2M",
+   "props": {}
+  },
+  {
+   "source": "PG-REL",
+   "rel": "OWNED_BY",
+   "target": "ROLE-REL",
+   "props": {}
+  },
+  {
+   "source": "PG-INT",
+   "rel": "PART_OF",
+   "target": "VS-P2M",
+   "props": {}
+  },
+  {
+   "source": "PG-INT",
+   "rel": "OWNED_BY",
+   "target": "ROLE-CORR",
+   "props": {}
+  },
+  {
+   "source": "PG-TA",
+   "rel": "PART_OF",
+   "target": "VS-P2M",
+   "props": {}
+  },
+  {
+   "source": "PG-TA",
+   "rel": "OWNED_BY",
+   "target": "ROLE-TA",
+   "props": {}
+  },
+  {
+   "source": "PG-WM",
+   "rel": "PART_OF",
+   "target": "VS-P2M",
+   "props": {}
+  },
+  {
+   "source": "PG-WM",
+   "rel": "OWNED_BY",
+   "target": "ROLE-MAINT",
+   "props": {}
+  },
+  {
+   "source": "P-CRSEL",
+   "rel": "PART_OF",
+   "target": "PG-CSV",
+   "props": {}
+  },
+  {
+   "source": "P-CRSEL",
+   "rel": "OWNED_BY",
+   "target": "ROLE-CRPLAN",
+   "props": {}
+  },
+  {
+   "source": "P-LP",
+   "rel": "PART_OF",
+   "target": "PG-PS",
+   "props": {}
+  },
+  {
+   "source": "P-LP",
+   "rel": "OWNED_BY",
+   "target": "ROLE-CRPLAN",
+   "props": {}
+  },
+  {
+   "source": "P-OPMON",
+   "rel": "PART_OF",
+   "target": "PG-OPS",
+   "props": {}
+  },
+  {
+   "source": "P-OPMON",
+   "rel": "OWNED_BY",
+   "target": "ROLE-OPS",
+   "props": {}
+  },
+  {
+   "source": "P-BLEND",
+   "rel": "PART_OF",
+   "target": "PG-BLD",
+   "props": {}
+  },
+  {
+   "source": "P-BLEND",
+   "rel": "OWNED_BY",
+   "target": "ROLE-BLEND",
+   "props": {}
+  },
+  {
+   "source": "P-BADACT",
+   "rel": "PART_OF",
+   "target": "PG-REL",
+   "props": {}
+  },
+  {
+   "source": "P-BADACT",
+   "rel": "OWNED_BY",
+   "target": "ROLE-REL",
+   "props": {}
+  },
+  {
+   "source": "P-IOW",
+   "rel": "PART_OF",
+   "target": "PG-INT",
+   "props": {}
+  },
+  {
+   "source": "P-IOW",
+   "rel": "OWNED_BY",
+   "target": "ROLE-CORR",
+   "props": {}
+  },
+  {
+   "source": "P-CORR",
+   "rel": "PART_OF",
+   "target": "PG-INT",
+   "props": {}
+  },
+  {
+   "source": "P-CORR",
+   "rel": "OWNED_BY",
+   "target": "ROLE-CORR",
+   "props": {}
+  },
+  {
+   "source": "P-TAS",
+   "rel": "PART_OF",
+   "target": "PG-TA",
+   "props": {}
+  },
+  {
+   "source": "P-TAS",
+   "rel": "OWNED_BY",
+   "target": "ROLE-TA",
+   "props": {}
+  },
+  {
+   "source": "P-WO",
+   "rel": "PART_OF",
+   "target": "PG-WM",
+   "props": {}
+  },
+  {
+   "source": "P-WO",
+   "rel": "OWNED_BY",
+   "target": "ROLE-MAINT",
+   "props": {}
+  },
+  {
+   "source": "P-CRSEL",
+   "rel": "ACTS_ON",
+   "target": "CDU-1",
+   "props": {}
+  },
+  {
+   "source": "P-CRSEL",
+   "rel": "ACTS_ON",
+   "target": "CDU-2",
+   "props": {}
+  },
+  {
+   "source": "P-LP",
+   "rel": "ACTS_ON",
+   "target": "SITE-ALPHA",
+   "props": {}
+  },
+  {
+   "source": "P-LP",
+   "rel": "ACTS_ON",
+   "target": "SITE-BETA",
+   "props": {}
+  },
+  {
+   "source": "P-OPMON",
+   "rel": "ACTS_ON",
+   "target": "SITE-ALPHA",
+   "props": {}
+  },
+  {
+   "source": "P-OPMON",
+   "rel": "ACTS_ON",
+   "target": "SITE-BETA",
+   "props": {}
+  },
+  {
+   "source": "P-BLEND",
+   "rel": "ACTS_ON",
+   "target": "GBL-1",
+   "props": {}
+  },
+  {
+   "source": "P-BLEND",
+   "rel": "ACTS_ON",
+   "target": "GBL-2",
+   "props": {}
+  },
+  {
+   "source": "P-BADACT",
+   "rel": "ACTS_ON",
+   "target": "SITE-ALPHA",
+   "props": {}
+  },
+  {
+   "source": "P-BADACT",
+   "rel": "ACTS_ON",
+   "target": "SITE-BETA",
+   "props": {}
+  },
+  {
+   "source": "P-IOW",
+   "rel": "ACTS_ON",
+   "target": "CDU-1-OVH",
+   "props": {}
+  },
+  {
+   "source": "P-IOW",
+   "rel": "ACTS_ON",
+   "target": "CDU-2-OVH",
+   "props": {}
+  },
+  {
+   "source": "P-IOW",
+   "rel": "ACTS_ON",
+   "target": "VDU-1-TL",
+   "props": {}
+  },
+  {
+   "source": "P-CORR",
+   "rel": "ACTS_ON",
+   "target": "CDU-1-OVH",
+   "props": {}
+  },
+  {
+   "source": "P-CORR",
+   "rel": "ACTS_ON",
+   "target": "CDU-2-OVH",
+   "props": {}
+  },
+  {
+   "source": "P-TAS",
+   "rel": "ACTS_ON",
+   "target": "SITE-ALPHA",
+   "props": {}
+  },
+  {
+   "source": "P-WO",
+   "rel": "ACTS_ON",
+   "target": "SITE-ALPHA",
+   "props": {}
+  },
+  {
+   "source": "P-WO",
+   "rel": "ACTS_ON",
+   "target": "SITE-BETA",
+   "props": {}
+  },
+  {
+   "source": "SP-ASSAY",
+   "rel": "PART_OF",
+   "target": "P-CRSEL",
+   "props": {}
+  },
+  {
+   "source": "ACT-SCREEN",
+   "rel": "PART_OF",
+   "target": "SP-ASSAY",
+   "props": {}
+  },
+  {
+   "source": "TSK-CONTAM",
+   "rel": "PART_OF",
+   "target": "ACT-SCREEN",
+   "props": {}
+  },
+  {
+   "source": "DEC-CRACC",
+   "rel": "PART_OF",
+   "target": "TSK-CONTAM",
+   "props": {}
+  },
+  {
+   "source": "DOB-ASSAY",
+   "rel": "PART_OF",
+   "target": "DEC-CRACC",
+   "props": {}
+  },
+  {
+   "source": "SP-CVAL",
+   "rel": "PART_OF",
+   "target": "P-CRSEL",
+   "props": {}
+  },
+  {
+   "source": "ACT-NETB",
+   "rel": "PART_OF",
+   "target": "SP-CVAL",
+   "props": {}
+  },
+  {
+   "source": "TSK-LPCASE",
+   "rel": "PART_OF",
+   "target": "ACT-NETB",
+   "props": {}
+  },
+  {
+   "source": "DEC-CRBUY",
+   "rel": "PART_OF",
+   "target": "TSK-LPCASE",
+   "props": {}
+  },
+  {
+   "source": "DOB-LPCASE",
+   "rel": "PART_OF",
+   "target": "DEC-CRBUY",
+   "props": {}
+  },
+  {
+   "source": "SP-IOWMON",
+   "rel": "PART_OF",
+   "target": "P-IOW",
+   "props": {}
+  },
+  {
+   "source": "ACT-IOWREV",
+   "rel": "PART_OF",
+   "target": "SP-IOWMON",
+   "props": {}
+  },
+  {
+   "source": "TSK-OVHCL",
+   "rel": "PART_OF",
+   "target": "ACT-IOWREV",
+   "props": {}
+  },
+  {
+   "source": "DEC-NEUT",
+   "rel": "PART_OF",
+   "target": "TSK-OVHCL",
+   "props": {}
+  },
+  {
+   "source": "DOB-IOWREG",
+   "rel": "PART_OF",
+   "target": "DEC-NEUT",
+   "props": {}
+  },
+  {
+   "source": "SP-RECIPE",
+   "rel": "PART_OF",
+   "target": "P-BLEND",
+   "props": {}
+  },
+  {
+   "source": "ACT-RECIPE",
+   "rel": "PART_OF",
+   "target": "SP-RECIPE",
+   "props": {}
+  },
+  {
+   "source": "TSK-COMPQ",
+   "rel": "PART_OF",
+   "target": "ACT-RECIPE",
+   "props": {}
+  },
+  {
+   "source": "DEC-RECIPE",
+   "rel": "PART_OF",
+   "target": "TSK-COMPQ",
+   "props": {}
+  },
+  {
+   "source": "DOB-RECIPE",
+   "rel": "PART_OF",
+   "target": "DEC-RECIPE",
+   "props": {}
+  },
+  {
+   "source": "SP-SCOPE",
+   "rel": "PART_OF",
+   "target": "P-TAS",
+   "props": {}
+  },
+  {
+   "source": "ACT-SCOPECH",
+   "rel": "PART_OF",
+   "target": "SP-SCOPE",
+   "props": {}
+  },
+  {
+   "source": "TSK-RBI",
+   "rel": "PART_OF",
+   "target": "ACT-SCOPECH",
+   "props": {}
+  },
+  {
+   "source": "DEC-SCOPEFRZ",
+   "rel": "PART_OF",
+   "target": "TSK-RBI",
+   "props": {}
+  },
+  {
+   "source": "DOB-TASCOPE",
+   "rel": "PART_OF",
+   "target": "DEC-SCOPEFRZ",
+   "props": {}
+  },
+  {
+   "source": "SP-RCA",
+   "rel": "PART_OF",
+   "target": "P-BADACT",
+   "props": {}
+  },
+  {
+   "source": "ACT-FLEET",
+   "rel": "PART_OF",
+   "target": "SP-RCA",
+   "props": {}
+  },
+  {
+   "source": "TSK-MTBF",
+   "rel": "PART_OF",
+   "target": "ACT-FLEET",
+   "props": {}
+  },
+  {
+   "source": "DEC-STD",
+   "rel": "PART_OF",
+   "target": "TSK-MTBF",
+   "props": {}
+  },
+  {
+   "source": "DOB-FAILREC",
+   "rel": "PART_OF",
+   "target": "DEC-STD",
+   "props": {}
+  },
+  {
+   "source": "SP-CORRCOST",
+   "rel": "PART_OF",
+   "target": "P-CORR",
+   "props": {}
+  },
+  {
+   "source": "ACT-CORRCOST",
+   "rel": "PART_OF",
+   "target": "SP-CORRCOST",
+   "props": {}
+  },
+  {
+   "source": "TSK-CORRCOST",
+   "rel": "PART_OF",
+   "target": "ACT-CORRCOST",
+   "props": {}
+  },
+  {
+   "source": "DEC-CORRBUD",
+   "rel": "PART_OF",
+   "target": "TSK-CORRCOST",
+   "props": {}
+  },
+  {
+   "source": "DOB-CORRLOG",
+   "rel": "PART_OF",
+   "target": "DEC-CORRBUD",
+   "props": {}
+  },
+  {
+   "source": "DE-TAN",
+   "rel": "PART_OF",
+   "target": "DOB-ASSAY",
+   "props": {}
+  },
+  {
+   "source": "DE-TAN",
+   "rel": "OWNED_BY",
+   "target": "ROLE-CRPLAN",
+   "props": {}
+  },
+  {
+   "source": "DE-SALT",
+   "rel": "PART_OF",
+   "target": "DOB-ASSAY",
+   "props": {}
+  },
+  {
+   "source": "DE-SALT",
+   "rel": "OWNED_BY",
+   "target": "ROLE-CRPLAN",
+   "props": {}
+  },
+  {
+   "source": "DE-SULF",
+   "rel": "PART_OF",
+   "target": "DOB-ASSAY",
+   "props": {}
+  },
+  {
+   "source": "DE-SULF",
+   "rel": "OWNED_BY",
+   "target": "ROLE-CRPLAN",
+   "props": {}
+  },
+  {
+   "source": "DE-API",
+   "rel": "PART_OF",
+   "target": "DOB-ASSAY",
+   "props": {}
+  },
+  {
+   "source": "DE-API",
+   "rel": "OWNED_BY",
+   "target": "ROLE-CRPLAN",
+   "props": {}
+  },
+  {
+   "source": "DE-GRMUP",
+   "rel": "PART_OF",
+   "target": "DOB-LPCASE",
+   "props": {}
+  },
+  {
+   "source": "DE-GRMUP",
+   "rel": "OWNED_BY",
+   "target": "ROLE-CRPLAN",
+   "props": {}
+  },
+  {
+   "source": "DE-CL",
+   "rel": "PART_OF",
+   "target": "DOB-IOWREG",
+   "props": {}
+  },
+  {
+   "source": "DE-CL",
+   "rel": "OWNED_BY",
+   "target": "ROLE-CORR",
+   "props": {}
+  },
+  {
+   "source": "DE-CL",
+   "rel": "INSTANTIATED_BY",
+   "target": "T-CDU1-CL",
+   "props": {}
+  },
+  {
+   "source": "DE-CL",
+   "rel": "INSTANTIATED_BY",
+   "target": "T-CDU2-CL",
+   "props": {}
+  },
+  {
+   "source": "DE-PH",
+   "rel": "PART_OF",
+   "target": "DOB-IOWREG",
+   "props": {}
+  },
+  {
+   "source": "DE-PH",
+   "rel": "OWNED_BY",
+   "target": "ROLE-CORR",
+   "props": {}
+  },
+  {
+   "source": "DE-PH",
+   "rel": "INSTANTIATED_BY",
+   "target": "T-CDU1-PH",
+   "props": {}
+  },
+  {
+   "source": "DE-PH",
+   "rel": "INSTANTIATED_BY",
+   "target": "T-CDU2-PH",
+   "props": {}
+  },
+  {
+   "source": "DE-RONREF",
+   "rel": "PART_OF",
+   "target": "DOB-RECIPE",
+   "props": {}
+  },
+  {
+   "source": "DE-RONREF",
+   "rel": "OWNED_BY",
+   "target": "ROLE-BLEND",
+   "props": {}
+  },
+  {
+   "source": "DE-RONREF",
+   "rel": "INSTANTIATED_BY",
+   "target": "T-REF1-RON",
+   "props": {}
+  },
+  {
+   "source": "DE-RONREF",
+   "rel": "INSTANTIATED_BY",
+   "target": "T-REF2-RON",
+   "props": {}
+  },
+  {
+   "source": "DE-RONPROD",
+   "rel": "PART_OF",
+   "target": "DOB-RECIPE",
+   "props": {}
+  },
+  {
+   "source": "DE-RONPROD",
+   "rel": "OWNED_BY",
+   "target": "ROLE-BLEND",
+   "props": {}
+  },
+  {
+   "source": "DE-RONPROD",
+   "rel": "INSTANTIATED_BY",
+   "target": "T-GBL1-RON",
+   "props": {}
+  },
+  {
+   "source": "DE-RONPROD",
+   "rel": "INSTANTIATED_BY",
+   "target": "T-GBL2-RON",
+   "props": {}
+  },
+  {
+   "source": "DE-SCOPE",
+   "rel": "PART_OF",
+   "target": "DOB-TASCOPE",
+   "props": {}
+  },
+  {
+   "source": "DE-SCOPE",
+   "rel": "OWNED_BY",
+   "target": "ROLE-TA",
+   "props": {}
+  },
+  {
+   "source": "DE-MTBF",
+   "rel": "PART_OF",
+   "target": "DOB-FAILREC",
+   "props": {}
+  },
+  {
+   "source": "DE-MTBF",
+   "rel": "OWNED_BY",
+   "target": "ROLE-REL",
+   "props": {}
+  },
+  {
+   "source": "DE-FMECH",
+   "rel": "PART_OF",
+   "target": "DOB-FAILREC",
+   "props": {}
+  },
+  {
+   "source": "DE-FMECH",
+   "rel": "OWNED_BY",
+   "target": "ROLE-REL",
+   "props": {}
+  },
+  {
+   "source": "DE-CORRCOST",
+   "rel": "PART_OF",
+   "target": "DOB-CORRLOG",
+   "props": {}
+  },
+  {
+   "source": "DE-CORRCOST",
+   "rel": "OWNED_BY",
+   "target": "ROLE-CORR",
+   "props": {}
+  },
+  {
+   "source": "DEC-CRACC",
+   "rel": "GOVERNS",
+   "target": "CDU-1",
+   "props": {}
+  },
+  {
+   "source": "DEC-CRACC",
+   "rel": "GOVERNS",
+   "target": "CDU-2",
+   "props": {}
+  },
+  {
+   "source": "DEC-CRACC",
+   "rel": "CONSUMES",
+   "target": "DE-TAN",
+   "props": {}
+  },
+  {
+   "source": "DEC-CRACC",
+   "rel": "CONSUMES",
+   "target": "DE-SALT",
+   "props": {}
+  },
+  {
+   "source": "DEC-CRACC",
+   "rel": "CONSUMES",
+   "target": "DE-SULF",
+   "props": {}
+  },
+  {
+   "source": "DEC-CRACC",
+   "rel": "CONSUMES",
+   "target": "DE-API",
+   "props": {}
+  },
+  {
+   "source": "DEC-CRBUY",
+   "rel": "GOVERNS",
+   "target": "CDU-1",
+   "props": {}
+  },
+  {
+   "source": "DEC-CRBUY",
+   "rel": "GOVERNS",
+   "target": "CDU-2",
+   "props": {}
+  },
+  {
+   "source": "DEC-CRBUY",
+   "rel": "CONSUMES",
+   "target": "DE-GRMUP",
+   "props": {}
+  },
+  {
+   "source": "DEC-NEUT",
+   "rel": "GOVERNS",
+   "target": "CDU-1-OVH",
+   "props": {}
+  },
+  {
+   "source": "DEC-NEUT",
+   "rel": "GOVERNS",
+   "target": "CDU-2-OVH",
+   "props": {}
+  },
+  {
+   "source": "DEC-NEUT",
+   "rel": "CONSUMES",
+   "target": "DE-CL",
+   "props": {}
+  },
+  {
+   "source": "DEC-NEUT",
+   "rel": "CONSUMES",
+   "target": "DE-PH",
+   "props": {}
+  },
+  {
+   "source": "DEC-RECIPE",
+   "rel": "GOVERNS",
+   "target": "GBL-1",
+   "props": {}
+  },
+  {
+   "source": "DEC-RECIPE",
+   "rel": "GOVERNS",
+   "target": "GBL-2",
+   "props": {}
+  },
+  {
+   "source": "DEC-RECIPE",
+   "rel": "CONSUMES",
+   "target": "DE-RONREF",
+   "props": {}
+  },
+  {
+   "source": "DEC-RECIPE",
+   "rel": "CONSUMES",
+   "target": "DE-RONPROD",
+   "props": {}
+  },
+  {
+   "source": "DEC-SCOPEFRZ",
+   "rel": "GOVERNS",
+   "target": "SITE-ALPHA",
+   "props": {}
+  },
+  {
+   "source": "DEC-SCOPEFRZ",
+   "rel": "CONSUMES",
+   "target": "DE-SCOPE",
+   "props": {}
+  },
+  {
+   "source": "DEC-STD",
+   "rel": "GOVERNS",
+   "target": "SITE-ALPHA",
+   "props": {}
+  },
+  {
+   "source": "DEC-STD",
+   "rel": "GOVERNS",
+   "target": "SITE-BETA",
+   "props": {}
+  },
+  {
+   "source": "DEC-STD",
+   "rel": "CONSUMES",
+   "target": "DE-MTBF",
+   "props": {}
+  },
+  {
+   "source": "DEC-STD",
+   "rel": "CONSUMES",
+   "target": "DE-FMECH",
+   "props": {}
+  },
+  {
+   "source": "DEC-CORRBUD",
+   "rel": "GOVERNS",
+   "target": "CDU-1-OVH",
+   "props": {}
+  },
+  {
+   "source": "DEC-CORRBUD",
+   "rel": "GOVERNS",
+   "target": "CDU-2-OVH",
+   "props": {}
+  },
+  {
+   "source": "DEC-CORRBUD",
+   "rel": "CONSUMES",
+   "target": "DE-CORRCOST",
+   "props": {}
+  }
+ ],
+ "facts": [
+  {
+   "id": "F-00001",
+   "subject": "T-F1-OIL",
+   "predicate": "latest_value",
+   "value": 45.0,
+   "unit": "kbd",
+   "as_of": "2026-09-28",
+   "source_system": "Upstream Historian",
+   "source_ref": "FI-9001",
+   "owner": "ROLE-OPS",
+   "confidence": "high",
+   "method": "measured",
+   "lineage": []
+  },
+  {
+   "id": "F-00002",
+   "subject": "TK-01",
+   "predicate": "capacity",
+   "value": 1.0,
+   "unit": "MMbbl",
+   "as_of": "2026-09-28",
+   "source_system": "Asset Register",
+   "source_ref": "TK-01",
+   "owner": "ROLE-OPS",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00003",
+   "subject": "T-TK01-LVL",
+   "predicate": "latest_value",
+   "value": 62.0,
+   "unit": "%",
+   "as_of": "2026-09-28",
+   "source_system": "Terminal SCADA",
+   "source_ref": "LI-7001",
+   "owner": "ROLE-OPS",
+   "confidence": "high",
+   "method": "measured",
+   "lineage": []
+  },
+  {
+   "id": "F-00004",
+   "subject": "SITE-ALPHA",
+   "predicate": "crude_capacity",
+   "value": 200,
+   "unit": "kbd",
+   "as_of": "2026-09-28",
+   "source_system": "Asset Register",
+   "source_ref": "SITE-ALPHA",
+   "owner": "ROLE-OPS",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00005",
+   "subject": "SITE-ALPHA",
+   "predicate": "grm_fy2026",
+   "value": 8.2,
+   "unit": "USD/bbl",
+   "as_of": "2026-09-28",
+   "source_system": "Site Economics (monthly close)",
+   "source_ref": "GRM-ALPHA-FY26",
+   "owner": "ROLE-ECON",
+   "confidence": "high",
+   "method": "calculated",
+   "lineage": []
+  },
+  {
+   "id": "F-00006",
+   "subject": "SITE-ALPHA",
+   "predicate": "nelson_complexity",
+   "value": 9.5,
+   "unit": "index",
+   "as_of": "2026-09-28",
+   "source_system": "Asset Register",
+   "source_ref": "",
+   "owner": "ROLE-PROC",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00007",
+   "subject": "SITE-BETA",
+   "predicate": "crude_capacity",
+   "value": 120,
+   "unit": "kbd",
+   "as_of": "2026-09-28",
+   "source_system": "Asset Register",
+   "source_ref": "SITE-BETA",
+   "owner": "ROLE-OPS",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00008",
+   "subject": "SITE-BETA",
+   "predicate": "grm_fy2026",
+   "value": 6.9,
+   "unit": "USD/bbl",
+   "as_of": "2026-09-28",
+   "source_system": "Site Economics (monthly close)",
+   "source_ref": "GRM-BETA-FY26",
+   "owner": "ROLE-ECON",
+   "confidence": "high",
+   "method": "calculated",
+   "lineage": []
+  },
+  {
+   "id": "F-00009",
+   "subject": "SITE-BETA",
+   "predicate": "nelson_complexity",
+   "value": 7.8,
+   "unit": "index",
+   "as_of": "2026-09-28",
+   "source_system": "Asset Register",
+   "source_ref": "",
+   "owner": "ROLE-PROC",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00010",
+   "subject": "CDU-1",
+   "predicate": "design_capacity",
+   "value": 200,
+   "unit": "kbd",
+   "as_of": "2026-09-28",
+   "source_system": "Asset Register",
+   "source_ref": "CDU-1",
+   "owner": "ROLE-PROC",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00011",
+   "subject": "VDU-1",
+   "predicate": "design_capacity",
+   "value": 90,
+   "unit": "kbd",
+   "as_of": "2026-09-28",
+   "source_system": "Asset Register",
+   "source_ref": "VDU-1",
+   "owner": "ROLE-PROC",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00012",
+   "subject": "FCC-1",
+   "predicate": "design_capacity",
+   "value": 60,
+   "unit": "kbd",
+   "as_of": "2026-09-28",
+   "source_system": "Asset Register",
+   "source_ref": "FCC-1",
+   "owner": "ROLE-PROC",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00013",
+   "subject": "REF-1",
+   "predicate": "design_capacity",
+   "value": 30,
+   "unit": "kbd",
+   "as_of": "2026-09-28",
+   "source_system": "Asset Register",
+   "source_ref": "REF-1",
+   "owner": "ROLE-PROC",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00014",
+   "subject": "GBL-1",
+   "predicate": "design_capacity",
+   "value": 60,
+   "unit": "kbd",
+   "as_of": "2026-09-28",
+   "source_system": "Asset Register",
+   "source_ref": "GBL-1",
+   "owner": "ROLE-PROC",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00015",
+   "subject": "CDU-2",
+   "predicate": "design_capacity",
+   "value": 120,
+   "unit": "kbd",
+   "as_of": "2026-09-28",
+   "source_system": "Asset Register",
+   "source_ref": "CDU-2",
+   "owner": "ROLE-PROC",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00016",
+   "subject": "VDU-2",
+   "predicate": "design_capacity",
+   "value": 54,
+   "unit": "kbd",
+   "as_of": "2026-09-28",
+   "source_system": "Asset Register",
+   "source_ref": "VDU-2",
+   "owner": "ROLE-PROC",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00017",
+   "subject": "FCC-2",
+   "predicate": "design_capacity",
+   "value": 36,
+   "unit": "kbd",
+   "as_of": "2026-09-28",
+   "source_system": "Asset Register",
+   "source_ref": "FCC-2",
+   "owner": "ROLE-PROC",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00018",
+   "subject": "REF-2",
+   "predicate": "design_capacity",
+   "value": 18,
+   "unit": "kbd",
+   "as_of": "2026-09-28",
+   "source_system": "Asset Register",
+   "source_ref": "REF-2",
+   "owner": "ROLE-PROC",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00019",
+   "subject": "GBL-2",
+   "predicate": "design_capacity",
+   "value": 36,
+   "unit": "kbd",
+   "as_of": "2026-09-28",
+   "source_system": "Asset Register",
+   "source_ref": "GBL-2",
+   "owner": "ROLE-PROC",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00020",
+   "subject": "E-101A",
+   "predicate": "last_inspection",
+   "value": "2021-03-10",
+   "unit": "",
+   "as_of": "2026-09-28",
+   "source_system": "Inspection DB (RBI)",
+   "source_ref": "INSP-E-101A",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00021",
+   "subject": "E-101A",
+   "predicate": "next_inspection_due",
+   "value": "2027-03-01",
+   "unit": "",
+   "as_of": "2026-09-28",
+   "source_system": "Inspection DB (RBI)",
+   "source_ref": "INSP-E-101A",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00022",
+   "subject": "E-101A",
+   "predicate": "rbi_risk_rank",
+   "value": "High",
+   "unit": "",
+   "as_of": "2025-06-30",
+   "source_system": "Inspection DB (RBI)",
+   "source_ref": "RBI-E-101A",
+   "owner": "ROLE-CORR",
+   "confidence": "medium",
+   "method": "calculated",
+   "lineage": []
+  },
+  {
+   "id": "F-00023",
+   "subject": "E-101A",
+   "predicate": "measured_corrosion_rate",
+   "value": 0.35,
+   "unit": "mm/y",
+   "as_of": "2026-09-28",
+   "source_system": "Inspection DB (RBI)",
+   "source_ref": "UT-E-101A",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "measured",
+   "lineage": []
+  },
+  {
+   "id": "F-00024",
+   "subject": "E-101B",
+   "predicate": "last_inspection",
+   "value": "2021-03-10",
+   "unit": "",
+   "as_of": "2026-09-28",
+   "source_system": "Inspection DB (RBI)",
+   "source_ref": "INSP-E-101B",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00025",
+   "subject": "E-101B",
+   "predicate": "next_inspection_due",
+   "value": "2029-03-01",
+   "unit": "",
+   "as_of": "2026-09-28",
+   "source_system": "Inspection DB (RBI)",
+   "source_ref": "INSP-E-101B",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00026",
+   "subject": "E-101B",
+   "predicate": "rbi_risk_rank",
+   "value": "Medium",
+   "unit": "",
+   "as_of": "2025-06-30",
+   "source_system": "Inspection DB (RBI)",
+   "source_ref": "RBI-E-101B",
+   "owner": "ROLE-CORR",
+   "confidence": "medium",
+   "method": "calculated",
+   "lineage": []
+  },
+  {
+   "id": "F-00027",
+   "subject": "E-101B",
+   "predicate": "measured_corrosion_rate",
+   "value": 0.3,
+   "unit": "mm/y",
+   "as_of": "2026-09-28",
+   "source_system": "Inspection DB (RBI)",
+   "source_ref": "UT-E-101B",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "measured",
+   "lineage": []
+  },
+  {
+   "id": "F-00028",
+   "subject": "PC-101",
+   "predicate": "last_inspection",
+   "value": "2023-09-18",
+   "unit": "",
+   "as_of": "2026-09-28",
+   "source_system": "Inspection DB (RBI)",
+   "source_ref": "INSP-PC-101",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00029",
+   "subject": "PC-101",
+   "predicate": "next_inspection_due",
+   "value": "2028-09-18",
+   "unit": "",
+   "as_of": "2026-09-28",
+   "source_system": "Inspection DB (RBI)",
+   "source_ref": "INSP-PC-101",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00030",
+   "subject": "PC-101",
+   "predicate": "rbi_risk_rank",
+   "value": "Medium",
+   "unit": "",
+   "as_of": "2025-06-30",
+   "source_system": "Inspection DB (RBI)",
+   "source_ref": "RBI-PC-101",
+   "owner": "ROLE-CORR",
+   "confidence": "medium",
+   "method": "calculated",
+   "lineage": []
+  },
+  {
+   "id": "F-00031",
+   "subject": "PC-101",
+   "predicate": "measured_corrosion_rate",
+   "value": 0.4,
+   "unit": "mm/y",
+   "as_of": "2026-09-28",
+   "source_system": "Inspection DB (RBI)",
+   "source_ref": "UT-PC-101",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "measured",
+   "lineage": []
+  },
+  {
+   "id": "F-00032",
+   "subject": "V-102",
+   "predicate": "last_inspection",
+   "value": "2021-03-12",
+   "unit": "",
+   "as_of": "2026-09-28",
+   "source_system": "Inspection DB (RBI)",
+   "source_ref": "INSP-V-102",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00033",
+   "subject": "V-102",
+   "predicate": "next_inspection_due",
+   "value": "2027-03-01",
+   "unit": "",
+   "as_of": "2026-09-28",
+   "source_system": "Inspection DB (RBI)",
+   "source_ref": "INSP-V-102",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00034",
+   "subject": "V-102",
+   "predicate": "rbi_risk_rank",
+   "value": "Medium",
+   "unit": "",
+   "as_of": "2025-06-30",
+   "source_system": "Inspection DB (RBI)",
+   "source_ref": "RBI-V-102",
+   "owner": "ROLE-CORR",
+   "confidence": "medium",
+   "method": "calculated",
+   "lineage": []
+  },
+  {
+   "id": "F-00035",
+   "subject": "V-102",
+   "predicate": "measured_corrosion_rate",
+   "value": 0.12,
+   "unit": "mm/y",
+   "as_of": "2026-09-28",
+   "source_system": "Inspection DB (RBI)",
+   "source_ref": "UT-V-102",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "measured",
+   "lineage": []
+  },
+  {
+   "id": "F-00036",
+   "subject": "P-103",
+   "predicate": "last_inspection",
+   "value": "2022-06-01",
+   "unit": "",
+   "as_of": "2026-09-28",
+   "source_system": "Inspection DB (RBI)",
+   "source_ref": "INSP-P-103",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00037",
+   "subject": "P-103",
+   "predicate": "next_inspection_due",
+   "value": "2028-06-01",
+   "unit": "",
+   "as_of": "2026-09-28",
+   "source_system": "Inspection DB (RBI)",
+   "source_ref": "INSP-P-103",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00038",
+   "subject": "P-103",
+   "predicate": "rbi_risk_rank",
+   "value": "Low",
+   "unit": "",
+   "as_of": "2025-06-30",
+   "source_system": "Inspection DB (RBI)",
+   "source_ref": "RBI-P-103",
+   "owner": "ROLE-CORR",
+   "confidence": "medium",
+   "method": "calculated",
+   "lineage": []
+  },
+  {
+   "id": "F-00039",
+   "subject": "PC-201",
+   "predicate": "last_inspection",
+   "value": "2022-11-05",
+   "unit": "",
+   "as_of": "2026-09-28",
+   "source_system": "Inspection DB (RBI)",
+   "source_ref": "INSP-PC-201",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00040",
+   "subject": "PC-201",
+   "predicate": "next_inspection_due",
+   "value": "2027-11-05",
+   "unit": "",
+   "as_of": "2026-09-28",
+   "source_system": "Inspection DB (RBI)",
+   "source_ref": "INSP-PC-201",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00041",
+   "subject": "PC-201",
+   "predicate": "rbi_risk_rank",
+   "value": "Medium",
+   "unit": "",
+   "as_of": "2025-06-30",
+   "source_system": "Inspection DB (RBI)",
+   "source_ref": "RBI-PC-201",
+   "owner": "ROLE-CORR",
+   "confidence": "medium",
+   "method": "calculated",
+   "lineage": []
+  },
+  {
+   "id": "F-00042",
+   "subject": "PC-201",
+   "predicate": "measured_corrosion_rate",
+   "value": 0.28,
+   "unit": "mm/y",
+   "as_of": "2026-09-28",
+   "source_system": "Inspection DB (RBI)",
+   "source_ref": "UT-PC-201",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "measured",
+   "lineage": []
+  },
+  {
+   "id": "F-00043",
+   "subject": "P-201A",
+   "predicate": "model",
+   "value": "HX-300 (OEM-A)",
+   "unit": "",
+   "as_of": "2026-09-28",
+   "source_system": "Asset Register",
+   "source_ref": "P-201A",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00044",
+   "subject": "P-201A",
+   "predicate": "service_temperature",
+   "value": 365,
+   "unit": "degC",
+   "as_of": "2026-09-28",
+   "source_system": "Process Datasheet",
+   "source_ref": "DS-P-201A",
+   "owner": "ROLE-PROC",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00045",
+   "subject": "P-201A",
+   "predicate": "seal_plan",
+   "value": "API 682 Plan 32 single seal",
+   "unit": "",
+   "as_of": "2026-09-28",
+   "source_system": "Asset Register",
+   "source_ref": "P-201A",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00046",
+   "subject": "P-201B",
+   "predicate": "model",
+   "value": "HX-300 (OEM-A)",
+   "unit": "",
+   "as_of": "2026-09-28",
+   "source_system": "Asset Register",
+   "source_ref": "P-201B",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00047",
+   "subject": "P-201B",
+   "predicate": "service_temperature",
+   "value": 365,
+   "unit": "degC",
+   "as_of": "2026-09-28",
+   "source_system": "Process Datasheet",
+   "source_ref": "DS-P-201B",
+   "owner": "ROLE-PROC",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00048",
+   "subject": "P-201B",
+   "predicate": "seal_plan",
+   "value": "API 682 Plan 32 single seal",
+   "unit": "",
+   "as_of": "2026-09-28",
+   "source_system": "Asset Register",
+   "source_ref": "P-201B",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00049",
+   "subject": "P-501",
+   "predicate": "model",
+   "value": "HX-300 (OEM-A)",
+   "unit": "",
+   "as_of": "2026-09-28",
+   "source_system": "Asset Register",
+   "source_ref": "P-501",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00050",
+   "subject": "P-501",
+   "predicate": "service_temperature",
+   "value": 350,
+   "unit": "degC",
+   "as_of": "2026-09-28",
+   "source_system": "Process Datasheet",
+   "source_ref": "DS-P-501",
+   "owner": "ROLE-PROC",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00051",
+   "subject": "P-501",
+   "predicate": "seal_plan",
+   "value": "API 682 Plan 32 single seal",
+   "unit": "",
+   "as_of": "2026-09-28",
+   "source_system": "Asset Register",
+   "source_ref": "P-501",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00052",
+   "subject": "P-401A",
+   "predicate": "model",
+   "value": "HX-300 (OEM-A)",
+   "unit": "",
+   "as_of": "2026-09-28",
+   "source_system": "Asset Register",
+   "source_ref": "P-401A",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00053",
+   "subject": "P-401A",
+   "predicate": "service_temperature",
+   "value": 360,
+   "unit": "degC",
+   "as_of": "2026-09-28",
+   "source_system": "Process Datasheet",
+   "source_ref": "DS-P-401A",
+   "owner": "ROLE-PROC",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00054",
+   "subject": "P-401A",
+   "predicate": "seal_plan",
+   "value": "API 682 Plan 32 single seal",
+   "unit": "",
+   "as_of": "2026-09-28",
+   "source_system": "Asset Register",
+   "source_ref": "P-401A",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00055",
+   "subject": "P-401B",
+   "predicate": "model",
+   "value": "VS-450 (OEM-C)",
+   "unit": "",
+   "as_of": "2026-09-28",
+   "source_system": "Asset Register",
+   "source_ref": "P-401B",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00056",
+   "subject": "P-401B",
+   "predicate": "service_temperature",
+   "value": 360,
+   "unit": "degC",
+   "as_of": "2026-09-28",
+   "source_system": "Process Datasheet",
+   "source_ref": "DS-P-401B",
+   "owner": "ROLE-PROC",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00057",
+   "subject": "P-401B",
+   "predicate": "seal_plan",
+   "value": "API 682 Plan 53B dual seal",
+   "unit": "",
+   "as_of": "2026-09-28",
+   "source_system": "Asset Register",
+   "source_ref": "P-401B",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00058",
+   "subject": "P-306",
+   "predicate": "model",
+   "value": "HX-300 (OEM-A)",
+   "unit": "",
+   "as_of": "2026-09-28",
+   "source_system": "Asset Register",
+   "source_ref": "P-306",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00059",
+   "subject": "P-306",
+   "predicate": "service_temperature",
+   "value": 260,
+   "unit": "degC",
+   "as_of": "2026-09-28",
+   "source_system": "Process Datasheet",
+   "source_ref": "DS-P-306",
+   "owner": "ROLE-PROC",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00060",
+   "subject": "P-306",
+   "predicate": "seal_plan",
+   "value": "API 682 Plan 32 single seal",
+   "unit": "",
+   "as_of": "2026-09-28",
+   "source_system": "Asset Register",
+   "source_ref": "P-306",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00061",
+   "subject": "T-CDU1-CL",
+   "predicate": "iow_limit_standard",
+   "value": 20,
+   "unit": "ppm",
+   "as_of": "2026-09-28",
+   "source_system": "IOW Register (API 584)",
+   "source_ref": "IOW-CDU1-CL",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00062",
+   "subject": "T-CDU1-CL",
+   "predicate": "iow_limit_critical",
+   "value": 50,
+   "unit": "ppm",
+   "as_of": "2026-09-28",
+   "source_system": "IOW Register (API 584)",
+   "source_ref": "IOW-CDU1-CL",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00063",
+   "subject": "T-CDU1-PH",
+   "predicate": "iow_limit_low",
+   "value": 5.5,
+   "unit": "pH",
+   "as_of": "2026-09-28",
+   "source_system": "IOW Register (API 584)",
+   "source_ref": "IOW-CDU1-PH",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00064",
+   "subject": "T-CDU2-CL",
+   "predicate": "iow_limit_standard",
+   "value": 20,
+   "unit": "ppm",
+   "as_of": "2026-09-28",
+   "source_system": "IOW Register (API 584)",
+   "source_ref": "IOW-CDU2-CL",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00065",
+   "subject": "T-CDU2-CL",
+   "predicate": "iow_limit_critical",
+   "value": 50,
+   "unit": "ppm",
+   "as_of": "2026-09-28",
+   "source_system": "IOW Register (API 584)",
+   "source_ref": "IOW-CDU2-CL",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00066",
+   "subject": "T-CDU2-PH",
+   "predicate": "iow_limit_low",
+   "value": 5.5,
+   "unit": "pH",
+   "as_of": "2026-09-28",
+   "source_system": "IOW Register (API 584)",
+   "source_ref": "IOW-CDU2-PH",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00067",
+   "subject": "T-VDU1-CR",
+   "predicate": "iow_limit_standard",
+   "value": 0.25,
+   "unit": "mm/y",
+   "as_of": "2026-09-28",
+   "source_system": "IOW Register (API 584)",
+   "source_ref": "IOW-VDU1-CR",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00068",
+   "subject": "T-CDU1-FI",
+   "predicate": "latest_value",
+   "value": 196.0,
+   "unit": "kbd",
+   "as_of": "2026-09-28",
+   "source_system": "PI Historian",
+   "source_ref": "FI-1001",
+   "owner": "ROLE-OPS",
+   "confidence": "high",
+   "method": "measured",
+   "lineage": []
+  },
+  {
+   "id": "F-00069",
+   "subject": "T-CDU2-FI",
+   "predicate": "latest_value",
+   "value": 117.0,
+   "unit": "kbd",
+   "as_of": "2026-09-28",
+   "source_system": "PI Historian",
+   "source_ref": "FI-2001",
+   "owner": "ROLE-OPS",
+   "confidence": "high",
+   "method": "measured",
+   "lineage": []
+  },
+  {
+   "id": "F-00070",
+   "subject": "T-REF1-RON",
+   "predicate": "sampling_interval",
+   "value": 24,
+   "unit": "h",
+   "as_of": "2026-09-28",
+   "source_system": "LIMS",
+   "source_ref": "SP-REF1-RON",
+   "owner": "ROLE-LAB",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00071",
+   "subject": "T-REF2-RON",
+   "predicate": "sampling_interval",
+   "value": 8,
+   "unit": "h",
+   "as_of": "2026-09-28",
+   "source_system": "LIMS",
+   "source_ref": "SP-REF2-RON",
+   "owner": "ROLE-LAB",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00072",
+   "subject": "T-REF1-RON",
+   "predicate": "ron_std_dev_12m",
+   "value": 1.4,
+   "unit": "RON",
+   "as_of": "2026-09-28",
+   "source_system": "LIMS",
+   "source_ref": "REF1-RON-STATS",
+   "owner": "ROLE-LAB",
+   "confidence": "high",
+   "method": "calculated",
+   "lineage": []
+  },
+  {
+   "id": "F-00073",
+   "subject": "T-REF2-RON",
+   "predicate": "ron_std_dev_12m",
+   "value": 0.5,
+   "unit": "RON",
+   "as_of": "2026-09-28",
+   "source_system": "LIMS",
+   "source_ref": "REF2-RON-STATS",
+   "owner": "ROLE-LAB",
+   "confidence": "high",
+   "method": "calculated",
+   "lineage": []
+  },
+  {
+   "id": "F-00074",
+   "subject": "T-REF1-TI",
+   "predicate": "temp_std_dev_12m",
+   "value": 4.8,
+   "unit": "degC",
+   "as_of": "2026-09-28",
+   "source_system": "PI Historian",
+   "source_ref": "TI-1310",
+   "owner": "ROLE-PROC",
+   "confidence": "high",
+   "method": "calculated",
+   "lineage": []
+  },
+  {
+   "id": "F-00075",
+   "subject": "T-REF2-TI",
+   "predicate": "temp_std_dev_12m",
+   "value": 1.6,
+   "unit": "degC",
+   "as_of": "2026-09-28",
+   "source_system": "PI Historian",
+   "source_ref": "TI-2310",
+   "owner": "ROLE-PROC",
+   "confidence": "high",
+   "method": "calculated",
+   "lineage": []
+  },
+  {
+   "id": "F-00076",
+   "subject": "T-E301-RF",
+   "predicate": "fouling_resistance_trend",
+   "value": "+62% vs clean (12 months)",
+   "unit": "",
+   "as_of": "2026-09-28",
+   "source_system": "PI Historian (calc)",
+   "source_ref": "E-301-RF",
+   "owner": "ROLE-PROC",
+   "confidence": "medium",
+   "method": "calculated",
+   "lineage": []
+  },
+  {
+   "id": "F-00077",
+   "subject": "T-E601-RF",
+   "predicate": "fouling_resistance_trend",
+   "value": "+14% vs clean (12 months)",
+   "unit": "",
+   "as_of": "2026-09-28",
+   "source_system": "PI Historian (calc)",
+   "source_ref": "E-601-RF",
+   "owner": "ROLE-PROC",
+   "confidence": "medium",
+   "method": "calculated",
+   "lineage": []
+  },
+  {
+   "id": "F-00078",
+   "subject": "T-E301-RF",
+   "predicate": "last_cleaned",
+   "value": "2024-04-15",
+   "unit": "",
+   "as_of": "2026-09-28",
+   "source_system": "SAP PM",
+   "source_ref": "WO-E301-CLEAN",
+   "owner": "ROLE-MAINT",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00079",
+   "subject": "CR-AL",
+   "predicate": "api_gravity",
+   "value": 33.0,
+   "unit": "degAPI",
+   "as_of": "2026-06-30",
+   "source_system": "Public assay (typical values)",
+   "source_ref": "",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "medium",
+   "method": "indicative",
+   "lineage": []
+  },
+  {
+   "id": "F-00080",
+   "subject": "CR-AL",
+   "predicate": "sulfur",
+   "value": 1.9,
+   "unit": "wt%",
+   "as_of": "2026-06-30",
+   "source_system": "Public assay (typical values)",
+   "source_ref": "",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "medium",
+   "method": "indicative",
+   "lineage": []
+  },
+  {
+   "id": "F-00081",
+   "subject": "CR-AL",
+   "predicate": "tan",
+   "value": 0.1,
+   "unit": "mgKOH/g",
+   "as_of": "2026-06-30",
+   "source_system": "Public assay (typical values)",
+   "source_ref": "",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "medium",
+   "method": "indicative",
+   "lineage": []
+  },
+  {
+   "id": "F-00082",
+   "subject": "CR-AL",
+   "predicate": "salt_content",
+   "value": 5,
+   "unit": "PTB",
+   "as_of": "2026-06-30",
+   "source_system": "Synthetic demo assay",
+   "source_ref": "",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "low",
+   "method": "assumption",
+   "lineage": []
+  },
+  {
+   "id": "F-00083",
+   "subject": "CR-BM",
+   "predicate": "api_gravity",
+   "value": 29.0,
+   "unit": "degAPI",
+   "as_of": "2026-06-30",
+   "source_system": "Public assay (typical values)",
+   "source_ref": "",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "medium",
+   "method": "indicative",
+   "lineage": []
+  },
+  {
+   "id": "F-00084",
+   "subject": "CR-BM",
+   "predicate": "sulfur",
+   "value": 2.9,
+   "unit": "wt%",
+   "as_of": "2026-06-30",
+   "source_system": "Public assay (typical values)",
+   "source_ref": "",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "medium",
+   "method": "indicative",
+   "lineage": []
+  },
+  {
+   "id": "F-00085",
+   "subject": "CR-BM",
+   "predicate": "tan",
+   "value": 0.2,
+   "unit": "mgKOH/g",
+   "as_of": "2026-06-30",
+   "source_system": "Public assay (typical values)",
+   "source_ref": "",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "medium",
+   "method": "indicative",
+   "lineage": []
+  },
+  {
+   "id": "F-00086",
+   "subject": "CR-BM",
+   "predicate": "salt_content",
+   "value": 8,
+   "unit": "PTB",
+   "as_of": "2026-06-30",
+   "source_system": "Synthetic demo assay",
+   "source_ref": "",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "low",
+   "method": "assumption",
+   "lineage": []
+  },
+  {
+   "id": "F-00087",
+   "subject": "CR-MUR",
+   "predicate": "api_gravity",
+   "value": 40.0,
+   "unit": "degAPI",
+   "as_of": "2026-06-30",
+   "source_system": "Public assay (typical values)",
+   "source_ref": "",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "medium",
+   "method": "indicative",
+   "lineage": []
+  },
+  {
+   "id": "F-00088",
+   "subject": "CR-MUR",
+   "predicate": "sulfur",
+   "value": 0.8,
+   "unit": "wt%",
+   "as_of": "2026-06-30",
+   "source_system": "Public assay (typical values)",
+   "source_ref": "",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "medium",
+   "method": "indicative",
+   "lineage": []
+  },
+  {
+   "id": "F-00089",
+   "subject": "CR-MUR",
+   "predicate": "tan",
+   "value": 0.05,
+   "unit": "mgKOH/g",
+   "as_of": "2026-06-30",
+   "source_system": "Public assay (typical values)",
+   "source_ref": "",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "medium",
+   "method": "indicative",
+   "lineage": []
+  },
+  {
+   "id": "F-00090",
+   "subject": "CR-MUR",
+   "predicate": "salt_content",
+   "value": 2,
+   "unit": "PTB",
+   "as_of": "2026-06-30",
+   "source_system": "Synthetic demo assay",
+   "source_ref": "",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "low",
+   "method": "assumption",
+   "lineage": []
+  },
+  {
+   "id": "F-00091",
+   "subject": "CR-QM",
+   "predicate": "api_gravity",
+   "value": 36.0,
+   "unit": "degAPI",
+   "as_of": "2026-06-30",
+   "source_system": "Public assay (typical values)",
+   "source_ref": "",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "medium",
+   "method": "indicative",
+   "lineage": []
+  },
+  {
+   "id": "F-00092",
+   "subject": "CR-QM",
+   "predicate": "sulfur",
+   "value": 1.5,
+   "unit": "wt%",
+   "as_of": "2026-06-30",
+   "source_system": "Public assay (typical values)",
+   "source_ref": "",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "medium",
+   "method": "indicative",
+   "lineage": []
+  },
+  {
+   "id": "F-00093",
+   "subject": "CR-QM",
+   "predicate": "tan",
+   "value": 0.1,
+   "unit": "mgKOH/g",
+   "as_of": "2026-06-30",
+   "source_system": "Public assay (typical values)",
+   "source_ref": "",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "medium",
+   "method": "indicative",
+   "lineage": []
+  },
+  {
+   "id": "F-00094",
+   "subject": "CR-QM",
+   "predicate": "salt_content",
+   "value": 4,
+   "unit": "PTB",
+   "as_of": "2026-06-30",
+   "source_system": "Synthetic demo assay",
+   "source_ref": "",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "low",
+   "method": "assumption",
+   "lineage": []
+  },
+  {
+   "id": "F-00095",
+   "subject": "CR-DOBA",
+   "predicate": "api_gravity",
+   "value": 21.0,
+   "unit": "degAPI",
+   "as_of": "2026-06-30",
+   "source_system": "Public assay (typical values)",
+   "source_ref": "",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "medium",
+   "method": "indicative",
+   "lineage": []
+  },
+  {
+   "id": "F-00096",
+   "subject": "CR-DOBA",
+   "predicate": "sulfur",
+   "value": 0.1,
+   "unit": "wt%",
+   "as_of": "2026-06-30",
+   "source_system": "Public assay (typical values)",
+   "source_ref": "",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "medium",
+   "method": "indicative",
+   "lineage": []
+  },
+  {
+   "id": "F-00097",
+   "subject": "CR-DOBA",
+   "predicate": "tan",
+   "value": 4.5,
+   "unit": "mgKOH/g",
+   "as_of": "2026-06-30",
+   "source_system": "Public assay (typical values)",
+   "source_ref": "",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "medium",
+   "method": "indicative",
+   "lineage": []
+  },
+  {
+   "id": "F-00098",
+   "subject": "CR-DOBA",
+   "predicate": "salt_content",
+   "value": 10,
+   "unit": "PTB",
+   "as_of": "2026-06-30",
+   "source_system": "Synthetic demo assay",
+   "source_ref": "",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "low",
+   "method": "assumption",
+   "lineage": []
+  },
+  {
+   "id": "F-00099",
+   "subject": "CR-HSOB",
+   "predicate": "api_gravity",
+   "value": 22.0,
+   "unit": "degAPI",
+   "as_of": "2026-06-30",
+   "source_system": "Synthetic demo assay",
+   "source_ref": "",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "low",
+   "method": "assumption",
+   "lineage": []
+  },
+  {
+   "id": "F-00100",
+   "subject": "CR-HSOB",
+   "predicate": "sulfur",
+   "value": 3.4,
+   "unit": "wt%",
+   "as_of": "2026-06-30",
+   "source_system": "Synthetic demo assay",
+   "source_ref": "",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "low",
+   "method": "assumption",
+   "lineage": []
+  },
+  {
+   "id": "F-00101",
+   "subject": "CR-HSOB",
+   "predicate": "tan",
+   "value": 1.2,
+   "unit": "mgKOH/g",
+   "as_of": "2026-06-30",
+   "source_system": "Synthetic demo assay",
+   "source_ref": "",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "low",
+   "method": "assumption",
+   "lineage": []
+  },
+  {
+   "id": "F-00102",
+   "subject": "CR-HSOB",
+   "predicate": "salt_content",
+   "value": 25,
+   "unit": "PTB",
+   "as_of": "2026-06-30",
+   "source_system": "Synthetic demo assay",
+   "source_ref": "",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "low",
+   "method": "assumption",
+   "lineage": []
+  },
+  {
+   "id": "F-00103",
+   "subject": "CR-F1",
+   "predicate": "api_gravity",
+   "value": 37.0,
+   "unit": "degAPI",
+   "as_of": "2026-06-30",
+   "source_system": "Synthetic demo assay",
+   "source_ref": "",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "low",
+   "method": "assumption",
+   "lineage": []
+  },
+  {
+   "id": "F-00104",
+   "subject": "CR-F1",
+   "predicate": "sulfur",
+   "value": 0.6,
+   "unit": "wt%",
+   "as_of": "2026-06-30",
+   "source_system": "Synthetic demo assay",
+   "source_ref": "",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "low",
+   "method": "assumption",
+   "lineage": []
+  },
+  {
+   "id": "F-00105",
+   "subject": "CR-F1",
+   "predicate": "tan",
+   "value": 0.1,
+   "unit": "mgKOH/g",
+   "as_of": "2026-06-30",
+   "source_system": "Synthetic demo assay",
+   "source_ref": "",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "low",
+   "method": "assumption",
+   "lineage": []
+  },
+  {
+   "id": "F-00106",
+   "subject": "CR-F1",
+   "predicate": "salt_content",
+   "value": 3,
+   "unit": "PTB",
+   "as_of": "2026-06-30",
+   "source_system": "Synthetic demo assay",
+   "source_ref": "",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "low",
+   "method": "assumption",
+   "lineage": []
+  },
+  {
+   "id": "F-00107",
+   "subject": "CMP-A1",
+   "predicate": "volume_processed",
+   "value": 900.0,
+   "unit": "kbbl",
+   "as_of": "2025-11-24",
+   "source_system": "Hydrocarbon Accounting",
+   "source_ref": "HA-CMP-A1",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00108",
+   "subject": "CMP-A1",
+   "predicate": "slate_share",
+   "value": 0.3,
+   "unit": "fraction",
+   "as_of": "2025-11-24",
+   "source_system": "Crude Schedule",
+   "source_ref": "SCH-CMP-A1",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00109",
+   "subject": "CMP-A1",
+   "predicate": "lp_uplift_per_bbl",
+   "value": 2.1,
+   "unit": "USD/bbl",
+   "as_of": "2025-11-10",
+   "source_system": "LP Planning Model",
+   "source_ref": "LP-CASE-CMP-A1",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "medium",
+   "method": "calculated",
+   "lineage": []
+  },
+  {
+   "id": "F-00110",
+   "subject": "CMP-A1",
+   "predicate": "lp_uplift_total",
+   "value": 1890000,
+   "unit": "USD",
+   "as_of": "2025-11-24",
+   "source_system": "KG derived",
+   "source_ref": "",
+   "owner": "ROLE-ECON",
+   "confidence": "medium",
+   "method": "calculated",
+   "lineage": [
+    "F-00107",
+    "F-00109"
+   ]
+  },
+  {
+   "id": "F-00111",
+   "subject": "CMP-A1",
+   "predicate": "incremental_treatment_cost",
+   "value": 90000,
+   "unit": "USD",
+   "as_of": "2025-11-24",
+   "source_system": "Chemical Treatment Vendor Report",
+   "source_ref": "CHEM-CMP-A1",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00112",
+   "subject": "CMP-A2H",
+   "predicate": "volume_processed",
+   "value": 800.0,
+   "unit": "kbbl",
+   "as_of": "2026-02-20",
+   "source_system": "Hydrocarbon Accounting",
+   "source_ref": "HA-CMP-A2H",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00113",
+   "subject": "CMP-A2H",
+   "predicate": "slate_share",
+   "value": 0.25,
+   "unit": "fraction",
+   "as_of": "2026-02-20",
+   "source_system": "Crude Schedule",
+   "source_ref": "SCH-CMP-A2H",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00114",
+   "subject": "CMP-A2H",
+   "predicate": "lp_uplift_per_bbl",
+   "value": 2.1,
+   "unit": "USD/bbl",
+   "as_of": "2026-02-05",
+   "source_system": "LP Planning Model",
+   "source_ref": "LP-CASE-CMP-A2H",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "medium",
+   "method": "calculated",
+   "lineage": []
+  },
+  {
+   "id": "F-00115",
+   "subject": "CMP-A2H",
+   "predicate": "lp_uplift_total",
+   "value": 1680000,
+   "unit": "USD",
+   "as_of": "2026-02-20",
+   "source_system": "KG derived",
+   "source_ref": "",
+   "owner": "ROLE-ECON",
+   "confidence": "medium",
+   "method": "calculated",
+   "lineage": [
+    "F-00112",
+    "F-00114"
+   ]
+  },
+  {
+   "id": "F-00116",
+   "subject": "CMP-A2H",
+   "predicate": "incremental_treatment_cost",
+   "value": 140000,
+   "unit": "USD",
+   "as_of": "2026-02-20",
+   "source_system": "Chemical Treatment Vendor Report",
+   "source_ref": "CHEM-CMP-A2H",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00117",
+   "subject": "CMP-A2D",
+   "predicate": "volume_processed",
+   "value": 480.0,
+   "unit": "kbbl",
+   "as_of": "2026-02-20",
+   "source_system": "Hydrocarbon Accounting",
+   "source_ref": "HA-CMP-A2D",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00118",
+   "subject": "CMP-A2D",
+   "predicate": "slate_share",
+   "value": 0.15,
+   "unit": "fraction",
+   "as_of": "2026-02-20",
+   "source_system": "Crude Schedule",
+   "source_ref": "SCH-CMP-A2D",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00119",
+   "subject": "CMP-A2D",
+   "predicate": "lp_uplift_per_bbl",
+   "value": 1.6,
+   "unit": "USD/bbl",
+   "as_of": "2026-02-05",
+   "source_system": "LP Planning Model",
+   "source_ref": "LP-CASE-CMP-A2D",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "medium",
+   "method": "calculated",
+   "lineage": []
+  },
+  {
+   "id": "F-00120",
+   "subject": "CMP-A2D",
+   "predicate": "lp_uplift_total",
+   "value": 768000,
+   "unit": "USD",
+   "as_of": "2026-02-20",
+   "source_system": "KG derived",
+   "source_ref": "",
+   "owner": "ROLE-ECON",
+   "confidence": "medium",
+   "method": "calculated",
+   "lineage": [
+    "F-00117",
+    "F-00119"
+   ]
+  },
+  {
+   "id": "F-00121",
+   "subject": "CMP-A3",
+   "predicate": "volume_processed",
+   "value": 1260.0,
+   "unit": "kbbl",
+   "as_of": "2026-06-18",
+   "source_system": "Hydrocarbon Accounting",
+   "source_ref": "HA-CMP-A3",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00122",
+   "subject": "CMP-A3",
+   "predicate": "slate_share",
+   "value": 0.35,
+   "unit": "fraction",
+   "as_of": "2026-06-18",
+   "source_system": "Crude Schedule",
+   "source_ref": "SCH-CMP-A3",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00123",
+   "subject": "CMP-A3",
+   "predicate": "lp_uplift_per_bbl",
+   "value": 2.1,
+   "unit": "USD/bbl",
+   "as_of": "2026-06-01",
+   "source_system": "LP Planning Model",
+   "source_ref": "LP-CASE-CMP-A3",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "medium",
+   "method": "calculated",
+   "lineage": []
+  },
+  {
+   "id": "F-00124",
+   "subject": "CMP-A3",
+   "predicate": "lp_uplift_total",
+   "value": 2646000,
+   "unit": "USD",
+   "as_of": "2026-06-18",
+   "source_system": "KG derived",
+   "source_ref": "",
+   "owner": "ROLE-ECON",
+   "confidence": "medium",
+   "method": "calculated",
+   "lineage": [
+    "F-00121",
+    "F-00123"
+   ]
+  },
+  {
+   "id": "F-00125",
+   "subject": "CMP-A3",
+   "predicate": "incremental_treatment_cost",
+   "value": 120000,
+   "unit": "USD",
+   "as_of": "2026-06-18",
+   "source_system": "Chemical Treatment Vendor Report",
+   "source_ref": "CHEM-CMP-A3",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00126",
+   "subject": "CMP-AB-AL",
+   "predicate": "volume_processed",
+   "value": 28000,
+   "unit": "kbbl",
+   "as_of": "2026-09-28",
+   "source_system": "Hydrocarbon Accounting",
+   "source_ref": "HA-CMP-AB-AL",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00127",
+   "subject": "CMP-AB-BM",
+   "predicate": "volume_processed",
+   "value": 16000,
+   "unit": "kbbl",
+   "as_of": "2026-09-28",
+   "source_system": "Hydrocarbon Accounting",
+   "source_ref": "HA-CMP-AB-BM",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00128",
+   "subject": "CMP-AB-MUR",
+   "predicate": "volume_processed",
+   "value": 12000,
+   "unit": "kbbl",
+   "as_of": "2026-09-28",
+   "source_system": "Hydrocarbon Accounting",
+   "source_ref": "HA-CMP-AB-MUR",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00129",
+   "subject": "CMP-AB-QM",
+   "predicate": "volume_processed",
+   "value": 10000,
+   "unit": "kbbl",
+   "as_of": "2026-09-28",
+   "source_system": "Hydrocarbon Accounting",
+   "source_ref": "HA-CMP-AB-QM",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00130",
+   "subject": "CMP-BB-AL",
+   "predicate": "volume_processed",
+   "value": 18000,
+   "unit": "kbbl",
+   "as_of": "2026-09-28",
+   "source_system": "Hydrocarbon Accounting",
+   "source_ref": "HA-CMP-BB-AL",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00131",
+   "subject": "CMP-BB-MUR",
+   "predicate": "volume_processed",
+   "value": 9000,
+   "unit": "kbbl",
+   "as_of": "2026-09-28",
+   "source_system": "Hydrocarbon Accounting",
+   "source_ref": "HA-CMP-BB-MUR",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00132",
+   "subject": "CMP-BB-F1",
+   "predicate": "volume_processed",
+   "value": 14000,
+   "unit": "kbbl",
+   "as_of": "2026-09-28",
+   "source_system": "Hydrocarbon Accounting",
+   "source_ref": "HA-CMP-BB-F1",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00133",
+   "subject": "PRD-GAS-1",
+   "predicate": "production_rate",
+   "value": 55,
+   "unit": "kbd",
+   "as_of": "2026-09-28",
+   "source_system": "Hydrocarbon Accounting",
+   "source_ref": "",
+   "owner": "ROLE-BLEND",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00134",
+   "subject": "PRD-GAS-1",
+   "predicate": "ron_spec_min",
+   "value": 95.0,
+   "unit": "RON",
+   "as_of": "2026-09-28",
+   "source_system": "Product Specification",
+   "source_ref": "SPEC-GAS95",
+   "owner": "ROLE-BLEND",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00135",
+   "subject": "PRD-GAS-1",
+   "predicate": "ron_avg_12m",
+   "value": 95.62,
+   "unit": "RON",
+   "as_of": "2026-09-28",
+   "source_system": "LIMS",
+   "source_ref": "GBL1-CERT-STATS",
+   "owner": "ROLE-LAB",
+   "confidence": "high",
+   "method": "calculated",
+   "lineage": []
+  },
+  {
+   "id": "F-00136",
+   "subject": "PRD-GAS-2",
+   "predicate": "production_rate",
+   "value": 30,
+   "unit": "kbd",
+   "as_of": "2026-09-28",
+   "source_system": "Hydrocarbon Accounting",
+   "source_ref": "",
+   "owner": "ROLE-BLEND",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00137",
+   "subject": "PRD-GAS-2",
+   "predicate": "ron_spec_min",
+   "value": 95.0,
+   "unit": "RON",
+   "as_of": "2026-09-28",
+   "source_system": "Product Specification",
+   "source_ref": "SPEC-GAS95",
+   "owner": "ROLE-BLEND",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00138",
+   "subject": "PRD-GAS-2",
+   "predicate": "ron_avg_12m",
+   "value": 95.18,
+   "unit": "RON",
+   "as_of": "2026-09-28",
+   "source_system": "LIMS",
+   "source_ref": "GBL2-CERT-STATS",
+   "owner": "ROLE-LAB",
+   "confidence": "high",
+   "method": "calculated",
+   "lineage": []
+  },
+  {
+   "id": "F-00139",
+   "subject": "PRD-GAS-1",
+   "predicate": "octane_value",
+   "value": 0.6,
+   "unit": "USD per RON-bbl",
+   "as_of": "2026-09-28",
+   "source_system": "Planning assumption",
+   "source_ref": "",
+   "owner": "ROLE-CRPLAN",
+   "confidence": "low",
+   "method": "assumption",
+   "lineage": []
+  },
+  {
+   "id": "F-00140",
+   "subject": "IOW-001",
+   "predicate": "peak_value",
+   "value": 48,
+   "unit": "ppm",
+   "as_of": "2025-11-13",
+   "source_system": "PI Historian / IOW Monitor",
+   "source_ref": "IOW-001",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "measured",
+   "lineage": []
+  },
+  {
+   "id": "F-00141",
+   "subject": "IOW-001",
+   "predicate": "duration",
+   "value": 9,
+   "unit": "days",
+   "as_of": "2025-11-13",
+   "source_system": "PI Historian / IOW Monitor",
+   "source_ref": "IOW-001",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "measured",
+   "lineage": []
+  },
+  {
+   "id": "F-00142",
+   "subject": "IOW-002",
+   "predicate": "peak_value",
+   "value": 65,
+   "unit": "ppm",
+   "as_of": "2026-02-08",
+   "source_system": "PI Historian / IOW Monitor",
+   "source_ref": "IOW-002",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "measured",
+   "lineage": []
+  },
+  {
+   "id": "F-00143",
+   "subject": "IOW-002",
+   "predicate": "duration",
+   "value": 11,
+   "unit": "days",
+   "as_of": "2026-02-08",
+   "source_system": "PI Historian / IOW Monitor",
+   "source_ref": "IOW-002",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "measured",
+   "lineage": []
+  },
+  {
+   "id": "F-00144",
+   "subject": "IOW-003",
+   "predicate": "peak_value",
+   "value": 57,
+   "unit": "ppm",
+   "as_of": "2026-06-04",
+   "source_system": "PI Historian / IOW Monitor",
+   "source_ref": "IOW-003",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "measured",
+   "lineage": []
+  },
+  {
+   "id": "F-00145",
+   "subject": "IOW-003",
+   "predicate": "duration",
+   "value": 13,
+   "unit": "days",
+   "as_of": "2026-06-04",
+   "source_system": "PI Historian / IOW Monitor",
+   "source_ref": "IOW-003",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "measured",
+   "lineage": []
+  },
+  {
+   "id": "F-00146",
+   "subject": "IOW-004",
+   "predicate": "peak_value",
+   "value": 4.9,
+   "unit": "pH",
+   "as_of": "2026-02-10",
+   "source_system": "PI Historian / IOW Monitor",
+   "source_ref": "IOW-004",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "measured",
+   "lineage": []
+  },
+  {
+   "id": "F-00147",
+   "subject": "IOW-004",
+   "predicate": "duration",
+   "value": 6,
+   "unit": "days",
+   "as_of": "2026-02-10",
+   "source_system": "PI Historian / IOW Monitor",
+   "source_ref": "IOW-004",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "measured",
+   "lineage": []
+  },
+  {
+   "id": "F-00148",
+   "subject": "IOW-005",
+   "predicate": "peak_value",
+   "value": 0.45,
+   "unit": "mm/y",
+   "as_of": "2026-02-12",
+   "source_system": "PI Historian / IOW Monitor",
+   "source_ref": "IOW-005",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "measured",
+   "lineage": []
+  },
+  {
+   "id": "F-00149",
+   "subject": "IOW-005",
+   "predicate": "duration",
+   "value": 14,
+   "unit": "days",
+   "as_of": "2026-02-12",
+   "source_system": "PI Historian / IOW Monitor",
+   "source_ref": "IOW-005",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "measured",
+   "lineage": []
+  },
+  {
+   "id": "F-00150",
+   "subject": "IOW-006",
+   "predicate": "peak_value",
+   "value": 24,
+   "unit": "ppm",
+   "as_of": "2026-04-02",
+   "source_system": "PI Historian / IOW Monitor",
+   "source_ref": "IOW-006",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "measured",
+   "lineage": []
+  },
+  {
+   "id": "F-00151",
+   "subject": "IOW-006",
+   "predicate": "duration",
+   "value": 1,
+   "unit": "days",
+   "as_of": "2026-04-02",
+   "source_system": "PI Historian / IOW Monitor",
+   "source_ref": "IOW-006",
+   "owner": "ROLE-CORR",
+   "confidence": "high",
+   "method": "measured",
+   "lineage": []
+  },
+  {
+   "id": "F-00152",
+   "subject": "FL-001",
+   "predicate": "failure_mode",
+   "value": "External leakage \u2013 process medium (ELP)",
+   "unit": "",
+   "as_of": "2025-12-02",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-001",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00153",
+   "subject": "FL-001",
+   "predicate": "failure_mechanism",
+   "value": "Corrosion (ISO 14224 2.2) \u2014 HCl / ammonium chloride",
+   "unit": "",
+   "as_of": "2025-12-02",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-001",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00154",
+   "subject": "WO-001",
+   "predicate": "actual_cost",
+   "value": 420000,
+   "unit": "USD",
+   "as_of": "2025-12-02",
+   "source_system": "SAP PM",
+   "source_ref": "WO-001",
+   "owner": "ROLE-MAINT",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00155",
+   "subject": "FL-001",
+   "predicate": "rate_reduction",
+   "value": 50,
+   "unit": "kbd",
+   "as_of": "2025-12-02",
+   "source_system": "Operations Logbook",
+   "source_ref": "FL-001",
+   "owner": "ROLE-OPS",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00156",
+   "subject": "FL-001",
+   "predicate": "rate_reduction_days",
+   "value": 5,
+   "unit": "days",
+   "as_of": "2025-12-02",
+   "source_system": "Operations Logbook",
+   "source_ref": "FL-001",
+   "owner": "ROLE-OPS",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00157",
+   "subject": "FL-001",
+   "predicate": "lost_margin",
+   "value": 2050000,
+   "unit": "USD",
+   "as_of": "2025-12-02",
+   "source_system": "KG derived",
+   "source_ref": "",
+   "owner": "ROLE-ECON",
+   "confidence": "medium",
+   "method": "calculated",
+   "lineage": [
+    "F-00155",
+    "F-00156",
+    "F-00005"
+   ]
+  },
+  {
+   "id": "F-00158",
+   "subject": "FL-002",
+   "predicate": "failure_mode",
+   "value": "External leakage \u2013 process medium (ELP)",
+   "unit": "",
+   "as_of": "2026-03-05",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-002",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00159",
+   "subject": "FL-002",
+   "predicate": "failure_mechanism",
+   "value": "Corrosion (ISO 14224 2.2) \u2014 HCl / ammonium chloride",
+   "unit": "",
+   "as_of": "2026-03-05",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-002",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00160",
+   "subject": "WO-002",
+   "predicate": "actual_cost",
+   "value": 160000,
+   "unit": "USD",
+   "as_of": "2026-03-05",
+   "source_system": "SAP PM",
+   "source_ref": "WO-002",
+   "owner": "ROLE-MAINT",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00161",
+   "subject": "FL-002",
+   "predicate": "rate_reduction",
+   "value": 50,
+   "unit": "kbd",
+   "as_of": "2026-03-05",
+   "source_system": "Operations Logbook",
+   "source_ref": "FL-002",
+   "owner": "ROLE-OPS",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00162",
+   "subject": "FL-002",
+   "predicate": "rate_reduction_days",
+   "value": 4,
+   "unit": "days",
+   "as_of": "2026-03-05",
+   "source_system": "Operations Logbook",
+   "source_ref": "FL-002",
+   "owner": "ROLE-OPS",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00163",
+   "subject": "FL-002",
+   "predicate": "lost_margin",
+   "value": 1640000,
+   "unit": "USD",
+   "as_of": "2026-03-05",
+   "source_system": "KG derived",
+   "source_ref": "",
+   "owner": "ROLE-ECON",
+   "confidence": "medium",
+   "method": "calculated",
+   "lineage": [
+    "F-00161",
+    "F-00162",
+    "F-00005"
+   ]
+  },
+  {
+   "id": "F-00164",
+   "subject": "FL-003",
+   "predicate": "failure_mode",
+   "value": "External leakage \u2013 process medium (ELP)",
+   "unit": "",
+   "as_of": "2026-06-28",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-003",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00165",
+   "subject": "FL-003",
+   "predicate": "failure_mechanism",
+   "value": "Corrosion (ISO 14224 2.2) \u2014 HCl / ammonium chloride",
+   "unit": "",
+   "as_of": "2026-06-28",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-003",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00166",
+   "subject": "WO-003",
+   "predicate": "actual_cost",
+   "value": 310000,
+   "unit": "USD",
+   "as_of": "2026-06-28",
+   "source_system": "SAP PM",
+   "source_ref": "WO-003",
+   "owner": "ROLE-MAINT",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00167",
+   "subject": "FL-003",
+   "predicate": "rate_reduction",
+   "value": 80,
+   "unit": "kbd",
+   "as_of": "2026-06-28",
+   "source_system": "Operations Logbook",
+   "source_ref": "FL-003",
+   "owner": "ROLE-OPS",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00168",
+   "subject": "FL-003",
+   "predicate": "rate_reduction_days",
+   "value": 6,
+   "unit": "days",
+   "as_of": "2026-06-28",
+   "source_system": "Operations Logbook",
+   "source_ref": "FL-003",
+   "owner": "ROLE-OPS",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00169",
+   "subject": "FL-003",
+   "predicate": "lost_margin",
+   "value": 3936000,
+   "unit": "USD",
+   "as_of": "2026-06-28",
+   "source_system": "KG derived",
+   "source_ref": "",
+   "owner": "ROLE-ECON",
+   "confidence": "medium",
+   "method": "calculated",
+   "lineage": [
+    "F-00167",
+    "F-00168",
+    "F-00005"
+   ]
+  },
+  {
+   "id": "F-00170",
+   "subject": "FL-004",
+   "predicate": "failure_mode",
+   "value": "Structural deficiency (STD)",
+   "unit": "",
+   "as_of": "2026-03-20",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-004",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00171",
+   "subject": "FL-004",
+   "predicate": "failure_mechanism",
+   "value": "Corrosion (ISO 14224 2.2) \u2014 naphthenic acid",
+   "unit": "",
+   "as_of": "2026-03-20",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-004",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00172",
+   "subject": "WO-004",
+   "predicate": "actual_cost",
+   "value": 95000,
+   "unit": "USD",
+   "as_of": "2026-03-20",
+   "source_system": "SAP PM",
+   "source_ref": "WO-004",
+   "owner": "ROLE-MAINT",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00173",
+   "subject": "FL-101",
+   "predicate": "failure_mode",
+   "value": "External leakage \u2013 process medium (ELP)",
+   "unit": "",
+   "as_of": "2025-10-20",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-101",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00174",
+   "subject": "FL-101",
+   "predicate": "failure_mechanism",
+   "value": "Wear / thermal distortion (ISO 14224 1.x)",
+   "unit": "",
+   "as_of": "2025-10-20",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-101",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00175",
+   "subject": "WO-101",
+   "predicate": "actual_cost",
+   "value": 38000,
+   "unit": "USD",
+   "as_of": "2025-10-20",
+   "source_system": "SAP PM",
+   "source_ref": "WO-101",
+   "owner": "ROLE-MAINT",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00176",
+   "subject": "FL-102",
+   "predicate": "failure_mode",
+   "value": "External leakage \u2013 process medium (ELP)",
+   "unit": "",
+   "as_of": "2026-01-15",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-102",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00177",
+   "subject": "FL-102",
+   "predicate": "failure_mechanism",
+   "value": "Wear / thermal distortion (ISO 14224 1.x)",
+   "unit": "",
+   "as_of": "2026-01-15",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-102",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00178",
+   "subject": "WO-102",
+   "predicate": "actual_cost",
+   "value": 38000,
+   "unit": "USD",
+   "as_of": "2026-01-15",
+   "source_system": "SAP PM",
+   "source_ref": "WO-102",
+   "owner": "ROLE-MAINT",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00179",
+   "subject": "FL-103",
+   "predicate": "failure_mode",
+   "value": "External leakage \u2013 process medium (ELP)",
+   "unit": "",
+   "as_of": "2026-04-22",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-103",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00180",
+   "subject": "FL-103",
+   "predicate": "failure_mechanism",
+   "value": "Wear / thermal distortion (ISO 14224 1.x)",
+   "unit": "",
+   "as_of": "2026-04-22",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-103",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00181",
+   "subject": "WO-103",
+   "predicate": "actual_cost",
+   "value": 38000,
+   "unit": "USD",
+   "as_of": "2026-04-22",
+   "source_system": "SAP PM",
+   "source_ref": "WO-103",
+   "owner": "ROLE-MAINT",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00182",
+   "subject": "FL-104",
+   "predicate": "failure_mode",
+   "value": "External leakage \u2013 process medium (ELP)",
+   "unit": "",
+   "as_of": "2026-08-10",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-104",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00183",
+   "subject": "FL-104",
+   "predicate": "failure_mechanism",
+   "value": "Wear / thermal distortion (ISO 14224 1.x)",
+   "unit": "",
+   "as_of": "2026-08-10",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-104",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00184",
+   "subject": "WO-104",
+   "predicate": "actual_cost",
+   "value": 38000,
+   "unit": "USD",
+   "as_of": "2026-08-10",
+   "source_system": "SAP PM",
+   "source_ref": "WO-104",
+   "owner": "ROLE-MAINT",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00185",
+   "subject": "FL-105",
+   "predicate": "failure_mode",
+   "value": "External leakage \u2013 process medium (ELP)",
+   "unit": "",
+   "as_of": "2025-12-18",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-105",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00186",
+   "subject": "FL-105",
+   "predicate": "failure_mechanism",
+   "value": "Wear / thermal distortion (ISO 14224 1.x)",
+   "unit": "",
+   "as_of": "2025-12-18",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-105",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00187",
+   "subject": "WO-105",
+   "predicate": "actual_cost",
+   "value": 38000,
+   "unit": "USD",
+   "as_of": "2025-12-18",
+   "source_system": "SAP PM",
+   "source_ref": "WO-105",
+   "owner": "ROLE-MAINT",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00188",
+   "subject": "FL-106",
+   "predicate": "failure_mode",
+   "value": "External leakage \u2013 process medium (ELP)",
+   "unit": "",
+   "as_of": "2026-04-01",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-106",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00189",
+   "subject": "FL-106",
+   "predicate": "failure_mechanism",
+   "value": "Wear / thermal distortion (ISO 14224 1.x)",
+   "unit": "",
+   "as_of": "2026-04-01",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-106",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00190",
+   "subject": "WO-106",
+   "predicate": "actual_cost",
+   "value": 38000,
+   "unit": "USD",
+   "as_of": "2026-04-01",
+   "source_system": "SAP PM",
+   "source_ref": "WO-106",
+   "owner": "ROLE-MAINT",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00191",
+   "subject": "FL-107",
+   "predicate": "failure_mode",
+   "value": "External leakage \u2013 process medium (ELP)",
+   "unit": "",
+   "as_of": "2026-07-19",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-107",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00192",
+   "subject": "FL-107",
+   "predicate": "failure_mechanism",
+   "value": "Wear / thermal distortion (ISO 14224 1.x)",
+   "unit": "",
+   "as_of": "2026-07-19",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-107",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00193",
+   "subject": "WO-107",
+   "predicate": "actual_cost",
+   "value": 38000,
+   "unit": "USD",
+   "as_of": "2026-07-19",
+   "source_system": "SAP PM",
+   "source_ref": "WO-107",
+   "owner": "ROLE-MAINT",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00194",
+   "subject": "FL-108",
+   "predicate": "failure_mode",
+   "value": "External leakage \u2013 process medium (ELP)",
+   "unit": "",
+   "as_of": "2025-11-05",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-108",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00195",
+   "subject": "FL-108",
+   "predicate": "failure_mechanism",
+   "value": "Wear / thermal distortion (ISO 14224 1.x)",
+   "unit": "",
+   "as_of": "2025-11-05",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-108",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00196",
+   "subject": "WO-108",
+   "predicate": "actual_cost",
+   "value": 38000,
+   "unit": "USD",
+   "as_of": "2025-11-05",
+   "source_system": "SAP PM",
+   "source_ref": "WO-108",
+   "owner": "ROLE-MAINT",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00197",
+   "subject": "FL-109",
+   "predicate": "failure_mode",
+   "value": "External leakage \u2013 process medium (ELP)",
+   "unit": "",
+   "as_of": "2026-03-12",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-109",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00198",
+   "subject": "FL-109",
+   "predicate": "failure_mechanism",
+   "value": "Wear / thermal distortion (ISO 14224 1.x)",
+   "unit": "",
+   "as_of": "2026-03-12",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-109",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00199",
+   "subject": "WO-109",
+   "predicate": "actual_cost",
+   "value": 38000,
+   "unit": "USD",
+   "as_of": "2026-03-12",
+   "source_system": "SAP PM",
+   "source_ref": "WO-109",
+   "owner": "ROLE-MAINT",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00200",
+   "subject": "FL-110",
+   "predicate": "failure_mode",
+   "value": "External leakage \u2013 process medium (ELP)",
+   "unit": "",
+   "as_of": "2026-07-30",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-110",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00201",
+   "subject": "FL-110",
+   "predicate": "failure_mechanism",
+   "value": "Wear / thermal distortion (ISO 14224 1.x)",
+   "unit": "",
+   "as_of": "2026-07-30",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-110",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00202",
+   "subject": "WO-110",
+   "predicate": "actual_cost",
+   "value": 38000,
+   "unit": "USD",
+   "as_of": "2026-07-30",
+   "source_system": "SAP PM",
+   "source_ref": "WO-110",
+   "owner": "ROLE-MAINT",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00203",
+   "subject": "FL-111",
+   "predicate": "failure_mode",
+   "value": "External leakage \u2013 process medium (ELP)",
+   "unit": "",
+   "as_of": "2025-10-28",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-111",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00204",
+   "subject": "FL-111",
+   "predicate": "failure_mechanism",
+   "value": "Wear / thermal distortion (ISO 14224 1.x)",
+   "unit": "",
+   "as_of": "2025-10-28",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-111",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00205",
+   "subject": "WO-111",
+   "predicate": "actual_cost",
+   "value": 35000,
+   "unit": "USD",
+   "as_of": "2025-10-28",
+   "source_system": "SAP PM",
+   "source_ref": "WO-111",
+   "owner": "ROLE-MAINT",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00206",
+   "subject": "FL-112",
+   "predicate": "failure_mode",
+   "value": "External leakage \u2013 process medium (ELP)",
+   "unit": "",
+   "as_of": "2026-02-02",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-112",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00207",
+   "subject": "FL-112",
+   "predicate": "failure_mechanism",
+   "value": "Wear / thermal distortion (ISO 14224 1.x)",
+   "unit": "",
+   "as_of": "2026-02-02",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-112",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00208",
+   "subject": "WO-112",
+   "predicate": "actual_cost",
+   "value": 35000,
+   "unit": "USD",
+   "as_of": "2026-02-02",
+   "source_system": "SAP PM",
+   "source_ref": "WO-112",
+   "owner": "ROLE-MAINT",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00209",
+   "subject": "FL-113",
+   "predicate": "failure_mode",
+   "value": "External leakage \u2013 process medium (ELP)",
+   "unit": "",
+   "as_of": "2026-05-14",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-113",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00210",
+   "subject": "FL-113",
+   "predicate": "failure_mechanism",
+   "value": "Wear / thermal distortion (ISO 14224 1.x)",
+   "unit": "",
+   "as_of": "2026-05-14",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-113",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00211",
+   "subject": "WO-113",
+   "predicate": "actual_cost",
+   "value": 35000,
+   "unit": "USD",
+   "as_of": "2026-05-14",
+   "source_system": "SAP PM",
+   "source_ref": "WO-113",
+   "owner": "ROLE-MAINT",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00212",
+   "subject": "FL-114",
+   "predicate": "failure_mode",
+   "value": "External leakage \u2013 process medium (ELP)",
+   "unit": "",
+   "as_of": "2026-08-25",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-114",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00213",
+   "subject": "FL-114",
+   "predicate": "failure_mechanism",
+   "value": "Wear / thermal distortion (ISO 14224 1.x)",
+   "unit": "",
+   "as_of": "2026-08-25",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-114",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00214",
+   "subject": "WO-114",
+   "predicate": "actual_cost",
+   "value": 35000,
+   "unit": "USD",
+   "as_of": "2026-08-25",
+   "source_system": "SAP PM",
+   "source_ref": "WO-114",
+   "owner": "ROLE-MAINT",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00215",
+   "subject": "FL-115",
+   "predicate": "failure_mode",
+   "value": "External leakage \u2013 process medium (ELP)",
+   "unit": "",
+   "as_of": "2026-06-10",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-115",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00216",
+   "subject": "FL-115",
+   "predicate": "failure_mechanism",
+   "value": "Wear / thermal distortion (ISO 14224 1.x)",
+   "unit": "",
+   "as_of": "2026-06-10",
+   "source_system": "SAP PM (ISO 14224 coding)",
+   "source_ref": "WO-115",
+   "owner": "ROLE-REL",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00217",
+   "subject": "WO-115",
+   "predicate": "actual_cost",
+   "value": 35000,
+   "unit": "USD",
+   "as_of": "2026-06-10",
+   "source_system": "SAP PM",
+   "source_ref": "WO-115",
+   "owner": "ROLE-MAINT",
+   "confidence": "high",
+   "method": "recorded",
+   "lineage": []
+  },
+  {
+   "id": "F-00218",
+   "subject": "TA-ALPHA-27",
+   "predicate": "scope_freeze_date",
+   "value": "2026-11-15",
+   "unit": "",
+   "as_of": "2026-09-28",
+   "source_system": "TA Planning System",
+   "source_ref": "",
+   "owner": "ROLE-TA",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00219",
+   "subject": "TA-ALPHA-27",
+   "predicate": "start_date",
+   "value": "2027-03-01",
+   "unit": "",
+   "as_of": "2026-09-28",
+   "source_system": "TA Planning System",
+   "source_ref": "",
+   "owner": "ROLE-TA",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  },
+  {
+   "id": "F-00220",
+   "subject": "DE-RONREF",
+   "predicate": "freshness_sla",
+   "value": 8,
+   "unit": "h",
+   "as_of": "2026-09-28",
+   "source_system": "Data Governance Catalogue",
+   "source_ref": "",
+   "owner": "ROLE-BLEND",
+   "confidence": "high",
+   "method": "declared",
+   "lineage": []
+  }
+ ]
+}

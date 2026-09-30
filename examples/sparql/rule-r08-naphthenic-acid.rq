@@ -1,0 +1,16 @@
+# Handbook C4.4 — Rule R-08 (thresholds illustrative)
+# TAN > 0.5 crude reaching (processed in, or fed downstream of) a unit with a hot circuit
+# above 220 degC that is not in upgraded metallurgy => SUSCEPTIBLE_TO naphthenic acid corrosion.
+PREFIX ogkg:  <https://example.org/ogkg/core#>
+PREFIX vocab: <https://example.org/ogkg/vocab#>
+PREFIX ref:   <https://example.org/ogkg/ref#>
+
+CONSTRUCT { ?eq ogkg:susceptibleTo ref:NaphthenicAcidCorrosion . }
+WHERE {
+  ?camp ogkg:ofGrade ?g ; ogkg:processedIn ?u0 .
+  ?g ogkg:tan ?tan . FILTER(?tan > 0.5)
+  { BIND(?u0 AS ?unit) } UNION { ?u0 ogkg:produces ?s . ?s ogkg:feeds ?unit . }
+  ?eq ogkg:partOf+ ?unit ; a ogkg:PipingCircuit ;
+      ogkg:serviceTemperature ?t . FILTER(?t > 220)
+  FILTER NOT EXISTS { ?eq ogkg:tubeMetallurgy ?m . FILTER(?m IN (vocab:SS316)) }
+}
