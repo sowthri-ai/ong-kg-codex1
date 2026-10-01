@@ -12,6 +12,7 @@ python -m ogkg.build_dataset      # data/kg.json
 python -m ogkg.exports            # exports/ + explorer/og_value_chain_kg.html
 python -m ogkg.catalogue          # docs/handbook/F3-class-and-relation-catalogue.md
 python -m ogkg.cdu_gamma && python -m ogkg.ttl_v02 && python -m ogkg.cdu_explorer   # Refinery Gamma
+python -m ogkg.owl_profile && python -m ogkg.conformance   # OWL 2 DL profile + standards conformance (B7)
 python -m unittest discover -s tests -v
 ```
 All tests must pass before committing. `tests/test_cdu_gamma.py` asserts the counts quoted in handbook F6; update both together. `tests/test_ontology_and_handbook.py` recomputes numbers quoted in the handbook; if you change the dataset, update the handbook and those tests together.

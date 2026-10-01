@@ -15,6 +15,8 @@ from .turtle_lite import parse_file
 ROOT = Path(__file__).resolve().parent.parent
 CORE = "https://example.org/ogkg/core#"
 ONTOLOGY_FILES = [ROOT / "ontology" / "ogkg-core.ttl", ROOT / "ontology" / "ext" / "ogkg-cdu.ttl"]
+STATUS = {"current": "vocab:Current", "superseded": "vocab:Superseded", "retracted": "vocab:Retracted"}
+SENS = {"public": "vocab:Public", "internal": "vocab:Internal", "confidential": "vocab:Confidential", "restricted": "vocab:Restricted"}
 
 CONF = {"high": "vocab:High", "medium": "vocab:Medium", "low": "vocab:Low"}
 METHOD = {m: "vocab:" + m.title() for m in ("measured", "recorded", "calculated", "declared", "indicative", "assumption")}
@@ -47,16 +49,16 @@ def export(kg_json, out_dir, ns_prefix, ns_iri):
     data = json.loads(Path(kg_json).read_text())
     nodes = {n["id"]: n for n in data["nodes"]}
     rel = lpg_map()
-    missing = sorted({e["rel"] for e in data["edges"]} - set(rel) - {"PART_OF"})
+    missing = sorted({e["rel"] for e in data["edges"]} - set(rel))
     if missing:
         raise ValueError(f"relationships not defined in the ontology: {missing}")
-    rel["PART_OF"] = "ogkg:partOf"
     for n in nodes.values():
-        if not re.fullmatch(r"[A-Za-z0-9_\-]+", n["id"]):
+        if not re.fullmatch(r"[A-Za-z0-9_\-]+(?:\.[A-Za-z0-9_\-]+)*", n["id"]):
             raise ValueError(f"id not IRI-safe: {n['id']}")
     iri = lambda x: f"{ns_prefix}:{x}"
     head = (f"@prefix {ns_prefix}: <{ns_iri}> .\n@prefix ogkg: <{CORE}> .\n@prefix vocab: <https://example.org/ogkg/vocab#> .\n"
-            "@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n\n")
+            "@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .\n@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .\n"
+            "@prefix prov: <http://www.w3.org/ns/prov#> .\n\n")
     s2 = {nid for nid, n in nodes.items() if n["props"].get("sector") == "2"}
 
     S, I = [head + "# Sector 1b — structure\n"], [head + "# Sector 2 — information\n"]
@@ -79,6 +81,10 @@ def export(kg_json, out_dir, ns_prefix, ns_iri):
             parts.append(f"ogkg:mapsToPredicate {lit(p['maps_to_predicate'])}")
         if n["cls"] in ("Failure", "WorkOrder", "IOWExceedance") and p.get("date"):
             parts.append(f'ogkg:eventDate "{p["date"]}"^^xsd:date')
+        if "purdue_level" in p:
+            parts.append(f"ogkg:purdueLevel {lit(float(p['purdue_level']))}")
+        if p.get("isa95_function"):
+            parts.append(f"ogkg:isa95Function vocab:{p['isa95_function']}")
         if n["cls"] == "CrudeCampaign":
             parts += [f'ogkg:windowStart "{p["start"]}"^^xsd:date', f'ogkg:windowEnd "{p["end"]}"^^xsd:date']
         (I if n["id"] in s2 else S).append(" ;\n    ".join(parts) + " .")
@@ -128,6 +134,21 @@ def export(kg_json, out_dir, ns_prefix, ns_iri):
         if f["owner"]:
             parts.append(f"ogkg:factOwner {iri(f['owner'])}")
         parts += [f"ogkg:derivedFrom {iri(x)}" for x in f["lineage"]]
+        if f.get("valid_from"):
+            parts.append(f'ogkg:validFrom "{f["valid_from"]}"^^xsd:date')
+        if f.get("valid_to"):
+            parts.append(f'ogkg:validTo "{f["valid_to"]}"^^xsd:date')
+        if f.get("recorded_at"):
+            parts.append(f'prov:generatedAtTime "{f["recorded_at"]}"^^xsd:dateTime')
+        parts.append(f"ogkg:factStatus {STATUS[f.get('status', 'current')]}")
+        if f.get("supersedes"):
+            parts.append(f"ogkg:supersedes {iri(f['supersedes'])}")
+        if f.get("sensitivity"):
+            parts.append(f"ogkg:sensitivity {SENS[f['sensitivity']]}")
+        if f.get("basis"):
+            parts.append(f"ogkg:valueBasis {lit(f['basis'])}")
+        if f.get("value_low") is not None:
+            parts += [f"ogkg:valueLow {lit(float(f['value_low']))}", f"ogkg:valueHigh {lit(float(f['value_high']))}"]
         I.append(" ;\n    ".join(parts) + " .")
 
     out = Path(out_dir)

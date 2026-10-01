@@ -25,6 +25,8 @@ This is the interface between the builders (`ogkg/cdu_gamma.py`, `ogkg/refinery_
 | `sensitivity` | string | `public`, `internal`, `confidential` or `restricted`; default `internal` |
 | `plant_unit` | string | Equipment only: the owning L4 unit |
 | `running` | bool | Rotating equipment only: running or standby |
+| `purdue_level` | number | Application instances and field devices: Purdue / IEC 62443 level 0–5 (set by `ogkg/standards.py`) |
+| `isa95_function` | string | L4 processes: IEC 62264 functional level / MOM activity model (vocab:ISA95FunctionScheme local name) |
 
 Node-class-specific props that the RDF exporter maps:
 
@@ -41,7 +43,7 @@ Node-class-specific props that the RDF exporter maps:
 
 ## 3. Edges
 
-`{source, rel, target, props}`. `rel` must be a relation with an `ogkg:lpgType` in the ontology. Optional `props`: `source` (provenance text), `valid_from`, `valid_to`, `confidence`. The exporter reifies an edge that has props as an `ogkg:LinkAssertion`.
+`{source, rel, target, props}`. `rel` must be a relation with an `ogkg:lpgType` in the ontology; its domain and range are checked by `ogkg/shacl_lite.py`. `PART_OF` exports as `ogkg:directPartOf` (the transitive `ogkg:partOf` is inferred, never asserted). Optional `props`: `source` (provenance text), `valid_from`, `valid_to`, `confidence`. The exporter reifies an edge that has props as an `ogkg:LinkAssertion`.
 
 ### New relations in v0.5
 

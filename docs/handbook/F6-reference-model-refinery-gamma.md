@@ -62,13 +62,13 @@ Every feed rate is a calculated fact whose lineage lists the stream-rate facts f
 | L0–L1 | Oil & Gas › Downstream | 1 + 1 | shared | |
 | L2 | Refining | 1 | Value streams | 2 |
 | L3 | Refinery Gamma | 1 | Process groups | 8 |
-| L4 | Plant units (all real, no placeholders) | 36 | Processes | 14 |
-| L5 | Sections | 131 | Sub-processes | 14 |
-| L6 | Equipment | 261 | Activities | 14 |
-| L7 | Subunits | 976 | Tasks | 14 |
-| L8 | Maintainable items | 2,158 | Decision points | 14 |
-| L9 | Parts | 584 | Data objects | 14 |
-| L10 | Instrument, lab, calculated and unit-level tags | 1,624 | Data elements | 48 |
+| L4 | Plant units (all real, no placeholders) | 39 | Processes | 15 |
+| L5 | Sections | 140 | Sub-processes | 15 |
+| L6 | Equipment (incl. 104 motors, 3 turbines, 37 PSVs, 29 valves, 25 transmitters) | 463 | Activities | 15 |
+| L7 | Subunits | 1,484 | Tasks | 15 |
+| L8 | Maintainable items | 2,608 | Decision points | 15 |
+| L9 | Parts (incl. 36 thickness monitoring locations) | 621 | Data objects | 15 |
+| L10 | Instrument, lab, calculated and unit-level tags | 1,929 | Data elements | 55 |
 
 **Equipment by class**
 
@@ -88,12 +88,13 @@ Every feed rate is a calculated fact whose lineage lists the stream-rate facts f
 
 | Kind | Count |
 |---|---|
-| Facts | 5,656 (3,729 declared · 1,572 measured · 270 calculated with lineage · 53 recorded · 27 indicative · 5 assumption) |
-| Integrity operating window limits | 101 |
-| Events (Oct 2025 – Sep 2026) | 11 IOW exceedances, 9 failures, 11 work orders |
+| Facts | 12,570 (6,921 declared · 2,862 measured · 1,506 recorded · 1,022 calculated with lineage · 194 assumption · 65 indicative), each with valid-from, recorded-at and status |
+| Integrity operating window limits (API 584 levels, as `IOWLimit` nodes) | 116 |
+| Events (Oct 2025 – Sep 2026, plus failure history) | 13 IOW exceedances, 29 failures (each with ISO 14224 mode, mechanism, cause and detection method), 35 work orders |
+| Physical items | 109 serial items installed at rotating-equipment tags, with serial number, model and install dates |
 | Crude campaigns | 6 (3 grades × 2 trains) |
 
-**Also modelled:** 40 dotted-branch groupings (13 corrosion loops including REAC NH4HS and HTHA, 6 pumparound circuits, 3 fleets, 3 utilities, 5 SIFs, 6 cost centres, the CDU complex, hydrogen and sulfur networks, gasoline pool), 13 application instances, 13 roles, 5 fictional equipment makers and 11 models, 9 equations, 10 damage mechanisms, 13 plots.
+**Also modelled:** 44 dotted-branch groupings (15 corrosion loops, 4 fleets, 3 utilities, 5 SIFs, 6 cost centres, 11 others including pumparound circuits, networks and pools), 13 application instances (each with a Purdue level), 15 roles, 5 fictional equipment makers and 11 models, 10 equations, 20 damage mechanisms, 13 plots (ISA-95 areas), 57 price series in 3 price sets, an LP model with 19 submodels, 9 KPIs and 7 KPFs, 11 insight snapshots.
 
 ## F6.5 How each template decomposes (L6 → L10)
 
@@ -143,12 +144,14 @@ Low-confidence assumptions are flagged on each insight: fuel price, upgrade spre
 | Check | Result |
 |---|---|
 | Every spine node has one parent, levels decrease, all reach L0 | Pass |
-| Every equipment item decomposed to maintainable items, ≥ 3 design facts, ≥ 1 tag | Pass (261 / 261) |
-| Every tag has a unit, a latest value and a source; calculated values cite their inputs | Pass (1,624 / 1,624) |
+| Every equipment item decomposed to maintainable items, ≥ 3 design facts, ≥ 1 tag | Pass (463 / 463) |
+| Every tag has a unit, a latest value and a source; calculated values cite their inputs | Pass (1,929 / 1,929) |
 | CDU Train B mirrors Train A item for item | Pass |
 | Every unit's feed equals its inflows; no unit above 100% | Pass |
-| Hydrogen and sulfur balances close; NCI recomputes from capacities and factors | Pass |
-| Turtle exports parse and pass the SHACL-equivalent checks (`ogkg/shacl_lite.py`) | Pass: 0 violations on ≈ 93k triples |
+| Hydrogen, sulfur, mass and utility balances are computed from independent meters and report their residuals; NCI recomputes from capacities and factors | Pass |
+| Turtle exports parse and pass the SHACL-equivalent checks, including generic domain / range (`ogkg/shacl_lite.py`) | Pass: 0 violations on ≈ 226k triples |
+| Ontology and data satisfy the OWL 2 DL structural restrictions (`ogkg/owl_profile.py`) | Pass: 0 violations (xsd:date is a documented deviation, ADR-0012) |
+| Standards conformance: OWL 2, KG, ISO 15926-14, IOF / BFO, ISO 14224, ISA-95 / Purdue, CFIHOS, MIMOSA CCOM (`ogkg/conformance.py`, report in `data/cdu-gamma/conformance.md`) | Pass: 40 / 40 checks ([B7](B7-standards-conformance.md)) |
 | Checks catch a deliberately removed seal plan | Pass |
 
 `ogkg/shacl_lite.py` mirrors `ontology/ogkg-shapes.ttl` shape by shape. Running pySHACL on the shapes file itself is still backlog item E1-P1-01.

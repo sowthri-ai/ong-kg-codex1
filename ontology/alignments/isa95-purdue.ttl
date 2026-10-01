@@ -1,0 +1,46 @@
+@prefix ogkg:  <https://example.org/ogkg/core#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+
+# =============================================================================
+#  Alignment: OGKG  ->  ISA-95 / IEC 62264 and the Purdue reference model
+#
+#  1. Role-based equipment hierarchy (IEC 62264-1): ogkg:isa95EquipmentLevel on
+#     classes. Refinery units are continuous production, so the work-centre level
+#     is ProductionUnit and the work-unit level is Unit; tank farms are StorageZone
+#     and tanks StorageUnit. Below Unit, ISA-88 EquipmentModule / ControlModule.
+#  2. Functional levels / activity models (IEC 62264-1 and -3): instance property
+#     ogkg:isa95Function on process-spine nodes (vocab:ISA95FunctionScheme).
+#  3. Purdue levels 0-5 (and 3.5 = industrial DMZ, as used by IEC 62443): instance
+#     property ogkg:purdueLevel on application instances and field devices.
+#
+#  ISA-95 publishes no official OWL ontology. Level names follow IEC 62264-1 and the
+#  B2MML EquipmentElementLevel enumeration.
+# =============================================================================
+
+<https://example.org/ogkg/align/isa95-purdue> a owl:Ontology ;
+    rdfs:label "OGKG alignment to ISA-95 (IEC 62264) and the Purdue model" ;
+    owl:versionInfo "0.5.0" ; owl:imports <https://example.org/ogkg/core> ; owl:versionIRI <https://example.org/ogkg/align/isa95-purdue/0.5.0> .
+
+# --- 1. Equipment hierarchy
+ogkg:Enterprise    ogkg:isa95EquipmentLevel "Enterprise" .
+ogkg:Installation  ogkg:isa95EquipmentLevel "Site" .
+ogkg:Plot          ogkg:isa95EquipmentLevel "Area" ;
+    rdfs:comment "OGKG models ISA-95 areas as plots (locations); every plant unit is LOCATED_AT one plot." .
+ogkg:PlantUnit     ogkg:isa95EquipmentLevel "ProductionUnit" .
+ogkg:TankFarm      ogkg:isa95EquipmentLevel "StorageZone" .
+ogkg:SectionSystem ogkg:isa95EquipmentLevel "Unit" .
+ogkg:EquipmentUnit ogkg:isa95EquipmentLevel "EquipmentModule" .
+ogkg:StorageTank   ogkg:isa95EquipmentLevel "StorageUnit" .
+ogkg:InputDevice   ogkg:isa95EquipmentLevel "ControlModule" .
+ogkg:ControlValve  ogkg:isa95EquipmentLevel "ControlModule" .
+ogkg:ShutdownValve ogkg:isa95EquipmentLevel "ControlModule" .
+ogkg:DataPoint     ogkg:isa95EquipmentLevel "ControlModule" ;
+    rdfs:comment "A tag is the information side of a control module (ISA-88)." .
+ogkg:Subunit          ogkg:isa95EquipmentLevel "none" ; rdfs:comment "ISO 14224 levels 7-9 are below the ISA-95 hierarchy." .
+ogkg:MaintainableItem ogkg:isa95EquipmentLevel "none" .
+ogkg:Part             ogkg:isa95EquipmentLevel "none" .
+
+# --- 2 and 3 are instance data (ogkg/standards.py sets them; ogkg/conformance.py checks them)
+ogkg:purdueLevel   ogkg:alignedTo "Purdue Enterprise Reference Architecture; IEC 62443 zones" .
+ogkg:isa95Function ogkg:alignedTo "IEC 62264-1 functional hierarchy; IEC 62264-3 MOM activity models" .

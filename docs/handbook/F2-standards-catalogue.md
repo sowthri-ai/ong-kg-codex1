@@ -1,14 +1,16 @@
 # F2 Standards catalogue
 
-Standards are referenced by name and scope only. No licensed text or tables are reproduced ([D3](D3-ip-confidentiality-responsible-ai.md)).
+Standards are referenced by name and scope only. No licensed text or tables are reproduced ([D3](D3-ip-confidentiality-responsible-ai.md)). How each standard is aligned and checked is in [B7](B7-standards-conformance.md).
 
 | Standard | Publisher | Used for in OGKG | Where |
 |---|---|---|---|
-| ISO 14224 | ISO | Asset taxonomy levels 1–9, equipment classes, failure modes and mechanisms | Asset spine, problems backbone |
-| ISO 15926 | ISO | Lifecycle integration of process-plant data; reference data concepts | Type & design backbone |
-| CFIHOS | IOGP / JIP36 | Standard classes and property lists for handover data | Design facet, EPC ingestion |
+| ISO 14224 | ISO | Asset taxonomy levels 1–9, equipment class codes, equipment boundary, failure and maintenance records (modes, mechanisms, causes, detection methods) | Asset spine, problems backbone; `ontology/alignments/iso14224.ttl` |
+| ISO 15926-14 (LIS-14) | ISO / POSC Caesar | OWL profile of ISO 15926: functional vs physical objects, systems, activities, streams, information objects | `ontology/alignments/iso15926-14.ttl` |
+| CFIHOS | IOGP / JIP36 | Tag / equipment / model-part data model; standard classes and property lists for handover data | Design facet, EPC ingestion; `ontology/alignments/cfihos.ttl` |
 | DEXPI | DEXPI initiative | P&ID data exchange and plant topology | Topology ingestion |
-| ISA-95 (IEC 62264) | ISA / IEC | Enterprise–control integration; functional model for applications | Application backbone |
+| ISA-95 (IEC 62264) | ISA / IEC | Role-based equipment hierarchy; functional levels and MOM activity models | Asset spine, process spine, application backbone; `ontology/alignments/isa95-purdue.ttl` |
+| Purdue reference model / IEC 62443 | ISA / IEC | Levels 0–5 of systems and devices; security zones | Application backbone, [C6](C6-security-and-nfr.md) |
+| MIMOSA OpenO&M CCOM | MIMOSA | O&M exchange model: Segment, Asset, Model, MeasurementLocation, Measurement, Event, WorkOrder | Exchange profile; `ontology/alignments/mimosa-ccom.ttl` |
 | ISO 22400 | ISO | KPI definitions for manufacturing operations management | Performance backbone |
 | API 571 | API | Damage mechanisms affecting fixed equipment in refining | Physics backbone, problem patterns |
 | API 584 | API | Integrity operating windows | IOW data points, rules |
@@ -19,7 +21,7 @@ Standards are referenced by name and scope only. No licensed text or tables are 
 | ASME BPVC Section VIII | ASME | Pressure-vessel design | Type & design facet |
 | ArchiMate | The Open Group | Application and business-process modelling | Application backbone |
 | OSDU | The Open Group OSDU Forum | Upstream data-platform alignment | Upstream extension |
-| BFO (ISO/IEC 21838-2) / IOF Core | ISO / Industrial Ontologies Foundry | Upper ontology: things, processes, qualities, roles, information | Top of `ogkg-core.ttl` |
+| BFO (ISO/IEC 21838-2) / IOF Core and Maintenance | ISO / Industrial Ontologies Foundry | Upper ontology; failure events, failure-mode codes, work-order records, maintenance processes | `ontology/alignments/iof-bfo.ttl` |
 | OWL 2, RDF, RDFS | W3C | Ontology and data model | `ontology/` |
 | SHACL | W3C | Validation | `ogkg-shapes.ttl` |
 | SKOS | W3C | Vocabularies and tags | `ogkg-vocab.ttl` |

@@ -493,6 +493,8 @@ def build():
     refinery_economics.apply(b, tag_rows)                 # products, specs, prices, assays, LP, carbon, costs, lost margin
     refinery_history.apply(b)                             # time series, serial items / MOC, failure history, corrections
     governance.apply(b)                                   # KPIs / KPFs, facet bindings, hypotheses, correction requests
+    from . import standards
+    standards.apply(b)                                    # Purdue levels, ISA-95 functions (instance-level standards data)
     return b, reg_rows, tag_rows
 
 

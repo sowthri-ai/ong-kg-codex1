@@ -1,0 +1,39 @@
+# Continuous integration: rebuild Refinery Gamma, run the dependency-free checks, then the
+# reference implementations (rdflib parse, pySHACL on the shapes file). Not executable in the
+# authoring sandbox (no PyPI access there); first run on GitHub is part of backlog E1-P1-01.
+name: ci
+on: [push, pull_request]
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - name: Rebuild and export
+        run: |
+          python -m ogkg.cdu_gamma
+          python -m ogkg.ttl_v02
+          git diff --exit-code -- data/cdu-gamma/kg.json || (echo "kg.json not reproducible" && exit 1)
+      - name: OWL 2 DL profile and standards conformance
+        run: |
+          python -m ogkg.owl_profile data/cdu-gamma/structure.ttl data/cdu-gamma/information.ttl
+          python -m ogkg.conformance
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Reference validators (rdflib + pySHACL)
+        run: |
+          pip install rdflib pyshacl
+          python - <<'PY'
+          import rdflib, pyshacl, glob
+          g = rdflib.Graph()
+          for f in glob.glob("ontology/**/*.ttl", recursive=True):
+              g.parse(f, format="turtle")
+          data = rdflib.Graph()
+          for f in ("data/cdu-gamma/structure.ttl", "data/cdu-gamma/information.ttl"):
+              data.parse(f, format="turtle")
+          shapes = rdflib.Graph().parse("ontology/ogkg-shapes.ttl", format="turtle")
+          ok, _, text = pyshacl.validate(data, shacl_graph=shapes, ont_graph=g, inference="rdfs")
+          print(text[:4000])
+          raise SystemExit(0 if ok else 1)
+          PY

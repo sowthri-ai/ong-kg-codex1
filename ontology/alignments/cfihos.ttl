@@ -1,0 +1,53 @@
+@prefix ogkg:  <https://example.org/ogkg/core#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+
+# =============================================================================
+#  Alignment: OGKG  ->  CFIHOS (Capital Facilities Information Handover Specification)
+#
+#  Structural alignment of the CFIHOS data model: a TAG is a functional position,
+#  EQUIPMENT is the physical item with a serial number installed at a tag, and a
+#  MODEL PART is the manufacturer's model. OGKG matches this one-to-one
+#  (FunctionalLocation / SerialItem / EquipmentModel), so a CFIHOS handover loads
+#  without remodelling.
+#
+#  CFIHOS reference-data-library codes (tag classes, equipment classes, properties)
+#  are NOT reproduced here: they must be looked up in the CFIHOS RDL release the
+#  project uses. ogkg:verificationStatus marks each mapping accordingly.
+# =============================================================================
+
+<https://example.org/ogkg/align/cfihos> a owl:Ontology ;
+    rdfs:label "OGKG alignment to CFIHOS" ;
+    owl:versionInfo "0.5.0" ; owl:imports <https://example.org/ogkg/core> ; owl:versionIRI <https://example.org/ogkg/align/cfihos/0.5.0> .
+
+ogkg:cfihosClassName a owl:AnnotationProperty ;
+    rdfs:comment "Plain-language CFIHOS tag / equipment class name to look up in the RDL (code to be filled from the project's CFIHOS release)." .
+
+# --- Data-model concepts
+ogkg:FunctionalLocation ogkg:cfihosConcept "Tag" ; ogkg:verificationStatus "structural: CFIHOS data model (tag)" .
+ogkg:SerialItem         ogkg:cfihosConcept "Equipment" ; ogkg:verificationStatus "structural: CFIHOS data model (equipment, serial number)" .
+ogkg:EquipmentModel     ogkg:cfihosConcept "Model part" ; ogkg:verificationStatus "structural: CFIHOS data model (model part)" .
+ogkg:Enterprise         ogkg:cfihosConcept "Company" ; ogkg:verificationStatus "structural: CFIHOS data model (manufacturer / supplier company)" .
+ogkg:Installation       ogkg:cfihosConcept "Site / plant" ; ogkg:verificationStatus "lookup required: CFIHOS plant-breakdown entity names" .
+ogkg:PlantUnit          ogkg:cfihosConcept "Process unit" ; ogkg:verificationStatus "lookup required: CFIHOS plant-breakdown entity names" .
+ogkg:Plot               ogkg:cfihosConcept "Area" ; ogkg:verificationStatus "lookup required: CFIHOS plant-breakdown entity names" .
+ogkg:Document           ogkg:cfihosConcept "Document" ; ogkg:verificationStatus "structural: CFIHOS data model (document)" .
+ogkg:Fact               ogkg:cfihosConcept "Property value" ; ogkg:verificationStatus "structural: CFIHOS tag / equipment property values" .
+
+# --- Tag classes (codes to be looked up in the CFIHOS RDL)
+ogkg:CentrifugalPump        ogkg:cfihosClassName "centrifugal pump" ; ogkg:verificationStatus "lookup required: CFIHOS RDL tag class code" .
+ogkg:CentrifugalCompressor  ogkg:cfihosClassName "centrifugal compressor" ; ogkg:verificationStatus "lookup required: CFIHOS RDL tag class code" .
+ogkg:ReciprocatingCompressor ogkg:cfihosClassName "reciprocating compressor" ; ogkg:verificationStatus "lookup required: CFIHOS RDL tag class code" .
+ogkg:ElectricMotor          ogkg:cfihosClassName "electric motor" ; ogkg:verificationStatus "lookup required: CFIHOS RDL tag class code" .
+ogkg:SteamTurbine           ogkg:cfihosClassName "steam turbine" ; ogkg:verificationStatus "lookup required: CFIHOS RDL tag class code" .
+ogkg:ShellAndTubeHX         ogkg:cfihosClassName "shell and tube heat exchanger" ; ogkg:verificationStatus "lookup required: CFIHOS RDL tag class code" .
+ogkg:AirCooledHX            ogkg:cfihosClassName "air cooled heat exchanger" ; ogkg:verificationStatus "lookup required: CFIHOS RDL tag class code" .
+ogkg:FiredHeater            ogkg:cfihosClassName "fired heater" ; ogkg:verificationStatus "lookup required: CFIHOS RDL tag class code" .
+ogkg:Column                 ogkg:cfihosClassName "column" ; ogkg:verificationStatus "lookup required: CFIHOS RDL tag class code" .
+ogkg:Drum                   ogkg:cfihosClassName "drum" ; ogkg:verificationStatus "lookup required: CFIHOS RDL tag class code" .
+ogkg:StorageTank            ogkg:cfihosClassName "storage tank" ; ogkg:verificationStatus "lookup required: CFIHOS RDL tag class code" .
+ogkg:ControlValve           ogkg:cfihosClassName "control valve" ; ogkg:verificationStatus "lookup required: CFIHOS RDL tag class code" .
+ogkg:ShutdownValve          ogkg:cfihosClassName "shutdown valve" ; ogkg:verificationStatus "lookup required: CFIHOS RDL tag class code" .
+ogkg:ReliefDevice           ogkg:cfihosClassName "pressure safety valve" ; ogkg:verificationStatus "lookup required: CFIHOS RDL tag class code" .
+ogkg:InputDevice            ogkg:cfihosClassName "transmitter" ; ogkg:verificationStatus "lookup required: CFIHOS RDL tag class code" .
+ogkg:PipingCircuit          ogkg:cfihosClassName "piping" ; ogkg:verificationStatus "lookup required: CFIHOS RDL tag class code" .

@@ -43,12 +43,14 @@ class Turtle(unittest.TestCase):
 
     def test_every_object_property_has_lpg_type(self):
         t = parse_file(ROOT / "ontology" / "ogkg-core.ttl").triples
-        objprops = {s for s, p, o in t if p == RDF + "type" and o == "http://www.w3.org/2002/07/owl#ObjectProperty"}
+        objprops = {s for s, p, o in t if p == RDF + "type" and o == "http://www.w3.org/2002/07/owl#ObjectProperty" and s.startswith(NS)}
         typed = {s for s, p, o in t if p == NS + "lpgType"}
         # properties used only on reified Facts / hypotheses / bindings are exempt
         exempt = {NS + x for x in ("subject", "unit", "sourceSystem", "factOwner", "confidence", "method", "valueStatus",
                                    "hypSubject", "hypPredicate", "hypObject", "status", "evidence", "reviewedBy",
-                                   "bindsEntity", "bindsTo", "bindingFacet", "bindingLevel", "inheritanceRule")}
+                                   "bindsEntity", "bindsTo", "bindingFacet", "bindingLevel", "inheritanceRule",
+                                   "factStatus", "supersedes", "isa95Function",   # fact fields / node property in the LPG
+                                   "partOf")}                                       # inferred closure of directPartOf, never asserted
         self.assertEqual(sorted(x.split("#")[1] for x in objprops - typed - exempt), [])
 
     def test_spine_levels_declared_0_to_10(self):

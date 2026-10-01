@@ -1,0 +1,368 @@
+[
+ {
+  "standard": "OWL 2",
+  "id": "OWL-1",
+  "kind": "must",
+  "requirement": "Ontology modules and site data satisfy the OWL 2 DL structural restrictions (D1-D9)",
+  "passed": true,
+  "measure": "1/1",
+  "detail": "0 violation(s); 239 classes, 121 object properties, 228089 triples; xsd:date literals are a documented deviation (ADR-0012)"
+ },
+ {
+  "standard": "OWL 2",
+  "id": "OWL-2",
+  "kind": "must",
+  "requirement": "No individual falls in two disjoint classes (owl:AllDisjointClasses on the upper partition)",
+  "passed": true,
+  "measure": "8299/8299",
+  "detail": ""
+ },
+ {
+  "standard": "OWL 2",
+  "id": "OWL-3",
+  "kind": "must",
+  "requirement": "Every class used by the data is declared in the ontology",
+  "passed": true,
+  "measure": "151/151",
+  "detail": ""
+ },
+ {
+  "standard": "OWL 2",
+  "id": "OWL-4",
+  "kind": "must",
+  "requirement": "Every ontology module has an owl:versionIRI and resolves through ontology/catalog-v001.xml",
+  "passed": true,
+  "measure": "9/9",
+  "detail": ""
+ },
+ {
+  "standard": "Knowledge graph (RDF / SHACL / PROV-O / SKOS)",
+  "id": "KG-1",
+  "kind": "must",
+  "requirement": "SHACL shapes (incl. generic rdfs:domain / rdfs:range) report no violations",
+  "passed": true,
+  "measure": "1/1",
+  "detail": "0 violation(s) over 226209 triples"
+ },
+ {
+  "standard": "Knowledge graph (RDF / SHACL / PROV-O / SKOS)",
+  "id": "KG-2",
+  "kind": "must",
+  "requirement": "Every node has a unique, site-scoped IRI, a label and a class",
+  "passed": true,
+  "measure": "8299/8299",
+  "detail": ""
+ },
+ {
+  "standard": "Knowledge graph (RDF / SHACL / PROV-O / SKOS)",
+  "id": "KG-3",
+  "kind": "must",
+  "requirement": "Every fact carries PROV-O provenance: source, owner (attribution), as-of, method, confidence",
+  "passed": true,
+  "measure": "12570/12570",
+  "detail": ""
+ },
+ {
+  "standard": "Knowledge graph (RDF / SHACL / PROV-O / SKOS)",
+  "id": "KG-4",
+  "kind": "must",
+  "requirement": "Every controlled value used by the data is a SKOS concept in a declared scheme",
+  "passed": true,
+  "measure": "28/28",
+  "detail": ""
+ },
+ {
+  "standard": "Knowledge graph (RDF / SHACL / PROV-O / SKOS)",
+  "id": "KG-5",
+  "kind": "must",
+  "requirement": "Every fact is bitemporal (valid_from, recorded_at) with a status; history is kept, not overwritten",
+  "passed": true,
+  "measure": "12570/12570",
+  "detail": ""
+ },
+ {
+  "standard": "ISO 15926-14",
+  "id": "15926-1",
+  "kind": "must",
+  "requirement": "Functional objects (tags) and physical objects (serial items) are separate individuals, linked by installedAt",
+  "passed": true,
+  "measure": "109/109",
+  "detail": "5356 functional locations, 109 physical items"
+ },
+ {
+  "standard": "ISO 15926-14",
+  "id": "15926-2",
+  "kind": "must",
+  "requirement": "Every functional location is a lis:FunctionalObject; every physical item a lis:PhysicalObject",
+  "passed": true,
+  "measure": "5465/5465",
+  "detail": ""
+ },
+ {
+  "standard": "ISO 15926-14",
+  "id": "15926-3",
+  "kind": "coverage",
+  "requirement": "Share of all individuals with a LIS-14 superclass (logical axiom)",
+  "passed": true,
+  "measure": "8026/8299 (96.7%)",
+  "target": ">= 90%",
+  "detail": ""
+ },
+ {
+  "standard": "ISO 15926-14",
+  "id": "15926-4",
+  "kind": "must",
+  "requirement": "Every LIS-14 IRI used is verified against the published LIS-14 ontology",
+  "passed": true,
+  "measure": "21/21",
+  "detail": ""
+ },
+ {
+  "standard": "IOF / BFO",
+  "id": "IOF-1",
+  "kind": "must",
+  "requirement": "No OGKG class is placed under both a BFO continuant and a BFO occurrent (safe to import IOF + BFO)",
+  "passed": true,
+  "measure": "151/151",
+  "detail": ""
+ },
+ {
+  "standard": "IOF / BFO",
+  "id": "IOF-2",
+  "kind": "coverage",
+  "requirement": "Share of individuals outside the functional-location hierarchy with an IOF or BFO superclass",
+  "passed": true,
+  "measure": "2718/2943 (92.4%)",
+  "target": ">= 90%",
+  "detail": "unaligned classes: ScopeItem 48, CorrosionLoop 15, Process 15, SubProcess 15, Activity 15, Task 15"
+ },
+ {
+  "standard": "IOF / BFO",
+  "id": "IOF-2b",
+  "kind": "info",
+  "requirement": "Functional locations: IOF has no functional-location class; aligned by skos:relatedMatch to iof:RequiredFunction only",
+  "passed": true,
+  "measure": "5356 individuals",
+  "detail": "Modelling choice recorded in ADR-0012; revisit when IOF publishes a functional-location pattern"
+ },
+ {
+  "standard": "IOF / BFO",
+  "id": "IOF-4",
+  "kind": "must",
+  "requirement": "Reliability records align to IOF Maintenance: failures, failure-mode codes, work-order records, turnarounds",
+  "passed": true,
+  "measure": "81/81",
+  "detail": ""
+ },
+ {
+  "standard": "IOF / BFO",
+  "id": "IOF-3",
+  "kind": "info",
+  "requirement": "IOF / BFO IRIs verified in the release RDF (rest taken from the IOF Core paper, to confirm)",
+  "passed": true,
+  "measure": "19/23 verified",
+  "detail": ""
+ },
+ {
+  "standard": "ISO 14224",
+  "id": "14224-1",
+  "kind": "must",
+  "requirement": "Every asset-spine node maps to an ISO 14224 taxonomy level (L10 data points flagged as extension)",
+  "passed": true,
+  "measure": "7288/7288",
+  "detail": ""
+ },
+ {
+  "standard": "ISO 14224",
+  "id": "14224-2",
+  "kind": "must",
+  "requirement": "Every equipment unit resolves to an ISO 14224 equipment class code (or an explicit 'none')",
+  "passed": true,
+  "measure": "463/463",
+  "detail": ""
+ },
+ {
+  "standard": "ISO 14224",
+  "id": "14224-3",
+  "kind": "coverage",
+  "requirement": "Share of equipment units with a real ISO 14224 class (not an OGKG extension)",
+  "passed": true,
+  "measure": "446/463 (96.3%)",
+  "target": ">= 95%",
+  "detail": "classes: CO 6, EM 104, HB 7, HE 60, IP 25, PI 12, PU 102, SG 4, ST 3, TA 8, TE 1, VA 68, VE 46, none 17"
+ },
+ {
+  "standard": "ISO 14224",
+  "id": "14224-4",
+  "kind": "must",
+  "requirement": "Every failure record has item, date, failure mode, mechanism (B.2), cause (B.3) and detection method (B.4)",
+  "passed": true,
+  "measure": "29/29",
+  "detail": ""
+ },
+ {
+  "standard": "ISO 14224",
+  "id": "14224-5",
+  "kind": "must",
+  "requirement": "Every failure code node cites its ISO 14224 table and notation",
+  "passed": true,
+  "measure": "66/66",
+  "detail": ""
+ },
+ {
+  "standard": "ISO 14224",
+  "id": "14224-6",
+  "kind": "must",
+  "requirement": "Driven rotating equipment has its driver as a separate equipment unit (DRIVER_OF), per the ISO 14224 boundary",
+  "passed": true,
+  "measure": "108/108",
+  "detail": ""
+ },
+ {
+  "standard": "ISO 14224",
+  "id": "14224-7",
+  "kind": "must",
+  "requirement": "Every maintenance record is linked to the failure, exceedance or item it acts on",
+  "passed": true,
+  "measure": "35/35",
+  "detail": ""
+ },
+ {
+  "standard": "ISO 14224",
+  "id": "14224-8",
+  "kind": "coverage",
+  "requirement": "Equipment data: share of driven rotating equipment with manufacturer model (OF_MODEL)",
+  "passed": true,
+  "measure": "109/113 (96.5%)",
+  "target": ">= 95%",
+  "detail": ""
+ },
+ {
+  "standard": "ISA-95 / Purdue",
+  "id": "ISA95-1",
+  "kind": "must",
+  "requirement": "Every enterprise, site, area (plot), production unit, unit and equipment module maps to an ISA-95 level",
+  "passed": true,
+  "measure": "657/657",
+  "detail": ""
+ },
+ {
+  "standard": "ISA-95 / Purdue",
+  "id": "ISA95-2",
+  "kind": "must",
+  "requirement": "Every production unit sits in exactly one area (LOCATED_AT a plot)",
+  "passed": true,
+  "measure": "39/39",
+  "detail": ""
+ },
+ {
+  "standard": "ISA-95 / Purdue",
+  "id": "ISA95-3",
+  "kind": "must",
+  "requirement": "Every application instance has a Purdue level (IEC 62443 zone)",
+  "passed": true,
+  "measure": "13/13",
+  "detail": "L2: 6, L3: 3, L4: 4"
+ },
+ {
+  "standard": "ISA-95 / Purdue",
+  "id": "ISA95-4",
+  "kind": "must",
+  "requirement": "Every L4 business process is placed in an IEC 62264 functional level / MOM activity model",
+  "passed": true,
+  "measure": "15/15",
+  "detail": "BusinessPlanningLogistics: 1, MaintenanceOperations: 3, ProductionOperations: 11"
+ },
+ {
+  "standard": "ISA-95 / Purdue",
+  "id": "ISA95-5",
+  "kind": "must",
+  "requirement": "Every field device (transmitter, control or shutdown valve) is at Purdue level 0",
+  "passed": true,
+  "measure": "54/54",
+  "detail": ""
+ },
+ {
+  "standard": "CFIHOS",
+  "id": "CFIHOS-1",
+  "kind": "must",
+  "requirement": "Every tag (equipment-level functional location) has a unique tag number and a CMMS functional-location id",
+  "passed": true,
+  "measure": "463/463",
+  "detail": ""
+ },
+ {
+  "standard": "CFIHOS",
+  "id": "CFIHOS-2",
+  "kind": "must",
+  "requirement": "Every equipment item (serial) has a serial number, a model part and is installed at a tag",
+  "passed": true,
+  "measure": "109/109",
+  "detail": ""
+ },
+ {
+  "standard": "CFIHOS",
+  "id": "CFIHOS-3",
+  "kind": "coverage",
+  "requirement": "Share of tags whose class has a CFIHOS tag-class name mapped (RDL codes: lookup required)",
+  "passed": true,
+  "measure": "426/463 (92.0%)",
+  "target": ">= 80%",
+  "detail": ""
+ },
+ {
+  "standard": "CFIHOS",
+  "id": "CFIHOS-4",
+  "kind": "coverage",
+  "requirement": "Share of driven rotating tags with a physical equipment item recorded",
+  "passed": true,
+  "measure": "108/108 (100.0%)",
+  "target": ">= 100%",
+  "detail": ""
+ },
+ {
+  "standard": "CFIHOS",
+  "id": "CFIHOS-5",
+  "kind": "info",
+  "requirement": "CFIHOS RDL codes pending lookup",
+  "passed": true,
+  "measure": "16 tag classes named, codes pending",
+  "detail": ""
+ },
+ {
+  "standard": "MIMOSA CCOM",
+  "id": "CCOM-1",
+  "kind": "must",
+  "requirement": "Every exchanged individual maps to a CCOM entity (Segment, Asset, Model, MeasurementLocation, Event, WorkOrder)",
+  "passed": true,
+  "measure": "7482/7482",
+  "detail": "Asset: 109, Event: 42, MeasurementLocation: 1929, Model: 11, Segment: 5355, Site: 1, WorkOrder: 35"
+ },
+ {
+  "standard": "MIMOSA CCOM",
+  "id": "CCOM-2",
+  "kind": "must",
+  "requirement": "Segments form a tree: one parent segment each",
+  "passed": true,
+  "measure": "5355/5355",
+  "detail": ""
+ },
+ {
+  "standard": "MIMOSA CCOM",
+  "id": "CCOM-3",
+  "kind": "must",
+  "requirement": "Every measurement location is attached to a segment",
+  "passed": true,
+  "measure": "1929/1929",
+  "detail": ""
+ },
+ {
+  "standard": "MIMOSA CCOM",
+  "id": "CCOM-4",
+  "kind": "must",
+  "requirement": "Asset-on-segment installations carry start (and, when removed, end) times",
+  "passed": true,
+  "measure": "109/109",
+  "detail": ""
+ }
+]

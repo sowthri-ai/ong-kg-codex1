@@ -19,7 +19,7 @@ Keep the ontology practical, at roughly the **OWL 2 RL** level of complexity: cl
 ```sparql
 SELECT ?eq WHERE {
   ?eq a/rdfs:subClassOf* ogkg:HeatExchanger ;
-      ogkg:partOf+ alpha:SITE-ALPHA .
+      ogkg:directPartOf+ alpha:SITE-ALPHA .   # ogkg:partOf with reasoning
 }
 ```
 
@@ -32,8 +32,8 @@ CONSTRUCT { ?eq ogkg:atRiskOf pattern:OverheadChlorideCorrosion . }
 WHERE {
   ?camp ogkg:ofGrade ?g ; ogkg:processedIn ?unit .
   ?g    ogkg:saltContent ?salt .  FILTER(?salt > 20)
-  ?sec  ogkg:partOf ?unit ; a ogkg:OverheadSystem .
-  ?eq   ogkg:partOf ?sec ; ogkg:tubeMetallurgy vocab:CarbonSteel .
+  ?sec  ogkg:directPartOf ?unit ; a ogkg:OverheadSystem .
+  ?eq   ogkg:directPartOf ?sec ; ogkg:tubeMetallurgy vocab:CarbonSteel .
 }
 ```
 
@@ -57,7 +57,7 @@ The shapes live in [`ontology/ogkg-shapes.ttl`](../../ontology/ogkg-shapes.ttl).
 
 | Shape | Target | Key constraints |
 |---|---|---|
-| `SpineNodeShape` | Asset and process spine nodes | exactly one `partOf` (except L0); `hasLevel` present |
+| `SpineNodeShape` | Asset and process spine nodes | exactly one `directPartOf` (except L0); `hasLevel` present |
 | `EquipmentUnitShape` | `EquipmentUnit` | parent is a section or unit; `eqClass` present |
 | `PumpShape` | `Pump` | `model`, `sealPlan`, `serviceTemperature` (decimal) |
 | `FactShape` | `Fact` | subject, predicate, value, asOf, sourceSystem, owner, confidence, method |

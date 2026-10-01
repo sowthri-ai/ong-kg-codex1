@@ -1,0 +1,83 @@
+@prefix ogkg:  <https://example.org/ogkg/core#> .
+@prefix lis:   <http://rds.posccaesar.org/ontology/lis14/rdl/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+
+# =============================================================================
+#  Alignment: OGKG core  ->  ISO 15926-14 (LIS-14, the OWL 2 profile of ISO 15926)
+#
+#  Logical axioms (rdfs:subClassOf / rdfs:subPropertyOf) are used only where the
+#  subsumption is clean. Looser correspondences use SKOS mapping annotations,
+#  which carry no OWL semantics. LIS-14 is referenced, not imported: import
+#  <http://rds.posccaesar.org/ontology/lis14/ont/core> to reason across both.
+#  Handbook B7 explains each choice.
+# =============================================================================
+
+<https://example.org/ogkg/align/iso15926-14> a owl:Ontology ;
+    rdfs:label "OGKG alignment to ISO 15926-14 (LIS-14)" ;
+    owl:versionInfo "0.5.0" ; owl:imports <https://example.org/ogkg/core> ; owl:versionIRI <https://example.org/ogkg/align/iso15926-14/0.5.0> ;
+    rdfs:comment "Class and property IRIs verified against the LIS-14 core ontology published at posccaesar.org/ontology/lis14/ont/core on 2026-10-01." .
+
+skos:closeMatch   a owl:AnnotationProperty .
+skos:relatedMatch a owl:AnnotationProperty .
+skos:exactMatch   a owl:AnnotationProperty .
+
+# --- Referenced LIS-14 terms (declared so this module is OWL 2 DL on its own)
+lis:FunctionalObject        a owl:Class ; ogkg:verificationStatus "verified: LIS-14 core 2026-10-01" .
+lis:PhysicalObject          a owl:Class ; ogkg:verificationStatus "verified: LIS-14 core 2026-10-01" .
+lis:InanimatePhysicalObject a owl:Class ; ogkg:verificationStatus "verified: LIS-14 core 2026-10-01" .
+lis:PhysicalArtefact        a owl:Class ; ogkg:verificationStatus "verified: LIS-14 core 2026-10-01" .
+lis:System                  a owl:Class ; ogkg:verificationStatus "verified: LIS-14 core 2026-10-01" .
+lis:Activity                a owl:Class ; ogkg:verificationStatus "verified: LIS-14 core 2026-10-01" .
+lis:Event                   a owl:Class ; ogkg:verificationStatus "verified: LIS-14 core 2026-10-01" .
+lis:InformationObject       a owl:Class ; ogkg:verificationStatus "verified: LIS-14 core 2026-10-01" .
+lis:Stream                  a owl:Class ; ogkg:verificationStatus "verified: LIS-14 core 2026-10-01" .
+lis:Location                a owl:Class ; ogkg:verificationStatus "verified: LIS-14 core 2026-10-01" .
+lis:Site                    a owl:Class ; ogkg:verificationStatus "verified: LIS-14 core 2026-10-01" .
+lis:Organization            a owl:Class ; ogkg:verificationStatus "verified: LIS-14 core 2026-10-01" .
+lis:Role                    a owl:Class ; ogkg:verificationStatus "verified: LIS-14 core 2026-10-01" .
+lis:Disposition             a owl:Class ; ogkg:verificationStatus "verified: LIS-14 core 2026-10-01" .
+lis:ScalarQuantityDatum     a owl:Class ; ogkg:verificationStatus "verified: LIS-14 core 2026-10-01" .
+lis:UnitOfMeasure           a owl:Class ; ogkg:verificationStatus "verified: LIS-14 core 2026-10-01" .
+lis:partOf           a owl:ObjectProperty ; ogkg:verificationStatus "verified: LIS-14 core 2026-10-01" .
+lis:functionalPartOf a owl:ObjectProperty ; ogkg:verificationStatus "verified: LIS-14 core 2026-10-01" .
+lis:activityPartOf   a owl:ObjectProperty ; ogkg:verificationStatus "verified: LIS-14 core 2026-10-01" .
+lis:isAbout          a owl:ObjectProperty ; ogkg:verificationStatus "verified: LIS-14 core 2026-10-01" .
+lis:implements       a owl:ObjectProperty ; ogkg:verificationStatus "verified: LIS-14 core 2026-10-01 (IRI); direction of use to confirm with the LIS-14 user guide" .
+
+# --- Functional vs physical: the central ISO 15926 distinction
+ogkg:FunctionalLocation rdfs:subClassOf lis:FunctionalObject .
+ogkg:PhysicalAsset      rdfs:subClassOf lis:PhysicalObject .
+ogkg:SerialItem         rdfs:subClassOf lis:PhysicalArtefact .
+ogkg:Installation       rdfs:subClassOf lis:System .
+ogkg:PlantUnit          rdfs:subClassOf lis:System .
+ogkg:SectionSystem      rdfs:subClassOf lis:System .
+
+# --- Occurrents
+ogkg:Failure       rdfs:subClassOf lis:Event .
+ogkg:IOWExceedance rdfs:subClassOf lis:Event .
+ogkg:Turnaround    rdfs:subClassOf lis:Activity .
+ogkg:WorkOrder     skos:closeMatch lis:Activity ;
+    rdfs:comment "ogkg:WorkOrder is the work-order record; the maintenance work it orders is a lis:Activity." .
+ogkg:ProcessSpineNode skos:relatedMatch lis:Activity ;
+    rdfs:comment "Process-spine nodes are process definitions; each execution of one is a lis:Activity." .
+
+# --- Information, material, location, organisation
+ogkg:InformationObject rdfs:subClassOf lis:InformationObject .
+ogkg:Stream            rdfs:subClassOf lis:Stream .
+ogkg:Location          rdfs:subClassOf lis:Location .
+ogkg:Enterprise        rdfs:subClassOf lis:Organization .
+ogkg:Role              skos:relatedMatch lis:Role ;
+    rdfs:comment "ogkg:Role is an organisational position (an accountable party), not a BFO-style realizable role." .
+ogkg:DamageMechanism   skos:relatedMatch lis:Disposition .
+ogkg:Fact              skos:closeMatch lis:ScalarQuantityDatum ;
+    rdfs:comment "A numeric ogkg:Fact corresponds to a LIS-14 quantity datum; the fact adds provenance (source, owner, confidence, method, lineage)." .
+
+# --- Properties
+ogkg:partOf    rdfs:subPropertyOf lis:partOf .
+ogkg:directPartOf ogkg:alignedTo "lis:functionalPartOf on the asset spine; lis:activityPartOf on the process spine" .
+ogkg:describes rdfs:subPropertyOf lis:isAbout .
+ogkg:installedAt skos:relatedMatch lis:implements ;
+    rdfs:comment "A serial item installed at a functional location implements it (ISO 15926 physical object / functional object pattern)." .

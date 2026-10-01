@@ -7,20 +7,20 @@
 @prefix owl:   <http://www.w3.org/2002/07/owl#> .
 
 # =============================================================================
-#  OGKG SHACL shapes v0.2.0 (handbook C4.5)
+#  OGKG SHACL shapes v0.5.0 (handbook C4.5)
 #  Run with pySHACL or the triplestore's SHACL engine against the RDF mirror.
 # =============================================================================
 
 ogkg:SpineNodeShape a sh:NodeShape ;
     sh:targetClass ogkg:AssetSpineNode , ogkg:ProcessSpineNode , ogkg:Segment ;
-    sh:property [ sh:path ogkg:partOf ; sh:minCount 1 ; sh:maxCount 1 ;
+    sh:property [ sh:path ogkg:directPartOf ; sh:minCount 1 ; sh:maxCount 1 ;
                   sh:message "Every spine node except L0 has exactly one asserted PART_OF parent (rule H3)." ] ;
     sh:property [ sh:path ogkg:hasLevel ; sh:minCount 1 ; sh:maxCount 1 ; sh:class ogkg:Level ] ;
     sh:property [ sh:path rdfs:label ; sh:minCount 1 ] .
 
 ogkg:EquipmentUnitShape a sh:NodeShape ;
     sh:targetClass ogkg:EquipmentUnit ;
-    sh:property [ sh:path ogkg:partOf ;
+    sh:property [ sh:path ogkg:directPartOf ;
                   sh:or ( [ sh:class ogkg:SectionSystem ] [ sh:class ogkg:PlantUnit ] [ sh:class ogkg:Installation ] ) ;
                   sh:message "Equipment sits under a section, unit or installation (levels may be skipped, not reordered)." ] ;
     sh:property [ sh:path ogkg:eqClass ; sh:minCount 1 ; sh:datatype xsd:string ] .
@@ -122,3 +122,28 @@ ogkg:GroupingShape a sh:NodeShape ;
     sh:targetClass ogkg:Grouping ;
     sh:property [ sh:path ogkg:ownedBy ; sh:minCount 1 ; sh:class ogkg:Role ;
                   sh:message "Every dotted-branch grouping has a named owner (rule R2)." ] .
+
+# --- v0.5 standards shapes (handbook B7)
+ogkg:FailureRecordShape a sh:NodeShape ;
+    sh:targetClass ogkg:Failure ;
+    sh:property [ sh:path ogkg:failureOf ; sh:minCount 1 ; sh:message "ISO 14224 failure record: equipment / item failed." ] ;
+    sh:property [ sh:path ogkg:eventDate ; sh:minCount 1 ; sh:datatype xsd:date ; sh:message "ISO 14224 failure record: failure date." ] ;
+    sh:property [ sh:path ogkg:hasFailureMode ; sh:minCount 1 ; sh:class ogkg:FailureMode ; sh:message "ISO 14224 failure record: failure mode." ] ;
+    sh:property [ sh:path ogkg:hasFailureMechanism ; sh:minCount 1 ; sh:class ogkg:FailureMechanism ; sh:message "ISO 14224 failure record: failure mechanism (Table B.2)." ] ;
+    sh:property [ sh:path ogkg:hasFailureCause ; sh:minCount 1 ; sh:class ogkg:RootCause ; sh:message "ISO 14224 failure record: failure cause (Table B.3)." ] ;
+    sh:property [ sh:path ogkg:detectedBy ; sh:minCount 1 ; sh:class ogkg:DetectionMethod ; sh:message "ISO 14224 failure record: detection method (Table B.4)." ] .
+
+ogkg:SerialItemShape a sh:NodeShape ;
+    sh:targetClass ogkg:SerialItem ;
+    sh:property [ sh:path ogkg:installedAt ; sh:minCount 1 ; sh:class ogkg:EquipmentUnit ;
+                  sh:message "CFIHOS equipment / CCOM Asset must be installed at a tag / Segment." ] .
+
+ogkg:ApplicationPurdueShape a sh:NodeShape ;
+    sh:targetClass ogkg:ApplicationInstance ;
+    sh:property [ sh:path ogkg:purdueLevel ; sh:minCount 1 ; sh:maxCount 1 ; sh:minInclusive 0 ; sh:maxInclusive 5 ;
+                  sh:message "Every application instance sits in one Purdue level (IEC 62443 zone)." ] .
+
+ogkg:ProcessISA95Shape a sh:NodeShape ;
+    sh:targetClass ogkg:Process ;
+    sh:property [ sh:path ogkg:isa95Function ; sh:minCount 1 ; sh:maxCount 1 ;
+                  sh:message "Every L4 process is placed in an IEC 62264 functional level / activity model." ] .

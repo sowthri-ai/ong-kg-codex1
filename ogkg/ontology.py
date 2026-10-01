@@ -132,10 +132,12 @@ METHODS = ["measured", "recorded", "calculated", "declared", "indicative", "assu
 
 STANDARDS = [
     ("ISO 14224", "Asset taxonomy L1-L9, failure modes & mechanisms"),
-    ("ISO 15926 / CFIHOS", "Engineering data & equipment class library"),
+    ("ISO 15926-14 (LIS-14)", "Functional vs physical objects; OWL profile of ISO 15926"),
+    ("CFIHOS", "Tag / equipment / model-part handover data model"),
+    ("MIMOSA CCOM", "O&M exchange: Segment, Asset, Model, MeasurementLocation"),
     ("DEXPI", "P&ID exchange"),
-    ("ISA-95", "Enterprise-control integration levels"),
-    ("IOF / BFO", "Industrial Ontologies Foundry upper ontology"),
+    ("ISA-95 / Purdue", "Equipment hierarchy, activity models, Purdue levels 0-5"),
+    ("IOF / BFO", "Industrial Ontologies Foundry Core + Maintenance; BFO upper ontology"),
     ("API 584", "Integrity operating windows"),
     ("API 580/581", "Risk-based inspection"),
     ("OSDU", "Upstream data platform alignment"),

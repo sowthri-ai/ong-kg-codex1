@@ -8,7 +8,7 @@ The compiler reads `ontology/ogkg-core.ttl` and emits the property-graph schema.
 |---|---|---|
 | `owl:Class` | Node label | `ogkg:ShellAndTubeHX` → `:ShellAndTubeHX` |
 | `rdfs:subClassOf` chain | All ancestor labels on the node, **plus** an `IS_A` edge to a class node | `(:Equipment:StaticEquipment:HeatExchanger:ShellAndTubeHX)` and `-[:IS_A]->(:Class {iri:'ogkg:ShellAndTubeHX'})` |
-| `owl:ObjectProperty` | Relationship type, upper snake case | `ogkg:partOf` → `PART_OF` |
+| `owl:ObjectProperty` | Relationship type, upper snake case | `ogkg:directPartOf` → `PART_OF` |
 | `owl:DatatypeProperty` | Node property with a declared type and unit | `ogkg:serviceTemperature` → `serviceTemperature: float` (unit in schema metadata) |
 | `owl:TransitiveProperty` | Variable-length pattern in queries; optional closure edges | `[:PART_OF*]` |
 | `owl:inverseOf` | Not materialised; queries traverse in the other direction | `hasPart` ≡ `<-[:PART_OF]-` |
@@ -32,7 +32,7 @@ The mirror job writes one named graph per site:
 ```turtle
 alpha:E-101B a ogkg:ShellAndTubeHX ;
     rdfs:label "E-101B Overhead condenser B" ;
-    ogkg:partOf alpha:CDU-1-OVH ;
+    ogkg:directPartOf alpha:CDU-1-OVH ;
     ogkg:tubeMetallurgy vocab:CarbonSteel .
 alpha:F-00110 a ogkg:Fact ;
     ogkg:subject alpha:CMP-A1 ; ogkg:predicateKey "lp_uplift_total" ;

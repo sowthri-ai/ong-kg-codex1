@@ -34,7 +34,7 @@ kg.explain_fact("F-00157")                  # lineage of a lost-margin figure
 
 | Pattern | SPARQL | Cypher |
 |---|---|---|
-| Everything under a node | `?x ogkg:partOf+ alpha:CDU-1` | `(x)-[:PART_OF*]->(:Entity {id:'CDU-1'})` |
+| Everything under a node | `?x ogkg:directPartOf+ alpha:CDU-1` (or `ogkg:partOf` with reasoning) | `(x)-[:PART_OF*]->(:Entity {id:'CDU-1'})` |
 | Everything of a kind | `?x a/rdfs:subClassOf* ogkg:Pump` | `(x:Pump)` (labels compiled from the class tree) |
 | One hop downstream in material flow | `?u0 ogkg:produces/ogkg:feeds ?u1` | `(u0)-[:PRODUCES]->()-[:FEEDS]->(u1)` |
 | Facts with provenance | `?f ogkg:subject ?x ; ogkg:asOf ?d` | `(x)-[:HAS_FACT]->(f:Fact)` |

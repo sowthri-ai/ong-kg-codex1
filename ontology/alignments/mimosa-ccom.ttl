@@ -1,0 +1,37 @@
+@prefix ogkg:  <https://example.org/ogkg/core#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+
+# =============================================================================
+#  Alignment: OGKG  ->  MIMOSA OpenO&M / CCOM (Common Conceptual Object Model)
+#
+#  CCOM is published as UML and XML schema (CCOM-ML), not OWL. The mapping is
+#  therefore an exchange profile: each OGKG class names the CCOM entity type it
+#  is exchanged as. CCOM's Segment / Asset split is the same functional / physical
+#  split as ISO 15926 and CFIHOS, so the three alignments agree by construction.
+#
+#  Entity names follow CCOM 4.x as described in MIMOSA's public documentation.
+#  Element names and GUID-based identity must be confirmed against the CCOM XSD
+#  the integration uses ("lookup required" below).
+# =============================================================================
+
+<https://example.org/ogkg/align/mimosa-ccom> a owl:Ontology ;
+    rdfs:label "OGKG exchange profile for MIMOSA CCOM" ;
+    owl:versionInfo "0.5.0" ; owl:imports <https://example.org/ogkg/core> ; owl:versionIRI <https://example.org/ogkg/align/mimosa-ccom/0.5.0> .
+
+ogkg:Enterprise         ogkg:ccomEntity "Enterprise" ; ogkg:verificationStatus "publication: CCOM 4.x; confirm against XSD" .
+ogkg:Installation       ogkg:ccomEntity "Site" ;       ogkg:verificationStatus "publication: CCOM 4.x; confirm against XSD" .
+ogkg:FunctionalLocation ogkg:ccomEntity "Segment" ;    ogkg:verificationStatus "publication: CCOM 4.x; confirm against XSD" .
+ogkg:SerialItem         ogkg:ccomEntity "Asset" ;      ogkg:verificationStatus "publication: CCOM 4.x; confirm against XSD" .
+ogkg:EquipmentModel     ogkg:ccomEntity "Model" ;      ogkg:verificationStatus "publication: CCOM 4.x; confirm against XSD" .
+ogkg:DataPoint          ogkg:ccomEntity "MeasurementLocation" ; ogkg:verificationStatus "publication: CCOM 4.x; confirm against XSD" .
+ogkg:Fact               ogkg:ccomEntity "Measurement" ; ogkg:verificationStatus "lookup required: CCOM measurement subtype per value kind" .
+ogkg:Failure            ogkg:ccomEntity "Event" ;      ogkg:verificationStatus "lookup required: CCOM event subtype for failures" .
+ogkg:IOWExceedance      ogkg:ccomEntity "Event" ;      ogkg:verificationStatus "lookup required: CCOM event subtype for alarms / limit breaches" .
+ogkg:WorkOrder          ogkg:ccomEntity "WorkOrder" ;  ogkg:verificationStatus "lookup required: CCOM work-management entity names" .
+ogkg:Turnaround         ogkg:ccomEntity "WorkOrder" ;  ogkg:verificationStatus "lookup required: CCOM work-management entity names" .
+ogkg:Role               ogkg:ccomEntity "Agent" ;      ogkg:verificationStatus "lookup required: CCOM agent / person / organisation split" .
+
+ogkg:installedAt  ogkg:alignedTo "CCOM: Asset installed on Segment (with start and end time)" .
+ogkg:directPartOf ogkg:alignedTo "CCOM: Segment child of Segment (functional breakdown)" .
+ogkg:ofModel      ogkg:alignedTo "CCOM: Asset / Segment of Model" .

@@ -109,11 +109,11 @@ class Symmetry(unittest.TestCase):
 class HandbookF6(unittest.TestCase):
     def test_numbers_quoted_in_f6(self):
         s = kg.level_summary()
-        self.assertEqual([r["count"] for r in s["asset"]][4:], [36, 131, 261, 976, 2158, 584, 1624])
-        self.assertEqual([r["count"] for r in s["process"]][2:], [2, 8, 14, 14, 14, 14, 14, 14, 48])
-        self.assertEqual(len(kg.fact_list), 5656)
-        self.assertEqual(sum(1 for f in kg.fact_list if f["predicate"].startswith("iow_limit")), 101)
-        self.assertEqual(sum(1 for n in kg.nodes.values() if n["spine"] == "grouping"), 40)
+        self.assertEqual([r["count"] for r in s["asset"]][4:], [39, 140, 463, 1484, 2608, 621, 1929])
+        self.assertEqual([r["count"] for r in s["process"]][2:], [2, 8, 15, 15, 15, 15, 15, 15, 55])
+        self.assertEqual(len(kg.fact_list), 12570)
+        self.assertEqual(sum(1 for n in kg.nodes.values() if n["cls"] == "IOWLimit"), 116)
+        self.assertEqual(sum(1 for n in kg.nodes.values() if n["spine"] == "grouping"), 44)
 
 
 class Sectors(unittest.TestCase):

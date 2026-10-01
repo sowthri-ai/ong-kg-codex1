@@ -43,7 +43,7 @@ OGKG is a governed knowledge layer for the oil and gas value chain. Every AI sol
 | P7 | **Hypotheses are not facts** | Inferred and AI-discovered links carry a status (proposed → validated / rejected), confidence and evidence. |
 | P8 | **OWL for meaning, LPG for motion** | The ontology is authored in OWL/SHACL/SKOS (git). The property-graph schema is compiled from it. A triplestore handles reasoning, validation and exchange. |
 | P9 | **Federate, don't copy** | Time series and bulk data stay in source systems. The graph holds context, master facts, pointers and aggregates. |
-| P10 | **Standards before invention** | Reuse ISO 14224, CFIHOS, ISO 15926, ISA-95, API 571/584, ISO 22400, QUDT, PROV-O, SKOS and BFO/IOF. Author only the linking layer. |
+| P10 | **Standards before invention** | Reuse ISO 14224, CFIHOS, ISO 15926-14, ISA-95 / Purdue, MIMOSA CCOM, API 571/584, ISO 22400, QUDT, PROV-O, SKOS and BFO/IOF. Author only the linking layer; prove alignment by automated check ([B7](docs/handbook/B7-standards-conformance.md)). |
 | P11 | **One door for AI** | All AI reads through one access layer (MCP) under one answer contract. No direct database access for models. |
 | P12 | **Owned or it doesn't ship** | Every backbone, facet and fact domain has a named owner. SHACL completeness gates block unowned or incomplete data. |
 

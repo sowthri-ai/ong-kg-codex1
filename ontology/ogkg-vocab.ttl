@@ -7,7 +7,7 @@
 #  OGKG controlled vocabularies (SKOS). Classification tags are never free text.
 # =============================================================================
 
-<https://example.org/ogkg/vocab> a owl:Ontology ; rdfs:label "OGKG vocabularies" ; owl:versionInfo "0.2.0" .
+<https://example.org/ogkg/vocab> a owl:Ontology ; rdfs:label "OGKG vocabularies" ; owl:versionInfo "0.5.0" ; owl:versionIRI <https://example.org/ogkg/vocab/0.5.0> .
 
 # --- Facets (B2)
 vocab:FacetScheme a skos:ConceptScheme ; skos:prefLabel "Facets"@en .
@@ -113,3 +113,19 @@ vocab:Public     a skos:Concept ; skos:inScheme vocab:SensitivityScheme ; skos:p
 vocab:Internal   a skos:Concept ; skos:inScheme vocab:SensitivityScheme ; skos:prefLabel "internal"@en .
 vocab:Restricted a skos:Concept ; skos:inScheme vocab:SensitivityScheme ; skos:prefLabel "restricted"@en ; skos:scopeNote "Filtered from context packs unless the caller is entitled."@en .
 vocab:Licensed   a skos:Concept ; skos:inScheme vocab:SensitivityScheme ; skos:prefLabel "licensed third-party"@en .
+
+# --- ISA-95 / IEC 62264 functional levels and activity models (B7)
+vocab:ISA95FunctionScheme a skos:ConceptScheme ; skos:prefLabel "IEC 62264 functional levels and MOM activity models"@en .
+vocab:BusinessPlanningLogistics a skos:Concept ; skos:inScheme vocab:ISA95FunctionScheme ; skos:prefLabel "Level 4: business planning & logistics"@en .
+vocab:ProductionOperations  a skos:Concept ; skos:inScheme vocab:ISA95FunctionScheme ; skos:prefLabel "Level 3: production operations management"@en .
+vocab:MaintenanceOperations a skos:Concept ; skos:inScheme vocab:ISA95FunctionScheme ; skos:prefLabel "Level 3: maintenance operations management"@en .
+vocab:QualityOperations     a skos:Concept ; skos:inScheme vocab:ISA95FunctionScheme ; skos:prefLabel "Level 3: quality operations management"@en .
+vocab:InventoryOperations   a skos:Concept ; skos:inScheme vocab:ISA95FunctionScheme ; skos:prefLabel "Level 3: inventory operations management"@en .
+
+# --- v0.5 additions used by the Refinery Gamma data
+vocab:Confidential a skos:Concept ; skos:inScheme vocab:SensitivityScheme ; skos:prefLabel "Confidential"@en .
+vocab:Plan53A      a skos:Concept ; skos:inScheme vocab:SealPlanScheme ; skos:prefLabel "API 682 Plan 53A"@en .
+vocab:FactStatusScheme a skos:ConceptScheme ; skos:prefLabel "Fact status"@en .
+vocab:Current      a skos:Concept ; skos:inScheme vocab:FactStatusScheme ; skos:prefLabel "Current"@en .
+vocab:Superseded   a skos:Concept ; skos:inScheme vocab:FactStatusScheme ; skos:prefLabel "Superseded"@en .
+vocab:Retracted    a skos:Concept ; skos:inScheme vocab:FactStatusScheme ; skos:prefLabel "Retracted"@en .

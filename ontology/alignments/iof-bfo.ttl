@@ -1,0 +1,91 @@
+@prefix ogkg:  <https://example.org/ogkg/core#> .
+@prefix iof:   <https://spec.industrialontologies.org/ontology/construct/> .
+@prefix bfo:   <http://purl.obolibrary.org/obo/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+
+# =============================================================================
+#  Alignment: OGKG core  ->  Industrial Ontologies Foundry (IOF Core + Maintenance)
+#  and BFO 2020 (ISO/IEC 21838-2)
+#
+#  IOF is referenced, not imported. To reason across both, import
+#  <https://spec.industrialontologies.org/ontology/core/Core/> and
+#  <https://spec.industrialontologies.org/ontology/maintenance/Maintenance/>
+#  (release 202602 checked; 202603 published). IOF is MIT-licensed.
+#
+#  Axioms are chosen so that importing IOF + BFO cannot make OGKG inconsistent:
+#  nothing below puts one OGKG class under two BFO-disjoint IOF classes.
+#  Where OGKG mixes BFO categories (ogkg:Agent holds organisations and roles;
+#  ogkg:Event holds failures and work-order records), only the subclasses are
+#  aligned. Handbook B7 lists these as modelling debt.
+# =============================================================================
+
+<https://example.org/ogkg/align/iof-bfo> a owl:Ontology ;
+    rdfs:label "OGKG alignment to IOF Core, IOF Maintenance and BFO" ;
+    owl:versionInfo "0.5.0" ; owl:imports <https://example.org/ogkg/core> ; owl:versionIRI <https://example.org/ogkg/align/iof-bfo/0.5.0> .
+
+skos:closeMatch   a owl:AnnotationProperty .
+skos:relatedMatch a owl:AnnotationProperty .
+
+# --- Referenced terms. 'verified' = local name read from the release RDF;
+#     'publication' = name taken from the IOF Core paper (CEUR-WS Vol-3240, 2022), to confirm.
+bfo:BFO_0000040 a owl:Class ; rdfs:label "material entity" ; ogkg:verificationStatus "verified: BFO 2020 OBO PURL" .
+bfo:BFO_0000029 a owl:Class ; rdfs:label "site" ;            ogkg:verificationStatus "verified: BFO 2020 OBO PURL" .
+bfo:BFO_0000016 a owl:Class ; rdfs:label "disposition" ;     ogkg:verificationStatus "publication: BFO 2020 (ISO/IEC 21838-2)" .
+iof:Agent                         a owl:Class ; ogkg:verificationStatus "verified: IOF Core release 202602" .
+iof:AgentRole                     a owl:Class ; ogkg:verificationStatus "verified: IOF Core release 202602" .
+iof:Organization                  a owl:Class ; ogkg:verificationStatus "verified: IOF Core release 202602" .
+iof:BusinessProcess               a owl:Class ; ogkg:verificationStatus "verified: IOF Core release 202602" .
+iof:InformationContentEntity      a owl:Class ; ogkg:verificationStatus "verified: IOF Core release 202602" .
+iof:DesignSpecification           a owl:Class ; ogkg:verificationStatus "verified: IOF Core release 202602" .
+iof:PlanSpecification             a owl:Class ; ogkg:verificationStatus "verified: IOF Core release 202602" .
+iof:MaterialProduct               a owl:Class ; ogkg:verificationStatus "verified: IOF Core release 202602" .
+iof:MaterialArtifact              a owl:Class ; ogkg:verificationStatus "publication: IOF Core paper (CEUR-WS Vol-3240, 2022); confirm in release RDF" .
+iof:MaintainableMaterialItem      a owl:Class ; ogkg:verificationStatus "publication: IOF Core paper (CEUR-WS Vol-3240, 2022); confirm in release RDF" .
+iof:RequirementSpecification      a owl:Class ; ogkg:verificationStatus "publication: IOF Core paper (CEUR-WS Vol-3240, 2022); confirm in release RDF" .
+iof:FailureEvent                  a owl:Class ; ogkg:verificationStatus "verified: IOF Maintenance release 202602" .
+iof:FailureModeCode               a owl:Class ; ogkg:verificationStatus "verified: IOF Maintenance release 202602" .
+iof:FailureProcess                a owl:Class ; ogkg:verificationStatus "verified: IOF Maintenance release 202602" .
+iof:MaintenanceProcess            a owl:Class ; ogkg:verificationStatus "verified: IOF Maintenance release 202602" .
+iof:MaintenanceActivity           a owl:Class ; ogkg:verificationStatus "verified: IOF Maintenance release 202602" .
+iof:MaintenanceWorkOrderRecord    a owl:Class ; ogkg:verificationStatus "verified: IOF Maintenance release 202602" .
+iof:MaintenanceStrategy           a owl:Class ; ogkg:verificationStatus "verified: IOF Maintenance release 202602" .
+iof:RequiredFunction              a owl:Class ; ogkg:verificationStatus "verified: IOF Maintenance release 202602" .
+iof:isAbout                       a owl:ObjectProperty ; ogkg:verificationStatus "verified: IOF Core release 202602" .
+
+# --- Physical vs functional
+ogkg:PhysicalAsset rdfs:subClassOf bfo:BFO_0000040 .
+ogkg:SerialItem    rdfs:subClassOf iof:MaterialArtifact .
+ogkg:FunctionalLocation skos:relatedMatch iof:RequiredFunction ;
+    rdfs:comment "IOF has no functional-location class. A functional location is the position that bears the required function; the serial item installed there realises it." .
+ogkg:MaintainableItem skos:relatedMatch iof:MaintainableMaterialItem ;
+    rdfs:comment "ogkg:MaintainableItem is the L8 position; the physical item fitted there is the IOF maintainable material item." .
+
+# --- Maintenance and reliability (IOF Maintenance)
+ogkg:Failure     rdfs:subClassOf iof:FailureEvent .
+ogkg:FailureMode rdfs:subClassOf iof:FailureModeCode .
+ogkg:WorkOrder   rdfs:subClassOf iof:MaintenanceWorkOrderRecord .
+ogkg:Turnaround  rdfs:subClassOf iof:MaintenanceProcess .
+ogkg:DamageMechanism skos:relatedMatch iof:FailureProcess .
+
+# --- Information content
+ogkg:InformationObject rdfs:subClassOf iof:InformationContentEntity .
+ogkg:Fact              rdfs:subClassOf iof:InformationContentEntity .
+ogkg:EquipmentModel    rdfs:subClassOf iof:DesignSpecification .
+ogkg:IOWLimit          rdfs:subClassOf iof:RequirementSpecification .
+ogkg:LPModel           skos:closeMatch iof:PlanSpecification .
+ogkg:describes         rdfs:subPropertyOf iof:isAbout .
+
+# --- Process definitions
+ogkg:ProcessSpineNode skos:closeMatch iof:BusinessProcess ;
+    rdfs:comment "Process-spine nodes define business processes; their executions are iof:BusinessProcess instances." .
+
+# --- Agents, material, location
+ogkg:Enterprise rdfs:subClassOf iof:Organization .
+ogkg:Role       rdfs:subClassOf iof:AgentRole .
+ogkg:Agent      skos:closeMatch iof:Agent ;
+    rdfs:comment "Not a subclass axiom: ogkg:Agent also holds ogkg:Role, which IOF treats as a role, not an agent." .
+ogkg:Product    rdfs:subClassOf iof:MaterialProduct .
+ogkg:Stream     rdfs:subClassOf bfo:BFO_0000040 .
+ogkg:Location   rdfs:subClassOf bfo:BFO_0000029 .

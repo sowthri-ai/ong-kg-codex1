@@ -2,7 +2,7 @@
 
 > Generated from `ontology/ogkg-core.ttl` by `python -m ogkg.catalogue`. Do not edit by hand; change the ontology and regenerate.
 
-Ontology version 0.2.0 · 111 classes · 89 object properties · 32 datatype properties.
+Ontology version 0.5.0 · 129 classes · 108 object properties · 37 datatype properties.
 
 ## F3.1 Spine classes by level
 
@@ -12,20 +12,20 @@ Ontology version 0.2.0 · 111 classes · 89 object properties · 32 datatype pro
 | L1 | `Segment` | TrunkNode | ISO 14224 level 2 |
 | L2 | `BusinessCategory` | AssetSpineNode | ISO 14224 level 2 |
 | L2 | `ValueStream` | ProcessSpineNode |  |
-| L3 | `Installation` | AssetSpineNode, PhysicalAsset | ISO 14224 level 3 |
+| L3 | `Installation` | AssetSpineNode, FunctionalLocation | ISO 14224 level 3 |
 | L3 | `ProcessGroup` | ProcessSpineNode |  |
-| L4 | `PlantUnit` | AssetSpineNode, PhysicalAsset | ISO 14224 level 4 |
+| L4 | `PlantUnit` | AssetSpineNode, FunctionalLocation | ISO 14224 level 4 |
 | L4 | `Process` | ProcessSpineNode |  |
-| L5 | `SectionSystem` | AssetSpineNode, PhysicalAsset | ISO 14224 level 5 |
+| L5 | `SectionSystem` | AssetSpineNode, FunctionalLocation | ISO 14224 level 5 |
 | L5 | `SubProcess` | ProcessSpineNode |  |
 | L6 | `Activity` | ProcessSpineNode |  |
-| L6 | `EquipmentUnit` | AssetSpineNode, PhysicalAsset | ISO 14224 level 6 |
-| L7 | `Subunit` | AssetSpineNode, PhysicalAsset | ISO 14224 level 7 |
+| L6 | `EquipmentUnit` | AssetSpineNode, FunctionalLocation | ISO 14224 level 6 |
+| L7 | `Subunit` | AssetSpineNode, FunctionalLocation | ISO 14224 level 7 |
 | L7 | `Task` | ProcessSpineNode |  |
 | L8 | `DecisionPoint` | ProcessSpineNode |  |
-| L8 | `MaintainableItem` | AssetSpineNode, PhysicalAsset | ISO 14224 level 8 |
+| L8 | `MaintainableItem` | AssetSpineNode, FunctionalLocation | ISO 14224 level 8 |
 | L9 | `DataObject` | ProcessSpineNode, InformationObject |  |
-| L9 | `Part` | AssetSpineNode, PhysicalAsset | ISO 14224 level 9 |
+| L9 | `Part` | AssetSpineNode, FunctionalLocation | ISO 14224 level 9 |
 | L10 | `DataElement` | ProcessSpineNode, InformationObject |  |
 | L10 | `DataPoint` | AssetSpineNode, InformationObject | OGKG extension (ISA-95 levels 1-2 data) |
 
@@ -40,11 +40,14 @@ Ontology version 0.2.0 · 111 classes · 89 object properties · 32 datatype pro
 | `Enterprise` | Agent | W3C ORG FormalOrganization; LEI |
 | `Role` | Agent | W3C ORG Role |
 | `CostElement` | EconomicElement |  |
+| `LPConstraint` | EconomicElement | Active LP constraint with a shadow price. |
 | `PriceSeries` | EconomicElement | Licensed data: client tenancy only (D3). |
+| `PriceSet` | EconomicElement | A consistent price scenario (e.g. plan, actual, stress). |
 | `ValueCoefficient` | EconomicElement | Dollar value of moving a KPF, e.g. USD per RON-bbl. |
 | `ValueDriver` | EconomicElement |  |
 | `Agent` | Entity | W3C ORG / PROV agent |
 | `Event` | Entity | BFO occurrent |
+| `FunctionalLocation` | Entity | A position in the plant defined by the function it must perform, independent of the physical item installed there (ISO 14224 L3-L9 taxonomy; ISO 15926 functional object; CFIHOS tag; SAP functional location; MIMOSA CCOM Segment). Physical items are ogkg:SerialItem, linked by ogkg:installedAt. |
 | `Grouping` | Entity | Target of dotted-branch MEMBER_OF links (B3). |
 | `InformationObject` | Entity | IAO information content entity |
 | `Location` | Entity | GeoSPARQL feature |
@@ -52,8 +55,11 @@ Ontology version 0.2.0 · 111 classes · 89 object properties · 32 datatype pro
 | `PhysicalAsset` | Entity | BFO material entity |
 | `ProcessElement` | Entity | IOF business process / plan specification |
 | `SpineNode` | Entity |  |
+| `ElectricalDistribution` | EquipmentUnit | ISO 14224 electrical equipment (switchgear / power transformers) |
+| `InputDevice` | EquipmentUnit | ISO 14224 equipment class: Input devices |
 | `RotatingEquipment` | EquipmentUnit |  |
 | `StaticEquipment` | EquipmentUnit |  |
+| `Valve` | EquipmentUnit | ISO 14224 equipment class: Valves |
 | `Failure` | Event | ISO 14224 failure event |
 | `IOWExceedance` | Event | API 584 |
 | `ScopeItem` | Event |  |
@@ -66,6 +72,7 @@ Ontology version 0.2.0 · 111 classes · 89 object properties · 32 datatype pro
 | `Utility` | Grouping |  |
 | `AirCooledHX` | HeatExchanger |  |
 | `ShellAndTubeHX` | HeatExchanger | TEMA |
+| `CorrectionRequest` | HypothesisAssertion | A proposed change to a fact, governed like a hypothesis. |
 | `Application` | InformationObject | A software product or category, e.g. LIMS. |
 | `ApplicationInstance` | InformationObject | A deployed instance, e.g. LIMS-Alpha. |
 | `ApplicationModule` | InformationObject |  |
@@ -73,7 +80,11 @@ Ontology version 0.2.0 · 111 classes · 89 object properties · 32 datatype pro
 | `DocumentChunk` | InformationObject |  |
 | `EconomicElement` | InformationObject |  |
 | `EquipmentModel` | InformationObject | A maker's design, e.g. OEM-A HX-300. |
+| `IOWLimit` | InformationObject | API 584 integrity operating window limit |
+| `InsightResult` | InformationObject | Snapshot of an insight run (headline, value with basis and range), linked to the entities it describes. |
 | `Interface` | InformationObject |  |
+| `LPModel` | InformationObject | Refinery planning linear programme. |
+| `LPSubmodel` | InformationObject | Unit submodel (yield vectors, capacities) of an LP model. |
 | `PerformanceMeasure` | InformationObject | ISO 22400 |
 | `PhysicsElement` | InformationObject |  |
 | `ProblemElement` | InformationObject |  |
@@ -103,12 +114,16 @@ Ontology version 0.2.0 · 111 classes · 89 object properties · 32 datatype pro
 | `CrudeDistillationUnit` | PlantUnit |  |
 | `FluidCatalyticCracker` | PlantUnit |  |
 | `VacuumDistillationUnit` | PlantUnit |  |
+| `DetectionMethod` | ProblemElement | ISO 14224:2016 Table B.4 detection method |
+| `FailureMechanism` | ProblemElement | ISO 14224:2016 Table B.2 failure mechanism |
 | `FailureMode` | ProblemElement | ISO 14224 failure mode |
 | `ProblemPattern` | ProblemElement | Class-level problem signature (B6.2). |
 | `RootCause` | ProblemElement |  |
 | `CentrifugalPump` | Pump | API 610 |
 | `Compressor` | RotatingEquipment |  |
+| `ElectricMotor` | RotatingEquipment | ISO 14224 equipment class: Electric motors |
 | `Pump` | RotatingEquipment | ISO 14224 equipment class: Pumps |
+| `SteamTurbine` | RotatingEquipment | ISO 14224 equipment class: Steam turbines |
 | `DesalterSystem` | SectionSystem |  |
 | `OverheadSystem` | SectionSystem |  |
 | `PreheatTrain` | SectionSystem |  |
@@ -121,6 +136,9 @@ Ontology version 0.2.0 · 111 classes · 89 object properties · 32 datatype pro
 | `PipingCircuit` | StaticEquipment | API 570 circuit |
 | `StorageTank` | StaticEquipment |  |
 | `Vessel` | StaticEquipment |  |
+| `ControlValve` | Valve | IEC 60534 |
+| `ReliefDevice` | Valve | API 520 / API 526 pressure-relief valve |
+| `ShutdownValve` | Valve | IEC 61511 final element |
 | `Column` | Vessel |  |
 | `Fact` | prov:Entity | A cited value. All fields in FactShape are mandatory. |
 | `HypothesisAssertion` | prov:Entity |  |
@@ -145,36 +163,47 @@ Ontology version 0.2.0 · 111 classes · 89 object properties · 32 datatype pro
 | `componentOf` | `COMPONENT_OF` | Stream | Product |  |  |  |
 | `computedFrom` | `COMPUTED_FROM` | PerformanceMeasure | PerformanceMeasure |  |  |  |
 | `confidence` | `` | Fact | skos:Concept |  |  |  |
+| `constrains` | `CONSTRAINS` | LPConstraint | Entity |  |  |  |
 | `consumes` | `CONSUMES` | DecisionPoint | DataElement |  |  |  |
 | `controlledBy` | `CONTROLLED_BY` | KPF | DecisionPoint | vocab:PerformanceFacet |  |  |
+| `controls` | `CONTROLS` | Valve | DataPoint |  |  |  |
 | `costBooksTo` | `BOOKS_TO` | Event | CostElement | vocab:EconomicsFacet |  |  |
 | `decidedBy` | `DECIDED_BY` | Event | DecisionPoint |  |  |  |
 | `deliveredVia` | `DELIVERED_VIA` | CrudeCampaign | Installation |  |  |  |
 | `derivedFrom` | `DERIVED_FROM` | Fact | Fact |  |  |  |
 | `describes` | `DESCRIBES` | InformationObject | Entity | vocab:KnowledgeFacet |  |  |
+| `detectedBy` | `DETECTED_BY` | Failure | DetectionMethod |  |  |  |
+| `directPartOf` | `PART_OF` | SpineNode | SpineNode |  |  |  |
+| `driverOf` | `DRIVER_OF` | RotatingEquipment | RotatingEquipment |  |  |  |
 | `drives` | `DRIVES` | KPF | KPI | vocab:PerformanceFacet |  |  |
 | `evidence` | `` | HypothesisAssertion | Entity |  |  |  |
+| `exceeds` | `EXCEEDS` | IOWExceedance | IOWLimit |  |  |  |
 | `factOwner` | `` | Fact | Role |  |  |  |
+| `factStatus` | `` | Fact | skos:Concept |  |  |  |
 | `failureOf` | `FAILURE_OF` | Failure | AssetSpineNode | vocab:ProblemsFacet |  |  |
 | `feeds` | `FEEDS` | Stream | PlantUnit |  | vocab:ExposureChannel |  |
 | `governedBy` | `GOVERNED_BY` | AssetSpineNode | Equation | vocab:PhysicsFacet | vocab:TypeChannel |  |
 | `governs` | `GOVERNS` | DecisionPoint | AssetSpineNode |  |  |  |
 | `hasFact` | `HAS_FACT` |  |  |  |  |  |
+| `hasFailureCause` | `HAS_FAILURE_CAUSE` | Failure | RootCause |  |  |  |
+| `hasFailureMechanism` | `HAS_FAILURE_MECHANISM` | Failure | FailureMechanism |  |  |  |
 | `hasFailureMode` | `HAS_FAILURE_MODE` | Failure | FailureMode |  |  |  |
 | `hasLevel` | `HAS_LEVEL` | SpineNode | Level |  |  | FunctionalProperty |
 | `hasTag` | `HAS_TAG` | Entity | skos:Concept | vocab:IdentityFacet |  |  |
 | `hasVariable` | `HAS_VARIABLE` | Equation | Parameter |  |  |  |
 | `hostsDataPoint` | `HOSTS` | ApplicationInstance | DataPoint | vocab:ApplicationFacet |  |  |
 | `hypObject` | `` | HypothesisAssertion | Entity |  |  |  |
-| `hypPredicate` | `` | HypothesisAssertion | rdf:Property |  |  |  |
 | `hypSubject` | `` | HypothesisAssertion | Entity |  |  |  |
+| `inPriceSet` | `IN_PRICE_SET` | PriceSeries | PriceSet |  |  |  |
 | `inScopeOf` | `IN_SCOPE_OF` | ScopeItem | Turnaround |  |  |  |
 | `inheritanceRule` | `` | FacetBinding | skos:Concept |  |  |  |
 | `installedAt` | `INSTALLED_AT` | SerialItem | EquipmentUnit | vocab:DesignFacet |  |  |
 | `instanceOf` | `INSTANCE_OF` | ApplicationInstance | Application |  |  |  |
 | `instantiatedBy` | `INSTANTIATED_BY` | DataElement | DataPoint |  |  |  |
 | `integratesWith` | `INTEGRATES_WITH` | ApplicationInstance | ApplicationInstance |  |  | SymmetricProperty |
+| `isa95Function` | `` | ProcessSpineNode | skos:Concept |  |  |  |
 | `kpiTier` | `HAS_TIER` | KPI | skos:Concept |  |  |  |
+| `limits` | `LIMITS` | IOWLimit | DataPoint |  |  |  |
 | `locatedAt` | `LOCATED_AT` | Entity | Location | vocab:LocationFacet | vocab:LineageChannel |  |
 | `manufacturedBy` | `MANUFACTURED_BY` | EquipmentModel | Enterprise | vocab:DesignFacet |  |  |
 | `matchesPattern` | `MATCHES_PATTERN` | Event | ProblemPattern |  |  |  |
@@ -184,6 +213,7 @@ Ontology version 0.2.0 · 111 classes · 89 object properties · 32 datatype pro
 | `method` | `` | Fact | skos:Concept |  |  |  |
 | `mitigatedBy` | `MITIGATED_BY` | DamageMechanism | DecisionPoint |  |  |  |
 | `moduleOf` | `MODULE_OF` | ApplicationModule | Application |  |  |  |
+| `occurredOnSerial` | `OCCURRED_ON_SERIAL` | Failure | SerialItem |  |  |  |
 | `ofGrade` | `OF_GRADE` | CrudeCampaign | CrudeGrade |  |  |  |
 | `ofModel` | `OF_MODEL` | Entity | EquipmentModel | vocab:DesignFacet | vocab:TypeChannel |  |
 | `onDataPoint` | `ON_DATAPOINT` | IOWExceedance | DataPoint |  |  |  |
@@ -191,23 +221,30 @@ Ontology version 0.2.0 · 111 classes · 89 object properties · 32 datatype pro
 | `ownedBy` | `OWNED_BY` |  | Role | vocab:EnterpriseFacet |  |  |
 | `ownedByEnterprise` | `OWNED_BY_ENTERPRISE` |  | Enterprise | vocab:EnterpriseFacet |  |  |
 | `parameterMeasuredAs` | `MEASURED_AS` | Parameter | DataElement |  |  |  |
-| `partOf` | `PART_OF` | SpineNode | SpineNode |  |  | TransitiveProperty |
+| `partOf` | `` | SpineNode | SpineNode |  |  | TransitiveProperty |
 | `priceOf` | `PRICE_OF` | PriceSeries | MaterialItem | vocab:EconomicsFacet |  |  |
 | `processedIn` | `PROCESSED_IN` | CrudeCampaign | PlantUnit |  | vocab:ExposureChannel |  |
 | `producedAt` | `PRODUCED_AT` | CrudeGrade | Installation |  |  |  |
 | `produces` | `PRODUCES` | PlantUnit | Stream |  | vocab:ExposureChannel |  |
+| `protects` | `PROTECTS` | ReliefDevice | EquipmentUnit |  |  |  |
 | `remediates` | `REMEDIATES` | WorkOrder | Failure |  |  |  |
+| `represents` | `REPRESENTS` | LPSubmodel | PlantUnit |  |  |  |
 | `resolvedBy` | `RESOLVED_BY` | Event | WorkOrder |  |  |  |
+| `respondsTo` | `RESPONDS_TO` | WorkOrder | IOWExceedance |  |  |  |
 | `reviewedBy` | `` | HypothesisAssertion | Role |  |  |  |
 | `scopedTo` | `SCOPED_TO` | ApplicationInstance | SpineNode | vocab:ApplicationFacet | vocab:LineageChannel |  |
 | `sealPlan` | `HAS_SEAL_PLAN` |  | skos:Concept | vocab:DesignFacet | vocab:TypeChannel |  |
-| `sensitivity` | `HAS_SENSITIVITY` | Entity | skos:Concept |  |  |  |
+| `senses` | `SENSES` | InputDevice | DataPoint |  |  |  |
+| `sensitivity` | `HAS_SENSITIVITY` |  | skos:Concept |  |  |  |
 | `similarTo` | `SIMILAR_TO` | Event | Event |  |  | SymmetricProperty |
 | `soldTo` | `SOLD_TO` | Product | Market |  |  |  |
 | `sourceSystem` | `` | Fact | ApplicationInstance |  |  |  |
 | `staleInputTo` | `STALE_INPUT_TO` | DataElement | DecisionPoint |  |  |  |
 | `status` | `` | HypothesisAssertion | skos:Concept |  |  |  |
 | `subject` | `` | Fact | Entity |  |  | FunctionalProperty |
+| `subjectTo` | `SUBJECT_TO` | AssetSpineNode | Phenomenon |  |  |  |
+| `submodelOf` | `SUBMODEL_OF` | LPSubmodel | LPModel |  |  |  |
+| `supersedes` | `` | Fact | Fact |  |  |  |
 | `supplies` | `SUPPLIES` | Installation | Installation |  |  |  |
 | `supports` | `SUPPORTS` | ApplicationInstance | ProcessSpineNode | vocab:ApplicationFacet |  |  |
 | `susceptibleTo` | `SUSCEPTIBLE_TO` | AssetSpineNode | DamageMechanism | vocab:PhysicsFacet | vocab:TypeChannel |  |
@@ -235,10 +272,12 @@ Ontology version 0.2.0 · 111 classes · 89 object properties · 32 datatype pro
 | `externalId` | Entity | xsd:string | vocab:IdentityFacet | false |
 | `formula` | PerformanceMeasure | xsd:string |  |  |
 | `freshnessSlaHours` | DataElement | xsd:decimal |  |  |
+| `hypPredicate` | HypothesisAssertion | xsd:string |  |  |
 | `inferredBy` | HypothesisAssertion | xsd:string |  |  |
 | `isa95Layer` | Application | xsd:integer |  |  |
 | `mapsToPredicate` | DataElement | xsd:string |  |  |
 | `predicateKey` | Fact | xsd:string |  |  |
+| `purdueLevel` |  | xsd:decimal |  |  |
 | `reviewedOn` | HypothesisAssertion | xsd:date |  |  |
 | `runId` | HypothesisAssertion | xsd:string |  |  |
 | `saltContent` | CrudeGrade | xsd:decimal | vocab:FlowFacet |  |
@@ -253,5 +292,8 @@ Ontology version 0.2.0 · 111 classes · 89 object properties · 32 datatype pro
 | `validTo` |  | xsd:date |  |  |
 | `validityRange` | Equation | xsd:string |  |  |
 | `value` | Fact |  |  |  |
+| `valueBasis` | Fact | xsd:string |  |  |
+| `valueHigh` | Fact | xsd:decimal |  |  |
+| `valueLow` | Fact | xsd:decimal |  |  |
 | `windowEnd` | CrudeCampaign | xsd:date |  |  |
 | `windowStart` | CrudeCampaign | xsd:date |  |  |

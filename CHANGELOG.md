@@ -1,6 +1,9 @@
 # Changelog
 
 ## Unreleased
+- Standards alignment and conformance (ADR-0012, handbook B7): functional locations separated from physical items (`ogkg:FunctionalLocation`, disjoint from `ogkg:PhysicalAsset`); asserted hierarchy is `ogkg:directPartOf`; 16 relations and 19 classes declared with domain and range; upper partition made disjoint; version IRIs and an XML catalog for all modules.
+- Six alignment modules in `ontology/alignments/`: ISO 15926-14 (LIS-14), IOF Core + Maintenance / BFO, ISO 14224, ISA-95 / Purdue, CFIHOS, MIMOSA CCOM, each external identifier with a verification status.
+- `ogkg/owl_profile.py` (OWL 2 DL structural checker), `ogkg/standards.py` (resolves codes from the alignment modules; sets Purdue levels and ISA-95 functions), `ogkg/conformance.py` (40 checks across 8 standards; report in `data/cdu-gamma/conformance.md`); `shacl_lite` adds ISO 14224 failure-record, serial-item, Purdue and ISA-95 shapes and a generic domain / range check; facts export valid-from, recorded-at (PROV), status, supersedes, sensitivity and value range.
 - Council review of v0.4.0 (`docs/reviews/2026-10-01-council-review.md`): 69 findings from six reviewer seats, re-verified and merged into 33 issues on a MECE tree (6 layers × Wrong / Missing), each with one priority (Now / Next / Then).
 
 ## 0.4.0 — 2026-10-01 (whole refinery)

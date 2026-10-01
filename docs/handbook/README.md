@@ -34,6 +34,7 @@ The six parts answer six separate questions. Together they cover the whole plan,
 - [B4 Entity DNA and inheritance](B4-entity-dna-inheritance.md)
 - [B5 Facts, provenance and identity](B5-facts-provenance-and-identity.md)
 - [B6 Problems and hypotheses](B6-problems-and-hypotheses.md)
+- [B7 Standards alignment and conformance](B7-standards-conformance.md)
 
 ### Part C — How it is built
 - [C1 Three-store architecture](C1-three-store-architecture.md)

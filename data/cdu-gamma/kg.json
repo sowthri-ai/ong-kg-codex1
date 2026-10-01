@@ -71458,7 +71458,8 @@
    "props": {
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#P-THRU"
+    "iri": "https://example.org/ogkg/data/gamma#P-THRU",
+    "isa95_function": "ProductionOperations"
    }
   },
   {
@@ -71581,7 +71582,8 @@
    "props": {
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#P-DESALT"
+    "iri": "https://example.org/ogkg/data/gamma#P-DESALT",
+    "isa95_function": "ProductionOperations"
    }
   },
   {
@@ -71719,7 +71721,8 @@
    "props": {
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#P-HTR"
+    "iri": "https://example.org/ogkg/data/gamma#P-HTR",
+    "isa95_function": "ProductionOperations"
    }
   },
   {
@@ -71857,7 +71860,8 @@
    "props": {
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#P-CUT"
+    "iri": "https://example.org/ogkg/data/gamma#P-CUT",
+    "isa95_function": "ProductionOperations"
    }
   },
   {
@@ -71980,7 +71984,8 @@
    "props": {
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#P-ENERGY"
+    "iri": "https://example.org/ogkg/data/gamma#P-ENERGY",
+    "isa95_function": "ProductionOperations"
    }
   },
   {
@@ -72103,7 +72108,8 @@
    "props": {
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#P-OVHCORR"
+    "iri": "https://example.org/ogkg/data/gamma#P-OVHCORR",
+    "isa95_function": "MaintenanceOperations"
    }
   },
   {
@@ -72256,7 +72262,8 @@
    "props": {
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#P-ROTREL"
+    "iri": "https://example.org/ogkg/data/gamma#P-ROTREL",
+    "isa95_function": "MaintenanceOperations"
    }
   },
   {
@@ -72379,7 +72386,8 @@
    "props": {
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#APP-PI"
+    "iri": "https://example.org/ogkg/data/gamma#APP-PI",
+    "purdue_level": 3
    }
   },
   {
@@ -72392,7 +72400,8 @@
    "props": {
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#APP-DCS"
+    "iri": "https://example.org/ogkg/data/gamma#APP-DCS",
+    "purdue_level": 2
    }
   },
   {
@@ -72405,7 +72414,8 @@
    "props": {
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#APP-APC-A"
+    "iri": "https://example.org/ogkg/data/gamma#APP-APC-A",
+    "purdue_level": 2
    }
   },
   {
@@ -72418,7 +72428,8 @@
    "props": {
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#APP-APC-B"
+    "iri": "https://example.org/ogkg/data/gamma#APP-APC-B",
+    "purdue_level": 2
    }
   },
   {
@@ -72431,7 +72442,8 @@
    "props": {
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#APP-LIMS"
+    "iri": "https://example.org/ogkg/data/gamma#APP-LIMS",
+    "purdue_level": 3
    }
   },
   {
@@ -72444,7 +72456,8 @@
    "props": {
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#APP-CMMS"
+    "iri": "https://example.org/ogkg/data/gamma#APP-CMMS",
+    "purdue_level": 4
    }
   },
   {
@@ -72457,7 +72470,8 @@
    "props": {
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#APP-RBI"
+    "iri": "https://example.org/ogkg/data/gamma#APP-RBI",
+    "purdue_level": 4
    }
   },
   {
@@ -72470,7 +72484,8 @@
    "props": {
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#APP-LP"
+    "iri": "https://example.org/ogkg/data/gamma#APP-LP",
+    "purdue_level": 4
    }
   },
   {
@@ -72483,7 +72498,8 @@
    "props": {
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#APP-EDMS"
+    "iri": "https://example.org/ogkg/data/gamma#APP-EDMS",
+    "purdue_level": 4
    }
   },
   {
@@ -124562,7 +124578,8 @@
    "props": {
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#P-PLAN"
+    "iri": "https://example.org/ogkg/data/gamma#P-PLAN",
+    "isa95_function": "BusinessPlanningLogistics"
    }
   },
   {
@@ -124715,7 +124732,8 @@
    "props": {
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#P-H2"
+    "iri": "https://example.org/ogkg/data/gamma#P-H2",
+    "isa95_function": "ProductionOperations"
    }
   },
   {
@@ -124838,7 +124856,8 @@
    "props": {
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#P-SULF"
+    "iri": "https://example.org/ogkg/data/gamma#P-SULF",
+    "isa95_function": "ProductionOperations"
    }
   },
   {
@@ -124961,7 +124980,8 @@
    "props": {
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#P-FCC"
+    "iri": "https://example.org/ogkg/data/gamma#P-FCC",
+    "isa95_function": "ProductionOperations"
    }
   },
   {
@@ -125084,7 +125104,8 @@
    "props": {
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#P-HCU"
+    "iri": "https://example.org/ogkg/data/gamma#P-HCU",
+    "isa95_function": "ProductionOperations"
    }
   },
   {
@@ -125222,7 +125243,8 @@
    "props": {
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#P-DCU"
+    "iri": "https://example.org/ogkg/data/gamma#P-DCU",
+    "isa95_function": "ProductionOperations"
    }
   },
   {
@@ -125360,7 +125382,8 @@
    "props": {
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#P-COMPREL"
+    "iri": "https://example.org/ogkg/data/gamma#P-COMPREL",
+    "isa95_function": "MaintenanceOperations"
    }
   },
   {
@@ -125483,7 +125506,8 @@
    "props": {
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#APP-DCS-CONV"
+    "iri": "https://example.org/ogkg/data/gamma#APP-DCS-CONV",
+    "purdue_level": 2
    }
   },
   {
@@ -125496,7 +125520,8 @@
    "props": {
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#APP-APC-FCC"
+    "iri": "https://example.org/ogkg/data/gamma#APP-APC-FCC",
+    "purdue_level": 2
    }
   },
   {
@@ -125509,7 +125534,8 @@
    "props": {
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#APP-APC-HCU"
+    "iri": "https://example.org/ogkg/data/gamma#APP-APC-HCU",
+    "purdue_level": 2
    }
   },
   {
@@ -125522,7 +125548,8 @@
    "props": {
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#APP-CEMS"
+    "iri": "https://example.org/ogkg/data/gamma#APP-CEMS",
+    "purdue_level": 3
    }
   },
   {
@@ -130578,7 +130605,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FT-1465"
+    "iri": "https://example.org/ogkg/data/gamma#FT-1465",
+    "purdue_level": 0
    }
   },
   {
@@ -130658,7 +130686,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FT-1466"
+    "iri": "https://example.org/ogkg/data/gamma#FT-1466",
+    "purdue_level": 0
    }
   },
   {
@@ -130738,7 +130767,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FT-1467"
+    "iri": "https://example.org/ogkg/data/gamma#FT-1467",
+    "purdue_level": 0
    }
   },
   {
@@ -130818,7 +130848,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FT-1468"
+    "iri": "https://example.org/ogkg/data/gamma#FT-1468",
+    "purdue_level": 0
    }
   },
   {
@@ -130898,7 +130929,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#XV-101"
+    "iri": "https://example.org/ogkg/data/gamma#XV-101",
+    "purdue_level": 0
    }
   },
   {
@@ -131007,7 +131039,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FT-2465"
+    "iri": "https://example.org/ogkg/data/gamma#FT-2465",
+    "purdue_level": 0
    }
   },
   {
@@ -131087,7 +131120,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FT-2466"
+    "iri": "https://example.org/ogkg/data/gamma#FT-2466",
+    "purdue_level": 0
    }
   },
   {
@@ -131167,7 +131201,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FT-2467"
+    "iri": "https://example.org/ogkg/data/gamma#FT-2467",
+    "purdue_level": 0
    }
   },
   {
@@ -131247,7 +131282,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FT-2468"
+    "iri": "https://example.org/ogkg/data/gamma#FT-2468",
+    "purdue_level": 0
    }
   },
   {
@@ -131327,7 +131363,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#XV-201"
+    "iri": "https://example.org/ogkg/data/gamma#XV-201",
+    "purdue_level": 0
    }
   },
   {
@@ -131436,7 +131473,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FT-5001"
+    "iri": "https://example.org/ogkg/data/gamma#FT-5001",
+    "purdue_level": 0
    }
   },
   {
@@ -131516,7 +131554,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FT-5002"
+    "iri": "https://example.org/ogkg/data/gamma#FT-5002",
+    "purdue_level": 0
    }
   },
   {
@@ -131596,7 +131635,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FT-5003"
+    "iri": "https://example.org/ogkg/data/gamma#FT-5003",
+    "purdue_level": 0
    }
   },
   {
@@ -131676,7 +131716,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FT-5004"
+    "iri": "https://example.org/ogkg/data/gamma#FT-5004",
+    "purdue_level": 0
    }
   },
   {
@@ -131756,7 +131797,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FT-5021"
+    "iri": "https://example.org/ogkg/data/gamma#FT-5021",
+    "purdue_level": 0
    }
   },
   {
@@ -131836,7 +131878,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FT-5022"
+    "iri": "https://example.org/ogkg/data/gamma#FT-5022",
+    "purdue_level": 0
    }
   },
   {
@@ -131916,7 +131959,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FT-5023"
+    "iri": "https://example.org/ogkg/data/gamma#FT-5023",
+    "purdue_level": 0
    }
   },
   {
@@ -131996,7 +132040,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FT-5024"
+    "iri": "https://example.org/ogkg/data/gamma#FT-5024",
+    "purdue_level": 0
    }
   },
   {
@@ -132076,7 +132121,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#XV-501"
+    "iri": "https://example.org/ogkg/data/gamma#XV-501",
+    "purdue_level": 0
    }
   },
   {
@@ -132185,7 +132231,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#XV-502"
+    "iri": "https://example.org/ogkg/data/gamma#XV-502",
+    "purdue_level": 0
    }
   },
   {
@@ -132294,7 +132341,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#TT-4022"
+    "iri": "https://example.org/ogkg/data/gamma#TT-4022",
+    "purdue_level": 0
    }
   },
   {
@@ -132374,7 +132422,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#TT-4024"
+    "iri": "https://example.org/ogkg/data/gamma#TT-4024",
+    "purdue_level": 0
    }
   },
   {
@@ -132454,7 +132503,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#TT-4026"
+    "iri": "https://example.org/ogkg/data/gamma#TT-4026",
+    "purdue_level": 0
    }
   },
   {
@@ -132534,7 +132584,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#TT-4036"
+    "iri": "https://example.org/ogkg/data/gamma#TT-4036",
+    "purdue_level": 0
    }
   },
   {
@@ -132614,7 +132665,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#TT-4038"
+    "iri": "https://example.org/ogkg/data/gamma#TT-4038",
+    "purdue_level": 0
    }
   },
   {
@@ -132694,7 +132746,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#TT-4040"
+    "iri": "https://example.org/ogkg/data/gamma#TT-4040",
+    "purdue_level": 0
    }
   },
   {
@@ -132774,7 +132827,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#TT-4042"
+    "iri": "https://example.org/ogkg/data/gamma#TT-4042",
+    "purdue_level": 0
    }
   },
   {
@@ -132854,7 +132908,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#BDV-401"
+    "iri": "https://example.org/ogkg/data/gamma#BDV-401",
+    "purdue_level": 0
    }
   },
   {
@@ -132963,7 +133018,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#PDT-3036"
+    "iri": "https://example.org/ogkg/data/gamma#PDT-3036",
+    "purdue_level": 0
    }
   },
   {
@@ -133043,7 +133099,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#PDT-3038"
+    "iri": "https://example.org/ogkg/data/gamma#PDT-3038",
+    "purdue_level": 0
    }
   },
   {
@@ -133123,7 +133180,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FV-1465"
+    "iri": "https://example.org/ogkg/data/gamma#FV-1465",
+    "purdue_level": 0
    }
   },
   {
@@ -133228,7 +133286,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FV-1466"
+    "iri": "https://example.org/ogkg/data/gamma#FV-1466",
+    "purdue_level": 0
    }
   },
   {
@@ -133333,7 +133392,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FV-1467"
+    "iri": "https://example.org/ogkg/data/gamma#FV-1467",
+    "purdue_level": 0
    }
   },
   {
@@ -133438,7 +133498,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FV-1468"
+    "iri": "https://example.org/ogkg/data/gamma#FV-1468",
+    "purdue_level": 0
    }
   },
   {
@@ -133543,7 +133604,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FV-2465"
+    "iri": "https://example.org/ogkg/data/gamma#FV-2465",
+    "purdue_level": 0
    }
   },
   {
@@ -133648,7 +133710,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FV-2466"
+    "iri": "https://example.org/ogkg/data/gamma#FV-2466",
+    "purdue_level": 0
    }
   },
   {
@@ -133753,7 +133816,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FV-2467"
+    "iri": "https://example.org/ogkg/data/gamma#FV-2467",
+    "purdue_level": 0
    }
   },
   {
@@ -133858,7 +133922,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FV-2468"
+    "iri": "https://example.org/ogkg/data/gamma#FV-2468",
+    "purdue_level": 0
    }
   },
   {
@@ -133963,7 +134028,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FV-3001"
+    "iri": "https://example.org/ogkg/data/gamma#FV-3001",
+    "purdue_level": 0
    }
   },
   {
@@ -134068,7 +134134,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FV-3002"
+    "iri": "https://example.org/ogkg/data/gamma#FV-3002",
+    "purdue_level": 0
    }
   },
   {
@@ -134173,7 +134240,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FV-3003"
+    "iri": "https://example.org/ogkg/data/gamma#FV-3003",
+    "purdue_level": 0
    }
   },
   {
@@ -134278,7 +134346,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FV-3004"
+    "iri": "https://example.org/ogkg/data/gamma#FV-3004",
+    "purdue_level": 0
    }
   },
   {
@@ -134383,7 +134452,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FV-4001"
+    "iri": "https://example.org/ogkg/data/gamma#FV-4001",
+    "purdue_level": 0
    }
   },
   {
@@ -134488,7 +134558,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FV-4002"
+    "iri": "https://example.org/ogkg/data/gamma#FV-4002",
+    "purdue_level": 0
    }
   },
   {
@@ -134593,7 +134664,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FV-4003"
+    "iri": "https://example.org/ogkg/data/gamma#FV-4003",
+    "purdue_level": 0
    }
   },
   {
@@ -134698,7 +134770,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FV-4004"
+    "iri": "https://example.org/ogkg/data/gamma#FV-4004",
+    "purdue_level": 0
    }
   },
   {
@@ -134803,7 +134876,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FV-5001"
+    "iri": "https://example.org/ogkg/data/gamma#FV-5001",
+    "purdue_level": 0
    }
   },
   {
@@ -134908,7 +134982,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FV-5002"
+    "iri": "https://example.org/ogkg/data/gamma#FV-5002",
+    "purdue_level": 0
    }
   },
   {
@@ -135013,7 +135088,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FV-5003"
+    "iri": "https://example.org/ogkg/data/gamma#FV-5003",
+    "purdue_level": 0
    }
   },
   {
@@ -135118,7 +135194,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FV-5004"
+    "iri": "https://example.org/ogkg/data/gamma#FV-5004",
+    "purdue_level": 0
    }
   },
   {
@@ -135223,7 +135300,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FV-5021"
+    "iri": "https://example.org/ogkg/data/gamma#FV-5021",
+    "purdue_level": 0
    }
   },
   {
@@ -135328,7 +135406,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FV-5022"
+    "iri": "https://example.org/ogkg/data/gamma#FV-5022",
+    "purdue_level": 0
    }
   },
   {
@@ -135433,7 +135512,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FV-5023"
+    "iri": "https://example.org/ogkg/data/gamma#FV-5023",
+    "purdue_level": 0
    }
   },
   {
@@ -135538,7 +135618,8 @@
     ],
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#FV-5024"
+    "iri": "https://example.org/ogkg/data/gamma#FV-5024",
+    "purdue_level": 0
    }
   },
   {
@@ -139095,7 +139176,8 @@
    "props": {
     "sector": "1b",
     "site": "gamma",
-    "iri": "https://example.org/ogkg/data/gamma#P-BLEND"
+    "iri": "https://example.org/ogkg/data/gamma#P-BLEND",
+    "isa95_function": "ProductionOperations"
    }
   },
   {

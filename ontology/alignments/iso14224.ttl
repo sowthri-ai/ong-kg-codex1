@@ -1,0 +1,63 @@
+@prefix ogkg:  <https://example.org/ogkg/core#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+
+# =============================================================================
+#  Alignment: OGKG  ->  ISO 14224:2016 (reliability and maintenance data)
+#
+#  1. Taxonomy levels (ISO 14224 Figure 3) on the asset-spine classes.
+#  2. Equipment class codes (ISO 14224 Table A.4) on OGKG equipment classes.
+#     Codes are inherited down the class hierarchy; ogkg/standards.py resolves the
+#     most specific one. "none" marks an OGKG equipment class with no ISO 14224 class.
+#  3. Failure, maintenance and equipment data requirements are checked on the data
+#     by ogkg/conformance.py (ISO 14224 Tables 5, 6 and 8 and Annex B code tables).
+#
+#  ISO 14224 is a licensed standard. Only short codes and level numbers are used
+#  here; no text from the standard is reproduced. Codes marked "lookup required"
+#  must be confirmed against the client's licensed copy before production use.
+# =============================================================================
+
+<https://example.org/ogkg/align/iso14224> a owl:Ontology ;
+    rdfs:label "OGKG alignment to ISO 14224:2016" ;
+    owl:versionInfo "0.5.0" ; owl:imports <https://example.org/ogkg/core> ; owl:versionIRI <https://example.org/ogkg/align/iso14224/0.5.0> .
+
+ogkg:iso14224Level a owl:AnnotationProperty ; rdfs:comment "ISO 14224 taxonomy level (1-9) of an asset-spine class; 0 = OGKG extension." .
+
+# --- 1. Taxonomy levels (OGKG L-number -> ISO 14224 level)
+ogkg:Industry         ogkg:iso14224Level 1 .
+ogkg:Segment          ogkg:iso14224Level 2 .
+ogkg:BusinessCategory ogkg:iso14224Level 3 ; rdfs:comment "ISO level 3 installation category (e.g. refining); OGKG L3 Installation is the installation itself." .
+ogkg:Installation     ogkg:iso14224Level 3 .
+ogkg:PlantUnit        ogkg:iso14224Level 4 .
+ogkg:SectionSystem    ogkg:iso14224Level 5 .
+ogkg:EquipmentUnit    ogkg:iso14224Level 6 .
+ogkg:Subunit          ogkg:iso14224Level 7 .
+ogkg:MaintainableItem ogkg:iso14224Level 8 .
+ogkg:Part             ogkg:iso14224Level 9 .
+ogkg:DataPoint        ogkg:iso14224Level 0 ; rdfs:comment "OGKG extension below ISO level 9: signals and results." .
+
+# --- 2. Equipment class codes (ISO 14224:2016 Table A.4)
+ogkg:Pump              ogkg:iso14224Code "PU" ; ogkg:verificationStatus "practitioner: confirm against licensed ISO 14224:2016 Table A.4" .
+ogkg:Compressor        ogkg:iso14224Code "CO" ; ogkg:verificationStatus "practitioner: confirm against licensed ISO 14224:2016 Table A.4" .
+ogkg:ElectricMotor     ogkg:iso14224Code "EM" ; ogkg:verificationStatus "practitioner: confirm against licensed ISO 14224:2016 Table A.4" .
+ogkg:SteamTurbine      ogkg:iso14224Code "ST" ; ogkg:verificationStatus "practitioner: confirm against licensed ISO 14224:2016 Table A.4" .
+ogkg:PowerRecoveryExpander ogkg:iso14224Code "TE" ; ogkg:verificationStatus "practitioner: closest class (turboexpanders); confirm" .
+ogkg:HeatExchanger     ogkg:iso14224Code "HE" ; ogkg:verificationStatus "practitioner: confirm against licensed ISO 14224:2016 Table A.4" .
+ogkg:FiredHeater       ogkg:iso14224Code "HB" ; ogkg:verificationStatus "practitioner: confirm against licensed ISO 14224:2016 Table A.4" .
+ogkg:WasteHeatBoiler   ogkg:iso14224Code "HB" ; ogkg:verificationStatus "practitioner: confirm against licensed ISO 14224:2016 Table A.4" .
+ogkg:Vessel            ogkg:iso14224Code "VE" ; ogkg:verificationStatus "practitioner: confirm against licensed ISO 14224:2016 Table A.4" .
+ogkg:PipingCircuit     ogkg:iso14224Code "PI" ; ogkg:verificationStatus "practitioner: confirm against licensed ISO 14224:2016 Table A.4" .
+ogkg:Valve             ogkg:iso14224Code "VA" ; ogkg:verificationStatus "practitioner: confirm against licensed ISO 14224:2016 Table A.4" .
+ogkg:InputDevice       ogkg:iso14224Code "IP" ; ogkg:verificationStatus "practitioner: confirm against licensed ISO 14224:2016 Table A.4" .
+ogkg:StorageTank       ogkg:iso14224Code "TA" ; ogkg:verificationStatus "lookup required: storage-tank class code added in the 2016 edition" .
+ogkg:ElectricalDistribution ogkg:iso14224Code "SG" ; ogkg:verificationStatus "lookup required: switchgear vs power transformer (PT) split per item" .
+ogkg:Crusher                  ogkg:iso14224Code "none" ; rdfs:comment "Coke crusher: no ISO 14224 equipment class; OGKG extension." .
+ogkg:DecokingSystem           ogkg:iso14224Code "none" ; rdfs:comment "Hydraulic decoking package: no ISO 14224 equipment class; OGKG extension." .
+ogkg:ChemicalInjectionPackage ogkg:iso14224Code "none" ; rdfs:comment "No ISO 14224 equipment class; OGKG extension." .
+
+# --- 3. Annex B code tables used by failure records
+ogkg:FailureMode      ogkg:alignedTo "ISO 14224:2016 Annex B failure-mode tables (per equipment class)" .
+ogkg:FailureMechanism ogkg:alignedTo "ISO 14224:2016 Table B.2" .
+ogkg:RootCause        ogkg:alignedTo "ISO 14224:2016 Table B.3 (failure cause)" .
+ogkg:DetectionMethod  ogkg:alignedTo "ISO 14224:2016 Table B.4" .
