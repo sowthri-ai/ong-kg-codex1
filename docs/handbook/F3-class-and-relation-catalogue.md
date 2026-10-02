@@ -2,7 +2,7 @@
 
 > Generated from `ontology/ogkg-core.ttl` by `python -m ogkg.catalogue`. Do not edit by hand; change the ontology and regenerate.
 
-Ontology version 0.5.0 · 129 classes · 108 object properties · 37 datatype properties.
+Ontology version 1.0.0 · 129 classes · 108 object properties · 37 datatype properties.
 
 ## F3.1 Spine classes by level
 

@@ -1,6 +1,6 @@
 # OGKG — Oil & Gas Value Chain Knowledge Graph
 
-> **Status:** prototype v0.1 working · ontology v0.2 specified · Refinery Gamma whole-refinery reference model (NCI ≈ 15; CDU, FCC, hydrocracker and coker at full L0–L10 depth) · private repository · synthetic data only
+> **Status:** **v1.0.0 — base version** (2026-10-02; see [CHANGELOG](CHANGELOG.md)) · ontology 1.0.0, OWL 2 DL, aligned to ISO 15926-14, IOF/BFO, ISO 14224, ISA-95/Purdue, CFIHOS and MIMOSA CCOM · Refinery Gamma whole-refinery reference model (NCI ≈ 15; CDU, FCC, hydrocracker and coker at full L0–L10 depth) · private repository · synthetic data only
 > **Owner:** Sowthri (Principal Data & Industrial AI Architect) · **Licence:** proprietary, all rights reserved (see [LICENSE](LICENSE))
 
 OGKG is a governed knowledge layer for the oil and gas value chain. Every AI solution (copilot, agent, optimiser, analytics app) queries it for facts and figures instead of recalling them, and uses it to find cross-domain insights that siloed systems cannot produce.

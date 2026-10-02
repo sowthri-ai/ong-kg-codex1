@@ -7,7 +7,7 @@
 @prefix owl:   <http://www.w3.org/2002/07/owl#> .
 
 # =============================================================================
-#  OGKG SHACL shapes v0.5.0 (handbook C4.5)
+#  OGKG SHACL shapes v1.0.0 (handbook C4.5)
 #  Run with pySHACL or the triplestore's SHACL engine against the RDF mirror.
 # =============================================================================
 

@@ -3,8 +3,8 @@
   "name": "Refinery Gamma \u2014 reference model (500 kbpd, Nelson complexity \u2248 15)",
   "as_of": "2026-09-28",
   "site": "gamma",
-  "version": "0.5.0",
-  "build_id": "gamma-0.5.0-2026-09-30",
+  "version": "1.0.0",
+  "build_id": "gamma-1.0.0-2026-09-30",
   "disclaimer": "Fictional refinery and synthetic engineering, price and event data for demonstration. Crude assays and prices are illustrative. Event patterns are seeded to demonstrate detection. Not for design, operating or commercial decisions."
  },
  "nodes": [

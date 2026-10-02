@@ -20,7 +20,7 @@
 
 <https://example.org/ogkg/align/iso14224> a owl:Ontology ;
     rdfs:label "OGKG alignment to ISO 14224:2016" ;
-    owl:versionInfo "0.5.0" ; owl:imports <https://example.org/ogkg/core> ; owl:versionIRI <https://example.org/ogkg/align/iso14224/0.5.0> .
+    owl:versionInfo "1.0.0" ; owl:imports <https://example.org/ogkg/core> ; owl:versionIRI <https://example.org/ogkg/align/iso14224/1.0.0> .
 
 ogkg:iso14224Level a owl:AnnotationProperty ; rdfs:comment "ISO 14224 taxonomy level (1-9) of an asset-spine class; 0 = OGKG extension." .
 

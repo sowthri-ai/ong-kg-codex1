@@ -17,7 +17,7 @@
 
 <https://example.org/ogkg/align/iso15926-14> a owl:Ontology ;
     rdfs:label "OGKG alignment to ISO 15926-14 (LIS-14)" ;
-    owl:versionInfo "0.5.0" ; owl:imports <https://example.org/ogkg/core> ; owl:versionIRI <https://example.org/ogkg/align/iso15926-14/0.5.0> ;
+    owl:versionInfo "1.0.0" ; owl:imports <https://example.org/ogkg/core> ; owl:versionIRI <https://example.org/ogkg/align/iso15926-14/1.0.0> ;
     rdfs:comment "Class and property IRIs verified against the LIS-14 core ontology published at posccaesar.org/ontology/lis14/ont/core on 2026-10-01." .
 
 skos:closeMatch   a owl:AnnotationProperty .

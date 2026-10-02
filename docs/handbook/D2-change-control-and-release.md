@@ -4,11 +4,13 @@
 
 | Artefact | Scheme | Example | Breaking change means |
 |---|---|---|---|
-| Ontology | Semantic versioning in `owl:versionInfo` | 0.2.0 | A class or relation removed, renamed or re-parented |
-| Named graph | `urn:ogkg:ontology:v<major>.<minor>` | `urn:ogkg:ontology:v0.2` | New major or minor |
+| Ontology | Semantic versioning in `owl:versionInfo` and `owl:versionIRI` | 1.0.0 | A class or relation removed, renamed or re-parented |
+| Named graph | `urn:ogkg:ontology:v<major>.<minor>` | `urn:ogkg:ontology:v1.0` | New major or minor |
 | Access-layer tools | Tool schema version | `get_context@1` | Response fields removed or renamed |
 | Insights | ID + version | `true-crude-value@1` | Logic change that alters results |
-| Dataset (demo) | Tied to repository tag | `v0.2.0` | Fact IDs renumbered |
+| Dataset (demo) | Tied to repository tag | `v1.0.0` | Fact IDs renumbered |
+
+**Baseline.** 1.0.0 (tag `v1.0.0`, 2026-10-02) is the base version (ADR-0013). Releases before it (0.x) were pre-baseline and carried no compatibility promise. From 1.0.0: **major** = a breaking change as defined above, with a migration note; **minor** = additive classes, relations, data or features; **patch** = fixes, documentation and data corrections that change no schema.
 
 IRIs never change between versions. Deprecated classes keep their IRI with `owl:deprecated true` and an `rdfs:seeAlso` pointing to the replacement.
 

@@ -18,7 +18,7 @@
 
 <https://example.org/ogkg/align/cfihos> a owl:Ontology ;
     rdfs:label "OGKG alignment to CFIHOS" ;
-    owl:versionInfo "0.5.0" ; owl:imports <https://example.org/ogkg/core> ; owl:versionIRI <https://example.org/ogkg/align/cfihos/0.5.0> .
+    owl:versionInfo "1.0.0" ; owl:imports <https://example.org/ogkg/core> ; owl:versionIRI <https://example.org/ogkg/align/cfihos/1.0.0> .
 
 ogkg:cfihosClassName a owl:AnnotationProperty ;
     rdfs:comment "Plain-language CFIHOS tag / equipment class name to look up in the RDL (code to be filled from the project's CFIHOS release)." .

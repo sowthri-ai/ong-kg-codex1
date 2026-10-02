@@ -11,7 +11,7 @@
 #  Thresholds are illustrative until confirmed by client SMEs.
 # =============================================================================
 
-<https://example.org/ogkg/ref> a owl:Ontology ; rdfs:label "OGKG reference data" ; owl:versionInfo "0.2.0" ;
+<https://example.org/ogkg/ref> a owl:Ontology ; rdfs:label "OGKG reference data" ; owl:versionInfo "1.0.0" ; owl:versionIRI <https://example.org/ogkg/ref/1.0.0> ;
     owl:imports <https://example.org/ogkg/core> , <https://example.org/ogkg/vocab> .
 
 # --- Accountable roles (generic)

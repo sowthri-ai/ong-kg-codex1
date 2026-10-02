@@ -17,7 +17,7 @@
 
 <https://example.org/ogkg/align/mimosa-ccom> a owl:Ontology ;
     rdfs:label "OGKG exchange profile for MIMOSA CCOM" ;
-    owl:versionInfo "0.5.0" ; owl:imports <https://example.org/ogkg/core> ; owl:versionIRI <https://example.org/ogkg/align/mimosa-ccom/0.5.0> .
+    owl:versionInfo "1.0.0" ; owl:imports <https://example.org/ogkg/core> ; owl:versionIRI <https://example.org/ogkg/align/mimosa-ccom/1.0.0> .
 
 ogkg:Enterprise         ogkg:ccomEntity "Enterprise" ; ogkg:verificationStatus "publication: CCOM 4.x; confirm against XSD" .
 ogkg:Installation       ogkg:ccomEntity "Site" ;       ogkg:verificationStatus "publication: CCOM 4.x; confirm against XSD" .

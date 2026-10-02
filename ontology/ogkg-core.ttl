@@ -20,8 +20,8 @@
 <https://example.org/ogkg/core>
     a owl:Ontology ;
     rdfs:label "OGKG core ontology" ;
-    owl:versionInfo "0.5.0" ;
-    owl:versionIRI <https://example.org/ogkg/core/0.5.0> ;
+    owl:versionInfo "1.0.0" ;
+    owl:versionIRI <https://example.org/ogkg/core/1.0.0> ;
     dcterms:created "2026-09-30"^^xsd:date ;
     dcterms:description "Dual-spine L0-L10 model of the O&G value chain with backbones, facets, DNA inheritance, facts with provenance, problems and governed hypotheses." ;
     rdfs:comment "Proprietary. Synthetic reference only. See LICENSE." .

@@ -7,7 +7,7 @@
 #  OGKG controlled vocabularies (SKOS). Classification tags are never free text.
 # =============================================================================
 
-<https://example.org/ogkg/vocab> a owl:Ontology ; rdfs:label "OGKG vocabularies" ; owl:versionInfo "0.5.0" ; owl:versionIRI <https://example.org/ogkg/vocab/0.5.0> .
+<https://example.org/ogkg/vocab> a owl:Ontology ; rdfs:label "OGKG vocabularies" ; owl:versionInfo "1.0.0" ; owl:versionIRI <https://example.org/ogkg/vocab/1.0.0> .
 
 # --- Facets (B2)
 vocab:FacetScheme a skos:ConceptScheme ; skos:prefLabel "Facets"@en .

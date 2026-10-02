@@ -1,6 +1,22 @@
 # Changelog
 
 ## Unreleased
+
+## 1.0.0 — 2026-10-02 (base version)
+OGKG 1.0.0 is the baseline release. From here, changes follow semantic versioning ([D2](docs/handbook/D2-change-control-and-release.md), ADR-0013): every later version is described as a change against 1.0.0.
+
+What 1.0.0 contains:
+- **Ontology 1.0.0:** dual L0–L10 spine; functional locations separate from physical items; asserted `directPartOf` with transitive `partOf`; disjoint upper partition; every class and relation used by the data declared with domain and range; version IRIs and XML catalog for all modules; OWL 2 DL (checked).
+- **Standards:** alignment modules for ISO 15926-14, IOF / BFO, ISO 14224, ISA-95 / Purdue, CFIHOS and MIMOSA CCOM; 40 automated conformance checks (handbook B7).
+- **Reference model:** Refinery Gamma, 39 units, NCI ≈ 15, full L6–L10 depth for CDU, FCC, hydrocracker and coker; 8,299 nodes, 10,896 edges, 12,570 bitemporal facts with provenance; independent meter balances with residuals; integrity (IOW limits, damage mechanisms, RBI, TMLs, PSVs, SIFs); economics (prices, assays, LP, CO2, margins); failure history coded to ISO 14224.
+- **Insights:** 11 refinery insights with value basis and range, degrading gracefully on missing data.
+- **Validation:** SHACL-equivalent shapes incl. domain / range, OWL 2 DL profile check, conformance report; 116 tests.
+- **Views:** refinery explorer and the L0–L10 hierarchy page.
+
+Known limitations carried into 1.x (council issues still open): access-layer security, audit, freshness and answer verification; onboarding connectors and entity resolution; QUDT unit mapping and named graphs; rdflib / pySHACL / reasoner runs in CI; code tables still to confirm against licensed copies (ISO 14224, CFIHOS RDL, CCOM XSD).
+
+Changes since 0.4.0 that make up this release:
+- v0.5 data contract and identity module; data layer (independent balances, mass basis, networks, integrity, economics, time model, identity); insights degrade gracefully on missing data.
 - Hierarchy page `explorer/refinery_gamma_hierarchy.html` (`python -m ogkg.hierarchy_view`): the whole L0–L10 asset and process hierarchy with a level ladder, each node's ISO 14224 / ISA-95 / Purdue / CCOM / CFIHOS / ISO 15926-14 / IOF placement resolved from the alignment modules, links beyond the hierarchy and latest cited facts. A test keeps the committed page in sync with the graph.
 - Standards alignment and conformance (ADR-0012, handbook B7): functional locations separated from physical items (`ogkg:FunctionalLocation`, disjoint from `ogkg:PhysicalAsset`); asserted hierarchy is `ogkg:directPartOf`; 16 relations and 19 classes declared with domain and range; upper partition made disjoint; version IRIs and an XML catalog for all modules.
 - Six alignment modules in `ontology/alignments/`: ISO 15926-14 (LIS-14), IOF Core + Maintenance / BFO, ISO 14224, ISA-95 / Purdue, CFIHOS, MIMOSA CCOM, each external identifier with a verification status.

@@ -1,4 +1,4 @@
-# Data contract for `kg.json` (v0.5)
+# Data contract for `kg.json` (1.0.0; fields marked v0.5 were introduced in 0.5)
 
 This is the interface between the builders (`ogkg/cdu_gamma.py`, `ogkg/refinery_*.py`), the RDF exporter and validator (`ogkg/ttl_v02.py`, `ogkg/shacl_lite.py`), the access layer (`ogkg/kg.py`, `ogkg/store.py`, `ogkg/mcp_server.py`) and the onboarding connectors (`ogkg/connectors/`). Every field added in v0.5 is **optional**, so readers must tolerate its absence.
 
@@ -8,7 +8,7 @@ This is the interface between the builders (`ogkg/cdu_gamma.py`, `ogkg/refinery_
 {"meta": {...}, "nodes": [...], "edges": [...], "facts": [...]}
 ```
 
-`meta` adds `site` (e.g. `"gamma"`), `version` (e.g. `"0.5.0"`) and `build_id`.
+`meta` adds `site` (e.g. `"gamma"`), `version` (e.g. `"1.0.0"`) and `build_id`.
 
 ## 2. Nodes
 

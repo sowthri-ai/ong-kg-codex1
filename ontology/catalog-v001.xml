@@ -2,11 +2,11 @@
 <!-- OASIS XML catalog: lets Protégé and the OWL API resolve OGKG module IRIs to the files in this folder. -->
 <catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
     <uri name="https://example.org/ogkg/core" uri="ogkg-core.ttl"/>
-    <uri name="https://example.org/ogkg/core/0.5.0" uri="ogkg-core.ttl"/>
+    <uri name="https://example.org/ogkg/core/1.0.0" uri="ogkg-core.ttl"/>
     <uri name="https://example.org/ogkg/vocab" uri="ogkg-vocab.ttl"/>
-    <uri name="https://example.org/ogkg/vocab/0.5.0" uri="ogkg-vocab.ttl"/>
+    <uri name="https://example.org/ogkg/vocab/1.0.0" uri="ogkg-vocab.ttl"/>
     <uri name="https://example.org/ogkg/ext/cdu" uri="ext/ogkg-cdu.ttl"/>
-    <uri name="https://example.org/ogkg/ext/cdu/0.5.0" uri="ext/ogkg-cdu.ttl"/>
+    <uri name="https://example.org/ogkg/ext/cdu/1.0.0" uri="ext/ogkg-cdu.ttl"/>
     <uri name="https://example.org/ogkg/align/iso15926-14" uri="alignments/iso15926-14.ttl"/>
     <uri name="https://example.org/ogkg/align/iof-bfo" uri="alignments/iof-bfo.ttl"/>
     <uri name="https://example.org/ogkg/align/iso14224" uri="alignments/iso14224.ttl"/>
