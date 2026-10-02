@@ -1,6 +1,7 @@
 # Changelog
 
 ## Unreleased
+- Hierarchy page `explorer/refinery_gamma_hierarchy.html` (`python -m ogkg.hierarchy_view`): the whole L0–L10 asset and process hierarchy with a level ladder, each node's ISO 14224 / ISA-95 / Purdue / CCOM / CFIHOS / ISO 15926-14 / IOF placement resolved from the alignment modules, links beyond the hierarchy and latest cited facts. A test keeps the committed page in sync with the graph.
 - Standards alignment and conformance (ADR-0012, handbook B7): functional locations separated from physical items (`ogkg:FunctionalLocation`, disjoint from `ogkg:PhysicalAsset`); asserted hierarchy is `ogkg:directPartOf`; 16 relations and 19 classes declared with domain and range; upper partition made disjoint; version IRIs and an XML catalog for all modules.
 - Six alignment modules in `ontology/alignments/`: ISO 15926-14 (LIS-14), IOF Core + Maintenance / BFO, ISO 14224, ISA-95 / Purdue, CFIHOS, MIMOSA CCOM, each external identifier with a verification status.
 - `ogkg/owl_profile.py` (OWL 2 DL structural checker), `ogkg/standards.py` (resolves codes from the alignment modules; sets Purdue levels and ISA-95 functions), `ogkg/conformance.py` (40 checks across 8 standards; report in `data/cdu-gamma/conformance.md`); `shacl_lite` adds ISO 14224 failure-record, serial-item, Purdue and ISA-95 shapes and a generic domain / range check; facts export valid-from, recorded-at (PROV), status, supersedes, sensitivity and value range.

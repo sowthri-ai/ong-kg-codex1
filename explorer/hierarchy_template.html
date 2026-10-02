@@ -1,0 +1,326 @@
+<title>Refinery Gamma Hierarchy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: level ladder across the top (both spines, L0-L10, with standards), then a two-pane register: tree on the left, selected node on the right. */
+:root {
+  --bg: #f3f5f6; --panel: #ffffff; --ink: #18232b; --muted: #5a6b76; --line: #d8dfe3;
+  --accent: #0b6f78; --accent-soft: #e0f0f1; --path: #b5651d; --path-soft: #fbeedf;
+  --asset: #0b6f78; --process: #6a4fa3; --ctx: #6b7780;
+  --f-display: "Barlow Semi Condensed", "Arial Narrow", system-ui, sans-serif;
+  --f-body: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #11171b; --panel: #182127; --ink: #e3eaee; --muted: #93a4ae; --line: #2a363e;
+  --accent: #4fb8c1; --accent-soft: #163338; --path: #e39a52; --path-soft: #3a2a1a;
+  --asset: #4fb8c1; --process: #a88ee0; --ctx: #93a4ae; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #11171b; --panel: #182127; --ink: #e3eaee; --muted: #93a4ae; --line: #2a363e;
+  --accent: #4fb8c1; --accent-soft: #163338; --path: #e39a52; --path-soft: #3a2a1a;
+  --asset: #4fb8c1; --process: #a88ee0; --ctx: #93a4ae; color-scheme: dark }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.45; }
+.wrap { max-width: 1320px; margin: 0 auto; padding-inline: 20px; padding-block: 24px 40px; display: grid; gap: 20px; }
+h1, h2, h3 { font-family: var(--f-display); margin: 0; text-wrap: balance; letter-spacing: .01em; }
+h1 { font-size: 2rem; font-weight: 700; }
+h2 { font-size: 1.15rem; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.lede { margin: 6px 0 0; color: var(--muted); max-width: 70ch; }
+.mono { font-family: var(--f-mono); font-size: .86em; }
+.eyebrow { font-family: var(--f-display); text-transform: uppercase; letter-spacing: .08em; font-size: .78rem; color: var(--muted); font-weight: 600; }
+
+/* ladder */
+.ladder-wrap { overflow-x: auto; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; }
+table.ladder { border-collapse: collapse; width: 100%; min-width: 980px; font-variant-numeric: tabular-nums; }
+.ladder th, .ladder td { padding: 6px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; font-size: .9rem; }
+.ladder th { font-family: var(--f-display); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; font-size: .76rem; color: var(--muted); background: var(--bg); }
+.ladder td.lv { font-family: var(--f-mono); font-weight: 600; color: var(--accent); width: 44px; }
+.ladder td.n { text-align: right; font-family: var(--f-mono); color: var(--muted); width: 60px; }
+.ladder tr:last-child td { border-bottom: 0; }
+.ladder tr.hit td { background: var(--path-soft); }
+.ladder .cls-a { color: var(--asset); font-weight: 600; }
+.ladder .cls-p { color: var(--process); font-weight: 600; }
+.ladder .std { color: var(--muted); font-size: .84rem; }
+.ladder .sep { border-left: 2px solid var(--line); }
+
+/* panes */
+.panes { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+@media (max-width: 900px) { .panes { grid-template-columns: minmax(0, 1fr); } }
+.pane { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; min-width: 0; }
+.pane-head { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; padding: 12px 14px; border-bottom: 1px solid var(--line); }
+.controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 5px; overflow: hidden; }
+.seg button { font: 600 .82rem var(--f-display); letter-spacing: .04em; text-transform: uppercase; background: transparent; color: var(--muted); border: 0; padding: 6px 10px; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--accent); color: var(--panel); }
+.search { position: relative; }
+.search input { font: 400 .9rem var(--f-body); padding: 6px 10px; border: 1px solid var(--line); border-radius: 5px; background: var(--bg); color: var(--ink); width: 220px; max-width: 100%; }
+.results { position: absolute; z-index: 5; top: 110%; left: 0; width: 340px; max-width: 80vw; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; box-shadow: 0 8px 24px rgba(0,0,0,.18); max-height: 320px; overflow: auto; }
+.results button { display: block; width: 100%; text-align: left; border: 0; background: transparent; color: var(--ink); padding: 6px 10px; cursor: pointer; font: .88rem var(--f-body); }
+.results button:hover, .results button:focus { background: var(--accent-soft); }
+button:focus-visible, input:focus-visible { outline: 2px solid var(--path); outline-offset: 1px; }
+
+.tree { max-height: 72vh; overflow: auto; padding-block: 6px; font-size: .9rem; }
+.row { display: grid; grid-template-columns: auto auto auto minmax(0, 1fr) auto; gap: 8px; align-items: baseline; padding: 3px 12px 3px 0; cursor: pointer; white-space: nowrap; border-left: 3px solid transparent; }
+.row:hover { background: var(--accent-soft); }
+.row.on-path { border-left-color: var(--path); }
+.row.sel { background: var(--path-soft); border-left-color: var(--path); }
+.caret { width: 16px; text-align: center; color: var(--muted); font-family: var(--f-mono); user-select: none; }
+.lvb { font: 600 .72rem var(--f-mono); padding: 1px 5px; border-radius: 3px; background: var(--bg); color: var(--muted); min-width: 30px; text-align: center; }
+.lvb.a { color: var(--asset); } .lvb.p { color: var(--process); }
+.tid { font-family: var(--f-mono); font-size: .84rem; font-weight: 600; }
+.tname { overflow: hidden; text-overflow: ellipsis; color: var(--ink); }
+.tname small { color: var(--muted); margin-left: 6px; }
+.cnt { font: .75rem var(--f-mono); color: var(--muted); }
+
+/* detail */
+.detail { padding: 14px 16px 18px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+.detail > * { min-width: 0; }
+.crumbs { display: flex; flex-wrap: wrap; gap: 4px; font-size: .8rem; color: var(--muted); }
+.crumbs button { border: 0; background: none; padding: 0; color: var(--accent); cursor: pointer; font: .8rem var(--f-mono); }
+.crumbs span { color: var(--muted); }
+.dhead h3 { font-size: 1.5rem; font-weight: 700; }
+.dhead .sub { color: var(--muted); margin-top: 2px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.chip { font: 600 .74rem var(--f-mono); padding: 2px 7px; border-radius: 3px; border: 1px solid var(--line); color: var(--muted); }
+.chip.k { color: var(--accent); border-color: var(--accent); }
+dl.std { display: grid; grid-template-columns: minmax(110px, auto) minmax(0, 1fr); gap: 4px 14px; margin: 6px 0 0; font-size: .9rem; }
+dl.std dt { color: var(--muted); }
+dl.std dd { margin: 0; font-family: var(--f-mono); font-size: .84rem; overflow-wrap: anywhere; }
+.links { display: grid; gap: 6px; margin-top: 6px; }
+.lrow { display: grid; grid-template-columns: minmax(130px, auto) minmax(0, 1fr); gap: 10px; font-size: .88rem; }
+.lrow .rel { font: 600 .74rem var(--f-mono); color: var(--muted); padding-top: 2px; }
+.lrow .tg { display: flex; flex-wrap: wrap; gap: 4px 10px; min-width: 0; }
+.lrow button { border: 0; background: none; padding: 0; cursor: pointer; color: var(--accent); font: .84rem var(--f-mono); text-align: left; }
+.lrow .ctx { color: var(--ink); font-size: .86rem; }
+.factwrap { overflow-x: auto; margin-top: 6px; }
+table.facts { border-collapse: collapse; width: 100%; font-size: .84rem; font-variant-numeric: tabular-nums; }
+.facts th, .facts td { padding: 4px 8px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.facts th { color: var(--muted); font: 600 .72rem var(--f-display); text-transform: uppercase; letter-spacing: .05em; }
+.facts td.v { font-family: var(--f-mono); white-space: nowrap; }
+.conf { font: 600 .7rem var(--f-mono); padding: 0 5px; border-radius: 3px; }
+.conf.high { color: var(--asset); border: 1px solid var(--asset); }
+.conf.medium { color: var(--path); border: 1px solid var(--path); }
+.conf.low { color: var(--muted); border: 1px solid var(--muted); }
+.empty { color: var(--muted); font-size: .88rem; }
+.note { color: var(--muted); font-size: .84rem; }
+@media (prefers-reduced-motion: no-preference) { .row { transition: background .12s; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">OGKG v0.5 · Refinery Gamma (fictional, 500 kbpd) · synthetic data</div>
+    <h1>Refinery Gamma hierarchy, L0 to L10</h1>
+    <p class="lede">One shared trunk splits into an asset spine (functional locations to ISO 14224 level 9, then tags) and a process spine (value streams to data elements). Every node shows its place in each standard. The sample path is the crude charge pump P-101A; pick any node to see its links and cited facts.</p>
+  </header>
+
+  <section aria-labelledby="ladder-h">
+    <h2 id="ladder-h">Level ladder</h2>
+    <div class="ladder-wrap" style="margin-top:8px">
+      <table class="ladder" id="ladder">
+        <thead><tr>
+          <th>Level</th><th>Asset spine class</th><th>Nodes</th><th>ISO 14224</th><th>ISA-95</th><th>MIMOSA CCOM</th><th>CFIHOS</th><th>ISO 15926-14</th>
+          <th class="sep">Process spine class</th><th>Nodes</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="panes">
+    <div class="pane">
+      <div class="pane-head">
+        <h2>Explorer</h2>
+        <div class="controls">
+          <div class="seg" role="group" aria-label="Spine filter">
+            <button type="button" id="f-both" aria-pressed="true">Both</button>
+            <button type="button" id="f-asset" aria-pressed="false">Asset</button>
+            <button type="button" id="f-process" aria-pressed="false">Process</button>
+          </div>
+          <div class="search">
+            <input id="q" type="search" placeholder="Find tag or name, e.g. TI-1005" autocomplete="off" aria-label="Find a node">
+            <div class="results" id="results" hidden></div>
+          </div>
+        </div>
+      </div>
+      <div class="tree" id="tree" role="tree"></div>
+    </div>
+    <aside class="pane" aria-live="polite"><div class="detail" id="detail"></div></aside>
+  </section>
+  <p class="note">Counts and links come from <span class="mono">data/cdu-gamma/kg.json</span> (__N_NODES__ nodes, __N_EDGES__ edges, __N_FACTS__ facts). Standards columns are resolved from <span class="mono">ontology/alignments/</span>; codes marked "lookup required" there still need confirming against licensed copies (handbook B7).</p>
+</div>
+
+<script id="data" type="application/json">__DATA__</script>
+<script>
+(function () {
+  const D = JSON.parse(document.getElementById('data').textContent);
+  const N = D.nodes, REL = D.rels, STD = D.std, FACTS = D.facts;
+  const ID = 0, NAME = 1, CLS = 2, LVL = 3, SPINE = 4, PAR = 5, XID = 6, PURDUE = 7, ISA = 8;
+  const byId = new Map(N.map((n, i) => [n[ID], i]));
+  const kids = N.map(() => []);
+  N.forEach((n, i) => { if (n[PAR] >= 0) kids[n[PAR]].push(i); });
+  const order = (a, b) => N[a][ID].localeCompare(N[b][ID], undefined, { numeric: true });
+  kids.forEach(k => k.sort(order));
+  const out = N.map(() => []), inn = N.map(() => []);
+  D.edges.forEach(([s, r, t]) => { out[s].push([r, t]); inn[t].push([r, s]); });
+  const desc = new Array(N.length).fill(-1);
+  const countDesc = i => { if (desc[i] >= 0) return desc[i]; let c = 0; for (const k of kids[i]) c += 1 + countDesc(k); return desc[i] = c; };
+  const spineOf = i => N[i][SPINE] === 'process' ? 'p' : (N[i][SPINE] === 'asset' ? 'a' : 't');
+
+  // ---- ladder
+  const ASSET = ['Industry','Segment','BusinessCategory','Installation','PlantUnit','SectionSystem','EquipmentUnit','Subunit','MaintainableItem','Part','DataPoint'];
+  const PROC = ['Industry','Segment','ValueStream','ProcessGroup','Process','SubProcess','Activity','Task','DecisionPoint','DataObject','DataElement'];
+  const cnt = { a: new Array(11).fill(0), p: new Array(11).fill(0) };
+  N.forEach(n => { if (n[LVL] >= 0) { if (n[SPINE] === 'asset') cnt.a[n[LVL]]++; else if (n[SPINE] === 'process') cnt.p[n[LVL]]++; else if (n[SPINE] === 'trunk') { cnt.a[n[LVL]]++; } } });
+  const S = c => STD[c] || {};
+  const iso = c => { const s = S(c); const l = s.iso14224_level; return l === undefined ? '' : (l === '0' ? 'extension' : 'level ' + l) + (s.iso14224_class ? ' · ' + s.iso14224_class : ''); };
+  const fmt = n => n.toLocaleString('en-US');
+  const tb = document.querySelector('#ladder tbody');
+  for (let l = 0; l <= 10; l++) {
+    const a = ASSET[l], p = PROC[l], s = S(a);
+    const tr = document.createElement('tr'); tr.dataset.level = l;
+    const shared = l < 2;
+    tr.innerHTML = `<td class="lv">L${l}</td><td class="cls-a">${a}</td><td class="n">${fmt(cnt.a[l])}</td>
+      <td class="std">${iso(a) || '—'}</td><td class="std">${s.isa95_level && s.isa95_level !== 'none' ? s.isa95_level : '—'}</td>
+      <td class="std">${s.ccom_entity || '—'}</td><td class="std">${s.cfihos_concept || '—'}</td><td class="std">${(s.lis14 || []).join(', ') || '—'}</td>
+      <td class="sep ${shared ? 'std' : 'cls-p'}">${shared ? 'shared trunk' : p}</td><td class="n">${shared ? '' : fmt(cnt.p[l])}</td>`;
+    tb.appendChild(tr);
+  }
+
+  // ---- tree
+  const tree = document.getElementById('tree');
+  const open = new Set();
+  let filter = 'both', selected = -1, pathSet = new Set();
+  const root = byId.get('OG');
+  const visible = i => {
+    if (filter === 'both') return true;
+    const sp = spineOf(i);
+    return sp === 't' || (filter === 'asset' ? sp === 'a' : sp === 'p');
+  };
+  function render() {
+    const frag = document.createDocumentFragment();
+    const walk = (i, depth) => {
+      if (!visible(i)) return;
+      const k = kids[i].filter(visible);
+      const row = document.createElement('div');
+      row.className = 'row' + (i === selected ? ' sel' : (pathSet.has(i) ? ' on-path' : ''));
+      row.setAttribute('role', 'treeitem'); row.tabIndex = 0; row.dataset.i = i;
+      if (k.length) row.setAttribute('aria-expanded', open.has(i));
+      row.style.paddingLeft = (8 + depth * 16) + 'px';
+      const sp = spineOf(i), n = N[i];
+      row.innerHTML = `<span class="caret">${k.length ? (open.has(i) ? '−' : '+') : '·'}</span>
+        <span class="lvb ${sp}">L${n[LVL]}</span><span class="tid">${esc(n[ID])}</span>
+        <span class="tname">${esc(stripId(n))}<small>${esc(n[CLS])}</small></span>
+        <span class="cnt">${k.length ? fmt(countDesc(i)) : ''}</span>`;
+      frag.appendChild(row);
+      if (open.has(i)) k.forEach(c => walk(c, depth + 1));
+    };
+    walk(root, 0);
+    tree.replaceChildren(frag);
+    const sel = tree.querySelector('.row.sel');
+    if (sel && !inView(sel)) sel.scrollIntoView({ block: 'center' });
+  }
+  const inView = el => { const r = el.getBoundingClientRect(), t = tree.getBoundingClientRect(); return r.top >= t.top && r.bottom <= t.bottom; };
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const stripId = n => n[NAME].startsWith(n[ID] + ' ') ? n[NAME].slice(n[ID].length + 1) : n[NAME];
+  const ancestors = i => { const a = []; while (i >= 0) { a.unshift(i); i = N[i][PAR]; } return a; };
+  tree.addEventListener('click', e => {
+    const row = e.target.closest('.row'); if (!row) return;
+    const i = +row.dataset.i;
+    if (e.target.classList.contains('caret') || i === selected) { open.has(i) ? open.delete(i) : open.add(i); render(); }
+    else select(i, false);
+  });
+  tree.addEventListener('keydown', e => {
+    const row = e.target.closest('.row'); if (!row) return;
+    const i = +row.dataset.i;
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(i, false); open.add(i); render(); focusRow(i); }
+    else if (e.key === 'ArrowRight') { open.add(i); render(); focusRow(i); }
+    else if (e.key === 'ArrowLeft') { open.delete(i); render(); focusRow(i); }
+    else if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); const sib = e.key === 'ArrowDown' ? row.nextElementSibling : row.previousElementSibling; if (sib) sib.focus(); }
+  });
+  const focusRow = i => { const r = tree.querySelector(`.row[data-i="${i}"]`); if (r) r.focus(); };
+
+  function select(i, reveal) {
+    const anc = ancestors(i);
+    if (reveal) anc.slice(0, -1).forEach(a => open.add(a));
+    if (N[i][PAR] < 0 && N[i][SPINE] !== 'trunk' && !kids[i].length) { /* context node, not in tree */ }
+    selected = i; pathSet = new Set(anc);
+    if (!visible(i)) setFilter('both', false);
+    render(); detail(i);
+    document.querySelectorAll('#ladder tr').forEach(tr => tr.classList.toggle('hit', +tr.dataset.level === N[i][LVL] && N[i][LVL] >= 0 && inTree(i)));
+  }
+  const inTree = i => { let j = i; while (N[j][PAR] >= 0) j = N[j][PAR]; return j === root; };
+
+  // ---- detail
+  const dEl = document.getElementById('detail');
+  const STDROWS = [
+    ['ISO 14224', s => [s.iso14224_level !== undefined ? (s.iso14224_level === '0' ? 'OGKG extension below level 9' : 'taxonomy level ' + s.iso14224_level) : '', s.iso14224_class ? 'equipment class ' + s.iso14224_class : ''].filter(Boolean).join(' · ')],
+    ['ISA-95', (s, n) => [s.isa95_level && s.isa95_level !== 'none' ? s.isa95_level : '', n[ISA] ? 'activity: ' + n[ISA] : ''].filter(Boolean).join(' · ')],
+    ['Purdue', (s, n) => n[PURDUE] !== null && n[PURDUE] !== undefined ? 'level ' + n[PURDUE] : ''],
+    ['MIMOSA CCOM', s => s.ccom_entity || ''],
+    ['CFIHOS', s => [s.cfihos_concept, s.cfihos_class_name ? 'class "' + s.cfihos_class_name + '" (RDL code: lookup required)' : ''].filter(Boolean).join(' · ')],
+    ['ISO 15926-14', s => (s.lis14 || []).map(x => 'lis:' + x).join(', ')],
+    ['IOF / BFO', s => (s.iof_bfo || []).map(x => x.startsWith('BFO') ? 'bfo:' + x : 'iof:' + x).join(', ')],
+  ];
+  const nodeBtn = j => (inTree(j) ? `<button type="button" data-go="${j}">${esc(N[j][ID])}</button>` : `<span class="ctx"><span class="mono">${esc(N[j][ID])}</span> ${esc(stripId(N[j]).slice(0, 60))}</span>`);
+  function detail(i) {
+    const n = N[i], s = S(n[CLS]);
+    const anc = ancestors(i);
+    const crumbs = inTree(i) ? anc.map(a => `<button type="button" data-go="${a}">${esc(N[a][ID])}</button>`).join('<span>›</span>') : '<span>Context node (outside the spines)</span>';
+    const std = STDROWS.map(([k, f]) => [k, f(s, n)]).filter(r => r[1]);
+    const xid = Object.entries(n[XID] || {});
+    const groups = {};
+    out[i].forEach(([r, t]) => (groups['→ ' + REL[r]] = groups['→ ' + REL[r]] || []).push(t));
+    inn[i].forEach(([r, t]) => (groups['← ' + REL[r]] = groups['← ' + REL[r]] || []).push(t));
+    const facts = FACTS[i] || [];
+    const k = kids[i];
+    dEl.innerHTML = `
+      <div class="crumbs">${crumbs}</div>
+      <div class="dhead">
+        <div class="eyebrow">${n[LVL] >= 0 ? 'L' + n[LVL] + ' · ' : ''}${esc(n[SPINE])} ${n[SPINE] === 'asset' || n[SPINE] === 'process' ? 'spine' : ''}</div>
+        <h3 class="mono" style="font-size:1.35rem">${esc(n[ID])}</h3>
+        <div class="sub">${esc(stripId(n))}</div>
+        <div class="chips"><span class="chip k">${esc(n[CLS])}</span>${k.length ? `<span class="chip">${fmt(k.length)} children · ${fmt(countDesc(i))} below</span>` : ''}</div>
+      </div>
+      <div><div class="eyebrow">Place in each standard</div>
+        ${std.length ? `<dl class="std">${std.map(([a, b]) => `<dt>${a}</dt><dd>${esc(b)}</dd>`).join('')}</dl>` : '<p class="empty">No standards mapping at this level (OGKG process definition).</p>'}</div>
+      ${xid.length ? `<div><div class="eyebrow">Source-system identifiers</div><dl class="std">${xid.map(([a, b]) => `<dt>${esc(a)}</dt><dd>${esc(b)}</dd>`).join('')}</dl></div>` : ''}
+      <div><div class="eyebrow">Links beyond the hierarchy</div>
+        ${Object.keys(groups).length ? `<div class="links">${Object.entries(groups).map(([r, ts]) => `<div class="lrow"><span class="rel">${r}</span><span class="tg">${ts.slice(0, 8).map(nodeBtn).join('')}${ts.length > 8 ? `<span class="note">+${ts.length - 8} more</span>` : ''}</span></div>`).join('')}</div>` : '<p class="empty">None.</p>'}</div>
+      <div><div class="eyebrow">Cited facts (latest current value)</div>
+        ${facts.length ? `<div class="factwrap"><table class="facts"><thead><tr><th>Predicate</th><th>Value</th><th>Source</th><th>As of</th><th>Conf.</th></tr></thead><tbody>
+          ${facts.map(f => `<tr><td>${esc(f[0])}</td><td class="v">${esc(f[1])}${f[2] ? ' ' + esc(f[2]) : ''}</td><td>${esc(f[3])}<br><span class="note">${esc(f[5])}</span></td><td class="v">${esc(f[4])}</td><td><span class="conf ${esc(f[6])}">${esc(f[6])}</span></td></tr>`).join('')}
+        </tbody></table></div>` : '<p class="empty">No facts on this node; values sit on its children or tags.</p>'}</div>`;
+  }
+  dEl.addEventListener('click', e => { const b = e.target.closest('[data-go]'); if (b) select(+b.dataset.go, true); });
+
+  // ---- filter + search
+  function setFilter(f, rerender = true) {
+    filter = f;
+    ['both', 'asset', 'process'].forEach(x => document.getElementById('f-' + x).setAttribute('aria-pressed', x === f));
+    if (rerender) render();
+  }
+  ['both', 'asset', 'process'].forEach(x => document.getElementById('f-' + x).addEventListener('click', () => setFilter(x)));
+  const q = document.getElementById('q'), res = document.getElementById('results');
+  q.addEventListener('input', () => {
+    const t = q.value.trim().toLowerCase();
+    if (t.length < 2) { res.hidden = true; return; }
+    const hits = [];
+    for (let i = 0; i < N.length && hits.length < 25; i++) {
+      if (!inTree(i)) continue;
+      if (N[i][ID].toLowerCase().includes(t) || N[i][NAME].toLowerCase().includes(t)) hits.push(i);
+    }
+    res.innerHTML = hits.length ? hits.map(i => `<button type="button" data-hit="${i}"><span class="mono">${esc(N[i][ID])}</span> <span class="note">L${N[i][LVL]} ${esc(stripId(N[i]).slice(0, 48))}</span></button>`).join('') : '<p class="empty" style="padding:8px 10px;margin:0">No match.</p>';
+    res.hidden = false;
+  });
+  res.addEventListener('click', e => { const b = e.target.closest('[data-hit]'); if (b) { select(+b.dataset.hit, true); res.hidden = true; q.value = ''; } });
+  document.addEventListener('click', e => { if (!e.target.closest('.search')) res.hidden = true; });
+
+  // ---- initial state: sample path to P-101A, its subtree open, plus the process chain acting on it
+  const start = byId.get('P-101A');
+  ancestors(start).forEach(a => open.add(a));
+  const openAll = (i, d) => { open.add(i); if (d > 0) kids[i].forEach(k => openAll(k, d - 1)); };
+  openAll(start, 2);
+  ['P-101A-PMP', 'P-101A-RBRG', 'P-101A-TBRG', 'P-101A-SEAL'].forEach(x => byId.has(x) && open.add(byId.get(x)));
+  select(start, true);
+})();
+</script>
